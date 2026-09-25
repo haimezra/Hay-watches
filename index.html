@@ -49,7 +49,9 @@
   nav.mainnav a{color:var(--pearl); opacity:.85; transition:opacity .2s, color .2s; padding:4px 0; border-bottom:1px solid transparent;}
   nav.mainnav a:hover{opacity:1; color:var(--gold); border-color:var(--gold);}
   .headicons{display:flex; align-items:center; gap:12px; flex-shrink:0;}
-  .icon-btn{background:none; border:none; color:var(--pearl); cursor:pointer; font-size:1.05rem; padding:4px;}
+  .icon-btn{background:none; border:none; color:var(--pearl); cursor:pointer; font-size:1.05rem; padding:4px; display:flex; align-items:center; transition:color .2s;}
+  .icon-btn:hover{color:var(--gold-light);}
+  .icon-btn svg{display:block;}
   .lang-toggle{border:1px solid var(--line); border-radius:20px; padding:6px 12px; font-size:.75rem; letter-spacing:.05em; cursor:pointer; background:transparent; color:var(--pearl); white-space:nowrap;}
   .lang-toggle:hover{border-color:var(--gold); color:var(--gold);}
   .mobile-menu-btn{display:none; background:none; border:none; color:var(--pearl); font-size:1.4rem; cursor:pointer; flex-shrink:0;}
@@ -59,7 +61,6 @@
     .logo{font-size:1.15rem;}
     .headicons{gap:8px;}
     .icon-btn{font-size:.95rem; padding:2px;}
-    .icon-btn[aria-label="account"]{display:none;}
     .lang-toggle{padding:5px 9px; font-size:.7rem;}
   }
 
@@ -178,9 +179,13 @@
     </nav>
     <div class="headicons">
       <button class="lang-toggle" id="langBtn" onclick="toggleLang()">EN</button>
-      <button class="icon-btn" aria-label="search">🔍</button>
       <button class="icon-btn" aria-label="account">👤</button>
-      <button class="icon-btn" aria-label="cart">🛍️</button>
+      <button class="icon-btn" aria-label="cart">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 7h12l-1 12.2a2 2 0 0 1-2 1.8H9a2 2 0 0 1-2-1.8L6 7Z"/>
+          <path d="M9 7V5.5a3 3 0 0 1 6 0V7"/>
+        </svg>
+      </button>
     </div>
   </div>
 </header>
@@ -190,8 +195,8 @@
   <div class="hero-inner">
     <span class="eyebrow"><span class="he-txt">קולקציית 2026</span><span class="en-txt">2026 Collection</span></span>
     <h1>
-      <span class="he-txt">זמן שאינו נמדד — הוא נחווה</span>
-      <span class="en-txt">Time isn't measured — it's experienced</span>
+      <span class="he-txt">זמן שאינו נמדד, הוא נחווה</span>
+      <span class="en-txt">Time isn't measured, it's experienced</span>
     </h1>
     <p>
       <span class="he-txt">שעוני יוקרה נבחרים, מיוצרים באומנות ומיועדים למי שמעריך כל רגע.</span>
@@ -216,7 +221,7 @@
   <div class="wrap">
     <div class="section-head">
       <h2><span class="he-txt">מוצרים נבחרים</span><span class="en-txt">Featured Pieces</span></h2>
-      <p><span class="he-txt">הבחירות המובילות של השבוע — אנו מציעים שעונים חדשים וגם שעונים יד שנייה, כל אחד עם בדיקת מקוריות ותיעוד מלא</span><span class="en-txt">This week's top picks — we offer both brand-new and pre-owned watches, each authenticated and fully documented</span></p>
+      <p><span class="he-txt">הבחירות המובילות של השבוע: אנו מציעים שעונים חדשים וגם שעונים יד שנייה, כל אחד עם בדיקת מקוריות ותיעוד מלא</span><span class="en-txt">This week's top picks: we offer both brand-new and pre-owned watches, each authenticated and fully documented</span></p>
     </div>
     <div class="prod-grid" id="prodGrid"></div>
   </div>
