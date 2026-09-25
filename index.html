@@ -202,8 +202,12 @@
   <div class="hero-inner">
     <span class="eyebrow"><span class="he-txt">קולקציית 2026</span><span class="en-txt">2026 Collection</span></span>
     <h1>
-      <span class="he-txt">זמן שאינו נמדד, הוא נחווה</span>
-      <span class="en-txt">Time isn't measured, it's experienced</span>
+      <!-- כותרת חלופית 2 (לשימוש, פשוט הסירו את ה-! מהשורות למטה והוסיפו ! לשורות שמעליהן):
+      <span class="he-txt">שעונים נבחרים לרגעים שחשובים</span>
+      <span class="en-txt">Curated Timepieces for Moments That Matter</span>
+      -->
+      <span class="he-txt">אומנות הזמן. דיוק ללא פשרות</span>
+      <span class="en-txt">The Art of Time. Precision Without Compromise</span>
     </h1>
     <p>
       <span class="he-txt">שעוני יוקרה נבחרים, מיוצרים באומנות ומיועדים למי שמעריך כל רגע.</span>
@@ -216,8 +220,8 @@
 <!-- Categories -->
 <section id="catalog" style="padding-top:0;">
   <div class="cat-grid">
-    <div class="cat"><img src="https://images.unsplash.com/photo-1623998021450-85c29c644e0d?auto=format&fit=crop&w=700&q=60" alt=""><h3><span class="he-txt">שעוני גברים</span><span class="en-txt">Men's Watches</span></h3></div>
-    <div class="cat"><img src="https://images.unsplash.com/photo-1628678172909-13a7209c7d62?auto=format&fit=crop&w=700&q=60" alt=""><h3><span class="he-txt">שעוני נשים</span><span class="en-txt">Women's Watches</span></h3></div>
+    <div class="cat"><img src="https://images.unsplash.com/photo-1667375565651-b660b574d1a9?auto=format&fit=crop&w=700&q=60" alt=""><h3><span class="he-txt">שעוני גברים</span><span class="en-txt">Men's Watches</span></h3></div>
+    <div class="cat"><img src="https://images.unsplash.com/photo-1751437774882-deeea4352018?auto=format&fit=crop&w=700&q=60" alt=""><h3><span class="he-txt">שעוני נשים</span><span class="en-txt">Women's Watches</span></h3></div>
     <div class="cat"><img src="https://images.unsplash.com/photo-1434704504321-71a8bc15a685?auto=format&fit=crop&w=700&q=60" alt=""><h3><span class="he-txt">רצועות פרימיום</span><span class="en-txt">Premium Straps</span></h3></div>
     <div class="cat"><img src="https://images.unsplash.com/photo-1704783339057-3fb087d3bc98?auto=format&fit=crop&w=700&q=60" alt=""><h3><span class="he-txt">אביזרים וקופסאות</span><span class="en-txt">Accessories &amp; Boxes</span></h3></div>
   </div>
@@ -336,6 +340,20 @@
   // Product photos: free-to-use stock photography (Unsplash License - unsplash.com/license),
   // no attribution required, no copyright/brand-IP issues.
 
+  // ===== סליקת HYPAY (יאד) =====
+  // TODO: להחליף כאן את מספר המסוף (Masof) שיתקבל מחברת הסליקה.
+  const HYP_MASOF = "YOUR_MASOF_NUMBER";
+
+  function buyNow(name, priceILS){
+    if(HYP_MASOF === "YOUR_MASOF_NUMBER"){
+      alert('עוד לא הוגדר מספר מסוף לסליקה. יש להחליף את HYP_MASOF בקוד עם המספר שתקבל מחברת הסליקה.');
+      return;
+    }
+    const amount = String(priceILS).replace(/[^\d.]/g,''); // מספר בלבד, ללא ₪ ופסיקים
+    const url = `https://icom.yaad.net/p/?action=pay&Masof=${HYP_MASOF}&Amount=${amount}&Info=${encodeURIComponent(name)}&UTF8=True&UTF8out=True`;
+    window.location.href = url;
+  }
+
   const products = [
     {name:{he:"HAY מרידיאן", en:"HAY Meridian"}, price:"₪4,890", cond:"new",
      img:"https://images.unsplash.com/photo-1623998021450-85c29c644e0d?auto=format&fit=crop&w=800&q=70",
@@ -374,6 +392,7 @@
           <div class="prod-detail"><span class="he-txt">${p.dHe}</span><span class="en-txt">${p.dEn}</span></div>
           <div class="prod-price">${p.price}</div>
           <button class="add-cart"><span class="he-txt">הוסף לעגלה</span><span class="en-txt">Add to Cart</span></button>
+          <button class="add-cart buy-now" style="margin-top:8px; background:var(--gold); color:#0D0D0D; border-color:var(--gold);" onclick="buyNow('${p.name.he.replace(/'/g,"")}', '${p.price.replace(/[^\d]/g,'')}')"><span class="he-txt">קנה עכשיו</span><span class="en-txt">Buy Now</span></button>
         </div>
       </div>`);
   });
