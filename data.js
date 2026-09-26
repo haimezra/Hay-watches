@@ -42,7 +42,7 @@ const PRODUCTS = [
   { id:"men-10", cat:"men", brand:"Omega", name:{he:"Omega De Ville Cal.1432 (וינטג׳, לוח זהב)", en:"Omega De Ville Cal.1432 (Vintage, Gold Dial)"}, price:4290, cond:"used", img:null,
     dHe:"יד שנייה · קוטר 32.5 מ״מ · מארז פלדה עם לוניטה מוזהבת · תנועת קוורץ קליבר 1432 · רצועת עור מקורית · כולל תעודת בדיקה",
     dEn:"Pre-owned · 32.5mm steel case with gold-tone bezel · Quartz Caliber 1432 · Original leather strap · Includes inspection certificate" },
-  { id:"men-11", cat:"men", brand:"Omega", name:{he:"Omega וינטג׳ Ref.2445 קליבר 351 (Bumper)", en:"Omega Vintage Ref.2445 Cal.351 (Bumper Automatic)"}, price:3200, cond:"used", img:null,
+  { id:"men-11", cat:"men", brand:"Omega", name:{he:"Omega וינטג׳ Ref.2445 קליבר 351 (Bumper)", en:"Omega Vintage Ref.2445 Cal.351 (Bumper Automatic)"}, price:3200, cond:"used", img:"images/products/men-11-1.webp",
     dHe:"פריט וינטג׳ משנות ה-50 · קוטר כ-34 מ״מ · תנועה אוטומטית מסוג Bumper קליבר 351 · 17 אבנים · זכוכית אקרילית · רצועת עור",
     dEn:"1950s vintage piece · ~34mm case · Bumper-style automatic Caliber 351 · 17 jewels · Acrylic crystal · Leather strap" },
 
