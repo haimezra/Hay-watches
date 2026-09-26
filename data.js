@@ -27,6 +27,25 @@ const PRODUCTS = [
     img:"https://images.unsplash.com/photo-1613579153555-a83eadd8fdde?auto=format&fit=crop&w=900&q=70",
     dHe:"יד שנייה · מקורי משנות ה-80 · כולל תעודת מקוריות", dEn:"Pre-owned · Original 1980s piece · Certificate included" },
 
+  { id:"men-6", cat:"men", brand:"Citizen", name:{he:"Citizen Tsuyosa NJ0151 (ירוק/מנטה)", en:"Citizen Tsuyosa NJ0151 (Mint/Green)"}, price:1690, cond:"new", img:null,
+    dHe:"קוטר 40 מ״מ · פלדת אל-חלד · תנועה אוטומטית קליבר 8210 · 21 אבנים · זכוכית ספיר · עמיד למים 50מ׳ · גב שקוף · צמיד משולב",
+    dEn:"40mm stainless steel case · Automatic Caliber 8210 · 21 jewels · Sapphire crystal · 50m water resistant · Exhibition caseback · Integrated bracelet" },
+  { id:"men-7", cat:"men", brand:"Citizen", name:{he:"Citizen Tsuyosa NJ0151-53M (Ice Blue)", en:"Citizen Tsuyosa NJ0151-53M (Ice Blue)"}, price:1790, cond:"new", img:null,
+    dHe:"קוטר 40 מ״מ · לוח כחול קרח בגימור סאנריי · תנועה אוטומטית קליבר 8210 · 21 אבנים · עמיד למים 50מ׳ · אחריות יצרן 5 שנים",
+    dEn:"40mm case · Sunray-textured ice blue dial · Automatic Caliber 8210 · 21 jewels · 50m water resistant · 5-year manufacturer warranty" },
+  { id:"men-8", cat:"men", brand:"Citizen", name:{he:"Citizen Challenge Diver Automatic (שחור/זהב)", en:"Citizen Challenge Diver Automatic (Black/Gold)"}, price:1290, cond:"new", img:null,
+    dHe:"קוטר 41 מ״מ · עובי 13.7 מ״מ · לוניטה חד-כיוונית · זכוכית מינרל · תנועה אוטומטית קליבר 8204-21 · עמיד למים 200מ׳",
+    dEn:"41mm case, 13.7mm thick · Unidirectional bezel · Mineral crystal · Automatic Caliber 8204-21 · 200m water resistant" },
+  { id:"men-9", cat:"men", brand:"Hamilton", name:{he:"Hamilton Khaki Field Mechanical H69439933", en:"Hamilton Khaki Field Mechanical H69439933"}, price:2390, cond:"new", img:null,
+    dHe:"קוטר 38 מ״מ · פלדת אל-חלד · תנועת דריכה ידנית קליבר H-50 · מילואי כוח 80 שעות · זכוכית ספיר · עמיד למים 50מ׳ · לוח שחור מט",
+    dEn:"38mm stainless steel case · Hand-wound Caliber H-50 · 80-hour power reserve · Sapphire crystal · 50m water resistant · Matte black dial" },
+  { id:"men-10", cat:"men", brand:"Omega", name:{he:"Omega De Ville Cal.1432 (וינטג׳, לוח זהב)", en:"Omega De Ville Cal.1432 (Vintage, Gold Dial)"}, price:4290, cond:"used", img:null,
+    dHe:"יד שנייה · קוטר 32.5 מ״מ · מארז פלדה עם לוניטה מוזהבת · תנועת קוורץ קליבר 1432 · רצועת עור מקורית · כולל תעודת בדיקה",
+    dEn:"Pre-owned · 32.5mm steel case with gold-tone bezel · Quartz Caliber 1432 · Original leather strap · Includes inspection certificate" },
+  { id:"men-11", cat:"men", brand:"Omega", name:{he:"Omega וינטג׳ Ref.2445 קליבר 351 (Bumper)", en:"Omega Vintage Ref.2445 Cal.351 (Bumper Automatic)"}, price:3200, cond:"used", img:null,
+    dHe:"פריט וינטג׳ משנות ה-50 · קוטר כ-34 מ״מ · תנועה אוטומטית מסוג Bumper קליבר 351 · 17 אבנים · זכוכית אקרילית · רצועת עור",
+    dEn:"1950s vintage piece · ~34mm case · Bumper-style automatic Caliber 351 · 17 jewels · Acrylic crystal · Leather strap" },
+
   // ---- Women's Watches ----
   { id:"women-1", cat:"women", featured:true, name:{he:"HAY אקוויליבר", en:"HAY Equiliber"}, price:6250, cond:"new",
     img:"https://images.unsplash.com/photo-1628678172909-13a7209c7d62?auto=format&fit=crop&w=900&q=70",
@@ -77,6 +96,18 @@ const ARTICLES = [
 ];
 
 function fmtPrice(n){ return "₪" + Number(n).toLocaleString("en-US"); }
+
+function productImgHtml(p){
+  const src = (typeof bestProductImg === 'function') ? bestProductImg(p) : p.img;
+  if(src){
+    return `<img src="${src}" alt="${p.name.en}" loading="lazy">`;
+  }
+  const brand = p.brand ? p.brand.toUpperCase() : '';
+  return `<div class="img-placeholder">
+    <span class="ph-brand">${brand}</span>
+    <span class="he-txt ph-note">תמונת מוצר בהמתנה</span><span class="en-txt ph-note">Product photo pending</span>
+  </div>`;
+}
 
 // ===== סליקת HYPAY (יאד) =====
 // TODO: להחליף כאן את מספר המסוף (Masof) שיתקבל מחברת הסליקה.

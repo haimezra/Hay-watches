@@ -205,3 +205,19 @@
   .pd-policy summary::after{content:"+"; color:var(--gold); font-size:1.2rem;}
   .pd-policy[open] summary::after{content:"–";}
   .pd-policy .pd-policy-body{padding:0 0 18px; color:var(--mute); font-size:.88rem; line-height:1.9;}
+
+  /* Placeholder for products without a photo yet */
+  .img-placeholder{width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; background:linear-gradient(135deg,#1c1a17,#141210); color:var(--mute); text-align:center; padding:20px;}
+  .ph-brand{letter-spacing:.12em; color:var(--gold-light); font-size:1rem;}
+  .ph-note{font-size:.72rem; opacity:.75;}
+
+  /* Product photo gallery (add/remove photos) */
+  .pd-thumbs{display:flex; gap:8px; margin-top:10px; flex-wrap:wrap;}
+  .pd-thumb{position:relative; width:64px; height:64px; border:1px solid var(--line); overflow:hidden; cursor:pointer; flex-shrink:0; background:#141210;}
+  .pd-thumb img{width:100%; height:100%; object-fit:cover; display:block;}
+  .pd-thumb.active{border-color:var(--gold);}
+  .pd-thumb .rm-btn{position:absolute; top:2px; inset-inline-end:2px; width:18px; height:18px; background:rgba(0,0,0,.65); color:#fff; border:none; border-radius:50%; font-size:.7rem; line-height:18px; cursor:pointer; padding:0;}
+  .pd-add-tile{width:64px; height:64px; border:1px dashed var(--line); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; cursor:pointer; color:var(--mute); font-size:1.1rem; flex-shrink:0; background:transparent;}
+  .pd-add-tile span{font-size:.55rem; letter-spacing:.02em;}
+  .pd-add-tile:hover{border-color:var(--gold); color:var(--gold-light);}
+  .pd-photo-note{font-size:.72rem; color:var(--mute); margin-top:8px; line-height:1.6;}

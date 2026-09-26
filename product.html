@@ -129,8 +129,14 @@
     `<span class="he-txt">${p.name.he}</span><span class="en-txt">${p.name.en}</span>`;
 
   document.getElementById('pdWrap').innerHTML = `
-    <div class="pd-img">
-      <img src="${p.img}" alt="${p.name.en}">
+    <div>
+      <div class="pd-img" id="pdMainImgWrap">${productImgHtml(p)}</div>
+      <div class="pd-thumbs" id="pdThumbs"></div>
+      <input type="file" id="pdFileInput" accept="image/*" multiple style="display:none;">
+      <p class="pd-photo-note">
+        <span class="he-txt">💡 לחצו על "הוסף" כדי להעלות תמונות מהמכשיר שלכם למוצר זה.</span>
+        <span class="en-txt">💡 Click "Add" to upload photos from your device for this product.</span>
+      </p>
     </div>
     <div class="pd-info">
       <span class="badge ${p.cond==='used'?'used':''}" style="position:static; display:inline-block; margin-bottom:14px;">
@@ -177,6 +183,64 @@
       </div>
     </div>
   `;
+
+  // ===== Photo gallery logic =====
+  function renderThumbs(){
+    const local = getProductPhotos(p.id);
+    const thumbsEl = document.getElementById('pdThumbs');
+    let html = '';
+    if(local.length === 0 && p.img){
+      html += `<div class="pd-thumb active"><img src="${p.img}" alt=""></div>`;
+    }
+    local.forEach((src, i)=>{
+      html += `<div class="pd-thumb ${i===0?'active':''}" onclick="setMainPhoto(${i})">
+                 <img src="${src}" alt="">
+                 <button class="rm-btn" onclick="event.stopPropagation(); removePhoto(${i})">×</button>
+               </div>`;
+    });
+    html += `<div class="pd-add-tile" onclick="document.getElementById('pdFileInput').click()">
+               <span>📷</span><span class="he-txt">הוסף</span><span class="en-txt">Add</span>
+             </div>`;
+    thumbsEl.innerHTML = html;
+  }
+
+  function refreshMainImg(){
+    document.getElementById('pdMainImgWrap').innerHTML = productImgHtml(p);
+    renderThumbs();
+  }
+
+  window.setMainPhoto = function(index){
+    const local = getProductPhotos(p.id);
+    if(index > 0){
+      const [chosen] = local.splice(index, 1);
+      local.unshift(chosen);
+      saveProductPhotos(p.id, local);
+    }
+    refreshMainImg();
+  };
+
+  window.removePhoto = function(index){
+    if(!confirm('למחוק את התמונה?')) return;
+    deleteProductPhoto(p.id, index);
+    refreshMainImg();
+  };
+
+  document.getElementById('pdFileInput').addEventListener('change', async (e) => {
+    const files = Array.from(e.target.files || []);
+    if(files.length === 0) return;
+    const existing = getProductPhotos(p.id);
+    for(const file of files){
+      try{
+        const dataUrl = await resizeImageFile(file, 1000, 0.82);
+        existing.push(dataUrl);
+      }catch(err){ console.error('Image resize failed', err); }
+    }
+    saveProductPhotos(p.id, existing);
+    e.target.value = '';
+    refreshMainImg();
+  });
+
+  renderThumbs();
 </script>
 </body>
 </html>

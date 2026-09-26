@@ -336,7 +336,7 @@
             <span class="badge ${p.cond==='used'?'used':''}">
               <span class="he-txt">${p.cond==='used'?'יד שנייה':'חדש'}</span><span class="en-txt">${p.cond==='used'?'Pre-Owned':'New'}</span>
             </span>
-            <img src="${p.img}" alt="${p.name.en}" loading="lazy">
+            ${productImgHtml(p)}
           </div>
           <div class="prod-body">
             <h4><span class="he-txt">${p.name.he}</span><span class="en-txt">${p.name.en}</span></h4>
