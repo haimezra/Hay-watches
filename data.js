@@ -6,7 +6,7 @@ const CATEGORIES = {
   men:         { he:"שעוני גברים",        en:"Men's Watches",       img:"images/products/men-7-2.webp" },
   women:       { he:"שעוני נשים",         en:"Women's Watches",     img:"https://images.unsplash.com/photo-1751437774882-deeea4352018?auto=format&fit=crop&w=900&q=65" },
   straps:      { he:"רצועות פרימיום",      en:"Premium Straps",      img:"https://images.unsplash.com/photo-1434704504321-71a8bc15a685?auto=format&fit=crop&w=900&q=65" },
-  accessories: { he:"אביזרים וקופסאות",    en:"Accessories & Boxes", img:"https://images.unsplash.com/photo-1704783339057-3fb087d3bc98?auto=format&fit=crop&w=900&q=65" }
+  accessories: { he:"אביזרים וקופסאות",    en:"Accessories & Boxes", img:"images/categories/accessories.jpg" }
 };
 
 const PRODUCTS = [
