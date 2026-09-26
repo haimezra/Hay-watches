@@ -96,9 +96,11 @@ const ARTICLES = [
   { he:"איך לבחור את השעון הראשון שלך", en:"How to Choose Your First Watch",
     img:"https://images.unsplash.com/photo-1628678172909-13a7209c7d62?auto=format&fit=crop&w=700&q=60" },
   { he:"שעון אוטומטי מול קוורץ", en:"Automatic vs. Quartz",
-    img:"https://images.unsplash.com/photo-1623998021450-85c29c644e0d?auto=format&fit=crop&w=700&q=60" },
+    img:"https://images.unsplash.com/photo-1623998021450-85c29c644e0d?auto=format&fit=crop&w=700&q=60",
+    link:"guide-automatic-vs-quartz.html" },
   { he:"המדריך לשמירה על רצועות עור", en:"Caring for Leather Straps",
-    img:"https://images.unsplash.com/photo-1434704504321-71a8bc15a685?auto=format&fit=crop&w=700&q=60" }
+    img:"https://images.unsplash.com/photo-1434704504321-71a8bc15a685?auto=format&fit=crop&w=700&q=60",
+    link:"guide-strap-care.html" }
 ];
 
 function fmtPrice(n){ return "₪" + Number(n).toLocaleString("en-US"); }

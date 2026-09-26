@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>מדריך שמירה על השעון והרצועה | HAY Watches</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Assistant:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Rubik:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=202609260945">
+<style>
+  :root{
+    --bg:#0A0A10 !important; --card:#131019 !important; --card2:#171320 !important;
+    --line:rgba(255,255,255,.09) !important; --pearl:#F3F0FA !important; --text:#F3F0FA !important;
+    --mute:#A79FBF !important; --muted:#A79FBF !important;
+    --gold:#9B6EF3 !important; --gold-soft:rgba(155,110,243,.38) !important;
+    --purple:#9B6EF3; --purple-2:#7C4DFF; --purple-soft:rgba(155,110,243,.35);
+    --ease:cubic-bezier(.2,.6,.2,1);
+  }
+  body{ background:var(--bg) !important; color:var(--text) !important; font-family:'Assistant','Heebo',sans-serif !important; font-weight:300 !important; }
+  h1,h2,h3,h4,h5{ font-family:'Heebo','Rubik',sans-serif !important; font-weight:400 !important; letter-spacing:-0.005em !important; }
+  a{ transition:color .3s var(--ease); }
+
+  .topbar{ background:var(--bg) !important; border-bottom:1px solid var(--line) !important; color:var(--mute) !important; font-size:.82rem !important; letter-spacing:.02em; }
+  .topbar a{ color:var(--pearl) !important; }
+  .topbar a:hover{ color:var(--purple) !important; }
+
+  header{ background:rgba(10,10,16,.85) !important; backdrop-filter:blur(10px); border-bottom:1px solid var(--line) !important; }
+  header .logo{ font-family:'Heebo',sans-serif !important; font-weight:600 !important; letter-spacing:.14em !important; color:var(--pearl) !important; }
+  header .logo span{ color:var(--purple) !important; font-weight:300 !important; }
+  .mainnav a{ color:var(--mute) !important; font-size:.92rem !important; font-weight:400 !important; letter-spacing:.03em; position:relative; padding-bottom:2px; }
+  .mainnav a::after{ content:''; position:absolute; right:0; left:0; bottom:-2px; height:1px; background:var(--purple); transform:scaleX(0); transition:transform .35s var(--ease); }
+  .mainnav a:hover{ color:var(--pearl) !important; }
+  .mainnav a:hover::after{ transform:scaleX(1); }
+  .mainnav a.active{ color:var(--pearl) !important; }
+  .mainnav a.active::after{ transform:scaleX(1); }
+  .lang-toggle{ border:1px solid var(--line) !important; color:var(--pearl) !important; background:transparent !important; border-radius:2px !important; letter-spacing:.06em; }
+  .lang-toggle:hover{ border-color:var(--purple) !important; color:var(--purple) !important; }
+  .icon-btn{ color:var(--pearl) !important; }
+  .icon-btn:hover{ color:var(--purple) !important; }
+  .mobile-nav{ background:var(--bg) !important; border-top:1px solid var(--line) !important; }
+  .mobile-nav a{ color:var(--mute) !important; border-bottom:1px solid var(--line) !important; }
+  .mobile-nav a:hover{ color:var(--purple) !important; }
+
+  /* ---- page hero ---- */
+  .page-hero{ background:radial-gradient(ellipse at 50% 0%, rgba(155,110,243,.10), transparent 60%), var(--bg) !important; text-align:center; padding:220px 24px 60px; }
+  @media (max-width:640px){ .page-hero{ padding:170px 20px 44px; } }
+  .page-hero .eyebrow{ color:var(--purple) !important; font-family:'Rubik',sans-serif !important; font-size:.75rem !important; font-weight:500 !important; letter-spacing:.18em; margin-bottom:16px; }
+  .page-hero h1{ font-size:clamp(1.8rem,4vw,2.6rem) !important; color:var(--pearl) !important; max-width:640px; margin:0 auto 16px; }
+  .page-hero p{ color:var(--mute) !important; font-size:1.05rem !important; max-width:560px; margin:0 auto; font-weight:300 !important; }
+  .page-hero::after{ content:''; display:block; width:56px; height:1px; background:var(--purple); margin:28px auto 0; }
+
+  .guide-wrap{ max-width:760px; margin:0 auto; padding:56px 24px 100px; }
+  .g-item{ display:flex; gap:22px; padding:36px 0; border-top:1px solid var(--line); align-items:flex-start; }
+  .g-item:first-child{ border-top:none; }
+  .g-icon{ flex:0 0 52px; width:52px; height:52px; border:1px solid var(--purple-soft); border-radius:2px; display:flex; align-items:center; justify-content:center; background:var(--card2); }
+  .g-icon svg{ width:24px; height:24px; stroke:var(--purple); fill:none; stroke-width:1.5; }
+  .g-item h2{ font-size:1.25rem !important; color:var(--pearl) !important; margin-bottom:10px; font-weight:400 !important; }
+  .g-item p{ color:var(--mute) !important; font-size:.96rem; font-weight:300; }
+  .g-item p + p{ margin-top:8px; }
+
+  .guide-cta{ margin-top:12px; text-align:center; background:var(--card2); border:1px solid var(--purple-soft); border-radius:2px; padding:36px 24px; }
+  .guide-cta h3{ color:var(--pearl) !important; font-size:1.2rem !important; margin-bottom:8px; }
+  .guide-cta p{ color:var(--mute) !important; margin-bottom:18px; font-size:.92rem; }
+  .guide-cta a{ display:inline-flex; align-items:center; justify-content:center; padding:13px 32px; border:1px solid var(--purple); color:var(--pearl); border-radius:2px; letter-spacing:.05em; font-weight:400; text-decoration:none; transition:background .4s var(--ease), color .4s var(--ease); }
+  .guide-cta a:hover{ background:var(--purple); color:#0A0A10; }
+
+  footer{ background:var(--bg) !important; border-top:1px solid var(--line) !important; }
+  footer h5{ color:var(--pearl) !important; font-weight:500 !important; letter-spacing:.06em; font-size:.82rem; }
+  footer ul a{ color:var(--mute) !important; }
+  footer ul a:hover{ color:var(--purple) !important; }
+  footer p{ color:var(--mute) !important; }
+  .email-em{ color:var(--purple) !important; }
+  .newsletter input{ background:transparent !important; border:0 !important; border-bottom:1px solid var(--line) !important; color:var(--pearl) !important; padding:10px 4px !important; }
+  .newsletter input:focus{ outline:none; border-bottom-color:var(--purple) !important; }
+  .newsletter button{ background:var(--purple) !important; color:#0A0A10 !important; border:1px solid var(--purple) !important; border-radius:2px !important; padding:10px 20px !important; font-weight:400 !important; }
+  .newsletter button:hover{ background:var(--purple-2) !important; border-color:var(--purple-2) !important; }
+  .foot-bottom{ border-top:1px solid var(--line) !important; color:var(--mute) !important; }
+  .foot-bottom a{ color:var(--pearl) !important; }
+  .logo-img-footer{ width:190px !important; max-width:60% !important; height:auto !important; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div>
+      <a href="tel:0543771767">📞 054-3771767</a>
+      &nbsp;&nbsp;
+      <a href="mailto:info@haywatches.co.il" class="email-em">info@haywatches.co.il</a>
+    </div>
+    <div><span class="he-txt">משלוח חינם בהזמנה מעל ₪1,500</span><span class="en-txt">Free shipping on orders over ₪1,500</span></div>
+  </div>
+</div>
+
+<header>
+  <div class="wrap headrow">
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="menu" onclick="toggleMobileMenu()">☰</button>
+    <div class="logo">HAY <span>WATCHES</span></div>
+    <nav class="mainnav">
+      <a href="index.html"><span class="he-txt">בית</span><span class="en-txt">Home</span></a>
+      <a href="index.html#catalog"><span class="he-txt">קטלוג</span><span class="en-txt">Catalog</span></a>
+      <a href="category.html?cat=accessories"><span class="he-txt">אביזרים</span><span class="en-txt">Accessories</span></a>
+      <a href="index.html#magazine" class="active"><span class="he-txt">מגזין</span><span class="en-txt">Magazine</span></a>
+      <a href="index.html#"><span class="he-txt">אודות</span><span class="en-txt">About</span></a>
+      <a href="index.html#"><span class="he-txt">צור קשר</span><span class="en-txt">Contact</span></a>
+    </nav>
+    <div class="headicons">
+      <button class="lang-toggle" id="langBtn" onclick="toggleLang()">EN</button>
+      <button class="icon-btn" aria-label="account">👤</button>
+      <button class="icon-btn" aria-label="cart">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 7h12l-1 12.2a2 2 0 0 1-2 1.8H9a2 2 0 0 1-2-1.8L6 7Z"/>
+          <path d="M9 7V5.5a3 3 0 0 1 6 0V7"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="toggleMobileMenu()"><span class="he-txt">בית</span><span class="en-txt">Home</span></a>
+    <a href="index.html#catalog" onclick="toggleMobileMenu()"><span class="he-txt">קטלוג</span><span class="en-txt">Catalog</span></a>
+    <a href="category.html?cat=accessories" onclick="toggleMobileMenu()"><span class="he-txt">אביזרים</span><span class="en-txt">Accessories</span></a>
+    <a href="index.html#magazine" onclick="toggleMobileMenu()"><span class="he-txt">מגזין</span><span class="en-txt">Magazine</span></a>
+    <a href="index.html#" onclick="toggleMobileMenu()"><span class="he-txt">אודות</span><span class="en-txt">About</span></a>
+    <a href="index.html#" onclick="toggleMobileMenu()"><span class="he-txt">צור קשר</span><span class="en-txt">Contact</span></a>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="eyebrow">HAY WATCHES · מדריך</div>
+  <h1>מדריך קצר לשמירה על השעון והרצועה</h1>
+  <p>כמה הרגלים פשוטים שיאריכו את חיי השעון שלכם ויישמרו על המראה שלו לאורך שנים.</p>
+</section>
+
+<div class="guide-wrap">
+
+  <div class="g-item">
+    <div class="g-icon"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="7"/></svg></div>
+    <div>
+      <h2>מים ולחות</h2>
+      <p>גם שעון עמיד למים לא נועד למגע מתמיד עם מים חמים, סבון או קלור. הימנעו מכניסה לים או לבריכה עם רצועת עור, ואם השעון נחשף למים, נגבו אותו יבש מיד.</p>
+      <p>רצועת עור שנרטבת עלולה להתקשות ולהתפצל - כדאי להסירה ולתת לה להתייבש בטמפרטורת החדר, הרחק משמש ישירה.</p>
+    </div>
+  </div>
+
+  <div class="g-item">
+    <div class="g-icon"><svg viewBox="0 0 24 24"><path d="M4 12c2-4 6-6 8-6s6 2 8 6c-2 4-6 6-8 6s-6-2-8-6z"/><circle cx="12" cy="12" r="2.2"/></svg></div>
+    <div>
+      <h2>רצועת עור</h2>
+      <p>העור נושם וסופג זיעה ולחות - כדאי להחליף רצועה כזו כל שנה-שנתיים, ולתת לשעון "יום מנוחה" בין ימי לבישה עמוסים.</p>
+      <p>ניקוי קל במטלית יבש ולחה מדי פעם מספיק; יש להימנע מחומרי ניקוי חזקים.</p>
+    </div>
+  </div>
+
+  <div class="g-item">
+    <div class="g-icon"><svg viewBox="0 0 24 24"><path d="M3 12h18M6 8v8M18 8v8M9 6v12M15 6v12"/></svg></div>
+    <div>
+      <h2>רצועת מתאל או פלדה</h2>
+      <p>לניקוי צמיד מתאלי אפשר להשתמש במברשת שיניים רכה ומעט מים ונוזל סבון עדין, ולנגב היטב לאחר מכן כדי למנוע כתמי מים.</p>
+      <p>מומלץ לבדוק אחת לתקופה שהברגים או הפינים המחברים בין החוליות מהודקים היטב.</p>
+    </div>
+  </div>
+
+  <div class="g-item">
+    <div class="g-icon"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 100 18 9 9 0 000-18z"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
+    <div>
+      <h2>מגנטים וטמפרטורות קיצוניות</h2>
+      <p>הרחיקו את השעון ממגנטים חזקים (רמקולים, מטענים אלחוטיים, סוגרי תיקים) - הם עלולים להשפיע על דיוק המנגנון, בעיקר בשעונים אוטומטיים.</p>
+      <p>הימנעו מהשארת השעון בשמש ישירה או ברכב חם - חילוף חד של טמפרטורה יכול לפגוע באטימות ובדבק הזכוכית.</p>
+    </div>
+  </div>
+
+  <div class="g-item">
+    <div class="g-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/></svg></div>
+    <div>
+      <h2>אחסון נכון</h2>
+      <p>כשלא לובשים את השעון, כדאי להניחו בקופסה או בתא ייעודי, הרחק מאבק, שמש ולחות. לשעונים אוטומטיים אפשר להשתמש ב"וינדר" (watch winder) כדי לשמור עליהם פעילים.</p>
+    </div>
+  </div>
+
+  <div class="g-item">
+    <div class="g-icon"><svg viewBox="0 0 24 24"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg></div>
+    <div>
+      <h2>בדיקה תקופתית</h2>
+      <p>מומלץ להביא את השעון לבדיקת אטימות ולניקוי מקצועי כל שנה-שנתיים, ולשירות מלא של המנגנון (לשעונים מכניים/אוטומטיים) כל 4-5 שנים בערך.</p>
+    </div>
+  </div>
+
+  <div class="guide-cta">
+    <h3>יש לכם שאלות בנוגע לתחזוקת השעון שלכם?</h3>
+    <p>נשמח לעזור - צוות HAY Watches כאן בשבילכם</p>
+    <a href="tel:0543771767">📞 054-3771767</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="logo" style="margin-bottom:14px;"><img src="assets/logo.png" alt="HAY Watches" class="logo-img logo-img-footer"></div>
+      </div>
+      <div class="foot-col">
+        <h5><span class="he-txt">קישורים</span><span class="en-txt">Links</span></h5>
+        <ul>
+          <li><a href="index.html#catalog"><span class="he-txt">קטלוג</span><span class="en-txt">Catalog</span></a></li>
+          <li><a href="category.html?cat=accessories"><span class="he-txt">אביזרים</span><span class="en-txt">Accessories</span></a></li>
+          <li><a href="index.html#magazine"><span class="he-txt">מגזין</span><span class="en-txt">Magazine</span></a></li>
+          <li><a href="index.html#"><span class="he-txt">אודות</span><span class="en-txt">About</span></a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5><span class="he-txt">שירות לקוחות</span><span class="en-txt">Customer Care</span></h5>
+        <ul>
+          <li><a href="index.html#"><span class="he-txt">משלוחים והחזרות</span><span class="en-txt">Shipping &amp; Returns</span></a></li>
+          <li><a href="index.html#"><span class="he-txt">אחריות</span><span class="en-txt">Warranty</span></a></li>
+          <li><a href="index.html#"><span class="he-txt">צור קשר</span><span class="en-txt">Contact</span></a></li>
+          <li><a href="index.html#policy"><span class="he-txt">תקנון ומדיניות פרטיות</span><span class="en-txt">Terms &amp; Privacy</span></a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5><span class="he-txt">הרשמה לניוזלטר VIP</span><span class="en-txt">Join the VIP Newsletter</span></h5>
+        <p><span class="he-txt">עדכונים על הגעות חדשות ואירועים בלעדיים</span><span class="en-txt">New arrivals and exclusive events</span></p>
+        <form class="newsletter" onsubmit="event.preventDefault()">
+          <input type="email" placeholder="you@email.com" required>
+          <button type="submit"><span class="he-txt">הרשמה</span><span class="en-txt">Join</span></button>
+        </form>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 HAY Watches. <span class="he-txt">כל הזכויות שמורות</span><span class="en-txt">All rights reserved</span></span>
+      <span>054-3771767 · <a href="mailto:info@haywatches.co.il" class="email-em">info@haywatches.co.il</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>שעון אוטומטי מול קוורץ | HAY Watches</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Assistant:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Rubik:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=202609260945">
+<style>
+  :root{
+    --bg:#0A0A10 !important; --card:#131019 !important; --card2:#171320 !important;
+    --line:rgba(255,255,255,.09) !important; --pearl:#F3F0FA !important; --text:#F3F0FA !important;
+    --mute:#A79FBF !important; --muted:#A79FBF !important;
+    --gold:#9B6EF3 !important; --gold-soft:rgba(155,110,243,.38) !important;
+    --purple:#9B6EF3; --purple-2:#7C4DFF; --purple-soft:rgba(155,110,243,.35);
+    --ease:cubic-bezier(.2,.6,.2,1);
+  }
+  body{ background:var(--bg) !important; color:var(--text) !important; font-family:'Assistant','Heebo',sans-serif !important; font-weight:300 !important; }
+  h1,h2,h3,h4,h5{ font-family:'Heebo','Rubik',sans-serif !important; font-weight:400 !important; letter-spacing:-0.005em !important; }
+  a{ transition:color .3s var(--ease); }
+
+  .topbar{ background:var(--bg) !important; border-bottom:1px solid var(--line) !important; color:var(--mute) !important; font-size:.82rem !important; letter-spacing:.02em; }
+  .topbar a{ color:var(--pearl) !important; }
+  .topbar a:hover{ color:var(--purple) !important; }
+
+  header{ background:rgba(10,10,16,.85) !important; backdrop-filter:blur(10px); border-bottom:1px solid var(--line) !important; }
+  header .logo{ font-family:'Heebo',sans-serif !important; font-weight:600 !important; letter-spacing:.14em !important; color:var(--pearl) !important; }
+  header .logo span{ color:var(--purple) !important; font-weight:300 !important; }
+  .mainnav a{ color:var(--mute) !important; font-size:.92rem !important; font-weight:400 !important; letter-spacing:.03em; position:relative; padding-bottom:2px; }
+  .mainnav a::after{ content:''; position:absolute; right:0; left:0; bottom:-2px; height:1px; background:var(--purple); transform:scaleX(0); transition:transform .35s var(--ease); }
+  .mainnav a:hover{ color:var(--pearl) !important; }
+  .mainnav a:hover::after{ transform:scaleX(1); }
+  .mainnav a.active{ color:var(--pearl) !important; }
+  .mainnav a.active::after{ transform:scaleX(1); }
+  .lang-toggle{ border:1px solid var(--line) !important; color:var(--pearl) !important; background:transparent !important; border-radius:2px !important; letter-spacing:.06em; }
+  .lang-toggle:hover{ border-color:var(--purple) !important; color:var(--purple) !important; }
+  .icon-btn{ color:var(--pearl) !important; }
+  .icon-btn:hover{ color:var(--purple) !important; }
+  .mobile-nav{ background:var(--bg) !important; border-top:1px solid var(--line) !important; }
+  .mobile-nav a{ color:var(--mute) !important; border-bottom:1px solid var(--line) !important; }
+  .mobile-nav a:hover{ color:var(--purple) !important; }
+
+  .page-hero{ background:radial-gradient(ellipse at 50% 0%, rgba(155,110,243,.10), transparent 60%), var(--bg) !important; text-align:center; padding:220px 24px 60px; }
+  @media (max-width:640px){ .page-hero{ padding:170px 20px 44px; } }
+  .page-hero .eyebrow{ color:var(--purple) !important; font-family:'Rubik',sans-serif !important; font-size:.75rem !important; font-weight:500 !important; letter-spacing:.18em; margin-bottom:16px; }
+  .page-hero h1{ font-size:clamp(1.8rem,4vw,2.6rem) !important; color:var(--pearl) !important; max-width:640px; margin:0 auto 16px; }
+  .page-hero p{ color:var(--mute) !important; font-size:1.05rem !important; max-width:560px; margin:0 auto; font-weight:300 !important; }
+  .page-hero::after{ content:''; display:block; width:56px; height:1px; background:var(--purple); margin:28px auto 0; }
+
+  .guide-wrap{ max-width:800px; margin:0 auto; padding:56px 24px 100px; }
+  .g-block{ padding:32px 0; border-top:1px solid var(--line); }
+  .g-block:first-child{ border-top:none; }
+  .g-block h2{ font-size:1.3rem !important; color:var(--pearl) !important; margin-bottom:10px; font-weight:400 !important; }
+  .g-block p{ color:var(--mute) !important; font-size:.96rem; font-weight:300; }
+  .g-block p + p{ margin-top:8px; }
+
+  .compare{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:44px 0 8px; }
+  @media (max-width:600px){ .compare{ grid-template-columns:1fr; } }
+  .g-card{ background:var(--card2); border:1px solid var(--line); border-radius:2px; padding:26px 22px; }
+  .g-card h3{ font-size:1.1rem !important; color:var(--purple) !important; margin-bottom:14px; font-weight:400 !important; }
+  .g-card ul{ list-style:none; padding:0; margin:0; }
+  .g-card li{ color:var(--mute); font-size:.92rem; padding:8px 0; border-top:1px solid var(--line); }
+  .g-card li:first-child{ border-top:none; }
+
+  .guide-cta{ margin-top:36px; text-align:center; background:var(--card2); border:1px solid var(--purple-soft); border-radius:2px; padding:40px 24px; }
+  .guide-cta h3{ color:var(--pearl) !important; font-size:1.25rem !important; margin-bottom:8px; font-weight:400 !important; }
+  .guide-cta p{ color:var(--mute) !important; margin-bottom:20px; font-size:.94rem; }
+  .guide-cta a{ display:inline-flex; align-items:center; justify-content:center; padding:14px 34px; border:1px solid var(--purple); color:#0A0A10; background:var(--purple); border-radius:2px; letter-spacing:.05em; font-weight:400; text-decoration:none; font-size:1.02rem; transition:background .4s var(--ease); }
+  .guide-cta a:hover{ background:var(--purple-2); border-color:var(--purple-2); }
+
+  footer{ background:var(--bg) !important; border-top:1px solid var(--line) !important; }
+  footer h5{ color:var(--pearl) !important; font-weight:500 !important; letter-spacing:.06em; font-size:.82rem; }
+  footer ul a{ color:var(--mute) !important; }
+  footer ul a:hover{ color:var(--purple) !important; }
+  footer p{ color:var(--mute) !important; }
+  .email-em{ color:var(--purple) !important; }
+  .newsletter input{ background:transparent !important; border:0 !important; border-bottom:1px solid var(--line) !important; color:var(--pearl) !important; padding:10px 4px !important; }
+  .newsletter input:focus{ outline:none; border-bottom-color:var(--purple) !important; }
+  .newsletter button{ background:var(--purple) !important; color:#0A0A10 !important; border:1px solid var(--purple) !important; border-radius:2px !important; padding:10px 20px !important; font-weight:400 !important; }
+  .newsletter button:hover{ background:var(--purple-2) !important; border-color:var(--purple-2) !important; }
+  .foot-bottom{ border-top:1px solid var(--line) !important; color:var(--mute) !important; }
+  .foot-bottom a{ color:var(--pearl) !important; }
+  .logo-img-footer{ width:190px !important; max-width:60% !important; height:auto !important; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div>
+      <a href="tel:0543771767">📞 054-3771767</a>
+      &nbsp;&nbsp;
+      <a href="mailto:info@haywatches.co.il" class="email-em">info@haywatches.co.il</a>
+    </div>
+    <div><span class="he-txt">משלוח חינם בהזמנה מעל ₪1,500</span><span class="en-txt">Free shipping on orders over ₪1,500</span></div>
+  </div>
+</div>
+
+<header>
+  <div class="wrap headrow">
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="menu" onclick="toggleMobileMenu()">☰</button>
+    <div class="logo">HAY <span>WATCHES</span></div>
+    <nav class="mainnav">
+      <a href="index.html"><span class="he-txt">בית</span><span class="en-txt">Home</span></a>
+      <a href="index.html#catalog"><span class="he-txt">קטלוג</span><span class="en-txt">Catalog</span></a>
+      <a href="category.html?cat=accessories"><span class="he-txt">אביזרים</span><span class="en-txt">Accessories</span></a>
+      <a href="index.html#magazine" class="active"><span class="he-txt">מגזין</span><span class="en-txt">Magazine</span></a>
+      <a href="index.html#"><span class="he-txt">אודות</span><span class="en-txt">About</span></a>
+      <a href="index.html#"><span class="he-txt">צור קשר</span><span class="en-txt">Contact</span></a>
+    </nav>
+    <div class="headicons">
+      <button class="lang-toggle" id="langBtn" onclick="toggleLang()">EN</button>
+      <button class="icon-btn" aria-label="account">👤</button>
+      <button class="icon-btn" aria-label="cart">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 7h12l-1 12.2a2 2 0 0 1-2 1.8H9a2 2 0 0 1-2-1.8L6 7Z"/>
+          <path d="M9 7V5.5a3 3 0 0 1 6 0V7"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="toggleMobileMenu()"><span class="he-txt">בית</span><span class="en-txt">Home</span></a>
+    <a href="index.html#catalog" onclick="toggleMobileMenu()"><span class="he-txt">קטלוג</span><span class="en-txt">Catalog</span></a>
+    <a href="category.html?cat=accessories" onclick="toggleMobileMenu()"><span class="he-txt">אביזרים</span><span class="en-txt">Accessories</span></a>
+    <a href="index.html#magazine" onclick="toggleMobileMenu()"><span class="he-txt">מגזין</span><span class="en-txt">Magazine</span></a>
+    <a href="index.html#" onclick="toggleMobileMenu()"><span class="he-txt">אודות</span><span class="en-txt">About</span></a>
+    <a href="index.html#" onclick="toggleMobileMenu()"><span class="he-txt">צור קשר</span><span class="en-txt">Contact</span></a>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="eyebrow">HAY WATCHES · מדריך</div>
+  <h1>שעון אוטומטי מול שעון קוורץ</h1>
+  <p>ההבדלים העיקריים בין שתי משפחות המנגנונים, כדי לבחור את השעון שמתאים לאורח החיים שלכם.</p>
+</section>
+
+<div class="guide-wrap">
+
+  <div class="g-block">
+    <h2>מה זה שעון קוורץ?</h2>
+    <p>במנגנון קוורץ סוללה קטנה מפעילה גביש קוורץ שרוטט בתדר קבוע, ומעגל אלקטרוני מתרגם את הרטט לתנועת המחוגים. התוצאה היא דיוק גבוה מאוד ותחזוקה מינימלית.</p>
+  </div>
+
+  <div class="g-block">
+    <h2>מה זה שעון אוטומטי?</h2>
+    <p>שעון אוטומטי (או מכני) פועל ללא סוללה - משקולת מסתובבת בתוך המנגנון עם כל תנועת פרק היד ומותחת קפיץ ראשי, שמשמש כמקור האנרגיה. כשלא לובשים אותו זמן רב, הוא נעצר וצריך לכוון אותו מחדש.</p>
+  </div>
+
+  <div class="compare">
+    <div class="g-card">
+      <h3>יתרונות קוורץ</h3>
+      <ul>
+        <li>דיוק גבוה - סטייה של שניות בחודש</li>
+        <li>תחזוקה נמוכה, החלפת סוללה בלבד</li>
+        <li>מחיר נגיש יותר בדרך כלל</li>
+        <li>עובד גם אם לא לובשים אותו</li>
+      </ul>
+    </div>
+    <div class="g-card">
+      <h3>יתרונות אוטומטי</h3>
+      <ul>
+        <li>ללא צורך בסוללה</li>
+        <li>מנגנון מכני מסורתי, לעיתים גלוי מבעד לזכוכית אחורית</li>
+        <li>נחשב ליותר "אספנותי" ובעל ערך רגשי</li>
+        <li>תחושת תנועה חלקה של מחוג השניות</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="g-block" style="margin-top:8px;">
+    <h2>איך לבחור?</h2>
+    <p>אם החשוב לכם הוא דיוק, מחיר ואפס טרחה - קוורץ הוא הבחירה הפשוטה. אם אתם מחפשים חוויה מכנית, שעון שמלווה אתכם ומצריך תשומת לב קלה, אוטומטי הוא הכיוון.</p>
+    <p>שווה גם לשים לב לתדירות השימוש: שעון אוטומטי שלא נלבש כמה ימים בשבוע ידרוש כיוון מחדש, בעוד קוורץ ימשיך לרוץ במדויק גם בתוך המגירה.</p>
+  </div>
+
+  <div class="g-block">
+    <h2>תחזוקה</h2>
+    <p><strong>קוורץ:</strong> החלפת סוללה כל 1-3 שנים, ובדיקת אטימות בהתאם.</p>
+    <p><strong>אוטומטי:</strong> שירות מלא כל 4-5 שנים בממוצע, ושמירה מפני מגנטים וזעזועים חזקים.</p>
+  </div>
+
+  <div class="guide-cta">
+    <h3>יש לכם שאלות או מתלבטים מה מתאים לכם?</h3>
+    <p>נשמח לעזור לכם לבחור את השעון הנכון</p>
+    <a href="tel:0543771767">📞 054-3771767</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="logo" style="margin-bottom:14px;"><img src="assets/logo.png" alt="HAY Watches" class="logo-img logo-img-footer"></div>
+      </div>
+      <div class="foot-col">
+        <h5><span class="he-txt">קישורים</span><span class="en-txt">Links</span></h5>
+        <ul>
+          <li><a href="index.html#catalog"><span class="he-txt">קטלוג</span><span class="en-txt">Catalog</span></a></li>
+          <li><a href="category.html?cat=accessories"><span class="he-txt">אביזרים</span><span class="en-txt">Accessories</span></a></li>
+          <li><a href="index.html#magazine"><span class="he-txt">מגזין</span><span class="en-txt">Magazine</span></a></li>
+          <li><a href="index.html#"><span class="he-txt">אודות</span><span class="en-txt">About</span></a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5><span class="he-txt">שירות לקוחות</span><span class="en-txt">Customer Care</span></h5>
+        <ul>
+          <li><a href="index.html#"><span class="he-txt">משלוחים והחזרות</span><span class="en-txt">Shipping &amp; Returns</span></a></li>
+          <li><a href="index.html#"><span class="he-txt">אחריות</span><span class="en-txt">Warranty</span></a></li>
+          <li><a href="index.html#"><span class="he-txt">צור קשר</span><span class="en-txt">Contact</span></a></li>
+          <li><a href="index.html#policy"><span class="he-txt">תקנון ומדיניות פרטיות</span><span class="en-txt">Terms &amp; Privacy</span></a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5><span class="he-txt">הרשמה לניוזלטר VIP</span><span class="en-txt">Join the VIP Newsletter</span></h5>
+        <p><span class="he-txt">עדכונים על הגעות חדשות ואירועים בלעדיים</span><span class="en-txt">New arrivals and exclusive events</span></p>
+        <form class="newsletter" onsubmit="event.preventDefault()">
+          <input type="email" placeholder="you@email.com" required>
+          <button type="submit"><span class="he-txt">הרשמה</span><span class="en-txt">Join</span></button>
+        </form>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 HAY Watches. <span class="he-txt">כל הזכויות שמורות</span><span class="en-txt">All rights reserved</span></span>
+      <span>054-3771767 · <a href="mailto:info@haywatches.co.il" class="email-em">info@haywatches.co.il</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
