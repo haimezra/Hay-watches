@@ -7,12 +7,22 @@
   html{scroll-padding-top:env(safe-area-inset-top,0px); scroll-behavior:smooth;}
   html,body{height:100%;}
   html{overflow-x:hidden; width:100%;}
-  body{background:var(--bg); color:var(--pearl); font-family:'Assistant',sans-serif; overflow-x:hidden; width:100%;}
-  [lang-en] body, body.en-mode{font-family:'Montserrat',sans-serif;}
+  body{background:var(--bg); color:var(--pearl); font-family:'Assistant',sans-serif; font-size:16px; line-height:1.7; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; overflow-x:hidden; width:100%;}
+  [lang-en] body, body.en-mode{font-family:'Inter',sans-serif; line-height:1.6;}
   .he-txt{display:inline;} .en-txt{display:none;}
   body.en-mode .he-txt{display:none;} body.en-mode .en-txt{display:inline;}
-  h1,h2,h3,.serif{font-family:'Frank Ruhl Libre',serif;}
-  body.en-mode h1, body.en-mode h2, body.en-mode h3, body.en-mode .serif{font-family:'Cormorant Garamond',serif;}
+
+  /* Typographic hierarchy — Heebo (he) / Inter (en) for headings, Assistant (he) / Inter (en) for body */
+  h1,h2,h3,h4,h5,h6,.serif{font-family:'Heebo',sans-serif; font-weight:700; line-height:1.25; letter-spacing:-0.01em; color:var(--pearl);}
+  body.en-mode h1, body.en-mode h2, body.en-mode h3, body.en-mode h4, body.en-mode h5, body.en-mode h6, body.en-mode .serif{font-family:'Inter',sans-serif; letter-spacing:-0.02em;}
+  h1{font-size:clamp(2.25rem,1.4rem + 3.2vw,3.4rem); font-weight:800; line-height:1.12; letter-spacing:-0.02em;}
+  h2{font-size:clamp(1.6rem,1.2rem + 1.6vw,2.15rem); font-weight:700; line-height:1.2;}
+  h3{font-size:clamp(1.15rem,1rem + 0.6vw,1.35rem); font-weight:600; line-height:1.3;}
+  h4{font-size:1.02rem; font-weight:600; line-height:1.4; letter-spacing:0;}
+  h5{font-size:.82rem; font-weight:700; line-height:1.4; letter-spacing:.06em;}
+  h6{font-size:.74rem; font-weight:600; line-height:1.4; letter-spacing:.08em;}
+  p{line-height:1.7;}
+  body.en-mode p{line-height:1.65;}
   a{color:inherit; text-decoration:none;}
   .wrap{max-width:1180px; margin:0 auto; padding:0 24px; width:100%;}
   img{max-width:100%; display:block;}
@@ -32,8 +42,8 @@
   /* Header */
   header{position:sticky; top:0; z-index:50; background:rgba(13,13,13,.72); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--line); padding-top:env(safe-area-inset-top,0px);}
   .headrow{display:flex; align-items:center; justify-content:space-between; padding:16px 16px; gap:10px; width:100%;}
-  .logo{font-family:'Cinzel',serif; font-size:1.25rem; font-weight:600; letter-spacing:.16em; color:var(--pearl); white-space:nowrap; flex-shrink:1; min-width:0; overflow:hidden; text-overflow:ellipsis;}
-  body.en-mode .logo{font-family:'Cinzel',serif;}
+  .logo{font-family:'Heebo',sans-serif; font-size:1.25rem; font-weight:800; letter-spacing:.1em; color:var(--pearl); white-space:nowrap; flex-shrink:1; min-width:0; overflow:hidden; text-overflow:ellipsis;}
+  body.en-mode .logo{font-family:'Inter',sans-serif; letter-spacing:.06em;}
   .logo span{color:var(--gold);}
   nav.mainnav{display:flex; gap:28px; font-size:.92rem;}
   nav.mainnav a{color:var(--pearl); opacity:.85; transition:opacity .2s, color .2s; padding:4px 0; border-bottom:1px solid transparent;}
@@ -66,9 +76,10 @@
     background-size:140px 140px;}
   .hero::after{content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 40%, transparent 0%, #0D0D0D 92%);}
   .hero-inner{max-width:640px; position:relative; z-index:1;}
-  .hero .eyebrow{font-family:'Cinzel',serif; color:var(--gold-light); font-size:.78rem; font-weight:500; letter-spacing:.28em; margin-bottom:22px; display:block; text-shadow:0 2px 12px rgba(0,0,0,.6);}
+  .hero .eyebrow{font-family:'Heebo',sans-serif; color:var(--gold-light); font-size:.78rem; font-weight:700; letter-spacing:.24em; margin-bottom:22px; display:block; text-shadow:0 2px 12px rgba(0,0,0,.6);}
+  body.en-mode .hero .eyebrow{font-family:'Inter',sans-serif; letter-spacing:.2em;}
   .hero h1{font-size:clamp(2.4rem,6vw,3.9rem); line-height:1.28; font-weight:500; letter-spacing:.01em; margin-bottom:22px; text-shadow:0 4px 24px rgba(0,0,0,.7);}
-  body.en-mode .hero h1{font-family:'Playfair Display',serif; font-style:italic; font-weight:500; letter-spacing:0;}
+  body.en-mode .hero h1{font-family:'Inter',sans-serif; font-weight:800; letter-spacing:-0.02em;}
   .hero p{color:var(--pearl); opacity:.85; font-size:1.05rem; line-height:1.7; max-width:480px; margin:0 auto 30px; text-shadow:0 2px 14px rgba(0,0,0,.6);}
   .btn{display:inline-block; padding:15px 38px; border:1px solid var(--gold); color:var(--gold); font-size:.9rem; letter-spacing:.08em; border-radius:2px; transition:background .25s, color .25s;}
   .btn:hover{background:var(--gold); color:#0D0D0D;}
@@ -102,8 +113,8 @@
   .prod-body{padding:18px;}
   .prod-body h4{font-weight:500; font-size:1rem; margin-bottom:6px;}
   .prod-detail{color:var(--mute); font-size:.78rem; line-height:1.6; margin-bottom:12px;}
-  .prod-price{color:var(--gold-light); font-family:'Frank Ruhl Libre',serif; font-size:1.1rem; margin-bottom:14px;}
-  body.en-mode .prod-price{font-family:'Cormorant Garamond',serif;}
+  .prod-price{color:var(--gold-light); font-family:'Heebo',sans-serif; font-weight:700; font-size:1.1rem; margin-bottom:14px;}
+  body.en-mode .prod-price{font-family:'Inter',sans-serif; font-weight:700;}
   .add-cart{width:100%; padding:11px; background:transparent; border:1px solid var(--line); color:var(--pearl); font-size:.82rem; letter-spacing:.05em; cursor:pointer; transition:border-color .2s, color .2s;}
   .add-cart:hover{border-color:var(--gold); color:var(--gold);}
   @media(max-width:880px){ .prod-grid{grid-template-columns:repeat(2,1fr);} }
@@ -167,8 +178,8 @@
   .pd-img{aspect-ratio:1/1; background:linear-gradient(135deg,#181420,#0f0e0c); border:1px solid var(--line); overflow:hidden;}
   .pd-img img{width:100%; height:100%; object-fit:cover;}
   .pd-info h1{font-size:clamp(1.5rem,3vw,2rem); font-weight:500; margin-bottom:10px;}
-  .pd-price{color:var(--gold-light); font-family:'Frank Ruhl Libre',serif; font-size:1.5rem; margin-bottom:18px;}
-  body.en-mode .pd-price{font-family:'Cormorant Garamond',serif;}
+  .pd-price{color:var(--gold-light); font-family:'Heebo',sans-serif; font-weight:700; font-size:1.5rem; margin-bottom:18px;}
+  body.en-mode .pd-price{font-family:'Inter',sans-serif; font-weight:700;}
   .pd-desc{color:var(--mute); font-size:.95rem; line-height:1.8; margin-bottom:24px;}
   .pd-actions{display:flex; flex-direction:column; gap:10px; max-width:340px; margin-bottom:34px;}
   .pd-actions .add-cart{padding:14px;}
