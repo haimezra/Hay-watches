@@ -185,24 +185,37 @@
   `;
 
   // ===== Photo gallery logic =====
+  const catalogImgs = p.imgs && p.imgs.length ? p.imgs : (p.img ? [p.img] : []);
+
   function renderThumbs(){
     const local = getProductPhotos(p.id);
     const thumbsEl = document.getElementById('pdThumbs');
     let html = '';
-    if(local.length === 0 && p.img){
-      html += `<div class="pd-thumb active"><img src="${p.img}" alt=""></div>`;
+    if(local.length === 0){
+      catalogImgs.forEach((src, i)=>{
+        html += `<div class="pd-thumb ${i===0?'active':''}" onclick="setMainCatalogPhoto(${i}, this)">
+                   <img src="${src}" alt="">
+                 </div>`;
+      });
+    } else {
+      local.forEach((src, i)=>{
+        html += `<div class="pd-thumb ${i===0?'active':''}" onclick="setMainPhoto(${i})">
+                   <img src="${src}" alt="">
+                   <button class="rm-btn" onclick="event.stopPropagation(); removePhoto(${i})">×</button>
+                 </div>`;
+      });
     }
-    local.forEach((src, i)=>{
-      html += `<div class="pd-thumb ${i===0?'active':''}" onclick="setMainPhoto(${i})">
-                 <img src="${src}" alt="">
-                 <button class="rm-btn" onclick="event.stopPropagation(); removePhoto(${i})">×</button>
-               </div>`;
-    });
     html += `<div class="pd-add-tile" onclick="document.getElementById('pdFileInput').click()">
                <span>📷</span><span class="he-txt">הוסף</span><span class="en-txt">Add</span>
              </div>`;
     thumbsEl.innerHTML = html;
   }
+
+  window.setMainCatalogPhoto = function(index, el){
+    document.getElementById('pdMainImgWrap').innerHTML = `<img src="${catalogImgs[index]}" alt="${p.name.en}">`;
+    document.querySelectorAll('#pdThumbs .pd-thumb').forEach(t=>t.classList.remove('active'));
+    if(el) el.classList.add('active');
+  };
 
   function refreshMainImg(){
     document.getElementById('pdMainImgWrap').innerHTML = productImgHtml(p);
