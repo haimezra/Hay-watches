@@ -21,3 +21,11 @@ function toggleLang(){
 function qs(name){
   return new URLSearchParams(window.location.search).get(name);
 }
+
+function toggleMobileMenu(){
+  const nav = document.getElementById('mobileNav');
+  const btn = document.getElementById('mobileMenuBtn');
+  if(!nav) return;
+  const open = nav.classList.toggle('open');
+  if(btn) btn.textContent = open ? '✕' : '☰';
+}
