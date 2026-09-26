@@ -64,6 +64,14 @@
     .lang-toggle{padding:5px 9px; font-size:.7rem;}
   }
 
+  /* Mobile dropdown nav (opened by the ☰ button) */
+  .mobile-nav{display:none; position:absolute; top:100%; inset-inline:0; background:#0f0f0f; border-bottom:1px solid var(--line); box-shadow:0 12px 24px rgba(0,0,0,.4);}
+  .mobile-nav.open{display:block;}
+  .mobile-nav a{display:block; padding:15px 24px; color:var(--pearl); font-size:.98rem; border-bottom:1px solid var(--line);}
+  .mobile-nav a:last-child{border-bottom:none;}
+  .mobile-nav a:active, .mobile-nav a:hover{color:var(--gold); background:rgba(255,255,255,.03);}
+  @media(min-width:881px){ .mobile-nav{display:none !important;} }
+
   /* Hero */
   .hero{position:relative; min-height:82vh; display:flex; align-items:center; justify-content:center; text-align:center;
     background:
