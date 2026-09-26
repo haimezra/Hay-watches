@@ -6,156 +6,8 @@
 <title>HAY Watches</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&family=Assistant:wght@300;400;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#0D0D0D; --card:#1A1A1A; --card2:#171512;
-    --gold:#6E4FA3; --gold-light:#9B7FC7; --pearl:#F2F0EC; --mute:#8C8C88; --line:#2A2825;
-    box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-padding-top:env(safe-area-inset-top,0px); scroll-behavior:smooth;}
-  html,body{height:100%;}
-  html{overflow-x:hidden; width:100%;}
-  body{background:var(--bg); color:var(--pearl); font-family:'Assistant',sans-serif; overflow-x:hidden; width:100%;}
-  [lang-en] body, body.en-mode{font-family:'Montserrat',sans-serif;}
-  .he-txt{display:inline;} .en-txt{display:none;}
-  body.en-mode .he-txt{display:none;} body.en-mode .en-txt{display:inline;}
-  h1,h2,h3,.serif{font-family:'Frank Ruhl Libre',serif;}
-  body.en-mode h1, body.en-mode h2, body.en-mode h3, body.en-mode .serif{font-family:'Cormorant Garamond',serif;}
-  a{color:inherit; text-decoration:none;}
-  .wrap{max-width:1180px; margin:0 auto; padding:0 24px; width:100%;}
-  img{max-width:100%; display:block;}
-  @media(max-width:420px){
-    .wrap{padding:0 16px;}
-    .prod-grid, .cat-grid, .trust-grid{gap:12px;}
-  }
-
-  /* Top bar */
-  .topbar{background:#000; border-bottom:1px solid var(--line); font-size:.78rem; color:var(--mute); letter-spacing:.02em;}
-  .topbar .wrap{display:flex; justify-content:space-between; align-items:center; padding:9px 24px; gap:12px; flex-wrap:wrap;}
-  .topbar a{color:var(--mute);}
-  .topbar a:hover{color:var(--gold-light);}
-  .email-em{color:var(--gold-light); font-weight:600; letter-spacing:.01em;}
-  .email-em:hover{color:var(--pearl) !important;}
-
-  /* Header */
-  header{position:sticky; top:0; z-index:50; background:rgba(13,13,13,.72); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--line); padding-top:env(safe-area-inset-top,0px);}
-  .headrow{display:flex; align-items:center; justify-content:space-between; padding:16px 16px; gap:10px; width:100%;}
-  .logo{font-family:'Frank Ruhl Libre',serif; font-size:1.5rem; font-weight:700; letter-spacing:.08em; color:var(--pearl); white-space:nowrap; flex-shrink:1; min-width:0; overflow:hidden; text-overflow:ellipsis;}
-  body.en-mode .logo{font-family:'Cormorant Garamond',serif;}
-  .logo span{color:var(--gold);}
-  nav.mainnav{display:flex; gap:28px; font-size:.92rem;}
-  nav.mainnav a{color:var(--pearl); opacity:.85; transition:opacity .2s, color .2s; padding:4px 0; border-bottom:1px solid transparent;}
-  nav.mainnav a:hover{opacity:1; color:var(--gold); border-color:var(--gold);}
-  .headicons{display:flex; align-items:center; gap:12px; flex-shrink:0;}
-  .icon-btn{background:none; border:none; color:var(--pearl); cursor:pointer; font-size:1.05rem; padding:4px; display:flex; align-items:center; transition:color .2s;}
-  .icon-btn:hover{color:var(--gold-light);}
-  .icon-btn svg{display:block;}
-  .lang-toggle{border:1px solid var(--line); border-radius:20px; padding:6px 12px; font-size:.75rem; letter-spacing:.05em; cursor:pointer; background:transparent; color:var(--pearl); white-space:nowrap;}
-  .lang-toggle:hover{border-color:var(--gold); color:var(--gold);}
-  .mobile-menu-btn{display:none; background:none; border:none; color:var(--pearl); font-size:1.4rem; cursor:pointer; flex-shrink:0;}
-  @media(max-width:880px){ nav.mainnav{display:none;} .mobile-menu-btn{display:block;} }
-  @media(max-width:420px){
-    .headrow{padding:14px 12px; gap:8px;}
-    .logo{font-size:1.15rem;}
-    .headicons{gap:8px;}
-    .icon-btn{font-size:.95rem; padding:2px;}
-    .lang-toggle{padding:5px 9px; font-size:.7rem;}
-  }
-
-  /* Hero */
-  .hero{position:relative; min-height:82vh; display:flex; align-items:center; justify-content:center; text-align:center;
-    background:
-      linear-gradient(180deg, rgba(13,13,13,.5) 0%, rgba(13,13,13,.72) 55%, #0D0D0D 100%),
-      url("https://images.unsplash.com/photo-1704783339057-3fb087d3bc98?auto=format&fit=crop&w=1800&q=60") center 35%/cover no-repeat,
-      radial-gradient(ellipse at 50% 0%, #1c1420 0%, #0D0D0D 62%);
-    border-bottom:1px solid var(--line); padding:60px 24px; overflow:hidden;}
-  .hero::before{content:""; position:absolute; inset:0; opacity:.4; pointer-events:none;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cg fill='none' stroke='%236E4FA3' stroke-opacity='0.16' stroke-width='1'%3E%3Ccircle cx='70' cy='70' r='66'/%3E%3Ccircle cx='70' cy='70' r='46'/%3E%3Ccircle cx='70' cy='70' r='2'/%3E%3Cline x1='70' y1='2' x2='70' y2='20'/%3E%3Cline x1='70' y1='120' x2='70' y2='138'/%3E%3Cline x1='2' y1='70' x2='20' y2='70'/%3E%3Cline x1='120' y1='70' x2='138' y2='70'/%3E%3C/g%3E%3C/svg%3E");
-    background-size:140px 140px;}
-  .hero::after{content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 40%, transparent 0%, #0D0D0D 92%);}
-  .hero-inner{max-width:640px; position:relative; z-index:1;}
-  .hero .eyebrow{color:var(--gold-light); font-size:.85rem; letter-spacing:.15em; margin-bottom:18px; display:block; text-shadow:0 2px 12px rgba(0,0,0,.6);}
-  .hero h1{font-size:clamp(2.3rem,6vw,3.6rem); line-height:1.15; font-weight:500; margin-bottom:20px; text-shadow:0 4px 24px rgba(0,0,0,.7);}
-  .hero p{color:var(--pearl); opacity:.85; font-size:1.05rem; line-height:1.7; max-width:480px; margin:0 auto 30px; text-shadow:0 2px 14px rgba(0,0,0,.6);}
-  .btn{display:inline-block; padding:15px 38px; border:1px solid var(--gold); color:var(--gold); font-size:.9rem; letter-spacing:.08em; border-radius:2px; transition:background .25s, color .25s;}
-  .btn:hover{background:var(--gold); color:#0D0D0D;}
-  .btn.solid{background:var(--gold); color:#0D0D0D;}
-  .btn.solid:hover{background:transparent; color:var(--gold);}
-
-  section{padding:80px 0;}
-  .section-head{margin-bottom:44px; text-align:center;}
-  .section-head h2{font-size:clamp(1.6rem,3.2vw,2.2rem); font-weight:500; margin-bottom:10px;}
-  .section-head p{color:var(--mute); font-size:.95rem;}
-
-  /* Category grid */
-  .cat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:2px; background:var(--line);}
-  .cat{background:var(--card); min-height:220px; display:flex; align-items:flex-end; padding:24px; position:relative; overflow:hidden; transition:background .25s;}
-  .cat:hover{background:#201d17;}
-  .cat h3{font-size:1.2rem; font-weight:500; position:relative; z-index:1; color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.8);}
-  .cat::before{content:""; position:absolute; inset:0; background:linear-gradient(180deg, transparent 40%, rgba(0,0,0,.55) 100%); z-index:0;}
-  .cat img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-1; opacity:.75; transition:transform .35s;}
-  .cat:hover img{transform:scale(1.06);}
-  @media(max-width:880px){ .cat-grid{grid-template-columns:repeat(2,1fr);} }
-
-  /* Products */
-  .prod-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
-  .prod-card{background:var(--card); border:1px solid var(--line); transition:border-color .25s;}
-  .prod-card:hover{border-color:var(--gold);}
-  .prod-img{aspect-ratio:1/1; background:linear-gradient(135deg,#181420,#0f0e0c); display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--line); position:relative; overflow:hidden;}
-  .prod-img img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s;}
-  .prod-card:hover .prod-img img{transform:scale(1.05);}
-  .badge{position:absolute; top:10px; inset-inline-start:10px; background:rgba(0,0,0,.72); border:1px solid var(--gold-light); color:var(--gold-light); font-size:.66rem; padding:3px 11px; border-radius:20px; letter-spacing:.03em; z-index:1;}
-  .badge.used{border-color:var(--mute); color:var(--mute);}
-  .prod-body{padding:18px;}
-  .prod-body h4{font-weight:500; font-size:1rem; margin-bottom:6px;}
-  .prod-detail{color:var(--mute); font-size:.78rem; line-height:1.6; margin-bottom:12px;}
-  .prod-price{color:var(--gold-light); font-family:'Frank Ruhl Libre',serif; font-size:1.1rem; margin-bottom:14px;}
-  body.en-mode .prod-price{font-family:'Cormorant Garamond',serif;}
-  .add-cart{width:100%; padding:11px; background:transparent; border:1px solid var(--line); color:var(--pearl); font-size:.82rem; letter-spacing:.05em; cursor:pointer; transition:border-color .2s, color .2s;}
-  .add-cart:hover{border-color:var(--gold); color:var(--gold);}
-  @media(max-width:880px){ .prod-grid{grid-template-columns:repeat(2,1fr);} }
-
-  /* Magazine */
-  .mag-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
-  .mag-card{background:var(--card2); border:1px solid var(--line); padding:0;}
-  .mag-thumb{aspect-ratio:16/10; background:linear-gradient(135deg,#181410,#0d0c0a); border-bottom:1px solid var(--line); overflow:hidden;}
-  .mag-thumb img{width:100%; height:100%; object-fit:cover; display:block;}
-  .mag-body{padding:20px;}
-  .mag-tag{color:var(--gold); font-size:.72rem; letter-spacing:.1em; display:block; margin-bottom:10px;}
-  .mag-body h4{font-size:1.05rem; font-weight:500; line-height:1.4; margin-bottom:10px;}
-  .mag-body a.readmore{font-size:.85rem; color:var(--mute); border-bottom:1px solid var(--line);}
-  .mag-body a.readmore:hover{color:var(--gold); border-color:var(--gold);}
-  @media(max-width:880px){ .mag-grid{grid-template-columns:1fr;} }
-
-  /* Trust */
-  .trust{background:var(--card2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
-  .trust-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:32px; text-align:center;}
-  .trust-icon{width:44px; height:44px; margin:0 auto 16px; border:1px solid var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--gold); font-size:1.1rem;}
-  .trust h4{font-size:.98rem; margin-bottom:6px; font-weight:600;}
-  .trust p{color:var(--mute); font-size:.82rem; line-height:1.5;}
-  @media(max-width:880px){ .trust-grid{grid-template-columns:repeat(2,1fr); row-gap:36px;} }
-
-  /* Footer */
-  footer{background:#000; padding:60px 0 24px;}
-  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1.4fr; gap:40px; padding-bottom:40px; border-bottom:1px solid var(--line);}
-  .foot-col h5{font-size:.85rem; letter-spacing:.08em; color:var(--gold); margin-bottom:18px;}
-  .foot-col p{color:var(--mute); font-size:.88rem; line-height:1.8;}
-  .foot-col ul{list-style:none;}
-  .foot-col li{margin-bottom:10px;}
-  .foot-col a{color:var(--mute); font-size:.88rem;}
-  .foot-col a:hover{color:var(--gold);}
-  .newsletter{display:flex; margin-top:14px; border:1px solid var(--line); max-width:100%;}
-  .newsletter input{flex:1; min-width:0; background:transparent; border:none; padding:12px 14px; color:var(--pearl); font-size:.85rem; font-family:inherit;}
-  .newsletter input:focus{outline:none;}
-  .newsletter button{background:var(--gold); border:none; padding:0 18px; color:#0D0D0D; font-size:.8rem; cursor:pointer; letter-spacing:.03em;}
-  .foot-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:24px; color:var(--mute); font-size:.78rem; flex-wrap:wrap; gap:10px;}
-  @media(max-width:880px){ .foot-grid{grid-template-columns:1fr 1fr; row-gap:32px;} }
-  @media(max-width:520px){ .foot-grid{grid-template-columns:1fr;} }
-
-  @media (prefers-reduced-motion: reduce){ *{transition:none !important; scroll-behavior:auto !important;} }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&family=Assistant:wght@300;400;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Cinzel:wght@500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -179,7 +31,7 @@
     <nav class="mainnav">
       <a href="#"><span class="he-txt">בית</span><span class="en-txt">Home</span></a>
       <a href="#catalog"><span class="he-txt">קטלוג</span><span class="en-txt">Catalog</span></a>
-      <a href="#"><span class="he-txt">אביזרים</span><span class="en-txt">Accessories</span></a>
+      <a href="category.html?cat=accessories"><span class="he-txt">אביזרים</span><span class="en-txt">Accessories</span></a>
       <a href="#magazine"><span class="he-txt">מגזין</span><span class="en-txt">Magazine</span></a>
       <a href="#"><span class="he-txt">אודות</span><span class="en-txt">About</span></a>
       <a href="#"><span class="he-txt">צור קשר</span><span class="en-txt">Contact</span></a>
@@ -220,10 +72,10 @@
 <!-- Categories -->
 <section id="catalog" style="padding-top:0;">
   <div class="cat-grid">
-    <div class="cat"><img src="https://images.unsplash.com/photo-1667375565651-b660b574d1a9?auto=format&fit=crop&w=700&q=60" alt=""><h3><span class="he-txt">שעוני גברים</span><span class="en-txt">Men's Watches</span></h3></div>
-    <div class="cat"><img src="https://images.unsplash.com/photo-1751437774882-deeea4352018?auto=format&fit=crop&w=700&q=60" alt=""><h3><span class="he-txt">שעוני נשים</span><span class="en-txt">Women's Watches</span></h3></div>
-    <div class="cat"><img src="https://images.unsplash.com/photo-1434704504321-71a8bc15a685?auto=format&fit=crop&w=700&q=60" alt=""><h3><span class="he-txt">רצועות פרימיום</span><span class="en-txt">Premium Straps</span></h3></div>
-    <div class="cat"><img src="https://images.unsplash.com/photo-1704783339057-3fb087d3bc98?auto=format&fit=crop&w=700&q=60" alt=""><h3><span class="he-txt">אביזרים וקופסאות</span><span class="en-txt">Accessories &amp; Boxes</span></h3></div>
+    <a class="cat" href="category.html?cat=men"><img src="https://images.unsplash.com/photo-1667375565651-b660b574d1a9?auto=format&fit=crop&w=700&q=60" alt=""><h3><span class="he-txt">שעוני גברים</span><span class="en-txt">Men's Watches</span></h3></a>
+    <a class="cat" href="category.html?cat=women"><img src="https://images.unsplash.com/photo-1751437774882-deeea4352018?auto=format&fit=crop&w=700&q=60" alt=""><h3><span class="he-txt">שעוני נשים</span><span class="en-txt">Women's Watches</span></h3></a>
+    <a class="cat" href="category.html?cat=straps"><img src="https://images.unsplash.com/photo-1434704504321-71a8bc15a685?auto=format&fit=crop&w=700&q=60" alt=""><h3><span class="he-txt">רצועות פרימיום</span><span class="en-txt">Premium Straps</span></h3></a>
+    <a class="cat" href="category.html?cat=accessories"><img src="https://images.unsplash.com/photo-1704783339057-3fb087d3bc98?auto=format&fit=crop&w=700&q=60" alt=""><h3><span class="he-txt">אביזרים וקופסאות</span><span class="en-txt">Accessories &amp; Boxes</span></h3></a>
   </div>
 </section>
 
@@ -296,7 +148,7 @@
         <h5><span class="he-txt">קישורים</span><span class="en-txt">Links</span></h5>
         <ul>
           <li><a href="#catalog"><span class="he-txt">קטלוג</span><span class="en-txt">Catalog</span></a></li>
-          <li><a href="#"><span class="he-txt">אביזרים</span><span class="en-txt">Accessories</span></a></li>
+          <li><a href="category.html?cat=accessories"><span class="he-txt">אביזרים</span><span class="en-txt">Accessories</span></a></li>
           <li><a href="#magazine"><span class="he-txt">מגזין</span><span class="en-txt">Magazine</span></a></li>
           <li><a href="#"><span class="he-txt">אודות</span><span class="en-txt">About</span></a></li>
         </ul>
@@ -326,79 +178,36 @@
   </div>
 </footer>
 
+<script src="data.js"></script>
+<script src="main.js"></script>
 <script>
-  // Language toggle
-  function toggleLang(){
-    const body = document.body;
-    const en = body.classList.toggle('en-mode');
-    document.documentElement.lang = en ? 'en' : 'he';
-    document.documentElement.dir = en ? 'ltr' : 'rtl';
-    document.getElementById('langBtn').textContent = en ? 'עב' : 'EN';
-  }
-
-  // Data-driven content: products & magazine
-  // Product photos: free-to-use stock photography (Unsplash License - unsplash.com/license),
-  // no attribution required, no copyright/brand-IP issues.
-
-  // ===== סליקת HYPAY (יאד) =====
-  // TODO: להחליף כאן את מספר המסוף (Masof) שיתקבל מחברת הסליקה.
-  const HYP_MASOF = "YOUR_MASOF_NUMBER";
-
-  function buyNow(name, priceILS){
-    if(HYP_MASOF === "YOUR_MASOF_NUMBER"){
-      alert('עוד לא הוגדר מספר מסוף לסליקה. יש להחליף את HYP_MASOF בקוד עם המספר שתקבל מחברת הסליקה.');
-      return;
-    }
-    const amount = String(priceILS).replace(/[^\d.]/g,''); // מספר בלבד, ללא ₪ ופסיקים
-    const url = `https://icom.yaad.net/p/?action=pay&Masof=${HYP_MASOF}&Amount=${amount}&Info=${encodeURIComponent(name)}&UTF8=True&UTF8out=True`;
-    window.location.href = url;
-  }
-
-  const products = [
-    {name:{he:"HAY מרידיאן", en:"HAY Meridian"}, price:"₪4,890", cond:"new",
-     img:"https://images.unsplash.com/photo-1623998021450-85c29c644e0d?auto=format&fit=crop&w=800&q=70",
-     dHe:"מצופה נירוסטה · תנועה אוטומטית · קוטר 40 מ״מ", dEn:"Stainless steel · Automatic movement · 40mm"},
-    {name:{he:"HAY אקוויליבר", en:"HAY Equiliber"}, price:"₪6,250", cond:"new",
-     img:"https://images.unsplash.com/photo-1628678172909-13a7209c7d62?auto=format&fit=crop&w=800&q=70",
-     dHe:"טיטניום · תנועה אוטומטית · עמיד למים 100מ׳", dEn:"Titanium · Automatic movement · 100m water resistant"},
-    {name:{he:"HAY לומייר", en:"HAY Lumière"}, price:"₪3,690", cond:"used",
-     img:"https://images.unsplash.com/photo-1434704504321-71a8bc15a685?auto=format&fit=crop&w=800&q=70",
-     dHe:"יד שנייה · מצב מצוין · נבדק ואומת ע״י המעבדה שלנו", dEn:"Pre-owned · Excellent condition · Authenticated in-house"},
-    {name:{he:"HAY אבניור וינטג׳", en:"HAY Avenoir Vintage"}, price:"₪7,420", cond:"used",
-     img:"https://images.unsplash.com/photo-1613579153555-a83eadd8fdde?auto=format&fit=crop&w=800&q=70",
-     dHe:"יד שנייה · מקורי משנות ה-80 · כולל תעודת מקוריות", dEn:"Pre-owned · Original 1980s piece · Certificate included"}
-  ];
-  const articles = [
-    {he:"איך לבחור את השעון הראשון שלך", en:"How to Choose Your First Watch",
-     img:"https://images.unsplash.com/photo-1628678172909-13a7209c7d62?auto=format&fit=crop&w=700&q=60"},
-    {he:"שעון אוטומטי מול קוורץ", en:"Automatic vs. Quartz",
-     img:"https://images.unsplash.com/photo-1623998021450-85c29c644e0d?auto=format&fit=crop&w=700&q=60"},
-    {he:"המדריך לשמירה על רצועות עור", en:"Caring for Leather Straps",
-     img:"https://images.unsplash.com/photo-1434704504321-71a8bc15a685?auto=format&fit=crop&w=700&q=60"}
-  ];
-
+  // Homepage shows the curated "featured" products from the shared catalog (data.js)
   const prodGrid = document.getElementById('prodGrid');
-  products.forEach(p=>{
+  PRODUCTS.filter(p=>p.featured).forEach(p=>{
     prodGrid.insertAdjacentHTML('beforeend', `
       <div class="prod-card">
-        <div class="prod-img">
-          <span class="badge ${p.cond==='used'?'used':''}">
-            <span class="he-txt">${p.cond==='used'?'יד שנייה':'חדש'}</span><span class="en-txt">${p.cond==='used'?'Pre-Owned':'New'}</span>
-          </span>
-          <img src="${p.img}" alt="${p.name.en}" loading="lazy">
-        </div>
-        <div class="prod-body">
-          <h4><span class="he-txt">${p.name.he}</span><span class="en-txt">${p.name.en}</span></h4>
-          <div class="prod-detail"><span class="he-txt">${p.dHe}</span><span class="en-txt">${p.dEn}</span></div>
-          <div class="prod-price">${p.price}</div>
+        <a class="prod-link" href="product.html?id=${p.id}">
+          <div class="prod-img">
+            <span class="badge ${p.cond==='used'?'used':''}">
+              <span class="he-txt">${p.cond==='used'?'יד שנייה':'חדש'}</span><span class="en-txt">${p.cond==='used'?'Pre-Owned':'New'}</span>
+            </span>
+            <img src="${p.img}" alt="${p.name.en}" loading="lazy">
+          </div>
+          <div class="prod-body">
+            <h4><span class="he-txt">${p.name.he}</span><span class="en-txt">${p.name.en}</span></h4>
+            <div class="prod-detail"><span class="he-txt">${p.dHe}</span><span class="en-txt">${p.dEn}</span></div>
+            <div class="prod-price">${fmtPrice(p.price)}</div>
+          </div>
+        </a>
+        <div class="prod-body" style="padding-top:0;">
           <button class="add-cart"><span class="he-txt">הוסף לעגלה</span><span class="en-txt">Add to Cart</span></button>
-          <button class="add-cart buy-now" style="margin-top:8px; background:var(--gold); color:#0D0D0D; border-color:var(--gold);" onclick="buyNow('${p.name.he.replace(/'/g,"")}', '${p.price.replace(/[^\d]/g,'')}')"><span class="he-txt">קנה עכשיו</span><span class="en-txt">Buy Now</span></button>
+          <button class="add-cart buy-now" style="margin-top:8px; background:var(--gold); color:#0D0D0D; border-color:var(--gold);" onclick="buyNow('${p.name.he.replace(/'/g,"")}', ${p.price})"><span class="he-txt">קנה עכשיו</span><span class="en-txt">Buy Now</span></button>
         </div>
       </div>`);
   });
 
   const magGrid = document.getElementById('magGrid');
-  articles.forEach(a=>{
+  ARTICLES.forEach(a=>{
     magGrid.insertAdjacentHTML('beforeend', `
       <div class="mag-card">
         <div class="mag-thumb"><img src="${a.img}" alt="${a.en}" loading="lazy"></div>

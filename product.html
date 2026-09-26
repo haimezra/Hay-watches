@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HAY Watches</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&family=Assistant:wght@300;400;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Cinzel:wght@500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="topbar">
+  <div class="wrap">
+    <div>
+      <a href="tel:0543771767">📞 054-3771767</a>
+      &nbsp;&nbsp;
+      <a href="mailto:info@haywatches.co.il" class="email-em">info@haywatches.co.il</a>
+    </div>
+    <div><span class="he-txt">משלוח חינם בהזמנה מעל ₪1,500</span><span class="en-txt">Free shipping on orders over ₪1,500</span></div>
+  </div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="wrap headrow">
+    <button class="mobile-menu-btn" aria-label="menu">☰</button>
+    <a class="logo" href="index.html">HAY <span>WATCHES</span></a>
+    <nav class="mainnav">
+      <a href="index.html"><span class="he-txt">בית</span><span class="en-txt">Home</span></a>
+      <a href="index.html#catalog"><span class="he-txt">קטלוג</span><span class="en-txt">Catalog</span></a>
+      <a href="category.html?cat=accessories"><span class="he-txt">אביזרים</span><span class="en-txt">Accessories</span></a>
+      <a href="index.html#magazine"><span class="he-txt">מגזין</span><span class="en-txt">Magazine</span></a>
+      <a href="index.html#"><span class="he-txt">אודות</span><span class="en-txt">About</span></a>
+      <a href="index.html#"><span class="he-txt">צור קשר</span><span class="en-txt">Contact</span></a>
+    </nav>
+    <div class="headicons">
+      <button class="lang-toggle" id="langBtn" onclick="toggleLang()">EN</button>
+      <button class="icon-btn" aria-label="account">👤</button>
+      <button class="icon-btn" aria-label="cart">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 7h12l-1 12.2a2 2 0 0 1-2 1.8H9a2 2 0 0 1-2-1.8L6 7Z"/>
+          <path d="M9 7V5.5a3 3 0 0 1 6 0V7"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Breadcrumb -->
+<div class="wrap breadcrumb">
+  <a href="index.html"><span class="he-txt">בית</span><span class="en-txt">Home</span></a>
+  <span class="sep">/</span>
+  <a id="crumbCat" href="category.html"><span class="he-txt">קטגוריה</span><span class="en-txt">Category</span></a>
+  <span class="sep">/</span>
+  <span id="crumbName">…</span>
+</div>
+
+<div class="wrap">
+  <div class="pd-wrap" id="pdWrap"></div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <a class="logo" href="index.html" style="font-size:1.2rem; margin-bottom:14px; display:inline-block;">HAY <span>WATCHES</span></a>
+        <p><span class="he-txt">בית מסחר לשעוני יוקרה, מוקדש לאומנות הזמן ולמי שמעריך אותה.</span><span class="en-txt">A house of fine timepieces, devoted to the craft of time.</span></p>
+      </div>
+      <div class="foot-col">
+        <h5><span class="he-txt">קישורים</span><span class="en-txt">Links</span></h5>
+        <ul>
+          <li><a href="index.html#catalog"><span class="he-txt">קטלוג</span><span class="en-txt">Catalog</span></a></li>
+          <li><a href="category.html?cat=accessories"><span class="he-txt">אביזרים</span><span class="en-txt">Accessories</span></a></li>
+          <li><a href="index.html#magazine"><span class="he-txt">מגזין</span><span class="en-txt">Magazine</span></a></li>
+          <li><a href="index.html#"><span class="he-txt">אודות</span><span class="en-txt">About</span></a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5><span class="he-txt">שירות לקוחות</span><span class="en-txt">Customer Care</span></h5>
+        <ul>
+          <li><a href="index.html#policy"><span class="he-txt">משלוחים והחזרות</span><span class="en-txt">Shipping &amp; Returns</span></a></li>
+          <li><a href="index.html#policy"><span class="he-txt">אחריות</span><span class="en-txt">Warranty</span></a></li>
+          <li><a href="index.html#"><span class="he-txt">צור קשר</span><span class="en-txt">Contact</span></a></li>
+          <li><a href="index.html#policy"><span class="he-txt">תקנון ומדיניות פרטיות</span><span class="en-txt">Terms &amp; Privacy</span></a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5><span class="he-txt">הרשמה לניוזלטר VIP</span><span class="en-txt">Join the VIP Newsletter</span></h5>
+        <p><span class="he-txt">עדכונים על הגעות חדשות ואירועים בלעדיים</span><span class="en-txt">New arrivals and exclusive events</span></p>
+        <form class="newsletter" onsubmit="event.preventDefault()">
+          <input type="email" placeholder="you@email.com" required>
+          <button type="submit"><span class="he-txt">הרשמה</span><span class="en-txt">Join</span></button>
+        </form>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 HAY Watches. <span class="he-txt">כל הזכויות שמורות</span><span class="en-txt">All rights reserved</span></span>
+      <span>054-3771767 · <a href="mailto:info@haywatches.co.il" class="email-em">info@haywatches.co.il</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="main.js"></script>
+<script>
+  const pid = qs('id');
+  const p = PRODUCTS.find(x=>x.id===pid) || PRODUCTS[0];
+  const meta = CATEGORIES[p.cat];
+
+  document.title = `HAY Watches — ${p.name.en}`;
+
+  const crumbCat = document.getElementById('crumbCat');
+  crumbCat.href = `category.html?cat=${p.cat}`;
+  crumbCat.querySelector('.he-txt').textContent = meta.he;
+  crumbCat.querySelector('.en-txt').textContent = meta.en;
+  document.getElementById('crumbName').innerHTML =
+    `<span class="he-txt">${p.name.he}</span><span class="en-txt">${p.name.en}</span>`;
+
+  document.getElementById('pdWrap').innerHTML = `
+    <div class="pd-img">
+      <img src="${p.img}" alt="${p.name.en}">
+    </div>
+    <div class="pd-info">
+      <span class="badge ${p.cond==='used'?'used':''}" style="position:static; display:inline-block; margin-bottom:14px;">
+        <span class="he-txt">${p.cond==='used'?'יד שנייה':'חדש'}</span><span class="en-txt">${p.cond==='used'?'Pre-Owned':'New'}</span>
+      </span>
+      <h1><span class="he-txt">${p.name.he}</span><span class="en-txt">${p.name.en}</span></h1>
+      <div class="pd-price">${fmtPrice(p.price)}</div>
+      <p class="pd-desc">
+        <span class="he-txt">${p.dHe}. שעון זה עומד בתקני האיכות המחמירים של HAY Watches ומגיע עם תעודת אחריות ואריזה מקורית.</span>
+        <span class="en-txt">${p.dEn}. This piece meets HAY Watches' strict quality standards and arrives with a warranty certificate and original packaging.</span>
+      </p>
+      <div class="pd-actions">
+        <button class="add-cart"><span class="he-txt">הוסף לעגלה</span><span class="en-txt">Add to Cart</span></button>
+        <button class="add-cart buy-now" style="background:var(--gold); color:#0D0D0D; border-color:var(--gold);" onclick="buyNow('${p.name.he.replace(/'/g,"")}', ${p.price})"><span class="he-txt">קנה עכשיו</span><span class="en-txt">Buy Now</span></button>
+      </div>
+      <div class="pd-facts">
+        <div><b><span class="he-txt">מצב: </span><span class="en-txt">Condition: </span></b><span class="he-txt">${p.cond==='used'?'יד שנייה, נבדק ומאומת':'חדש, אריזה סגורה'}</span><span class="en-txt">${p.cond==='used'?'Pre-owned, inspected & authenticated':'New, sealed packaging'}</span></div>
+        <div><b><span class="he-txt">קטגוריה: </span><span class="en-txt">Category: </span></b><span class="he-txt">${meta.he}</span><span class="en-txt">${meta.en}</span></div>
+        <div><b><span class="he-txt">זמינות: </span><span class="en-txt">Availability: </span></b><span class="he-txt">במלאי · משלוח תוך 2-4 ימי עסקים</span><span class="en-txt">In stock · Ships within 2-4 business days</span></div>
+      </div>
+
+      <div class="pd-policies">
+        <details class="pd-policy" open>
+          <summary><span class="he-txt">מדיניות משלוחים</span><span class="en-txt">Shipping Policy</span></summary>
+          <div class="pd-policy-body">
+            <span class="he-txt">משלוח חינם בהזמנה מעל ₪1,500, אחרת עלות משלוח קבועה של ₪45. ההזמנה נארזת באריזה ממותגת ומאובטחת ונשלחת עם מעקב מלא באמצעות שליח עד הבית תוך 2–4 ימי עסקים. משלוחים לחו״ל זמינים בתיאום מראש וכפופים לעלות ומועד הגעה משתנים.</span>
+            <span class="en-txt">Free shipping on orders over ₪1,500, otherwise a flat ₪45 shipping fee applies. Orders are packed securely in branded packaging and shipped with full courier tracking within 2–4 business days. International shipping is available on request, with cost and delivery time varying by destination.</span>
+          </div>
+        </details>
+        <details class="pd-policy">
+          <summary><span class="he-txt">מדיניות סליקה ותשלום</span><span class="en-txt">Payment &amp; Checkout Policy</span></summary>
+          <div class="pd-policy-body">
+            <span class="he-txt">התשלום מתבצע באמצעות מערכת סליקה מאובטחת (Hypay/יאד), התומכת בכרטיסי אשראי ישראליים ובינלאומיים. פרטי הכרטיס מוצפנים ואינם נשמרים באתר. החיוב מתבצע רק לאחר אישור העסקה, וניתן לשלם גם בתשלומים בהתאם למדיניות חברת האשראי. ביטול עסקה כפוף לחוק הגנת הצרכן (ביטול עסקה), התשע"א-2010.</span>
+            <span class="en-txt">Payment is processed through a secure clearing system (Hypay/Yaad), supporting Israeli and international credit cards. Card details are encrypted and never stored on our site. Charges are made only after transaction approval, and installment payments may be available per your card issuer's policy. Order cancellations are subject to applicable consumer protection law.</span>
+          </div>
+        </details>
+        <details class="pd-policy">
+          <summary><span class="he-txt">החזרות ואחריות</span><span class="en-txt">Returns &amp; Warranty</span></summary>
+          <div class="pd-policy-body">
+            <span class="he-txt">ניתן להחזיר מוצר תוך 14 יום ממועד הקבלה, במצבו המקורי ועם כל האריזות והתעודות. כל שעון חדש מגיע עם שנתיים אחריות יצרן; שעונים יד שנייה מגיעים עם תעודת בדיקה ואחריות של 6 חודשים על התנועה הפנימית.</span>
+            <span class="en-txt">Items may be returned within 14 days of receipt, in original condition with all packaging and certificates. New watches include a 2-year manufacturer warranty; pre-owned watches come with an inspection certificate and a 6-month movement warranty.</span>
+          </div>
+        </details>
+      </div>
+    </div>
+  `;
+</script>
+</body>
+</html>
