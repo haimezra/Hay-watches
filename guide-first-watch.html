@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>איך לבחור את השעון הראשון שלך | HAY Watches</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Assistant:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Rubik:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=202609260945">
+<style>
+  :root{
+    --bg:#0A0A10 !important; --card:#131019 !important; --card2:#171320 !important;
+    --line:rgba(255,255,255,.09) !important; --pearl:#F3F0FA !important; --text:#F3F0FA !important;
+    --mute:#A79FBF !important; --muted:#A79FBF !important;
+    --gold:#9B6EF3 !important; --gold-soft:rgba(155,110,243,.38) !important;
+    --purple:#9B6EF3; --purple-2:#7C4DFF; --purple-soft:rgba(155,110,243,.35);
+    --ease:cubic-bezier(.2,.6,.2,1);
+  }
+  body{ background:var(--bg) !important; color:var(--text) !important; font-family:'Assistant','Heebo',sans-serif !important; font-weight:300 !important; }
+  h1,h2,h3,h4,h5{ font-family:'Heebo','Rubik',sans-serif !important; font-weight:400 !important; letter-spacing:-0.005em !important; }
+  a{ transition:color .3s var(--ease); }
+
+  .topbar{ background:var(--bg) !important; border-bottom:1px solid var(--line) !important; color:var(--mute) !important; font-size:.82rem !important; letter-spacing:.02em; }
+  .topbar a{ color:var(--pearl) !important; }
+  .topbar a:hover{ color:var(--purple) !important; }
+
+  header{ background:rgba(10,10,16,.85) !important; backdrop-filter:blur(10px); border-bottom:1px solid var(--line) !important; }
+  header .logo{ font-family:'Heebo',sans-serif !important; font-weight:600 !important; letter-spacing:.14em !important; color:var(--pearl) !important; }
+  header .logo span{ color:var(--purple) !important; font-weight:300 !important; }
+  .mainnav a{ color:var(--mute) !important; font-size:.92rem !important; font-weight:400 !important; letter-spacing:.03em; position:relative; padding-bottom:2px; }
+  .mainnav a::after{ content:''; position:absolute; right:0; left:0; bottom:-2px; height:1px; background:var(--purple); transform:scaleX(0); transition:transform .35s var(--ease); }
+  .mainnav a:hover{ color:var(--pearl) !important; }
+  .mainnav a:hover::after{ transform:scaleX(1); }
+  .mainnav a.active{ color:var(--pearl) !important; }
+  .mainnav a.active::after{ transform:scaleX(1); }
+  .icon-btn{ color:var(--pearl) !important; }
+  .icon-btn:hover{ color:var(--purple) !important; }
+  .mobile-nav{ background:var(--bg) !important; border-top:1px solid var(--line) !important; }
+  .mobile-nav a{ color:var(--mute) !important; border-bottom:1px solid var(--line) !important; }
+  .mobile-nav a:hover{ color:var(--purple) !important; }
+
+  .page-hero{
+    background:
+      linear-gradient(180deg, rgba(10,10,16,.6) 0%, rgba(10,10,16,.92) 100%),
+      url("images/guides/first-watch.jpg") center 30%/cover no-repeat,
+      radial-gradient(ellipse at 50% 0%, rgba(155,110,243,.10), transparent 60%), var(--bg) !important;
+    text-align:center; padding:0 24px 60px;
+  }
+  .hero-logo-main{ display:block; width:190px; max-width:60%; height:auto; margin:56px auto 0; position:relative; z-index:2; }
+  @media (max-width: 640px){ .hero-logo-main{ width:150px; margin-top:40px; } }
+  .page-hero .eyebrow{ color:var(--purple) !important; font-family:'Rubik',sans-serif !important; font-size:.75rem !important; font-weight:500 !important; letter-spacing:.18em; margin-top:48px; margin-bottom:16px; }
+  .page-hero h1{ font-size:clamp(1.8rem,4vw,2.6rem) !important; color:var(--pearl) !important; max-width:640px; margin:0 auto 16px; }
+  .page-hero p{ color:var(--mute) !important; font-size:1.05rem !important; max-width:560px; margin:0 auto; font-weight:300 !important; }
+  .page-hero::after{ content:''; display:block; width:56px; height:1px; background:var(--purple); margin:28px auto 0; }
+
+  .guide-wrap{ max-width:800px; margin:0 auto; padding:56px 24px 100px; }
+  .g-block{ padding:32px 0; border-top:1px solid var(--line); }
+  .g-block:first-child{ border-top:none; }
+  .g-block h2{ font-size:1.3rem !important; color:var(--pearl) !important; margin-bottom:10px; font-weight:400 !important; }
+  .g-block p{ color:var(--mute) !important; font-size:.96rem; font-weight:300; }
+  .g-block p + p{ margin-top:8px; }
+  .step-num{ font-family:'Rubik',sans-serif; color:var(--purple); font-size:.82rem; letter-spacing:.1em; margin-bottom:8px; }
+
+  .compare{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:20px 0 8px; }
+  @media (max-width:600px){ .compare{ grid-template-columns:1fr; } }
+  .g-card{ background:var(--card2); border:1px solid var(--line); border-radius:2px; padding:22px 20px; }
+  .g-card h3{ font-size:1rem !important; color:var(--purple) !important; margin-bottom:10px; font-weight:400 !important; }
+  .g-card p{ color:var(--mute); font-size:.88rem; margin:0; }
+  .g-card ul{ list-style:none; padding:0; margin:0; }
+  .g-card li{ color:var(--mute); font-size:.88rem; padding:7px 0; border-top:1px solid var(--line); }
+  .g-card li:first-child{ border-top:none; }
+
+  .checklist{ list-style:none; padding:0; margin:16px 0 0; }
+  .checklist li{ display:flex; gap:14px; padding:16px 0; border-top:1px solid var(--line); align-items:flex-start; }
+  .checklist li:first-child{ border-top:none; }
+  .checklist .mark{ color:var(--purple); font-family:'Rubik',sans-serif; flex-shrink:0; width:20px; text-align:center; padding-top:2px; }
+  .checklist strong{ color:var(--pearl); font-weight:500; }
+  .checklist p{ margin:4px 0 0 !important; font-size:.9rem !important; }
+
+  .g-photo{ width:100%; aspect-ratio:16/9; object-fit:cover; border:1px solid var(--line); border-radius:2px; margin:20px 0 4px; display:block; }
+  .g-caption{ color:var(--mute); font-size:.76rem; margin-top:8px !important; opacity:.75; }
+
+  .guide-cta{ margin-top:36px; text-align:center; background:var(--card2); border:1px solid var(--purple-soft); border-radius:2px; padding:40px 24px; }
+  .guide-cta h3{ color:var(--pearl) !important; font-size:1.25rem !important; margin-bottom:8px; font-weight:400 !important; }
+  .guide-cta p{ color:var(--mute) !important; margin-bottom:20px; font-size:.94rem; }
+  .guide-cta a{ display:inline-flex; align-items:center; justify-content:center; padding:14px 34px; border:1px solid var(--purple); color:#0A0A10; background:var(--purple); border-radius:2px; letter-spacing:.05em; font-weight:400; text-decoration:none; font-size:1.02rem; transition:background .4s var(--ease); }
+  .guide-cta a:hover{ background:var(--purple-2); border-color:var(--purple-2); }
+
+  footer{ background:var(--bg) !important; border-top:1px solid var(--line) !important; }
+  footer h5{ color:var(--pearl) !important; font-weight:500 !important; letter-spacing:.06em; font-size:.82rem; }
+  footer ul a{ color:var(--mute) !important; }
+  footer ul a:hover{ color:var(--purple) !important; }
+  footer p{ color:var(--mute) !important; }
+  .email-em{ color:var(--purple) !important; }
+  .newsletter input{ background:transparent !important; border:0 !important; border-bottom:1px solid var(--line) !important; color:var(--pearl) !important; padding:10px 4px !important; }
+  .newsletter input:focus{ outline:none; border-bottom-color:var(--purple) !important; }
+  .newsletter button{ background:var(--purple) !important; color:#0A0A10 !important; border:1px solid var(--purple) !important; border-radius:2px !important; padding:10px 20px !important; font-weight:400 !important; }
+  .newsletter button:hover{ background:var(--purple-2) !important; border-color:var(--purple-2) !important; }
+  .foot-bottom{ border-top:1px solid var(--line) !important; color:var(--mute) !important; }
+  .foot-bottom a{ color:var(--pearl) !important; }
+  .logo-img-footer{ width:190px !important; max-width:60% !important; height:auto !important; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div>
+      <a href="tel:0543771767">📞 054-3771767</a>
+      &nbsp;&nbsp;
+      <a href="mailto:info@haywatches.co.il" class="email-em">info@haywatches.co.il</a>
+    </div>
+    <div>משלוח חינם בהזמנה מעל ₪1,500</div>
+  </div>
+</div>
+
+<header>
+  <div class="wrap headrow">
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="menu" onclick="toggleMobileMenu()">☰</button>
+    <nav class="mainnav">
+      <a href="index.html">בית</a>
+      <a href="index.html#catalog">קטלוג</a>
+      <a href="category.html?cat=accessories">אביזרים</a>
+      <a href="index.html#magazine" class="active">מגזין</a>
+      <a href="index.html#">אודות</a>
+      <a href="index.html#">צור קשר</a>
+    </nav>
+    <div class="headicons">
+      <a class="icon-btn" aria-label="cart" href="cart.html">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 7h12l-1 12.2a2 2 0 0 1-2 1.8H9a2 2 0 0 1-2-1.8L6 7Z"/>
+          <path d="M9 7V5.5a3 3 0 0 1 6 0V7"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="toggleMobileMenu()">בית</a>
+    <a href="index.html#catalog" onclick="toggleMobileMenu()">קטלוג</a>
+    <a href="category.html?cat=accessories" onclick="toggleMobileMenu()">אביזרים</a>
+    <a href="index.html#magazine" onclick="toggleMobileMenu()">מגזין</a>
+    <a href="index.html#" onclick="toggleMobileMenu()">אודות</a>
+    <a href="index.html#" onclick="toggleMobileMenu()">צור קשר</a>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <img src="assets/logo.png" alt="HAY Watches" class="hero-logo-main">
+  <div class="eyebrow">HAY WATCHES · מדריך</div>
+  <h1>איך לבחור את השעון הראשון שלך</h1>
+  <p>שעון ראשון הוא לא רק רכישה - הוא החלטה שמלווה אתכם שנים. המדריך הזה יעביר אתכם בכל השיקולים החשובים, בשפה פשוטה וברורה, כדי שתגיעו עם ביטחון מלא.</p>
+</section>
+
+<div class="guide-wrap">
+
+  <div class="g-block">
+    <div class="step-num">01</div>
+    <h2>קביעת תקציב</h2>
+    <p>לפני שמתאהבים בדגם מסוים, כדאי לקבוע טווח מחירים ריאלי. תקציב ברור לא רק חוסך זמן - הוא גם ממקד את החיפוש לדגמים שבאמת רלוונטיים לכם.</p>
+    <div class="compare">
+      <div class="g-card">
+        <h3>עד כ-2,000 ₪</h3>
+        <p>שעוני קוורץ איכותיים ממותגים מוכרים, מצוינים לשימוש יומיומי ולהתנסות ראשונה עם שעון רציני.</p>
+      </div>
+      <div class="g-card">
+        <h3>2,000-10,000 ₪</h3>
+        <p>טווח שבו נכנסים שעונים אוטומטיים ראשונים ממותגים מבוססים, עם בנייה ואחריות ברמה גבוהה יותר.</p>
+      </div>
+      <div class="g-card">
+        <h3>10,000-30,000 ₪</h3>
+        <p>שעונים שוויצריים קלאסיים, מכונות פנימיות מתקדמות יותר וגימור יד ברמה גבוהה.</p>
+      </div>
+      <div class="g-card">
+        <h3>מעל 30,000 ₪</h3>
+        <p>עולם השעונים היוקרתיים והאספנות - כאן נכנסים שיקולים של השקעה, נדירות ומורשת המותג.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="g-block">
+    <div class="step-num">02</div>
+    <h2>סוג המכונה: הלב של השעון</h2>
+    <p>המכונה היא מה שמניע את השעון, וההבדלים בין הסוגים משפיעים גם על המחיר וגם על אופי השימוש.</p>
+    <img class="g-photo" src="https://images.unsplash.com/photo-1646724810360-abfa1bb76d6d?auto=format&fit=crop&w=1200&q=70" alt="מנגנון שעון מקרוב">
+    <p class="g-caption">תנועת שעון מכני מקרוב - כל שיניים בגלגל השיניים היא חלק ממערכת מדויקת.</p>
+    <ul class="checklist">
+      <li>
+        <span class="mark">◆</span>
+        <div>
+          <strong>קוורץ</strong>
+          <p>מדויק, אמין ודורש תחזוקה מינימלית. פועל על סוללה ומתאים למי שמחפש פשטות ודיוק יומיומי.</p>
+        </div>
+      </li>
+      <li>
+        <span class="mark">◆</span>
+        <div>
+          <strong>אוטומטי (מכני)</strong>
+          <p>נטען מתנועת פרק היד, ללא סוללה. יש בו קסם מכני אמיתי, אך הוא פחות מדויק וזקוק לתחזוקה תקופתית.</p>
+        </div>
+      </li>
+      <li>
+        <span class="mark">◆</span>
+        <div>
+          <strong>מכני עם דריכה ידנית</strong>
+          <p>דורש דריכה יומית באמצעות הכתר. בחירה למי שמחפש חיבור אינטימי לשעון ולמסורת השעונאות.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="g-block">
+    <div class="step-num">03</div>
+    <h2>גודל וקוטר הקופסה</h2>
+    <p>הגודל הנכון תלוי בגזרת פרק היד שלכם ובסטייל שאתם מחפשים. כלל אצבע כללי, לא מדעי אך שימושי:</p>
+    <div class="compare">
+      <div class="g-card">
+        <h3>34-38 מ״מ</h3>
+        <p>מראה קלאסי ועדין, נאמן למסורת השעונאות הישנה. מתאים לפרקי יד דקים ולסטייל רשמי.</p>
+      </div>
+      <div class="g-card">
+        <h3>39-42 מ״מ</h3>
+        <p>הטווח הפופולרי והבטוח ביותר כיום - מתאים לרוב פרקי היד ולרוב הסטיילים.</p>
+      </div>
+      <div class="g-card">
+        <h3>43 מ״מ ומעלה</h3>
+        <p>נוכחות חזקה על פרק היד, אופייני לשעוני ספורט, טבילה ושעוני כלים.</p>
+      </div>
+    </div>
+    <p style="margin-top:16px; font-size:.85rem; opacity:.85;">טיפ: אם אפשר, מדדו את השעון פיזית בחנות - תמונות באינטרנט לא תמיד משקפות איך הוא נראה בפועל על פרק היד.</p>
+  </div>
+
+  <div class="g-block">
+    <div class="step-num">04</div>
+    <h2>רצועה וזיווד</h2>
+    <p>הרצועה משפיעה על הנוחות היומית ועל האופי הכללי של השעון, ולעיתים ניתן להחליף אותה בהמשך.</p>
+    <img class="g-photo" src="https://images.unsplash.com/photo-1767009951341-73a7c96e1aab?auto=format&fit=crop&w=1200&q=70" alt="שעון עם רצועת עור מקרוב">
+    <p class="g-caption">רצועת עור מוסיפה חום וגימור אלגנטי, ומתפתחת עם השימוש לאורך זמן.</p>
+    <ul class="checklist">
+      <li>
+        <span class="mark">◆</span>
+        <div>
+          <strong>עור</strong>
+          <p>אלגנטי וקלאסי, מתאים לביגוד רשמי. דורש טיפול והחלפה מדי כמה שנים.</p>
+        </div>
+      </li>
+      <li>
+        <span class="mark">◆</span>
+        <div>
+          <strong>מתכתית (צמיד)</strong>
+          <p>עמידה, נוחה יומיומית, ומתאימה גם לספורט וגם לאירועים.</p>
+        </div>
+      </li>
+      <li>
+        <span class="mark">◆</span>
+        <div>
+          <strong>ניילון או גומי</strong>
+          <p>קלה, עמידה במים וזיעה - אידיאלית לשעוני ספורט וטבילה.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="g-block">
+    <div class="step-num">05</div>
+    <h2>מה מטרת השעון?</h2>
+    <p>שעון "אחד לכל" הוא לרוב הבחירה החכמה ביותר לרכישה ראשונה. חשבו על סוג השעון שיתאים ל-80% מהיום שלכם:</p>
+    <div class="compare">
+      <div class="g-card">
+        <h3>שעון יומי-אלגנטי</h3>
+        <p>קופסה דקה, חוגה נקייה, מתאים לעבודה ולאירועים חברתיים כאחד.</p>
+      </div>
+      <div class="g-card">
+        <h3>שעון ספורט / טבילה</h3>
+        <p>עמידות גבוהה, אטימות למים, מסתדר עם פעילות גופנית ואורח חיים פעיל.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="g-block">
+    <div class="step-num">06</div>
+    <h2>מותג, אחריות ותחזוקה</h2>
+    <p>מותג מבוסס מבטיח לא רק איכות בנייה, אלא גם שירות זמין, חלקי חילוף עתידיים ואחריות אמינה. לפני הרכישה שאלו:</p>
+    <ul class="checklist">
+      <li><span class="mark">◆</span><div><strong>מה תקופת האחריות?</strong><p>שעונים איכותיים מגיעים בדרך כלל עם אחריות של שנתיים ומעלה.</p></div></li>
+      <li><span class="mark">◆</span><div><strong>היכן ניתן לתחזק את השעון?</strong><p>ודאו שקיים שירות מקומי או מיובא זמין למקרה הצורך.</p></div></li>
+      <li><span class="mark">◆</span><div><strong>מה עומק האטימות למים?</strong><p>חשוב במיוחד אם אתם מתכננים לשחות, לשטוף ידיים או להתקלח עם השעון.</p></div></li>
+    </ul>
+  </div>
+
+  <div class="g-block">
+    <div class="step-num">07</div>
+    <h2>לסיכום</h2>
+    <p>השעון הראשון שלכם לא צריך להיות מושלם - הוא צריך להיות שלכם. בחרו דגם שמתאים לחיי היום-יום שלכם, שנוח על פרק היד, ושבו אתם מתבוננים ומרגישים חיבור. כל השאר, כמו טעם וסטייל, יתפתחו עם הזמן ועם השעון הבא.</p>
+  </div>
+
+  <div class="guide-cta">
+    <h3>יש לכם שאלות או מתלבטים מה מתאים לכם?</h3>
+    <p>נשמח לעזור לכם לבחור את השעון הנכון</p>
+    <a href="tel:0543771767">📞 054-3771767</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="logo" style="margin-bottom:14px;"><img src="assets/logo.png" alt="HAY Watches" class="logo-img logo-img-footer"></div>
+      </div>
+      <div class="foot-col">
+        <h5>קישורים</h5>
+        <ul>
+          <li><a href="index.html#catalog">קטלוג</a></li>
+          <li><a href="category.html?cat=accessories">אביזרים</a></li>
+          <li><a href="index.html#magazine">מגזין</a></li>
+          <li><a href="index.html#">אודות</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>שירות לקוחות</h5>
+        <ul>
+          <li><a href="index.html#">משלוחים והחזרות</a></li>
+          <li><a href="index.html#">אחריות</a></li>
+          <li><a href="index.html#">צור קשר</a></li>
+          <li><a href="index.html#policy">תקנון ומדיניות פרטיות</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>הרשמה לניוזלטר VIP</h5>
+        <p>עדכונים על הגעות חדשות ואירועים בלעדיים</p>
+        <form class="newsletter" onsubmit="event.preventDefault()">
+          <input type="email" placeholder="you@email.com" required>
+          <button type="submit">הרשמה</button>
+        </form>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 HAY Watches. כל הזכויות שמורות</span>
+      <span>054-3771767 · <a href="mailto:info@haywatches.co.il" class="email-em">info@haywatches.co.il</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
