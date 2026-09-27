@@ -73,6 +73,11 @@ const PRODUCTS = [
     imgs:["images/products/women-4-1.webp","images/products/women-4-2.webp","images/products/women-4-3.webp"],
     dHe:"יד שנייה · מק״ט T137.010.21.111.00 · קוטר 25 מ״מ · מארז פלדת אל-חלד 316L עם לינטה מצופה זהב ורוד (PVD) · לוח פנינת-אם ייחודי עם אינדקסים ורוד-זהב · זכוכית ספיר אנטי-רפלקטיבית · תנועת קוורץ שוויצרית · צמיד פלדה מקורי · עמיד למים עד 100 מ׳ · עיצוב וינטג׳-מודרני בהשראת שנות ה-70",
     dEn:"Pre-owned · Ref. T137.010.21.111.00 · 25mm case · 316L stainless steel case with rose gold PVD coated bezel · Distinctive mother-of-pearl dial with rose gold indices · Antireflective sapphire crystal · Swiss quartz movement · Original steel bracelet · 100m water resistant · 70's-inspired modern-vintage design" },
+  { id:"women-5", cat:"women", brand:"Burberry", featured:true, name:{he:"Burberry The City זהב ורוד", en:"Burberry The City Rose Gold"}, price:1000, cond:"new", available:true,
+    img:"images/products/women-5-1.webp",
+    imgs:["images/products/women-5-1.webp","images/products/women-5-2.webp","images/products/women-5-3.webp"],
+    dHe:"חדש · דגם BU9039 מסדרת The City · קוטר 38 מ״מ · מארז וצמיד פלדת אל-חלד בציפוי זהב ורוד · לוח בגימור סאנריי עם תבנית ה-Check האייקונית של המותג · חלון תאריך · זכוכית ספיר · תנועת קוורץ שוויצרית · אבזם פרפר · עמיד למים עד 50 מ׳ · כולל קופסה מקורית של המותג",
+    dEn:"Brand new · Model BU9039, The City collection · 38mm case · Rose gold-plated stainless steel case and bracelet · Sunray dial with the brand's iconic engraved check pattern · Date window · Sapphire crystal · Swiss quartz movement · Butterfly deployment clasp · 50m water resistant · Comes with original brand box" },
 
   // ---- Premium Straps ----
   { id:"strap-1", cat:"straps", name:{he:"רצועת עור חום קלאסית", en:"Classic Brown Leather Strap"}, price:390, cond:"new",
@@ -110,13 +115,22 @@ const ARTICLES = [
 
 function fmtPrice(n){ return "₪" + Number(n).toLocaleString("en-US"); }
 
+function availabilityHtml(p){
+  const isAvailable = p.available !== false; // default: available, unless explicitly set to false
+  const cls = isAvailable ? "available" : "unavailable";
+  const heTxt = isAvailable ? "זמין" : "לא זמין";
+  const enTxt = isAvailable ? "Available" : "Unavailable";
+  return `<span class="avail-badge ${cls}"><span class="avail-dot"></span><span class="he-txt">${heTxt}</span><span class="en-txt">${enTxt}</span></span>`;
+}
+
 function productImgHtml(p){
   const src = (typeof bestProductImg === 'function') ? bestProductImg(p) : p.img;
+  const avail = availabilityHtml(p);
   if(src){
-    return `<img src="${src}" alt="${p.name.en}" loading="lazy">`;
+    return `${avail}<img src="${src}" alt="${p.name.en}" loading="lazy">`;
   }
   const brand = p.brand ? p.brand.toUpperCase() : '';
-  return `<div class="img-placeholder">
+  return `${avail}<div class="img-placeholder">
     <span class="ph-brand">${brand}</span>
     <span class="he-txt ph-note">תמונת מוצר בהמתנה</span><span class="en-txt ph-note">Product photo pending</span>
   </div>`;
