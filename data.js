@@ -68,6 +68,11 @@ const PRODUCTS = [
     imgs:["images/products/women-3-1.webp","images/products/women-3-2.webp"],
     dHe:"יד שנייה · מצב מעולה (Near Mint) · שעון וינטג׳ מסדרת Tissot A282 · קוטר 23 מ״מ · מארז מלבני מצופה זהב · לוח לבן עם אינדקסים רומיים · תת-חוגה שניות קטנה · תנועת קוורץ שוויצרית · רצועת עור חום מקורית בגימור קרוקודיל · פריט אספנות קלאסי מתקופת שנות ה-80",
     dEn:"Pre-owned · Near Mint condition · Vintage Tissot A282 series · 23mm gold-plated rectangular case · White dial with Roman numerals · Small seconds sub-dial · Swiss quartz movement · Original brown crocodile-embossed leather strap · Classic 1980s collector's piece" },
+  { id:"women-4", cat:"women", brand:"Tissot", name:{he:"Tissot PRX קוורץ 25 מ״מ פנינת-אם", en:"Tissot PRX Quartz 25mm Mother of Pearl"}, price:1000, cond:"used",
+    img:"images/products/women-4-1.webp",
+    imgs:["images/products/women-4-1.webp","images/products/women-4-2.webp","images/products/women-4-3.webp"],
+    dHe:"יד שנייה · מק״ט T137.010.21.111.00 · קוטר 25 מ״מ · מארז פלדת אל-חלד 316L עם לינטה מצופה זהב ורוד (PVD) · לוח פנינת-אם ייחודי עם אינדקסים ורוד-זהב · זכוכית ספיר אנטי-רפלקטיבית · תנועת קוורץ שוויצרית · צמיד פלדה מקורי · עמיד למים עד 100 מ׳ · עיצוב וינטג׳-מודרני בהשראת שנות ה-70",
+    dEn:"Pre-owned · Ref. T137.010.21.111.00 · 25mm case · 316L stainless steel case with rose gold PVD coated bezel · Distinctive mother-of-pearl dial with rose gold indices · Antireflective sapphire crystal · Swiss quartz movement · Original steel bracelet · 100m water resistant · 70's-inspired modern-vintage design" },
 
   // ---- Premium Straps ----
   { id:"strap-1", cat:"straps", name:{he:"רצועת עור חום קלאסית", en:"Classic Brown Leather Strap"}, price:390, cond:"new",
