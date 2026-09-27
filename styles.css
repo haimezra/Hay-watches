@@ -44,6 +44,8 @@
   .headrow{display:flex; align-items:center; justify-content:space-between; padding:20px 16px; gap:10px; width:100%;}
   .logo{display:flex; align-items:center; white-space:nowrap; flex-shrink:1; min-width:0; font-size:1.55rem;}
   @media(max-width:520px){ .logo{ font-size:1.25rem; } }
+  .logo-bar{text-align:center; padding:32px 0 26px; background:var(--bg);}
+  .logo-img-main{width:190px; max-width:70%; height:auto; display:inline-block;}
   .logo span{color:var(--gold);}
   .logo-img{height:34px; width:auto; max-width:100%; object-fit:contain;}
   .logo-img-footer{height:44px;}
