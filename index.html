@@ -61,8 +61,10 @@
       radial-gradient(ellipse at 50% 0%, rgba(155,110,243,.10), transparent 60%), var(--bg) !important;
     text-align:center; padding-top: 0;
   }
-  .hero-inner{ margin-top: 260px !important; max-width: 760px; margin-inline:auto; padding-bottom: 30px; }
-  @media (max-width: 640px){ .hero-inner{ margin-top:180px !important; } }
+  .hero-logo-main{ display:block; width:190px; max-width:60%; height:auto; margin:56px auto 0; position:relative; z-index:2; }
+  @media (max-width: 640px){ .hero-logo-main{ width:150px; margin-top:40px; } }
+  .hero-inner{ margin-top: 170px !important; max-width: 760px; margin-inline:auto; padding-bottom: 30px; }
+  @media (max-width: 640px){ .hero-inner{ margin-top:110px !important; } }
   .hero::before{ content:''; display:block; width:56px; height:1px; background:var(--purple); margin:0 auto 34px; }
   .hero p{ color: var(--mute) !important; font-size:1.1rem !important; margin: 0 auto 40px !important; max-width:560px; font-weight:300 !important; }
   .btn.solid{
@@ -202,6 +204,7 @@
 </header>
 <!-- Hero -->
 <section class="hero">
+  <img src="assets/logo.png" alt="HAY Watches" class="hero-logo-main">
   <div class="hero-inner">
     <p>
       <span class="he-txt">שעוני יוקרה נבחרים, מיוצרים באומנות ומיועדים למי שמעריך כל רגע.</span>
