@@ -175,9 +175,7 @@
 
   /* Category listing page */
   .cat-hero{padding:48px 0 36px; text-align:center; border-bottom:1px solid var(--line); position:relative;
-    background:
-      linear-gradient(180deg, rgba(10,10,16,.6) 0%, rgba(10,10,16,.88) 100%),
-      url("https://images.unsplash.com/photo-1600003014608-c2ccc1570a65?auto=format&fit=crop&w=1400&q=55") center 35%/cover no-repeat;}
+    background-size:cover; background-position:center 35%; background-repeat:no-repeat;}
   .cat-hero .hero-logo{height:35px; margin:0 auto 30px;}
   .cat-hero h1{font-size:clamp(1.8rem,4vw,2.6rem); font-weight:500; margin-bottom:12px;}
   .cat-hero p{color:var(--mute); font-size:.92rem;}

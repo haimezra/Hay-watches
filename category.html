@@ -8,6 +8,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&family=Assistant:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Rubik:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=202609260945">
+<style>
+  .logo-img-footer{ width:190px !important; max-width:60% !important; height:auto !important; }
+</style>
 </head>
 <body>
 
@@ -89,7 +92,7 @@
     <div class="foot-grid">
       <div class="foot-col">
         <a class="logo" href="index.html" style="margin-bottom:14px; display:inline-block;"><img src="assets/logo.png" alt="HAY Watches" class="logo-img logo-img-footer"></a>
-        <p><span class="he-txt">בית מסחר לשעוני יוקרה, מוקדש לאומנות הזמן ולמי שמעריך אותה.</span><span class="en-txt">A house of fine timepieces, devoted to the craft of time.</span></p>
+        <p><span class="he-txt">כל שעון מספר סיפור של דיוק, מלאכת יד ותשוקה לזמן.</span><span class="en-txt">Every watch tells a story of precision, craftsmanship, and a passion for time.</span></p>
       </div>
       <div class="foot-col">
         <h5><span class="he-txt">קישורים</span><span class="en-txt">Links</span></h5>
@@ -130,6 +133,10 @@
 <script>
   const catKey = qs('cat') || 'men';
   const meta = CATEGORIES[catKey] || CATEGORIES.men;
+  if(meta.img){
+    document.querySelector('.cat-hero').style.backgroundImage =
+      `linear-gradient(180deg, rgba(10,10,16,.6) 0%, rgba(10,10,16,.88) 100%), url("${meta.img}")`;
+  }
 
   document.title = `HAY Watches — ${meta.en}`;
   document.querySelectorAll('#catTitle .he-txt, #crumbName .he-txt').forEach(el=>el.textContent = meta.he);
