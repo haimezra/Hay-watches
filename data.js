@@ -99,7 +99,7 @@ const ARTICLES = [
     img:"images/guides/automatic-vs-quartz.jpg",
     link:"guide-automatic-vs-quartz.html" },
   { he:"המדריך לשמירה על רצועות עור", en:"Caring for Leather Straps",
-    img:"https://images.unsplash.com/photo-1434704504321-71a8bc15a685?auto=format&fit=crop&w=700&q=60",
+    img:"images/guides/strap-care.jpg",
     link:"guide-strap-care.html" }
 ];
 
