@@ -53,21 +53,7 @@ const PRODUCTS = [
     dEn:"1950s vintage piece · ~34mm case · Bumper-style automatic Caliber 351 · 17 jewels · Acrylic crystal · Leather strap" },
 
   // ---- Women's Watches ----
-  { id:"women-1", cat:"women", featured:true, name:{he:"HAY אקוויליבר", en:"HAY Equiliber"}, price:6250, cond:"new",
-    img:"https://images.unsplash.com/photo-1628678172909-13a7209c7d62?auto=format&fit=crop&w=900&q=70",
-    dHe:"טיטניום · תנועה אוטומטית · עמיד למים 100מ׳", dEn:"Titanium · Automatic movement · 100m water resistant" },
-  { id:"women-2", cat:"women", name:{he:"HAY רוזה אלגנס", en:"HAY Rosé Elegance"}, price:4590, cond:"new",
-    img:"https://images.unsplash.com/photo-1751437774882-deeea4352018?auto=format&fit=crop&w=900&q=70",
-    dHe:"ציפוי זהב ורוד · תנועת קווארץ · קוטר 32 מ״מ", dEn:"Rose gold plating · Quartz movement · 32mm" },
-  { id:"women-3", cat:"women", name:{he:"HAY שמפניה מיוז", en:"HAY Champagne Muse"}, price:5290, cond:"new",
-    img:"https://images.unsplash.com/photo-1735352246756-1abb2a4ba09c?auto=format&fit=crop&w=900&q=70",
-    dHe:"לוח שמפניה · אינדקסים משובצים · רצועת פלדה", dEn:"Champagne dial · Set indices · Steel bracelet" },
-  { id:"women-4", cat:"women", name:{he:"HAY אטואל דו-טון", en:"HAY Étoile Duo-Tone"}, price:4990, cond:"new",
-    img:"https://images.unsplash.com/photo-1610888968213-4f6d2c068108?auto=format&fit=crop&w=900&q=70",
-    dHe:"שילוב זהב וכסף · תנועה אוטומטית · קוטר 34 מ״מ", dEn:"Gold & silver combination · Automatic movement · 34mm" },
-  { id:"women-5", cat:"women", name:{he:"HAY לומייר", en:"HAY Lumière"}, price:3690, cond:"used",
-    img:"https://images.unsplash.com/photo-1506193095-80bc749473f2?auto=format&fit=crop&w=900&q=70",
-    dHe:"יד שנייה · מצב מצוין · נבדק ואומת ע״י המעבדה שלנו", dEn:"Pre-owned · Excellent condition · Authenticated in-house" },
+  // (empty for now - waiting for new products)
 
   // ---- Premium Straps ----
   { id:"strap-1", cat:"straps", name:{he:"רצועת עור חום קלאסית", en:"Classic Brown Leather Strap"}, price:390, cond:"new",
