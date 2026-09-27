@@ -63,6 +63,11 @@ const PRODUCTS = [
     imgs:["images/products/women-2-1.webp","images/products/women-2-2.webp"],
     dHe:"יד שנייה · מק״ט T122.210.16.373.00 · קוטר 30 מ״מ · מארז פלדת אל-חלד · לוח בורדו בגימור סאנריי עם אינדקסים רומיים · חלון תאריך · זכוכית ספיר · תנועת קוורץ שוויצרית (קליבר ETA F03.115) · רצועת עור בורדו תואמת · עמיד למים עד 50 מ׳",
     dEn:"Pre-owned · Ref. T122.210.16.373.00 · 30mm stainless steel case · Burgundy sunray dial with Roman numerals · Date window · Sapphire crystal · Swiss quartz movement (ETA F03.115) · Matching burgundy leather strap · 50m water resistant" },
+  { id:"women-3", cat:"women", brand:"Tissot", name:{he:"Tissot A282 זהב וינטג׳ - שנייה קטנה", en:"Vintage Tissot A282 Gold Small Second"}, price:1500, cond:"used",
+    img:"images/products/women-3-1.webp",
+    imgs:["images/products/women-3-1.webp","images/products/women-3-2.webp"],
+    dHe:"יד שנייה · מצב מעולה (Near Mint) · שעון וינטג׳ מסדרת Tissot A282 · קוטר 23 מ״מ · מארז מלבני מצופה זהב · לוח לבן עם אינדקסים רומיים · תת-חוגה שניות קטנה · תנועת קוורץ שוויצרית · רצועת עור חום מקורית בגימור קרוקודיל · פריט אספנות קלאסי מתקופת שנות ה-80",
+    dEn:"Pre-owned · Near Mint condition · Vintage Tissot A282 series · 23mm gold-plated rectangular case · White dial with Roman numerals · Small seconds sub-dial · Swiss quartz movement · Original brown crocodile-embossed leather strap · Classic 1980s collector's piece" },
 
   // ---- Premium Straps ----
   { id:"strap-1", cat:"straps", name:{he:"רצועת עור חום קלאסית", en:"Classic Brown Leather Strap"}, price:390, cond:"new",
