@@ -42,7 +42,8 @@
   /* Header */
   header{position:sticky; top:0; z-index:50; background:rgba(13,13,13,.72); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--line); padding-top:env(safe-area-inset-top,0px);}
   .headrow{display:flex; align-items:center; justify-content:space-between; padding:20px 16px; gap:10px; width:100%;}
-  .logo{display:flex; align-items:center; white-space:nowrap; flex-shrink:1; min-width:0;}
+  .logo{display:flex; align-items:center; white-space:nowrap; flex-shrink:1; min-width:0; font-size:1.55rem;}
+  @media(max-width:520px){ .logo{ font-size:1.25rem; } }
   .logo span{color:var(--gold);}
   .logo-img{height:34px; width:auto; max-width:100%; object-fit:contain;}
   .logo-img-footer{height:44px;}
