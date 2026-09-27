@@ -53,7 +53,11 @@ const PRODUCTS = [
     dEn:"1950s vintage piece · ~34mm case · Bumper-style automatic Caliber 351 · 17 jewels · Acrylic crystal · Leather strap" },
 
   // ---- Women's Watches ----
-  // (empty for now - waiting for new products)
+  { id:"women-1", cat:"women", brand:"Tissot", featured:true, name:{he:"Tissot בליסימה סמול ליידי", en:"Tissot Bellissima Small Lady"}, price:1200, cond:"used",
+    img:"images/products/women-1-1.webp",
+    imgs:["images/products/women-1-1.webp","images/products/women-1-2.webp","images/products/women-1-3.webp"],
+    dHe:"יד שנייה · מק״ט T126.010.66.113.00 · קוטר 26 מ״מ · מארז פלדת אל-חלד 316L משובץ אבנים · זכוכית ספיר עמידה בשריטות עם ציפוי אנטי-רפלקטיבי · תנועת קוורץ שוויצרית (קליבר ETA F03.111) · רצועת עור אמיתית באדום עז עם אבזם פרפר · עמיד למים עד 50 מ׳ · כולל קופסה מקורית של המותג",
+    dEn:"Pre-owned · Ref. T126.010.66.113.00 · 26mm case · 316L stainless steel case set with stones · Scratch-resistant sapphire crystal with antireflective coating · Swiss quartz movement (ETA F03.111) · Genuine red leather strap with butterfly deployment clasp · 50m water resistant · Comes with original brand box" },
 
   // ---- Premium Straps ----
   { id:"strap-1", cat:"straps", name:{he:"רצועת עור חום קלאסית", en:"Classic Brown Leather Strap"}, price:390, cond:"new",
