@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="styles.css?v=202609260945">
 <style>
   .logo-img-footer{ width:190px !important; max-width:60% !important; height:auto !important; }
+  .hero-logo-main{ display:block; width:190px; max-width:60%; height:auto; margin:56px auto 0; position:relative; z-index:2; }
+  @media (max-width: 640px){ .hero-logo-main{ width:150px; margin-top:40px; } }
+  .cat-hero{ padding-top:0 !important; }
 </style>
 </head>
 <body>
@@ -56,9 +59,6 @@
     <a href="index.html#" onclick="toggleMobileMenu()"><span class="he-txt">צור קשר</span><span class="en-txt">Contact</span></a>
   </nav>
 </header>
-<div class="logo-bar">
-  <a href="index.html"><img src="assets/logo.png" alt="HAY Watches" class="logo-img-main"></a>
-</div>
 
 <!-- Breadcrumb -->
 <div class="wrap breadcrumb">
@@ -70,7 +70,7 @@
 <!-- Category hero -->
 <section class="cat-hero">
   <div class="wrap">
-    <img src="assets/logo.png" alt="HAY Watches" class="hero-logo">
+    <img src="assets/logo.png" alt="HAY Watches" class="hero-logo-main">
     <h1 id="catTitle"><span class="he-txt">קטגוריה</span><span class="en-txt">Category</span></h1>
     <p id="catSubtitle"><span class="he-txt">כל הפריטים בקטגוריה זו</span><span class="en-txt">All items in this category</span></p>
   </div>

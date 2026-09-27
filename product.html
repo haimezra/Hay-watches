@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="styles.css?v=202609260945">
 <style>
   .logo-img-footer{ width:190px !important; max-width:60% !important; height:auto !important; }
+  .hero-logo-main{ display:block; width:190px; max-width:60%; height:auto; margin:56px auto 0; position:relative; z-index:2; }
+  @media (max-width: 640px){ .hero-logo-main{ width:150px; margin-top:40px; } }
+  .cat-hero{ padding-top:0 !important; padding-bottom:26px !important; }
 </style>
 </head>
 <body>
@@ -56,9 +59,12 @@
     <a href="index.html#" onclick="toggleMobileMenu()"><span class="he-txt">צור קשר</span><span class="en-txt">Contact</span></a>
   </nav>
 </header>
-<div class="logo-bar">
-  <a href="index.html"><img src="assets/logo.png" alt="HAY Watches" class="logo-img-main"></a>
-</div>
+
+<section class="cat-hero" id="pdHero">
+  <div class="wrap">
+    <img src="assets/logo.png" alt="HAY Watches" class="hero-logo-main">
+  </div>
+</section>
 
 <!-- Breadcrumb -->
 <div class="wrap breadcrumb">
@@ -121,6 +127,10 @@
   const pid = qs('id');
   const p = PRODUCTS.find(x=>x.id===pid) || PRODUCTS[0];
   const meta = CATEGORIES[p.cat];
+  if(meta.img){
+    document.getElementById('pdHero').style.backgroundImage =
+      `linear-gradient(180deg, rgba(10,10,16,.6) 0%, rgba(10,10,16,.88) 100%), url("${meta.img}")`;
+  }
 
   document.title = `HAY Watches — ${p.name.en}`;
 
