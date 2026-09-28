@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&family=Assistant:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Rubik:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=202609280854">
+<link rel="stylesheet" href="styles.css?v=202609280856">
 <style>
   .logo-img-footer{ width:190px !important; max-width:60% !important; height:auto !important; }
   .ct-hero{ padding:56px 0 30px; text-align:center; }
@@ -104,14 +104,18 @@
 
     <form class="ct-form" id="ctForm">
       <h2><span class="he-txt">שלחו לנו הודעה</span><span class="en-txt">Send us a message</span></h2>
-      <p class="sub"><span class="he-txt">לחיצה על שליחה תפתח את אפליקציית המייל שלכם עם ההודעה מוכנה.</span><span class="en-txt">Pressing Send opens your email app with the message ready to go.</span></p>
+      <p class="sub"><span class="he-txt">ההודעה נשלחת ישירות אלינו ונחזור אליכם בהקדם.</span><span class="en-txt">Your message is sent straight to us and we will get back to you soon.</span></p>
       <label for="ctName"><span class="he-txt">שם מלא</span><span class="en-txt">Full name</span></label>
       <input id="ctName" type="text" required>
       <label for="ctPhone"><span class="he-txt">טלפון</span><span class="en-txt">Phone</span></label>
       <input id="ctPhone" type="tel" dir="ltr" style="text-align:start;">
+      <label for="ctEmail"><span class="he-txt">אימייל (לא חובה)</span><span class="en-txt">Email (optional)</span></label>
+      <input id="ctEmail" type="email" dir="ltr" style="text-align:start;">
+      <input type="text" id="ctWebsite" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px; opacity:0;">
       <label for="ctMsg"><span class="he-txt">הודעה</span><span class="en-txt">Message</span></label>
       <textarea id="ctMsg" required></textarea>
-      <button type="submit"><span class="he-txt">שליחה</span><span class="en-txt">Send</span></button>
+      <button type="submit" id="ctBtn"><span class="he-txt">שליחה</span><span class="en-txt">Send</span></button>
+      <p id="ctStatus" role="status" style="margin-top:14px; font-size:.95rem; text-align:center; min-height:1.4em;"></p>
     </form>
 
     <div class="ct-sec" id="shipping">
@@ -173,15 +177,31 @@
   </div>
 </footer>
 
-<script src="data.js?v=202609280854"></script>
-<script src="main.js?v=202609280854"></script>
+<script src="data.js?v=202609280856"></script>
+<script src="main.js?v=202609280856"></script>
 <script>
-  document.getElementById('ctForm').addEventListener('submit', function(e){
+  document.getElementById('ctForm').addEventListener('submit', async function(e){
     e.preventDefault();
-    const n=document.getElementById('ctName').value.trim(), p=document.getElementById('ctPhone').value.trim(), m=document.getElementById('ctMsg').value.trim();
-    const subject='פנייה מהאתר: '+n;
-    const body=m+'\n\n'+n+(p?'\nטלפון: '+p:'');
-    location.href='mailto:info@haywatches.co.il?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+    const g=id=>document.getElementById(id).value.trim();
+    const data={name:g('ctName'), phone:g('ctPhone'), email:g('ctEmail'), message:g('ctMsg'), website:g('ctWebsite')};
+    const btn=document.getElementById('ctBtn'), st=document.getElementById('ctStatus');
+    const en=document.body.classList.contains('en-mode');
+    btn.disabled=true; st.style.color='var(--mute)'; st.textContent=en?'Sending...':'שולח...';
+    // If the server route isn't available (e.g. static hosting), fall back to the visitor's mail app.
+    const fallback=()=>{
+      const body=data.message+'\n\n'+data.name+(data.phone?'\nטלפון: '+data.phone:'')+(data.email?'\nאימייל: '+data.email:'');
+      location.href='mailto:info@haywatches.co.il?subject='+encodeURIComponent('פנייה מהאתר: '+data.name)+'&body='+encodeURIComponent(body);
+      st.textContent=en?'Opening your email app...':'פותח את אפליקציית המייל שלכם...'; btn.disabled=false;
+    };
+    try{
+      const r=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+      if(r.ok){
+        st.style.color='#7CFFB2'; st.textContent=en?'Thank you! Your message was sent.':'תודה! ההודעה נשלחה, נחזור אליכם בהקדם.';
+        document.getElementById('ctForm').reset(); btn.disabled=false;
+      } else if(r.status===400){
+        st.style.color='#ff8a8a'; st.textContent=en?'Please check the form fields.':'נא לבדוק את השדות בטופס.'; btn.disabled=false;
+      } else { fallback(); }
+    }catch(err){ fallback(); }
   });
 </script>
 </body>
