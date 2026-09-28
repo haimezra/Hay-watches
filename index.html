@@ -163,6 +163,19 @@
   .foot-bottom{ border-top:1px solid var(--line) !important; color: var(--mute) !important; }
   .foot-bottom a{ color: var(--pearl) !important; }
   .logo-img-footer{ width: 190px !important; max-width: 60% !important; height: auto !important; }
+  /* style gallery (homepage) */
+  .style-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .style-card{ position:relative; margin:0; overflow:hidden; border-radius:2px; aspect-ratio:4/5; background:var(--card2); border:1px solid var(--line); }
+  .style-card img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .8s var(--ease); }
+  .style-card:hover img{ transform:scale(1.04); }
+  .style-card::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,10,16,0) 55%, rgba(10,10,16,.9) 100%); pointer-events:none; }
+  .style-card figcaption{ position:absolute; right:0; left:0; bottom:0; z-index:1; padding:26px 24px; text-align:center; color:var(--pearl); font-size:1.05rem; font-weight:300; line-height:1.6; letter-spacing:.01em; }
+  .style-card figcaption::before{ content:''; display:block; width:32px; height:1px; background:var(--purple); margin:0 auto 14px; }
+  @media (max-width:880px){
+    .style-grid{ display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:14px; padding:0 16px 6px; margin:0 -16px; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+    .style-grid::-webkit-scrollbar{ display:none; }
+    .style-card{ flex:0 0 78%; scroll-snap-align:center; }
+  }
 </style>
 </head>
 <body>
@@ -243,6 +256,30 @@
       <p><span class="he-txt">הבחירות המובילות של השבוע: אנו מציעים שעונים חדשים וגם שעונים יד שנייה, כל אחד עם בדיקת מקוריות ותיעוד מלא</span><span class="en-txt">This week's top picks: we offer both brand-new and pre-owned watches, each authenticated and fully documented</span></p>
     </div>
     <div class="prod-grid" id="prodGrid"></div>
+  </div>
+</section>
+
+<!-- Style Gallery -->
+<section id="style">
+  <div class="wrap">
+    <div class="section-head">
+      <h2><span class="he-txt">סטייל על היד</span><span class="en-txt">Style on the Wrist</span></h2>
+      <p><span class="he-txt">שעון טוב לא רק מראה את הזמן, הוא מספר מי אתה</span><span class="en-txt">A great watch doesn't just tell the time, it tells who you are</span></p>
+    </div>
+    <div class="style-grid">
+      <figure class="style-card">
+        <img src="images/style/style-1.webp" alt="שעון עם לוח לבן ורצועת עור שחורה על פרק היד" loading="lazy">
+        <figcaption><span class="he-txt">אלגנטיות שקטה היא הצהרת הסטייל החזקה ביותר</span><span class="en-txt">Quiet elegance is the strongest style statement</span></figcaption>
+      </figure>
+      <figure class="style-card">
+        <img src="images/style/style-2.webp" alt="שעון קלאסי עם צמיד מתכת על פרק היד" loading="lazy">
+        <figcaption><span class="he-txt">קלאסיקה אמיתית לא יוצאת מהאופנה</span><span class="en-txt">True classics never go out of fashion</span></figcaption>
+      </figure>
+      <figure class="style-card">
+        <img src="images/style/style-3.webp" alt="שעון שחור עם רצועת עור חומה מתחת לשרוול" loading="lazy">
+        <figcaption><span class="he-txt">הפרט הקטן שמשלים את כל הלוק</span><span class="en-txt">The small detail that completes the whole look</span></figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
