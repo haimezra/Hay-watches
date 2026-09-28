@@ -16,6 +16,7 @@
   .cat-notice{ display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; margin:0 0 24px; padding:14px 18px; border:1px solid var(--line); border-radius:10px; background:var(--card); }
   .cat-notice-txt{ color:var(--pearl); font-size:.98rem; }
   .cat-notice-txt b{ color:var(--gold-light); font-weight:600; }
+  .cat-notice-txt a{ text-decoration:underline; text-underline-offset:3px; }
   .cat-breadcrumb{ position:relative; z-index:2; padding:14px 0 0 !important; text-align:start; }
 </style>
 </head>
@@ -118,7 +119,7 @@
           <li class="foot-contact"><a href="mailto:info@haywatches.co.il" class="email-em">✉ info@haywatches.co.il</a></li>
         </ul>
       </div>
-      <div class="foot-col">
+      <div class="foot-col" id="newsletterCol">
         <h5><span class="he-txt">הרשמה לניוזלטר VIP</span><span class="en-txt">Join the VIP Newsletter</span></h5>
         <p><span class="he-txt">עדכונים על הגעות חדשות ואירועים בלעדיים</span><span class="en-txt">New arrivals and exclusive events</span></p>
         <form class="newsletter" onsubmit="event.preventDefault()">
@@ -154,7 +155,7 @@
   if(catKey === 'women'){
     document.getElementById('catNotice').innerHTML = `
       <div class="cat-notice">
-        <div class="cat-notice-txt"><b>שווה לעקוב</b> · מלאי מתחדש משבוע לשבוע</div>
+        <div class="cat-notice-txt">לאירועים ועדכונים חדשים <a href="#newsletterCol"><b>הרשמו לניוזלטר</b></a></div>
       </div>`;
   }
 
