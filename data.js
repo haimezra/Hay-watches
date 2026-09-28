@@ -6,7 +6,7 @@ const CATEGORIES = {
   men:         { he:"שעוני גברים",        en:"Men's Watches",       img:"images/products/men-7-2.webp" },
   women:       { he:"שעוני נשים",         en:"Women's Watches",     img:"images/categories/women.jpg" },
   straps:      { he:"רצועות פרימיום",      en:"Premium Straps",      img:"images/categories/straps.jpg" },
-  accessories: { he:"אביזרים וקופסאות",    en:"Accessories & Boxes", img:"images/categories/accessories.jpg" }
+  accessories: { he:"אביזרים וקופסאות",    en:"Accessories & Boxes", img:"images/categories/accessories-box.jpg" }
 };
 
 const PRODUCTS = [
