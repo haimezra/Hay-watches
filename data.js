@@ -83,10 +83,10 @@ const PRODUCTS = [
     sizes:[18,19,20,21,22,24] },
 
   // ---- Accessories & Boxes ----
-  { id:"acc-1", cat:"accessories", name:{he:"קופסת עור לשעונים", en:"Leather Watch Box"}, price:650, cond:"new",
+  { id:"acc-1", cat:"accessories", name:{he:"קופסת עור לשעונים", en:"Leather Watch Box"}, price:200, cond:"new",
     img:"images/products/acc-1.webp",
     dHe:"רפידה קטיפה פנימית · נעילה מגנטית · מקום לשעון אחד", dEn:"Velvet-lined interior · Magnetic clasp · Single watch slot" },
-  { id:"acc-2", cat:"accessories", name:{he:"סט תצוגה לשלושה שעונים", en:"Triple Watch Display Set"}, price:890, cond:"new",
+  { id:"acc-2", cat:"accessories", name:{he:"סט תצוגה לשלושה שעונים", en:"Triple Watch Display Set"}, price:200, cond:"new",
     img:"images/products/acc-2.webp",
     dHe:"עמדת עץ ממותג · מקום לשלושה שעונים · גימור מט", dEn:"Branded wooden stand · Holds 3 watches · Matte finish" },
   { id:"acc-3", cat:"accessories", name:{he:"ערכת טיפוח וניקוי לשעונים", en:"Watch Care & Cleaning Kit"}, price:320, cond:"new",
