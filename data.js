@@ -36,6 +36,11 @@ const PRODUCTS = [
     dHe:"פריט וינטג׳ משנות ה-50 · קוטר כ-34 מ״מ · תנועה אוטומטית מסוג Bumper קליבר 351 · 17 אבנים · זכוכית אקרילית · רצועת עור",
     dEn:"1950s vintage piece · ~34mm case · Bumper-style automatic Caliber 351 · 17 jewels · Acrylic crystal · Leather strap" },
 
+  { id:"men-12", sold:true, cat:"men", brand:"Omega", name:{he:"Omega Seamaster 2991-61 SC וינטג׳ קליבר 571 (לוח שחור)", en:"Vintage Omega Seamaster 2991-61 SC Mid Size Automatic Cal.571 (Black Dial)"}, price:2000, cond:"used", img:"images/products/men-12-1.webp",
+    imgs:["images/products/men-12-1.webp","images/products/men-12-2.webp","images/products/men-12-3.webp","images/products/men-12-4.webp"],
+    dHe:"יד שנייה · גודל מידי (Mid Size) · לוח שחור · תנועה אוטומטית קליבר 571 · 24 אבנים · גב סגור עם סמל Seamaster · רצועת עור שחורה",
+    dEn:"Pre-owned · Mid Size · Black dial · Automatic Caliber 571 · 24 jewels · Seamaster medallion caseback · Black leather strap" },
+
   // ---- Women's Watches ----
   { id:"women-1", cat:"women", brand:"Tissot", featured:true, name:{he:"Tissot בליסימה סמול ליידי", en:"Tissot Bellissima Small Lady"}, price:1200, cond:"used",
     img:"images/products/women-1-1.webp",
