@@ -13,6 +13,11 @@
   .hero-logo-main{ display:block; width:190px; max-width:60%; height:auto; margin:56px auto 0; position:relative; z-index:2; }
   @media (max-width: 640px){ .hero-logo-main{ width:150px; margin-top:40px; } }
   .cat-hero{ padding-top:0 !important; }
+  .cat-notice{ display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; margin:0 0 24px; padding:14px 18px; border:1px solid var(--line); border-radius:10px; background:var(--card); }
+  .cat-notice-txt{ color:var(--pearl); font-size:.98rem; }
+  .cat-notice-txt b{ color:var(--gold-light); font-weight:600; }
+  .cat-copy{ padding:7px 14px; border:1px solid var(--gold-light); border-radius:999px; background:transparent; color:var(--gold-light); font:inherit; font-size:.82rem; cursor:pointer; white-space:nowrap; }
+  .cat-copy:active{ background:rgba(155,127,199,.15); }
   .cat-breadcrumb{ position:relative; z-index:2; padding:14px 0 0 !important; text-align:start; }
 </style>
 </head>
@@ -78,6 +83,7 @@
 <!-- Products -->
 <section>
   <div class="wrap">
+    <div id="catNotice"></div>
     <div class="prod-grid" id="prodGrid"></div>
     <div class="empty-msg" id="emptyMsg" style="display:none;">
       <span class="he-txt">לא נמצאו מוצרים בקטגוריה זו כרגע.</span><span class="en-txt">No products found in this category right now.</span>
@@ -146,6 +152,21 @@
 
   const items = PRODUCTS.filter(p=>p.cat===catKey);
   const prodGrid = document.getElementById('prodGrid');
+
+  if(catKey === 'women'){
+    document.getElementById('catNotice').innerHTML = `
+      <div class="cat-notice">
+        <div class="cat-notice-txt"><b>שווה לעקוב</b> · מלאי מתחדש משבוע לשבוע</div>
+        <button type="button" class="cat-copy" id="copyLinkBtn">העתקת קישור לאתר</button>
+      </div>`;
+    document.getElementById('copyLinkBtn').addEventListener('click', async function(){
+      const btn = this, url = new URL('./', location.href).href;
+      try { await navigator.clipboard.writeText(url); }
+      catch(e){ const t=document.createElement('textarea'); t.value=url; document.body.appendChild(t); t.select(); try{ document.execCommand('copy'); }catch(_){} t.remove(); }
+      btn.textContent = 'הקישור הועתק ✓';
+      setTimeout(()=>{ btn.textContent = 'העתקת קישור לאתר'; }, 2000);
+    });
+  }
 
   if(items.length === 0){
     document.getElementById('emptyMsg').style.display = 'block';
