@@ -62,6 +62,8 @@
   .g-block h2{ font-size:1.3rem !important; color:var(--pearl) !important; margin-bottom:10px; font-weight:400 !important; }
   .g-block p{ color:var(--mute) !important; font-size:.96rem; font-weight:300; }
   .g-block p + p{ margin-top:8px; }
+  .g-photo{ width:100%; aspect-ratio:16/9; object-fit:cover; border:1px solid var(--line); border-radius:2px; margin:22px 0 4px; display:block; }
+  .g-caption{ color:var(--mute) !important; font-size:.76rem !important; margin-top:8px !important; opacity:.75; }
 
   .compare{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:44px 0 8px; }
   @media (max-width:600px){ .compare{ grid-template-columns:1fr; } }
@@ -147,11 +149,15 @@
   <div class="g-block">
     <h2>מה זה שעון קוורץ?</h2>
     <p>במנגנון קוורץ סוללה קטנה מפעילה גביש קוורץ שרוטט בתדר קבוע, ומעגל אלקטרוני מתרגם את הרטט לתנועת המחוגים. התוצאה היא דיוק גבוה מאוד ותחזוקה מינימלית.</p>
+    <img class="g-photo" src="https://images.unsplash.com/photo-1628678172909-13a7209c7d62?auto=format&fit=crop&w=1200&q=70" alt="שעון קוורץ קלאסי עם חוגה נקייה" loading="lazy">
+    <p class="g-caption">שעון קוורץ קלאסי - חוגה נקייה ודיוק יומיומי בלי צורך בדריכה.</p>
   </div>
 
   <div class="g-block">
     <h2>מה זה שעון אוטומטי?</h2>
     <p>שעון אוטומטי (או מכני) פועל ללא סוללה - משקולת מסתובבת בתוך המנגנון עם כל תנועת פרק היד ומותחת קפיץ ראשי, שמשמש כמקור האנרגיה. כשלא לובשים אותו זמן רב, הוא נעצר וצריך לכוון אותו מחדש.</p>
+    <img class="g-photo" src="https://images.unsplash.com/photo-1434704504321-71a8bc15a685?auto=format&fit=crop&w=1200&q=70" alt="שעון מכני שלד מקרוב" loading="lazy">
+    <p class="g-caption">מנגנון מכני גלוי - גלגלי שיניים וקפיצים שעובדים יחד, בלי סוללה.</p>
   </div>
 
   <div class="compare">
