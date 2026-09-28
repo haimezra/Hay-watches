@@ -45,6 +45,11 @@ const PRODUCTS = [
     dHe:"יד שנייה · זהב 14K מלא, לא ציפוי · לוח כסוף עם מחוגים מוזהבים · שעון וינטג׳ משנות השישים · רצועת עור חומה",
     dEn:"Pre-owned · Solid 14K gold, not plated · Silver dial with gold-tone hands · 1960s vintage piece · Brown leather strap" },
 
+  { id:"men-14", cat:"men", name:{he:"שעון הסרט הצהוב, מהדורה מוגבלת 07.10.2023", en:"Yellow Ribbon Watch, Limited Edition 07.10.2023"}, price:200, cond:"new", img:"images/products/men-14-1.webp",
+    imgs:["images/products/men-14-1.webp","images/products/men-14-2.webp"],
+    dHe:"כשכל דקה נושאת בתוכה רגעים של זיכרון ומשמעות, הגיע הזמן לשעון שיש לו נשמה. שעון זה הוא לא רק אביזר, הוא תזכורת לרגעים החשובים באמת. בואו לרכוש את השעון שיספר את הסיפור שלכם, כי הזמן לא עוצר, אבל הזיכרונות נשארים לנצח. יחידות בודדות",
+    dEn:"When every minute carries moments of memory and meaning, it is time for a watch with a soul. This watch is not just an accessory, it is a reminder of the moments that truly matter. Come and get the watch that will tell your story, because time does not stop, but memories remain forever. Limited units" },
+
   // ---- Women's Watches ----
   { id:"women-1", cat:"women", brand:"Tissot", featured:true, name:{he:"Tissot בליסימה סמול ליידי", en:"Tissot Bellissima Small Lady"}, price:1200, cond:"used",
     img:"images/products/women-1-1.webp",
