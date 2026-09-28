@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&family=Assistant:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Rubik:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=202609280526">
+<link rel="stylesheet" href="styles.css?v=202609280854">
 <style>
   .logo-img-footer{ width:190px !important; max-width:60% !important; height:auto !important; }
   .hero-logo-main{ display:block; width:190px; max-width:60%; height:auto; margin:56px auto 0; position:relative; z-index:2; }
@@ -40,7 +40,7 @@
       <a href="category.html?cat=accessories"><span class="he-txt">אביזרים</span><span class="en-txt">Accessories</span></a>
       <a href="index.html#magazine"><span class="he-txt">מגזין</span><span class="en-txt">Magazine</span></a>
       <a href="index.html#"><span class="he-txt">אודות</span><span class="en-txt">About</span></a>
-      <a href="index.html#"><span class="he-txt">צור קשר</span><span class="en-txt">Contact</span></a>
+      <a href="contact.html"><span class="he-txt">צור קשר</span><span class="en-txt">Contact</span></a>
     </nav>
     <div class="headicons">
       <a class="icon-btn" aria-label="cart" href="cart.html">
@@ -57,7 +57,7 @@
     <a href="category.html?cat=accessories" onclick="toggleMobileMenu()"><span class="he-txt">אביזרים</span><span class="en-txt">Accessories</span></a>
     <a href="index.html#magazine" onclick="toggleMobileMenu()"><span class="he-txt">מגזין</span><span class="en-txt">Magazine</span></a>
     <a href="index.html#" onclick="toggleMobileMenu()"><span class="he-txt">אודות</span><span class="en-txt">About</span></a>
-    <a href="index.html#" onclick="toggleMobileMenu()"><span class="he-txt">צור קשר</span><span class="en-txt">Contact</span></a>
+    <a href="contact.html" onclick="toggleMobileMenu()"><span class="he-txt">צור קשר</span><span class="en-txt">Contact</span></a>
   </nav>
 </header>
 
@@ -105,10 +105,13 @@
       <div class="foot-col">
         <h5><span class="he-txt">שירות לקוחות</span><span class="en-txt">Customer Care</span></h5>
         <ul>
-          <li><a href="index.html#policy"><span class="he-txt">משלוחים והחזרות</span><span class="en-txt">Shipping &amp; Returns</span></a></li>
-          <li><a href="index.html#policy"><span class="he-txt">אחריות</span><span class="en-txt">Warranty</span></a></li>
-          <li><a href="index.html#"><span class="he-txt">צור קשר</span><span class="en-txt">Contact</span></a></li>
+          <li><a href="contact.html#shipping"><span class="he-txt">משלוחים והחזרות</span><span class="en-txt">Shipping &amp; Returns</span></a></li>
+          <li><a href="contact.html#warranty"><span class="he-txt">אחריות</span><span class="en-txt">Warranty</span></a></li>
+          <li><a href="contact.html"><span class="he-txt">צור קשר</span><span class="en-txt">Contact</span></a></li>
           <li><a href="index.html#policy"><span class="he-txt">תקנון ומדיניות פרטיות</span><span class="en-txt">Terms &amp; Privacy</span></a></li>
+          <li class="foot-contact" style="margin-top:14px;"><a href="tel:029999119">📞 02-9999119</a></li>
+          <li class="foot-contact"><a href="tel:0543771767">📞 054-3771767</a></li>
+          <li class="foot-contact"><a href="mailto:info@haywatches.co.il" class="email-em">✉ info@haywatches.co.il</a></li>
         </ul>
       </div>
       <div class="foot-col">
@@ -122,13 +125,13 @@
     </div>
     <div class="foot-bottom">
       <span>© 2026 HAY Watches. <span class="he-txt">כל הזכויות שמורות</span><span class="en-txt">All rights reserved</span></span>
-      <span>054-3771767 · <a href="mailto:info@haywatches.co.il" class="email-em">info@haywatches.co.il</a></span>
+      <span><a href="tel:029999119">02-9999119</a> · <a href="tel:0543771767">054-3771767</a> · <a href="mailto:info@haywatches.co.il" class="email-em">info@haywatches.co.il</a></span>
     </div>
   </div>
 </footer>
 
-<script src="data.js?v=202609280526"></script>
-<script src="main.js?v=202609280526"></script>
+<script src="data.js?v=202609280854"></script>
+<script src="main.js?v=202609280854"></script>
 <script>
   const catKey = qs('cat') || 'men';
   const meta = CATEGORIES[catKey] || CATEGORIES.men;
