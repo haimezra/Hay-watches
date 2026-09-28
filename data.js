@@ -50,6 +50,11 @@ const PRODUCTS = [
     dHe:"כשכל דקה נושאת בתוכה רגעים של זיכרון ומשמעות, הגיע הזמן לשעון שיש לו נשמה. שעון זה הוא לא רק אביזר, הוא תזכורת לרגעים החשובים באמת. בואו לרכוש את השעון שיספר את הסיפור שלכם, כי הזמן לא עוצר, אבל הזיכרונות נשארים לנצח. יחידות בודדות",
     dEn:"When every minute carries moments of memory and meaning, it is time for a watch with a soul. This watch is not just an accessory, it is a reminder of the moments that truly matter. Come and get the watch that will tell your story, because time does not stop, but memories remain forever. Limited units" },
 
+  { id:"men-15", available:false, cat:"men", brand:"Bulova", name:{he:"Bulova Moon Phase קוורץ NOS משנת 1982 (לא נענד)", en:"NOS Bulova Moon Phase Quartz, 1982 (Unworn)"}, price:600, cond:"used", img:"images/products/men-15-1.webp",
+    imgs:["images/products/men-15-1.webp","images/products/men-15-2.webp","images/products/men-15-3.webp","images/products/men-15-4.webp"],
+    dHe:"יד שנייה · New Old Stock, שעון שלא נענד · משנת 1982 · תנועת קוורץ · פאזת ירח ותצוגת חודשים · Swiss Made · מארז בגוון זהב · רצועת עור חומה",
+    dEn:"Pre-owned · New Old Stock, unworn · 1982 · Quartz movement · Moon phase and month display · Swiss Made · Gold-tone case · Brown leather strap" },
+
   // ---- Women's Watches ----
   { id:"women-1", cat:"women", brand:"Tissot", featured:true, name:{he:"Tissot בליסימה סמול ליידי", en:"Tissot Bellissima Small Lady"}, price:1200, cond:"used",
     img:"images/products/women-1-1.webp",
