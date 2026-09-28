@@ -30,6 +30,7 @@
   .st-qty{ display:inline-flex; align-items:center; border:1px solid var(--line); border-radius:8px; }
   .st-qty button{ width:44px; height:44px; background:transparent; border:none; color:var(--pearl); font-size:1.3rem; cursor:pointer; }
   .st-qty span{ min-width:36px; text-align:center; font-weight:600; }
+  .st-note{ color:var(--mute); font-size:.82rem; margin:-10px 0 14px; }
   .st-warn{ color:#e07a6a; font-size:.88rem; min-height:1.4em; margin:-8px 0 10px; }
   .add-cart[disabled]{ opacity:.45; cursor:not-allowed; }
 </style>
@@ -295,7 +296,8 @@
 
   // ===== Strap options (color / length / size / quantity) =====
   const st = { color:null, length:null, size:null, qty:1 };
-  function strapAvailable(){ return !st.color || st.color.imgs.length > 0; }
+  const colorOk = c => c.imgs.length > 0 || c.available === true;
+  function strapAvailable(){ return !st.color || colorOk(st.color); }
   function showStrapMain(src, available){
     const wrap = document.getElementById('pdMainImgWrap');
     wrap.innerHTML = availabilityHtml({available}) + `<img src="${src}" alt="${p.name.en}" style="${available?'':'opacity:.35;'}">`;
@@ -307,12 +309,12 @@
   function renderStrap(){
     const box = document.getElementById('strapOpts');
     if(!box) return;
-    const colorTxt = st.color ? (st.color.imgs.length ? st.color.he : `${st.color.he}, <span class="na">לא זמין</span>`) : 'לא נבחר';
+    const colorTxt = st.color ? (colorOk(st.color) ? st.color.he : `${st.color.he}, <span class="na">לא זמין</span>`) : 'לא נבחר';
     box.innerHTML = `
       <div class="st-row">
         <div class="st-label"><b>צבע:</b> <span>${colorTxt}</span></div>
         <div class="st-swatches">${p.colors.map(c => `
-          <button type="button" class="st-sw ${st.color&&st.color.id===c.id?'active':''} ${c.imgs.length?'':'na'}" title="${c.he}${c.imgs.length?'':', לא זמין'}" aria-label="${c.he}" onclick="pickStrapColor('${c.id}')"><i style="background:${c.hex}"></i></button>`).join('')}
+          <button type="button" class="st-sw ${st.color&&st.color.id===c.id?'active':''} ${colorOk(c)?'':'na'}" title="${c.he}${colorOk(c)?'':', לא זמין'}" aria-label="${c.he}" onclick="pickStrapColor('${c.id}')"><i style="background:${c.hex}"></i></button>`).join('')}
         </div>
       </div>
       <div class="st-row">
@@ -327,6 +329,7 @@
         <div class="st-label"><b>כמות:</b></div>
         <div class="st-qty"><button type="button" aria-label="פחות" onclick="changeStrapQty(-1)">–</button><span>${st.qty}</span><button type="button" aria-label="עוד" onclick="changeStrapQty(1)">+</button></div>
       </div>
+      ${st.color && !st.color.imgs.length && colorOk(st.color) ? '<div class="st-note">התמונה להמחשה בלבד, תמונה בצבע זה תתעדכן בקרוב.</div>' : ''}
       <div class="st-warn" id="stWarn"></div>`;
     updatePrice();
   }
@@ -338,7 +341,7 @@
       renderThumbs();
     } else {
       const cur = document.querySelector('#pdMainImgWrap img');
-      showStrapMain(cur ? cur.getAttribute('src') : p.img, false);
+      showStrapMain(cur ? cur.getAttribute('src') : p.img, colorOk(st.color));
     }
     renderStrap();
   };

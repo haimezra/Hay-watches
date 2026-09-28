@@ -100,6 +100,17 @@ const PRODUCTS = [
     ],
     lengths:[ {id:"short", he:"קצר"}, {id:"standard", he:"סטנדרטי"}, {id:"long", he:"ארוך"} ],
     sizes:[18,19,20,21,22,24] },
+  { id:"strap-2", cat:"straps", strap:true, name:{he:"רצועת עור וינטג׳", en:"Vintage Leather Watch Strap"}, price:80, cond:"new",
+    img:"images/products/strap-vintage-brown.webp", imgs:["images/products/strap-vintage-brown.webp"],
+    dHe:"עברה בקרת איכות אצלנו · עור בסגנון וינטג׳ עם תפרים לבנים בולטים · אבזם פלדה מבריק · 7 חורי כוונון · לולאת החזקה · זמינה ב-3 אורכים ובמידות 18–24 מ״מ",
+    dEn:"Passed our quality check · Vintage-style leather with contrast white stitching · Polished steel buckle · 7 adjustment holes · Keeper loop · 3 lengths, 18–24mm widths",
+    colors:[
+      { id:"black", he:"שחור", hex:"#000000", imgs:[], available:true },
+      { id:"brown", he:"חום",  hex:"#5b3a2f", imgs:["images/products/strap-vintage-brown.webp"] },
+      { id:"beige", he:"בז׳",  hex:"#d8c6a5", imgs:[], available:true }
+    ],
+    lengths:[ {id:"short", he:"קצר"}, {id:"standard", he:"סטנדרטי"}, {id:"long", he:"ארוך"} ],
+    sizes:[18,19,20,21,22,24] },
 
   // ---- Accessories & Boxes ----
   { id:"acc-1", cat:"accessories", name:{he:"קופסת עור לשעונים", en:"Leather Watch Box"}, price:200, cond:"new",
