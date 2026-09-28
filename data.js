@@ -80,15 +80,23 @@ const PRODUCTS = [
     dEn:"Brand new · Model BU9039, The City collection · 38mm case · Rose gold-plated stainless steel case and bracelet · Sunray dial with the brand's iconic engraved check pattern · Date window · Sapphire crystal · Swiss quartz movement · Butterfly deployment clasp · 50m water resistant · Comes with original brand box" },
 
   // ---- Premium Straps ----
-  { id:"strap-1", cat:"straps", name:{he:"רצועת עור חום קלאסית", en:"Classic Brown Leather Strap"}, price:390, cond:"new",
-    img:"https://images.unsplash.com/photo-1434704504321-71a8bc15a685?auto=format&fit=crop&w=900&q=70",
-    dHe:"עור איטלקי מעובד ביד · אבזם נירוסטה · 20 מ״מ", dEn:"Hand-finished Italian leather · Steel buckle · 20mm" },
-  { id:"strap-2", cat:"straps", name:{he:"רצועת עור וינטג׳ עבה", en:"Buffed Vintage Leather Strap"}, price:450, cond:"new",
-    img:"https://images.unsplash.com/photo-1767009951341-73a7c96e1aab?auto=format&fit=crop&w=900&q=70",
-    dHe:"מראה וינטג׳ מיושן · עור עבה איכותי · 22 מ״מ", dEn:"Distressed vintage look · Heavy-duty leather · 22mm" },
-  { id:"strap-3", cat:"straps", name:{he:"רצועת עור שחורה יוקרתית", en:"Luxury Black Leather Strap"}, price:420, cond:"new",
-    img:"https://images.unsplash.com/photo-1434704504321-71a8bc15a685?auto=format&fit=crop&w=900&q=70",
-    dHe:"תפרים בגוון זהב · עור מבריק · 20 מ״מ", dEn:"Gold-tone stitching · Polished leather · 20mm" },
+  { id:"strap-1", cat:"straps", strap:true, name:{he:"רצועת עור פרימיום לשעון", en:"Premium Leather Watch Strap"}, price:120, cond:"new",
+    img:"images/products/strap-black-1.webp",
+    imgs:["images/products/strap-black-1.webp","images/products/strap-black-2.webp","images/products/strap-gray-1.webp","images/products/strap-brown-1.webp","images/products/strap-brown-2.webp","images/products/strap-cognac-1.webp","images/products/strap-cognac-2.webp","images/products/strap-slate-1.webp","images/products/strap-slate-2.webp","images/products/strap-rust-1.webp"],
+    dHe:"רצועת עור עם תפרים תואמי צבע · אבזם פלדה מוברשת · 7 חורי כוונון · שתי לולאות החזקה · זמינה ב-3 אורכים ובמידות 18–24 מ״מ",
+    dEn:"Leather strap with matching stitching · Brushed steel buckle · 7 adjustment holes · Two keeper loops · 3 lengths, 18–24mm widths",
+    colors:[
+      { id:"black",  he:"שחור",      hex:"#000000", imgs:["images/products/strap-black-1.webp","images/products/strap-black-2.webp"] },
+      { id:"gray",   he:"אפור",      hex:"#898884", imgs:["images/products/strap-gray-1.webp"] },
+      { id:"brown",  he:"חום",       hex:"#887066", imgs:["images/products/strap-brown-1.webp","images/products/strap-brown-2.webp"] },
+      { id:"cognac", he:"קוניאק",    hex:"#b08260", imgs:["images/products/strap-cognac-1.webp","images/products/strap-cognac-2.webp"] },
+      { id:"slate",  he:"כחול-אפור", hex:"#666f74", imgs:["images/products/strap-slate-1.webp","images/products/strap-slate-2.webp"] },
+      { id:"rust",   he:"חלודה",     hex:"#9d6f5f", imgs:["images/products/strap-rust-1.webp"] },
+      { id:"olive",  he:"ירוק זית",  hex:"#767c6e", imgs:[] },
+      { id:"tan",    he:"טאן",       hex:"#b59268", imgs:[] }
+    ],
+    lengths:[ {id:"short", he:"קצר"}, {id:"standard", he:"סטנדרטי"}, {id:"long", he:"ארוך"} ],
+    sizes:[18,19,20,21,22,24] },
 
   // ---- Accessories & Boxes ----
   { id:"acc-1", cat:"accessories", name:{he:"קופסת עור לשעונים", en:"Leather Watch Box"}, price:650, cond:"new",
