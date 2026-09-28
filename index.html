@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Assistant:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Rubik:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=202609282027">
+<link rel="stylesheet" href="styles.css?v=202609282038">
 <style>
   /* =====================================================================
      HAY WATCHES — Luxury dark re-skin (purple accent), same structure
@@ -193,8 +193,13 @@
   .art-close:hover{ border-color:var(--purple); }
   body.modal-open{ overflow:hidden; }
   @media (max-width:640px){ .art-body{ padding:26px 22px 30px; } .art-dialog img{ height:190px; } }
+
+  /* accessories tile: looping video background instead of a static photo */
+  .cat-video .cat-bg-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; opacity:.8; transition:transform 1.4s var(--lx-ease,ease); }
+  .cat-video:hover .cat-bg-video{ transform:scale(1.045); }
+  @media (prefers-reduced-motion: reduce){ .cat-video .cat-bg-video{ display:none; } .cat-video{ background-image:url("assets/accessories-tile-poster.jpg"); background-size:cover; background-position:center; } }
 </style>
-<link rel="stylesheet" href="luxury-theme.css?v=202609282027">
+<link rel="stylesheet" href="luxury-theme.css?v=202609282038">
 </head>
 <body>
 
@@ -262,7 +267,7 @@
     <a class="cat" href="category.html?cat=men"><img src="images/products/men-7-2.webp" alt=""><h3><span class="he-txt">שעוני גברים</span><span class="en-txt">Men's Watches</span></h3></a>
     <a class="cat" href="category.html?cat=women"><img src="images/categories/women.jpg" alt=""><h3><span class="he-txt">שעוני נשים</span><span class="en-txt">Women's Watches</span></h3></a>
     <a class="cat" href="category.html?cat=straps"><img src="images/categories/straps.jpg" alt=""><h3><span class="he-txt">רצועות פרימיום</span><span class="en-txt">Premium Straps</span></h3></a>
-    <a class="cat" href="category.html?cat=accessories"><img src="images/categories/accessories-box.jpg" alt=""><h3><span class="he-txt">אביזרים וקופסאות</span><span class="en-txt">Accessories &amp; Boxes</span></h3></a>
+    <a class="cat cat-video" href="category.html?cat=accessories"><video class="cat-bg-video" src="assets/accessories-tile.mp4" poster="assets/accessories-tile-poster.jpg" autoplay muted loop playsinline preload="none" aria-hidden="true"></video><h3><span class="he-txt">אביזרים וקופסאות</span><span class="en-txt">Accessories &amp; Boxes</span></h3></a>
   </div>
 </section>
 
@@ -391,8 +396,8 @@
   </div>
 </footer>
 
-<script src="data.js?v=202609282027"></script>
-<script src="main.js?v=202609282027"></script>
+<script src="data.js?v=202609282038"></script>
+<script src="main.js?v=202609282038"></script>
 <script>
   // Homepage shows the curated "featured" products from the shared catalog (data.js)
   const prodGrid = document.getElementById('prodGrid');
