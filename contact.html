@@ -20,7 +20,7 @@
   .ct-card .ic{ font-size:1.6rem; margin-bottom:10px; display:block; }
   .ct-card b{ display:block; font-weight:600; margin-bottom:4px; }
   .ct-card span.v{ color:var(--gold-light); direction:ltr; unicode-bidi:embed; word-break:break-all; font-size:1rem; }
-  .ct-form{ max-width:640px; margin:0 auto 64px; background:var(--card); border:1px solid var(--line); padding:30px; }
+  .ct-form{ position:relative; max-width:640px; margin:0 auto 64px; background:var(--card); border:1px solid var(--line); padding:30px; }
   .ct-form h2, .ct-sec h2{ font-size:1.5rem; font-weight:500; margin-bottom:6px; }
   .ct-form p.sub{ color:var(--mute); font-size:.92rem; margin-bottom:20px; }
   .ct-form label{ display:block; font-size:.88rem; color:var(--mute); margin:14px 0 6px; }
@@ -111,7 +111,7 @@
       <input id="ctPhone" type="tel" dir="ltr" style="text-align:start;">
       <label for="ctEmail"><span class="he-txt">אימייל (לא חובה)</span><span class="en-txt">Email (optional)</span></label>
       <input id="ctEmail" type="email" dir="ltr" style="text-align:start;">
-      <input type="text" id="ctWebsite" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px; opacity:0;">
+      <input type="text" id="ctWebsite" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute; top:0; inset-inline-start:0; width:1px; height:1px; opacity:0; pointer-events:none; overflow:hidden;">
       <label for="ctMsg"><span class="he-txt">הודעה</span><span class="en-txt">Message</span></label>
       <textarea id="ctMsg" required></textarea>
       <button type="submit" id="ctBtn"><span class="he-txt">שליחה</span><span class="en-txt">Send</span></button>
