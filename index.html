@@ -176,6 +176,23 @@
     .style-grid::-webkit-scrollbar{ display:none; }
     .style-card{ flex:0 0 78%; scroll-snap-align:center; }
   }
+  .style-card{ cursor:pointer; }
+  .style-card:focus-visible{ outline:1px solid var(--purple); outline-offset:3px; }
+  .style-more{ display:block; margin-top:10px; font-size:.78rem; letter-spacing:.14em; color:var(--purple); text-transform:uppercase; }
+  .art-modal{ position:fixed; inset:0; z-index:1000; display:none; align-items:center; justify-content:center; padding:20px; background:rgba(5,5,10,.82); backdrop-filter:blur(6px); }
+  .art-modal.open{ display:flex; animation:artFade .3s var(--ease); }
+  @keyframes artFade{ from{opacity:0} to{opacity:1} }
+  .art-dialog{ position:relative; width:100%; max-width:720px; max-height:90vh; overflow-y:auto; background:var(--card2); border:1px solid var(--line); border-radius:2px; box-shadow:0 30px 80px rgba(0,0,0,.6); }
+  .art-dialog img{ display:block; width:100%; height:240px; object-fit:cover; object-position:center 45%; }
+  .art-body{ padding:34px 36px 40px; text-align:right; }
+  body.en-mode .art-body{ text-align:left; }
+  .art-body h3{ font-size:clamp(1.4rem,3.4vw,1.9rem); font-weight:500; line-height:1.35; margin-bottom:8px; color:var(--pearl); }
+  .art-body h3::after{ content:''; display:block; width:44px; height:1px; background:var(--purple); margin:18px 0 22px; }
+  .art-body p{ color:var(--mute); font-size:1.05rem; line-height:1.95; margin-bottom:18px; font-weight:300; }
+  .art-close{ position:absolute; top:12px; left:12px; z-index:2; width:40px; height:40px; border-radius:50%; border:1px solid var(--line); background:rgba(10,10,16,.7); color:var(--pearl); font-size:1.4rem; line-height:1; cursor:pointer; transition:border-color .3s ease; }
+  .art-close:hover{ border-color:var(--purple); }
+  body.modal-open{ overflow:hidden; }
+  @media (max-width:640px){ .art-body{ padding:26px 22px 30px; } .art-dialog img{ height:190px; } }
 </style>
 </head>
 <body>
@@ -267,17 +284,17 @@
       <p><span class="he-txt">שעון טוב לא רק מראה את הזמן, הוא מספר מי אתה</span><span class="en-txt">A great watch doesn't just tell the time, it tells who you are</span></p>
     </div>
     <div class="style-grid">
-      <figure class="style-card">
+      <figure class="style-card" role="button" tabindex="0" data-article="art-elegance" aria-haspopup="dialog">
         <img src="images/style/style-1.webp" alt="שעון עם לוח לבן ורצועת עור שחורה על פרק היד" loading="lazy">
-        <figcaption><span class="he-txt">אלגנטיות שקטה היא הצהרת הסטייל החזקה ביותר</span><span class="en-txt">Quiet elegance is the strongest style statement</span></figcaption>
+        <figcaption><span class="he-txt">אלגנטיות שקטה היא הצהרת הסטייל החזקה ביותר</span><span class="en-txt">Quiet elegance is the strongest style statement</span><span class="style-more"><span class="he-txt">לקריאת המאמר</span><span class="en-txt">Read the article</span></span></figcaption>
       </figure>
-      <figure class="style-card">
+      <figure class="style-card" role="button" tabindex="0" data-article="art-classic" aria-haspopup="dialog">
         <img src="images/style/style-2.webp" alt="שעון קלאסי עם צמיד מתכת על פרק היד" loading="lazy">
-        <figcaption><span class="he-txt">קלאסיקה אמיתית לא יוצאת מהאופנה</span><span class="en-txt">True classics never go out of fashion</span></figcaption>
+        <figcaption><span class="he-txt">קלאסיקה אמיתית לא יוצאת מהאופנה</span><span class="en-txt">True classics never go out of fashion</span><span class="style-more"><span class="he-txt">לקריאת המאמר</span><span class="en-txt">Read the article</span></span></figcaption>
       </figure>
-      <figure class="style-card">
+      <figure class="style-card" role="button" tabindex="0" data-article="art-detail" aria-haspopup="dialog">
         <img src="images/style/style-3.webp" alt="שעון שחור עם רצועת עור חומה מתחת לשרוול" loading="lazy">
-        <figcaption><span class="he-txt">הפרט הקטן שמשלים את כל הלוק</span><span class="en-txt">The small detail that completes the whole look</span></figcaption>
+        <figcaption><span class="he-txt">הפרט הקטן שמשלים את כל הלוק</span><span class="en-txt">The small detail that completes the whole look</span><span class="style-more"><span class="he-txt">לקריאת המאמר</span><span class="en-txt">Read the article</span></span></figcaption>
       </figure>
     </div>
   </div>
@@ -410,6 +427,55 @@
         </div>
       </div>`);
   });
+</script>
+<!-- Style articles (popup) -->
+<div class="art-modal" id="artModal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="art-dialog">
+    <button class="art-close" type="button" aria-label="סגור / Close">&times;</button>
+    <img id="artImg" src="" alt="">
+    <div class="art-body" id="artBody"></div>
+  </div>
+</div>
+<template id="art-elegance">
+    <h3><span class="he-txt">אלגנטיות שקטה: הסטייל החזק ביותר</span><span class="en-txt">Quiet Elegance: The Strongest Style</span></h3>
+    <p><span class="he-txt">בעולם המודרני אנו רגילים לכך שסטייל בולט מגיע עם הרבה רעש וקישוטים חיצוניים, אך לעיתים קרובות הם דועכים במהירות. מנגד, קיים סגנון אחר שבוחר לדבר בלחש אך משאיר רושם עמוק.</span><span class="en-txt">In the modern world we are used to style arriving with plenty of noise and outward decoration, yet these often fade quickly. In contrast, there is another kind of style that chooses to speak in a whisper and still leaves a deep impression.</span></p>
+    <p><span class="he-txt">שעון יד בעל עיצוב נקי ומינימליסטי, הכולל לוח בהיר ומסגרת עדינה המונחת על היד על רקע טבעי, ממחיש בדיוק את הרעיון לפיו אלגנטיות שקטה היא הצהרת הסטייל החזקה ביותר. שעון כזה משדר ביטחון עצמי שקט וטעם מתוחכם, ומוכיח שאין צורך בניסיונות נואשים להרשים כדי לבלוט באמת.</span><span class="en-txt">A wristwatch with a clean, minimalist design, a light dial and a delicate case, resting on the wrist against a natural backdrop, captures exactly the idea that quiet elegance is the strongest style statement. Such a watch conveys calm self-confidence and refined taste, proving there is no need for desperate attempts to impress in order to truly stand out.</span></p>
+    </template>
+<template id="art-detail">
+    <h3><span class="he-txt">הפרט הקטן שמשלים את כל הלוק</span><span class="en-txt">The Small Detail That Completes the Look</span></h3>
+    <p><span class="he-txt">פעמים רבות ההבדל בין הופעה טובה להופעה מושלמת טמון בפרטים הקטנים ביותר. שעון טוב הוא הרבה מעבר לכלי טכנולוגי למדידת שעות – כפי שנאמר, הוא מספר בדיוק מי אתה.</span><span class="en-txt">Often the difference between a good appearance and a perfect one lies in the smallest details. A good watch is far more than a tool for measuring hours – as they say, it tells exactly who you are.</span></p>
+    <p><span class="he-txt">כאשר בוחרים את האביזר המדויק המונח על פרק היד, הוא מחבר יחד את כל רכיבי הלבוש, מעניק נגיעה של יוקרה מאופקת, ומשלים את המראה הכללי בדרך הרמונית ומדויקת שקשה להתעלם ממנה.</span><span class="en-txt">When you choose the right accessory for your wrist, it ties every element of the outfit together, adds a touch of understated luxury, and completes the overall look in a harmonious, precise way that is hard to ignore.</span></p>
+    </template>
+<template id="art-classic">
+    <h3><span class="he-txt">קלאסיקה אמיתית שאינה יוצאת מהאופנה</span><span class="en-txt">True Classics Never Go Out of Fashion</span></h3>
+    <p><span class="he-txt">עולם האופנה נשלט לרוב על ידי טרנדים חולפים שמתחלפים בקצב מהיר. אולם, ישנם פריטים בודדים העומדים במבחן הזמן בכבוד רב, ובראשם שעון יוקרתי קלאסי – כמו שעון מתכת מעוצב ועמוק לצד בגדי ג'ינס ופסי אופנה קלאסיים.</span><span class="en-txt">The fashion world is mostly ruled by fleeting trends that change at a rapid pace. Yet a few pieces stand the test of time with great dignity, first among them the classic luxury watch – such as a refined metal watch worn beside denim and classic stripes.</span></p>
+    <p><span class="he-txt">העיצובים הנקיים והקווי מתאר המדויקים יוצרים הרמוניה שאינה תלויה בדבר. קלאסיקה אמיתית אינה יוצאת מהאופנה; היא מתאימה את עצמה לכל תקופה ולכל סגנון לבוש, ונשארת רלוונטית ומרהיבה לאורך שנים ארוכות.</span><span class="en-txt">The clean designs and precise lines create a harmony that depends on nothing else. A true classic never goes out of fashion; it adapts to every era and every style of dress, and stays relevant and striking for many years.</span></p>
+    </template>
+<script>
+(function(){
+  const modal=document.getElementById('artModal'), body=document.getElementById('artBody'), img=document.getElementById('artImg');
+  let lastFocus=null;
+  function open(card){
+    const tpl=document.getElementById(card.dataset.article); if(!tpl) return;
+    const im=card.querySelector('img');
+    img.src=im.src; img.alt=im.alt;
+    body.innerHTML=''; body.appendChild(tpl.content.cloneNode(true));
+    lastFocus=card; modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+    document.body.classList.add('modal-open'); modal.querySelector('.art-dialog').scrollTop=0;
+    modal.querySelector('.art-close').focus();
+  }
+  function close(){
+    modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('modal-open'); if(lastFocus) lastFocus.focus();
+  }
+  document.querySelectorAll('.style-card').forEach(c=>{
+    c.addEventListener('click',()=>open(c));
+    c.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(c); } });
+  });
+  modal.addEventListener('click',e=>{ if(e.target===modal) close(); });
+  modal.querySelector('.art-close').addEventListener('click',close);
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape' && modal.classList.contains('open')) close(); });
+})();
 </script>
 </body>
 </html>
