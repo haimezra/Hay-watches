@@ -151,7 +151,7 @@
       `linear-gradient(180deg, rgba(10,10,16,.6) 0%, rgba(10,10,16,.88) 100%), url("${meta.img}")`;
   }
 
-  document.title = `HAY Watches — ${p.name.en}`;
+  document.title = `HAY Watches: ${p.name.en}`;
 
   const crumbCat = document.getElementById('crumbCat');
   crumbCat.href = `category.html?cat=${p.cat}`;
@@ -304,12 +304,12 @@
   function renderStrap(){
     const box = document.getElementById('strapOpts');
     if(!box) return;
-    const colorTxt = st.color ? (st.color.imgs.length ? st.color.he : `${st.color.he} — <span class="na">לא זמין</span>`) : 'לא נבחר';
+    const colorTxt = st.color ? (st.color.imgs.length ? st.color.he : `${st.color.he}, <span class="na">לא זמין</span>`) : 'לא נבחר';
     box.innerHTML = `
       <div class="st-row">
         <div class="st-label"><b>צבע:</b> <span>${colorTxt}</span></div>
         <div class="st-swatches">${p.colors.map(c => `
-          <button type="button" class="st-sw ${st.color&&st.color.id===c.id?'active':''} ${c.imgs.length?'':'na'}" title="${c.he}${c.imgs.length?'':' — לא זמין'}" aria-label="${c.he}" onclick="pickStrapColor('${c.id}')"><i style="background:${c.hex}"></i></button>`).join('')}
+          <button type="button" class="st-sw ${st.color&&st.color.id===c.id?'active':''} ${c.imgs.length?'':'na'}" title="${c.he}${c.imgs.length?'':', לא זמין'}" aria-label="${c.he}" onclick="pickStrapColor('${c.id}')"><i style="background:${c.hex}"></i></button>`).join('')}
         </div>
       </div>
       <div class="st-row">
@@ -351,7 +351,7 @@
     if(missing.length){ warn.textContent = 'יש לבחור: ' + missing.join(', '); return; }
     if(!strapAvailable()){ warn.textContent = 'הצבע שנבחר לא זמין כרגע, יש לבחור צבע אחר.'; return; }
     warn.textContent = '';
-    buyNow(`${p.name.he} - ${st.color.he}, ${st.length.he}, ${st.size} מ״מ, כמות ${st.qty}`, p.price * st.qty);
+    buyNow(`${p.name.he}, ${st.color.he}, ${st.length.he}, ${st.size} מ״מ, כמות ${st.qty}`, p.price * st.qty);
   };
   if(p.strap) renderStrap();
 </script>
