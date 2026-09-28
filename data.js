@@ -122,7 +122,10 @@ const ARTICLES = [
     link:"guide-automatic-vs-quartz.html" },
   { he:"המדריך לשמירה על רצועות עור", en:"Caring for Leather Straps",
     img:"images/guides/strap-care.jpg",
-    link:"guide-strap-care.html" }
+    link:"guide-strap-care.html" },
+  { he:"למה לא לענוד שעונים מזויפים", en:"Why You Shouldn't Wear Fake Watches",
+    img:"https://images.unsplash.com/photo-1646724810360-abfa1bb76d6d?auto=format&fit=crop&w=900&q=70",
+    link:"guide-fake-watches.html" }
 ];
 
 function fmtPrice(n){ return "₪" + Number(n).toLocaleString("en-US"); }
