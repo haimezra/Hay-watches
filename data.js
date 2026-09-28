@@ -19,11 +19,11 @@ const PRODUCTS = [
     imgs:["images/products/men-7-1.webp","images/products/men-7-2.webp"],
     dHe:"קוטר 40 מ״מ · לוח כחול קרח בגימור סאנריי · תנועה אוטומטית קליבר 8210 · 21 אבנים · עמיד למים 50מ׳ · אחריות יצרן 5 שנים",
     dEn:"40mm case · Sunray-textured ice blue dial · Automatic Caliber 8210 · 21 jewels · 50m water resistant · 5-year manufacturer warranty" },
-  { id:"men-8", cat:"men", brand:"Citizen", name:{he:"Citizen Challenge Diver Automatic (שחור/זהב)", en:"Citizen Challenge Diver Automatic (Black/Gold)"}, price:1290, cond:"new", img:"images/products/men-8-1.webp",
+  { id:"men-8", sold:true, cat:"men", brand:"Citizen", name:{he:"Citizen Challenge Diver Automatic (שחור/זהב)", en:"Citizen Challenge Diver Automatic (Black/Gold)"}, price:1290, cond:"new", img:"images/products/men-8-1.webp",
     imgs:["images/products/men-8-1.webp","images/products/men-8-2.webp"],
     dHe:"קוטר 41 מ״מ · עובי 13.7 מ״מ · לוניטה חד-כיוונית · זכוכית מינרל · תנועה אוטומטית קליבר 8204-21 · עמיד למים 200מ׳",
     dEn:"41mm case, 13.7mm thick · Unidirectional bezel · Mineral crystal · Automatic Caliber 8204-21 · 200m water resistant" },
-  { id:"men-9", cat:"men", brand:"Hamilton", name:{he:"Hamilton Khaki Field Auto H70455540 (לוח כחול)", en:"Hamilton Khaki Field Auto H70455540 (Blue Dial)"}, price:2390, cond:"new", img:"images/products/men-9-2.webp",
+  { id:"men-9", sold:true, cat:"men", brand:"Hamilton", name:{he:"Hamilton Khaki Field Auto H70455540 (לוח כחול)", en:"Hamilton Khaki Field Auto H70455540 (Blue Dial)"}, price:2390, cond:"new", img:"images/products/men-9-2.webp",
     imgs:["images/products/men-9-2.webp","images/products/men-9-1.webp","images/products/men-9-3.webp"],
     dHe:"קוטר 38 מ״מ · פלדת אל-חלד · תנועה אוטומטית קליבר H-10 · מילואי כוח 80 שעות · זכוכית ספיר · עמיד למים 100מ׳ · לוח כחול · רצועת עור · חלון תאריך ב-3",
     dEn:"38mm stainless steel case · Automatic Caliber H-10 · 80-hour power reserve · Sapphire crystal · 100m water resistant · Blue dial · Leather strap · Date window at 3" },
@@ -109,10 +109,11 @@ const ARTICLES = [
 function fmtPrice(n){ return "₪" + Number(n).toLocaleString("en-US"); }
 
 function availabilityHtml(p){
-  const isAvailable = p.available !== false; // default: available, unless explicitly set to false
+  const isSold = p.sold === true;
+  const isAvailable = !isSold && p.available !== false; // default: available, unless sold or explicitly set to false
   const cls = isAvailable ? "available" : "unavailable";
-  const heTxt = isAvailable ? "זמין" : "לא זמין";
-  const enTxt = isAvailable ? "Available" : "Unavailable";
+  const heTxt = isSold ? "נמכר" : (isAvailable ? "זמין" : "לא זמין");
+  const enTxt = isSold ? "Sold" : (isAvailable ? "Available" : "Unavailable");
   return `<span class="avail-badge ${cls}"><span class="avail-dot"></span><span class="he-txt">${heTxt}</span><span class="en-txt">${enTxt}</span></span>`;
 }
 
