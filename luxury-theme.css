@@ -1,0 +1,224 @@
+/* ============================================================
+   HAY WATCHES — Luxury Theme Layer
+   טוען אחרי styles.css והעיצוב הקיים בכל דף, ולכן דורס אותם.
+   לא נוגע בשום טקסט, רק במראה.
+   ============================================================ */
+
+:root{
+  --lx-bg: #0B0B0C !important;
+  --lx-bg-2: #121214 !important;
+  --lx-card: #141416 !important;
+  --lx-card-2: #17171A !important;
+  --lx-line: rgba(255,255,255,.07) !important;
+  --lx-line-strong: rgba(255,255,255,.14) !important;
+
+  --lx-gold: #C9A65B !important;
+  --lx-gold-soft: rgba(201,166,91,.4) !important;
+  --lx-silver: #C7CBD1 !important;
+  --lx-pearl: #F5F3EF !important;
+  --lx-mute: #9A968E !important;
+
+  --lx-ease: cubic-bezier(.19,1,.22,1);
+}
+
+body{
+  background: var(--lx-bg) !important;
+  color: var(--lx-pearl) !important;
+  font-weight: 300 !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-weight: 400 !important;
+  letter-spacing: -0.005em !important;
+  color: var(--lx-pearl) !important;
+}
+
+section{ padding: 132px 0 !important; }
+@media (max-width:880px){ section{ padding: 84px 0 !important; } }
+
+.section-head{ margin-bottom: 78px !important; }
+.section-head h2::before{
+  content:''; display:block; width:36px; height:1px;
+  background: var(--lx-gold); margin: 0 auto 22px;
+}
+.section-head h2{
+  font-size: clamp(1.6rem, 3vw, 2.3rem) !important;
+  letter-spacing: .01em !important;
+}
+.section-head p{ color: var(--lx-mute) !important; font-weight:300 !important; }
+
+.topbar{
+  background: var(--lx-bg) !important;
+  border-bottom: 1px solid var(--lx-line) !important;
+  color: var(--lx-mute) !important;
+}
+.topbar a:hover{ color: var(--lx-gold) !important; }
+.email-em{ color: var(--lx-gold) !important; }
+
+header{
+  background: rgba(11,11,12,.88) !important;
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--lx-line) !important;
+}
+.logo{
+  font-weight: 400 !important;
+  letter-spacing: .22em !important;
+  color: var(--lx-pearl) !important;
+}
+.logo span{ color: var(--lx-gold) !important; font-weight:300 !important; }
+.mainnav a{
+  color: var(--lx-mute) !important;
+  font-weight: 300 !important;
+  letter-spacing: .04em;
+  position: relative;
+}
+.mainnav a::after{
+  content:''; position:absolute; inset-inline:0; bottom:-3px; height:1px;
+  background: var(--lx-gold); transform: scaleX(0);
+  transition: transform .5s var(--lx-ease);
+}
+.mainnav a:hover{ color: var(--lx-pearl) !important; }
+.mainnav a:hover::after{ transform: scaleX(1); }
+.lang-toggle{
+  border: 1px solid var(--lx-line-strong) !important;
+  color: var(--lx-mute) !important;
+  border-radius: 0 !important;
+  letter-spacing: .1em !important;
+}
+.lang-toggle:hover{ border-color: var(--lx-gold) !important; color: var(--lx-gold) !important; }
+
+.hero-video-overlay{
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(11,11,12,.1) 0%, rgba(11,11,12,.6) 100%),
+    linear-gradient(180deg, rgba(11,11,12,.55) 0%, rgba(11,11,12,.5) 45%, rgba(11,11,12,.9) 82%, var(--lx-bg) 100%) !important;
+}
+.hero::before{ background: var(--lx-gold) !important; width:44px !important; height:1px !important; }
+.hero .eyebrow{
+  color: var(--lx-gold) !important;
+  font-weight: 400 !important;
+  letter-spacing: .32em !important;
+}
+.hero h1{
+  font-weight: 400 !important;
+  letter-spacing: .01em !important;
+}
+.hero p{
+  color: var(--lx-mute) !important;
+  font-weight: 300 !important;
+}
+.btn.solid{
+  border: 1px solid var(--lx-gold) !important;
+  background: transparent !important;
+  color: var(--lx-pearl) !important;
+  border-radius: 0 !important;
+  letter-spacing: .12em !important;
+  font-weight: 300 !important;
+  padding: 16px 44px !important;
+  transition: background .5s var(--lx-ease), color .5s var(--lx-ease), border-color .5s var(--lx-ease);
+}
+.btn.solid:hover{
+  background: var(--lx-gold) !important;
+  color: #0B0B0C !important;
+}
+
+.cat-grid{ gap: 2px !important; }
+.cat{ border-radius: 0 !important; background: var(--lx-card) !important; }
+.cat img{ filter: grayscale(.15) brightness(.82) contrast(1.05); transition: transform 1.4s var(--lx-ease) !important; }
+.cat:hover img{ transform: scale(1.045) !important; }
+.cat h3{
+  font-weight: 300 !important;
+  letter-spacing: .06em !important;
+  font-size: 1.05rem !important;
+}
+
+.prod-grid{ gap: 36px !important; }
+.prod-card{
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+.prod-img{
+  border: 1px solid var(--lx-line) !important;
+  border-bottom: 1px solid var(--lx-line) !important;
+  background: linear-gradient(150deg,#141416,#0d0d0e) !important;
+}
+.prod-card:hover .prod-img{ border-color: var(--lx-gold-soft) !important; }
+.prod-body{ padding: 22px 2px !important; }
+.prod-body h4{ font-weight: 300 !important; letter-spacing: .01em; }
+.prod-detail{ color: var(--lx-mute) !important; }
+.prod-price{
+  color: var(--lx-pearl) !important;
+  font-weight: 400 !important;
+  letter-spacing: .02em;
+}
+.add-cart{
+  border: 1px solid var(--lx-line-strong) !important;
+  border-radius: 0 !important;
+  color: var(--lx-mute) !important;
+  font-weight: 300 !important;
+  letter-spacing: .08em !important;
+}
+.add-cart:hover{ border-color: var(--lx-gold) !important; color: var(--lx-gold) !important; }
+.add-cart.buy-now{
+  background: var(--lx-gold) !important;
+  border-color: var(--lx-gold) !important;
+  color: #0B0B0C !important;
+}
+.add-cart.buy-now:hover{ background: #B6944C !important; border-color:#B6944C !important; }
+
+.badge{
+  background: transparent !important;
+  border: none !important;
+  color: var(--lx-pearl) !important;
+  font-weight: 300 !important;
+  letter-spacing: .08em !important;
+  font-size: .68rem !important;
+  padding: 0 !important;
+  top: 14px !important; inset-inline-start: 14px !important;
+}
+.badge::before{ content:'◆ '; color: var(--lx-gold); font-size:.55rem; }
+.badge.used::before{ color: var(--lx-mute); }
+.avail-badge{
+  background: rgba(11,11,12,.35) !important;
+  text-shadow: none !important;
+  font-weight: 300 !important;
+  letter-spacing: .05em !important;
+}
+
+.mag-card{ background: transparent !important; border: none !important; border-radius:0 !important; }
+.mag-thumb{ border: 1px solid var(--lx-line) !important; }
+.mag-tag{ color: var(--lx-gold) !important; font-weight: 400 !important; }
+.mag-body h4{ font-weight: 300 !important; }
+.readmore{ border-bottom-color: var(--lx-gold-soft) !important; }
+.readmore:hover{ color: var(--lx-gold) !important; border-bottom-color: var(--lx-gold) !important; }
+
+.trust{ background: var(--lx-bg-2) !important; border-color: var(--lx-line) !important; }
+.trust-icon{ border-color: var(--lx-gold) !important; color: var(--lx-gold) !important; }
+.trust h4{ font-weight: 300 !important; letter-spacing:.02em; }
+.trust p{ color: var(--lx-mute) !important; }
+
+footer{ background: #000 !important; padding-top: 100px !important; }
+.foot-col h5{ color: var(--lx-gold) !important; font-weight: 400 !important; letter-spacing: .14em !important; }
+.foot-col a:hover{ color: var(--lx-gold) !important; }
+.newsletter{ border-color: var(--lx-line-strong) !important; }
+.newsletter button{ background: var(--lx-gold) !important; color: #0B0B0C !important; }
+
+.pd-img{ border-color: var(--lx-line) !important; }
+.pd-price{ color: var(--lx-pearl) !important; font-weight: 400 !important; }
+.pd-desc{ color: var(--lx-mute) !important; }
+.pd-facts{ border-color: var(--lx-line) !important; }
+.pd-facts b{ font-weight: 400 !important; }
+
+.style-card figcaption{ color: var(--lx-pearl) !important; }
+.style-card figcaption::before{ background: var(--lx-gold) !important; }
+.art-dialog{ background: var(--lx-card) !important; border-color: var(--lx-line) !important; }
+.art-body h3::after{ background: var(--lx-gold) !important; }
+
+.ct-card{ background: var(--lx-card) !important; border-color: var(--lx-line) !important; border-radius:0 !important; }
+.ct-card:hover{ border-color: var(--lx-gold-soft) !important; transform:none !important; }
+.ct-form{ background: var(--lx-card) !important; border-color: var(--lx-line) !important; border-radius:0 !important; }
+.ct-form input, .ct-form textarea{ background: var(--lx-bg) !important; border-color: var(--lx-line-strong) !important; border-radius:0 !important; }
+.ct-form input:focus, .ct-form textarea:focus{ border-color: var(--lx-gold) !important; }
+.ct-form button{ background: var(--lx-gold) !important; color:#0B0B0C !important; border-radius:0 !important; letter-spacing:.1em !important; }
+.ct-sec h2::after{ background: var(--lx-gold) !important; }
