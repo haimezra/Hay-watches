@@ -82,6 +82,12 @@ const PRODUCTS = [
     dHe:"חדש · דגם BU9039 מסדרת The City · קוטר 38 מ״מ · מארז וצמיד פלדת אל-חלד בציפוי זהב ורוד · לוח בגימור סאנריי עם תבנית ה-Check האייקונית של המותג · חלון תאריך · זכוכית ספיר · תנועת קוורץ שוויצרית · אבזם פרפר · עמיד למים עד 50 מ׳ · כולל קופסה מקורית של המותג",
     dEn:"Brand new · Model BU9039, The City collection · 38mm case · Rose gold-plated stainless steel case and bracelet · Sunray dial with the brand's iconic engraved check pattern · Date window · Sapphire crystal · Swiss quartz movement · Butterfly deployment clasp · 50m water resistant · Comes with original brand box" },
 
+  { id:"women-6", sold:true, cat:"women", brand:"Cartier", name:{he:"Cartier Santos Galbée 1567 פלדה וזהב, קוורץ 24 מ״מ (2012)", en:"Cartier Santos Galbée 1567 Steel & Gold Quartz 24mm (2012)"}, price:18000, cond:"used",
+    img:"images/products/women-6-1.webp",
+    imgs:["images/products/women-6-1.webp","images/products/women-6-2.webp"],
+    dHe:"יד שנייה · דגם 1567 Santos Galbée · פלדה וזהב · תנועת קוורץ · קוטר 24 מ״מ · משנת 2012 · לוח לבן עם ספרות רומיות · כתר עם אבן כחולה · מגיע עם קופסה ותעודות · אחריות 6 חודשים",
+    dEn:"Pre-owned · Model 1567 Santos Galbée · Steel & gold · Quartz movement · 24mm · 2012 · White dial with Roman numerals · Blue cabochon crown · Box and papers included · 6-month warranty" },
+
   // ---- Premium Straps ----
   { id:"strap-1", cat:"straps", strap:true, name:{he:"רצועת עור פרימיום לשעון", en:"Premium Leather Watch Strap"}, price:120, cond:"new",
     img:"images/products/strap-black-1.webp",
