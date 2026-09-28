@@ -11,22 +11,6 @@ const CATEGORIES = {
 
 const PRODUCTS = [
   // ---- Men's Watches ----
-  { id:"men-1", cat:"men", featured:true, name:{he:"HAY מרידיאן", en:"HAY Meridian"}, price:4890, cond:"new",
-    img:"https://images.unsplash.com/photo-1623998021450-85c29c644e0d?auto=format&fit=crop&w=900&q=70",
-    dHe:"מצופה נירוסטה · תנועה אוטומטית · קוטר 40 מ״מ", dEn:"Stainless steel · Automatic movement · 40mm" },
-  { id:"men-2", cat:"men", name:{he:"HAY קרונומאסטר", en:"HAY Chronomaster"}, price:5450, cond:"new",
-    img:"https://images.unsplash.com/photo-1667375565651-b660b574d1a9?auto=format&fit=crop&w=900&q=70",
-    dHe:"רצועת עור איטלקית · תנועה אוטומטית · זכוכית ספיר", dEn:"Italian leather strap · Automatic movement · Sapphire crystal" },
-  { id:"men-3", cat:"men", name:{he:"HAY אקווה ספורט", en:"HAY Aqua Sport"}, price:6890, cond:"new",
-    img:"https://images.unsplash.com/photo-1715776314938-c7b1ab69ad80?auto=format&fit=crop&w=900&q=70",
-    dHe:"עמיד למים 100מ׳ · לוח שנה · קוטר 41 מ״מ", dEn:"100m water resistant · Date function · 41mm" },
-  { id:"men-4", cat:"men", name:{he:"HAY אושיאניק פרו", en:"HAY Oceanic Pro"}, price:8250, cond:"new",
-    img:"https://images.unsplash.com/photo-1762708052051-bfa096f5649f?auto=format&fit=crop&w=900&q=70",
-    dHe:"טבילה מקצועית · תנועה אוטומטית · לוניטה מסתובבת", dEn:"Professional diver · Automatic movement · Rotating bezel" },
-  { id:"men-5", cat:"men", name:{he:"HAY אבניור וינטג׳", en:"HAY Avenoir Vintage"}, price:7420, cond:"used",
-    img:"https://images.unsplash.com/photo-1613579153555-a83eadd8fdde?auto=format&fit=crop&w=900&q=70",
-    dHe:"יד שנייה · מקורי משנות ה-80 · כולל תעודת מקוריות", dEn:"Pre-owned · Original 1980s piece · Certificate included" },
-
   { id:"men-6", cat:"men", brand:"Citizen", name:{he:"Citizen Tsuyosa NJ0151 (ירוק/מנטה)", en:"Citizen Tsuyosa NJ0151 (Mint/Green)"}, price:1690, cond:"new", img:"images/products/men-6-1.webp",
     imgs:["images/products/men-6-1.webp","images/products/men-6-2.webp"],
     dHe:"קוטר 40 מ״מ · פלדת אל-חלד · תנועה אוטומטית קליבר 8210 · 21 אבנים · זכוכית ספיר · עמיד למים 50מ׳ · גב שקוף · צמיד משולב",
