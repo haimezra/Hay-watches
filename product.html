@@ -13,6 +13,25 @@
   .hero-logo-main{ display:block; width:190px; max-width:60%; height:auto; margin:56px auto 0; position:relative; z-index:2; }
   @media (max-width: 640px){ .hero-logo-main{ width:150px; margin-top:40px; } }
   .cat-hero{ padding-top:0 !important; padding-bottom:26px !important; }
+  /* strap options */
+  .st-row{ margin:0 0 22px; }
+  .st-label{ font-size:.95rem; color:var(--pearl); margin-bottom:10px; }
+  .st-label span{ color:var(--mute); }
+  .st-label span.na{ color:#e07a6a; }
+  .st-swatches{ display:flex; flex-wrap:wrap; gap:10px; }
+  .st-sw{ position:relative; width:44px; height:44px; padding:4px; border-radius:50%; border:1px solid var(--line); background:transparent; cursor:pointer; }
+  .st-sw i{ display:block; width:100%; height:100%; border-radius:50%; }
+  .st-sw.active{ border-color:var(--gold-light); box-shadow:0 0 0 1px var(--gold-light); }
+  .st-sw.na i{ opacity:.4; }
+  .st-sw.na::after{ content:""; position:absolute; left:8px; right:8px; top:50%; height:1px; background:#e07a6a; transform:rotate(-45deg); }
+  .st-chips{ display:flex; flex-wrap:wrap; gap:10px; }
+  .st-chip{ padding:9px 18px; min-width:64px; border:1px solid var(--line); border-radius:8px; background:transparent; color:var(--pearl); font:inherit; font-size:.95rem; cursor:pointer; }
+  .st-chip.active{ border-color:var(--gold-light); color:var(--gold-light); box-shadow:0 0 0 1px var(--gold-light); }
+  .st-qty{ display:inline-flex; align-items:center; border:1px solid var(--line); border-radius:8px; }
+  .st-qty button{ width:44px; height:44px; background:transparent; border:none; color:var(--pearl); font-size:1.3rem; cursor:pointer; }
+  .st-qty span{ min-width:36px; text-align:center; font-weight:600; }
+  .st-warn{ color:#e07a6a; font-size:.88rem; min-height:1.4em; margin:-8px 0 10px; }
+  .add-cart[disabled]{ opacity:.45; cursor:not-allowed; }
 </style>
 </head>
 <body>
@@ -156,14 +175,16 @@
         <span class="he-txt">${p.cond==='used'?'יד שנייה':'חדש'}</span><span class="en-txt">${p.cond==='used'?'Pre-Owned':'New'}</span>
       </span>
       <h1><span class="he-txt">${p.name.he}</span><span class="en-txt">${p.name.en}</span></h1>
-      <div class="pd-price">${fmtPrice(p.price)}</div>
+      <div class="pd-price" id="pdPrice">${fmtPrice(p.price)}</div>
       <p class="pd-desc">
+        ${p.strap ? `<span class="he-txt">${p.dHe}.</span><span class="en-txt">${p.dEn}.</span>` : `
         <span class="he-txt">${p.dHe}. שעון זה עומד בתקני האיכות המחמירים של HAY Watches ומגיע עם תעודת אחריות ואריזה מקורית.</span>
-        <span class="en-txt">${p.dEn}. This piece meets HAY Watches' strict quality standards and arrives with a warranty certificate and original packaging.</span>
+        <span class="en-txt">${p.dEn}. This piece meets HAY Watches' strict quality standards and arrives with a warranty certificate and original packaging.</span>`}
       </p>
+      ${p.strap ? '<div id="strapOpts"></div>' : ''}
       <div class="pd-actions">
         <button class="add-cart"><span class="he-txt">הוסף לעגלה</span><span class="en-txt">Add to Cart</span></button>
-        <button class="add-cart buy-now" style="background:var(--gold); color:#0D0D0D; border-color:var(--gold);" onclick="buyNow('${p.name.he.replace(/'/g,"")}', ${p.price})"><span class="he-txt">קנה עכשיו</span><span class="en-txt">Buy Now</span></button>
+        <button class="add-cart buy-now" id="pdBuyNow" style="background:var(--gold); color:#0D0D0D; border-color:var(--gold);" onclick="${p.strap ? 'strapBuy()' : `buyNow('${p.name.he.replace(/'/g,"")}', ${p.price})`}"><span class="he-txt">קנה עכשיו</span><span class="en-txt">Buy Now</span></button>
       </div>
       <div class="pd-facts">
         <div><b><span class="he-txt">מצב: </span><span class="en-txt">Condition: </span></b><span class="he-txt">${p.cond==='used'?'יד שנייה, נבדק ומאומת':'חדש, אריזה סגורה'}</span><span class="en-txt">${p.cond==='used'?'Pre-owned, inspected & authenticated':'New, sealed packaging'}</span></div>
@@ -198,7 +219,7 @@
   `;
 
   // ===== Photo gallery logic =====
-  const catalogImgs = p.imgs && p.imgs.length ? p.imgs : (p.img ? [p.img] : []);
+  let catalogImgs = p.imgs && p.imgs.length ? p.imgs : (p.img ? [p.img] : []);
 
   function renderThumbs(){
     const local = getProductPhotos(p.id);
@@ -225,7 +246,8 @@
   }
 
   window.setMainCatalogPhoto = function(index, el){
-    document.getElementById('pdMainImgWrap').innerHTML = `<img src="${catalogImgs[index]}" alt="${p.name.en}">`;
+    if(p.strap){ showStrapMain(catalogImgs[index], strapAvailable()); }
+    else document.getElementById('pdMainImgWrap').innerHTML = `<img src="${catalogImgs[index]}" alt="${p.name.en}">`;
     document.querySelectorAll('#pdThumbs .pd-thumb').forEach(t=>t.classList.remove('active'));
     if(el) el.classList.add('active');
   };
@@ -267,6 +289,71 @@
   });
 
   renderThumbs();
+
+  // ===== Strap options (color / length / size / quantity) =====
+  const st = { color:null, length:null, size:null, qty:1 };
+  function strapAvailable(){ return !st.color || st.color.imgs.length > 0; }
+  function showStrapMain(src, available){
+    const wrap = document.getElementById('pdMainImgWrap');
+    wrap.innerHTML = availabilityHtml({available}) + `<img src="${src}" alt="${p.name.en}" style="${available?'':'opacity:.35;'}">`;
+  }
+  function updatePrice(){
+    document.getElementById('pdPrice').textContent = st.qty > 1
+      ? `${fmtPrice(p.price * st.qty)}  (${st.qty} × ${fmtPrice(p.price)})` : fmtPrice(p.price);
+  }
+  function renderStrap(){
+    const box = document.getElementById('strapOpts');
+    if(!box) return;
+    const colorTxt = st.color ? (st.color.imgs.length ? st.color.he : `${st.color.he} — <span class="na">לא זמין</span>`) : 'לא נבחר';
+    box.innerHTML = `
+      <div class="st-row">
+        <div class="st-label"><b>צבע:</b> <span>${colorTxt}</span></div>
+        <div class="st-swatches">${p.colors.map(c => `
+          <button type="button" class="st-sw ${st.color&&st.color.id===c.id?'active':''} ${c.imgs.length?'':'na'}" title="${c.he}${c.imgs.length?'':' — לא זמין'}" aria-label="${c.he}" onclick="pickStrapColor('${c.id}')"><i style="background:${c.hex}"></i></button>`).join('')}
+        </div>
+      </div>
+      <div class="st-row">
+        <div class="st-label"><b>אורך:</b> <span>${st.length ? st.length.he : 'לא נבחר'}</span></div>
+        <div class="st-chips">${p.lengths.map(l => `<button type="button" class="st-chip ${st.length&&st.length.id===l.id?'active':''}" onclick="pickStrapLength('${l.id}')">${l.he}</button>`).join('')}</div>
+      </div>
+      <div class="st-row">
+        <div class="st-label"><b>מידה:</b> <span>${st.size ? st.size + ' מ״מ' : 'לא נבחרה'}</span></div>
+        <div class="st-chips">${p.sizes.map(n => `<button type="button" class="st-chip ${st.size===n?'active':''}" onclick="pickStrapSize(${n})">${n}mm</button>`).join('')}</div>
+      </div>
+      <div class="st-row">
+        <div class="st-label"><b>כמות:</b></div>
+        <div class="st-qty"><button type="button" aria-label="פחות" onclick="changeStrapQty(-1)">–</button><span>${st.qty}</span><button type="button" aria-label="עוד" onclick="changeStrapQty(1)">+</button></div>
+      </div>
+      <div class="st-warn" id="stWarn"></div>`;
+    updatePrice();
+  }
+  window.pickStrapColor = function(id){
+    st.color = p.colors.find(c => c.id === id);
+    if(st.color.imgs.length){
+      catalogImgs = st.color.imgs;
+      if(getProductPhotos(p.id).length === 0) showStrapMain(catalogImgs[0], true);
+      renderThumbs();
+    } else {
+      const cur = document.querySelector('#pdMainImgWrap img');
+      showStrapMain(cur ? cur.getAttribute('src') : p.img, false);
+    }
+    renderStrap();
+  };
+  window.pickStrapLength = function(id){ st.length = p.lengths.find(l => l.id === id); renderStrap(); };
+  window.pickStrapSize = function(n){ st.size = n; renderStrap(); };
+  window.changeStrapQty = function(d){ st.qty = Math.max(1, Math.min(20, st.qty + d)); renderStrap(); };
+  window.strapBuy = function(){
+    const missing = [];
+    if(!st.color) missing.push('צבע');
+    if(!st.length) missing.push('אורך');
+    if(!st.size) missing.push('מידה');
+    const warn = document.getElementById('stWarn');
+    if(missing.length){ warn.textContent = 'יש לבחור: ' + missing.join(', '); return; }
+    if(!strapAvailable()){ warn.textContent = 'הצבע שנבחר לא זמין כרגע, יש לבחור צבע אחר.'; return; }
+    warn.textContent = '';
+    buyNow(`${p.name.he} - ${st.color.he}, ${st.length.he}, ${st.size} מ״מ, כמות ${st.qty}`, p.price * st.qty);
+  };
+  if(p.strap) renderStrap();
 </script>
 </body>
 </html>
