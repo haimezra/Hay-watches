@@ -24,7 +24,6 @@ section{ padding: 128px 0 !important; }
 .topbar{ display:none !important; }
 
 /* ---- header: slim, quiet, more breathing room between logo and links ---- */
-header{ padding-block: 14px !important; }
 .mainnav{ gap: 40px !important; }
 .logo{ letter-spacing: .18em !important; font-weight:400 !important; }
 
