@@ -69,3 +69,145 @@ section{ padding: 128px 0 !important; }
 /* ---- category tiles: calmer imagery, no oversaturation ---- */
 .cat img{ filter:brightness(.85) saturate(.9); }
 .cat h3{ font-weight:300 !important; letter-spacing:.05em !important; }
+
+
+/* ============================================================
+   Polish pass: consistent corners, spacing rhythm, quieter buttons.
+   Same palette (bg #0A0A10, card #171320, purple #9B6EF3, pearl).
+   ============================================================ */
+:root{
+  --r-card: 8px;
+  --r-btn: 6px;
+  --gap-grid: 14px;
+  --hair: rgba(255,255,255,.09);
+  --purple-line: rgba(155,110,243,.45);
+}
+@media (min-width:881px){ :root{ --gap-grid: 22px; } }
+
+/* ---- section rhythm: tighter on phones, calm on desktop ---- */
+section{ padding: 96px 0 !important; }
+@media (max-width:880px){ section{ padding: 60px 0 !important; } }
+.section-head{ margin-bottom: 44px !important; }
+@media (max-width:880px){ .section-head{ margin-bottom: 32px !important; } }
+#catalog{ padding-top: 56px !important; }
+@media (max-width:880px){ #catalog{ padding-top: 36px !important; padding-bottom: 44px !important; } }
+
+/* ---- category tiles: the grid gap now shows the site background, not a lighter grey ---- */
+.cat-grid{
+  background: transparent !important;
+  gap: var(--gap-grid) !important;
+  padding-inline: var(--gap-grid);
+}
+.cat{
+  min-height: 0 !important;
+  aspect-ratio: 4 / 5;
+  padding: 26px !important;
+  border-radius: var(--r-card) !important;
+  border: 1px solid var(--hair);
+  background: #0F0D16 !important;
+  isolation: isolate;
+}
+@media (max-width:880px){
+  .cat{ aspect-ratio: 3 / 4; padding: 18px !important; }
+}
+.cat::before{
+  background: linear-gradient(180deg, transparent 42%, rgba(10,10,16,.88) 100%) !important;
+}
+.cat h3{
+  font-size: clamp(1.05rem, .95rem + .5vw, 1.3rem) !important;
+  line-height: 1.35;
+  text-shadow: 0 1px 12px rgba(10,10,16,.9);
+}
+.cat .cat-bg-video, .cat img{ border-radius: inherit; }
+/* the sticky "hover arrow" that stays on after a tap on phones */
+@media (hover:none){ .cat h3::after{ display:none !important; } }
+
+/* ---- product cards ---- */
+.prod-grid{ gap: var(--gap-grid) !important; }
+.prod-card{
+  background: #0F0D16 !important;
+  border: 1px solid var(--hair) !important;
+  border-radius: var(--r-card) !important;
+  overflow: hidden;
+}
+.prod-img{ border-bottom: 1px solid var(--hair) !important; }
+.prod-body{ padding: 18px 18px 8px !important; }
+@media (max-width:640px){ .prod-body{ padding: 14px 12px 6px !important; } }
+.prod-body h4{ font-size: .98rem !important; line-height: 1.45; }
+
+/* action buttons live at the bottom of the card, evenly spaced */
+.prod-card > .add-cart{ width: calc(100% - 36px); margin-inline: 18px; }
+@media (max-width:640px){ .prod-card > .add-cart{ width: calc(100% - 24px); margin-inline: 12px; } }
+.prod-card > .add-cart:last-child{ margin-bottom: 18px; }
+@media (max-width:640px){ .prod-card > .add-cart:last-child{ margin-bottom: 14px; } }
+
+/* ---- buttons: quiet, thin, evenly weighted ---- */
+.add-cart, .add-cart.buy-now{
+  border-radius: var(--r-btn) !important;
+  padding: 11px 14px !important;
+  font-size: .82rem !important;
+  font-weight: 400 !important;
+  letter-spacing: .06em !important;
+  line-height: 1.2;
+  box-shadow: none !important;
+  transition: background .3s ease, border-color .3s ease, color .3s ease !important;
+}
+/* secondary: add to cart, hairline only */
+.add-cart{
+  background: transparent !important;
+  border: 1px solid rgba(255,255,255,.14) !important;
+  color: rgba(243,240,250,.78) !important;
+}
+.add-cart:hover{ border-color: rgba(255,255,255,.3) !important; color: var(--pearl) !important; background: rgba(255,255,255,.03) !important; }
+/* primary: buy now, thin purple outline with a soft tint (was a solid block) */
+.add-cart.buy-now{
+  background: rgba(155,110,243,.10) !important;
+  border: 1px solid var(--purple-line) !important;
+  color: #E6DCFB !important;
+  margin-top: 8px;
+}
+.add-cart.buy-now:hover{
+  background: rgba(155,110,243,.20) !important;
+  border-color: rgba(155,110,243,.8) !important;
+  color: #fff !important;
+}
+.add-cart[disabled]{ opacity: .4 !important; }
+
+/* ---- availability badge: small, quiet, glass ---- */
+.avail-badge{
+  top: 10px !important;
+  inset-inline-end: 10px !important;
+  padding: 3px 9px !important;
+  border-radius: 4px !important;
+  background: rgba(10,10,16,.6) !important;
+  border: 1px solid rgba(255,255,255,.1);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  color: rgba(243,240,250,.85) !important;
+  font-size: .62rem !important;
+  letter-spacing: .06em !important;
+  text-shadow: none !important;
+}
+.avail-badge.unavailable{ color: rgba(243,240,250,.6) !important; }
+
+/* ---- other cards share the same corners ---- */
+.mag-card, .style-card, .art-dialog, .pd-policy{ border-radius: var(--r-card) !important; }
+.pd-img, .pd-thumb{ border-radius: var(--r-card) !important; overflow: hidden; }
+.st-chip, .st-qty{ border-radius: var(--r-btn) !important; }
+.btn.solid{ border-radius: var(--r-btn) !important; }
+
+/* ---- form fields ---- */
+input[type=text], input[type=email], input[type=tel], textarea, select{ border-radius: var(--r-btn); }
+
+/* ---- newsletter fields: same quiet style as the product buttons ---- */
+.cat-newsletter, .newsletter{ border-radius: var(--r-btn) !important; overflow: hidden; border: 1px solid var(--hair) !important; }
+.cat-newsletter button, .newsletter button{
+  background: rgba(155,110,243,.14) !important;
+  color: #E6DCFB !important;
+  border: none !important;
+  border-inline-start: 1px solid var(--purple-line) !important;
+  font-weight: 400 !important;
+  letter-spacing: .06em !important;
+  border-radius: 0 !important;
+}
+.cat-newsletter button:hover, .newsletter button:hover{ background: rgba(155,110,243,.26) !important; }
+.cat-notice{ border-radius: var(--r-card) !important; }
