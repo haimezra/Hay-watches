@@ -92,8 +92,8 @@ const PRODUCTS = [
   { id:"strap-1", cat:"straps", strap:true, name:{he:"רצועת עור פרימיום לשעון", en:"Premium Leather Watch Strap"}, price:120, cond:"new",
     img:"images/products/strap-black-1.webp",
     imgs:["images/products/strap-black-1.webp","images/products/strap-black-2.webp","images/products/strap-gray-1.webp","images/products/strap-brown-1.webp","images/products/strap-brown-2.webp","images/products/strap-cognac-1.webp","images/products/strap-cognac-2.webp","images/products/strap-slate-1.webp","images/products/strap-slate-2.webp","images/products/strap-rust-1.webp"],
-    dHe:"רצועת עור עם תפרים תואמי צבע · אבזם פלדה מוברשת · 7 חורי כוונון · שתי לולאות החזקה · זמינה ב-3 אורכים ובמידות 18–24 מ״מ",
-    dEn:"Leather strap with matching stitching · Brushed steel buckle · 7 adjustment holes · Two keeper loops · 3 lengths, 18–24mm widths",
+    dHe:"עור פרימיום עגל טבעי · תפרים תואמי צבע · אבזם פלדה מוברשת · 7 חורי כוונון · שתי לולאות החזקה · זמינה ב-3 אורכים ובמידות 18–24 מ״מ",
+    dEn:"Premium natural calfskin leather · Matching stitching · Brushed steel buckle · 7 adjustment holes · Two keeper loops · 3 lengths, 18–24mm widths",
     colors:[
       { id:"black",  he:"שחור",      hex:"#000000", imgs:["images/products/strap-black-1.webp","images/products/strap-black-2.webp"] },
       { id:"gray",   he:"אפור",      hex:"#898884", imgs:["images/products/strap-gray-1.webp"] },
@@ -108,8 +108,8 @@ const PRODUCTS = [
     sizes:[18,19,20,21,22,24] },
   { id:"strap-2", cat:"straps", strap:true, name:{he:"רצועת עור וינטג׳", en:"Vintage Leather Watch Strap"}, price:80, cond:"new",
     img:"images/products/strap-vintage-brown.webp", imgs:["images/products/strap-vintage-brown.webp","images/products/strap-vintage-black.webp","images/products/strap-vintage-beige.webp"],
-    dHe:"עברה בקרת איכות אצלנו · עור בסגנון וינטג׳ עם תפרים לבנים בולטים · אבזם פלדה מבריק · 7 חורי כוונון · לולאת החזקה · זמינה ב-3 אורכים ובמידות 18–24 מ״מ",
-    dEn:"Passed our quality check · Vintage-style leather with contrast white stitching · Polished steel buckle · 7 adjustment holes · Keeper loop · 3 lengths, 18–24mm widths",
+    dHe:"עור פרימיום עגל טבעי · עברה בקרת איכות אצלנו · עור בסגנון וינטג׳ עם תפרים לבנים בולטים · אבזם פלדה מבריק · 7 חורי כוונון · לולאת החזקה · זמינה ב-3 אורכים ובמידות 18–24 מ״מ",
+    dEn:"Premium natural calfskin leather · Passed our quality check · Vintage-style leather with contrast white stitching · Polished steel buckle · 7 adjustment holes · Keeper loop · 3 lengths, 18–24mm widths",
     colors:[
       { id:"black", he:"שחור", hex:"#000000", imgs:["images/products/strap-vintage-black.webp"] },
       { id:"brown", he:"חום",  hex:"#5b3a2f", imgs:["images/products/strap-vintage-brown.webp"] },
