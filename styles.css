@@ -239,3 +239,12 @@
   .pd-add-tile span{font-size:.55rem; letter-spacing:.02em;}
   .pd-add-tile:hover{border-color:var(--gold); color:var(--gold-light);}
   .pd-photo-note{font-size:.72rem; color:var(--mute); margin-top:8px; line-height:1.6;}
+
+/* ===== Image protection: block drag, selection and iOS long-press save menu ===== */
+img, video{
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}

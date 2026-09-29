@@ -169,11 +169,6 @@
     <div>
       <div class="pd-img" id="pdMainImgWrap">${productImgHtml(p)}</div>
       <div class="pd-thumbs" id="pdThumbs"></div>
-      <input type="file" id="pdFileInput" accept="image/*" multiple style="display:none;">
-      <p class="pd-photo-note">
-        <span class="he-txt">💡 לחצו על "הוסף" כדי להעלות תמונות מהמכשיר שלכם למוצר זה.</span>
-        <span class="en-txt">💡 Click "Add" to upload photos from your device for this product.</span>
-      </p>
     </div>
     <div class="pd-info">
       <span class="badge ${p.cond==='used'?'used':''}" style="position:static; display:inline-block; margin-bottom:14px;">
@@ -189,7 +184,7 @@
       ${p.strap ? '<div id="strapOpts"></div>' : ''}
       <div class="pd-actions">
         <button class="add-cart"><span class="he-txt">הוסף לעגלה</span><span class="en-txt">Add to Cart</span></button>
-        <button class="add-cart buy-now" id="pdBuyNow" style="background:var(--gold); color:#0D0D0D; border-color:var(--gold);" onclick="${p.strap ? 'strapBuy()' : `buyNow('${p.name.he.replace(/'/g,"")}', ${p.price})`}"><span class="he-txt">קנה עכשיו</span><span class="en-txt">Buy Now</span></button>
+        <button class="add-cart buy-now" id="pdBuyNow" style="background:var(--gold); color:#0D0D0D; border-color:var(--gold);" onclick="${p.strap ? 'strapBuy()' : `buyNow('${p.id}')`}"><span class="he-txt">קנה עכשיו</span><span class="en-txt">Buy Now</span></button>
       </div>
       <div class="pd-facts">
         <div><b><span class="he-txt">מצב: </span><span class="en-txt">Condition: </span></b><span class="he-txt">${p.cond==='used'?'יד שנייה, נבדק ומאומת':'חדש, אריזה סגורה'}</span><span class="en-txt">${p.cond==='used'?'Pre-owned, inspected & authenticated':'New, sealed packaging'}</span></div>
@@ -227,26 +222,13 @@
   let catalogImgs = p.imgs && p.imgs.length ? p.imgs : (p.img ? [p.img] : []);
 
   function renderThumbs(){
-    const local = getProductPhotos(p.id);
     const thumbsEl = document.getElementById('pdThumbs');
     let html = '';
-    if(local.length === 0){
-      catalogImgs.forEach((src, i)=>{
-        html += `<div class="pd-thumb ${i===0?'active':''}" onclick="setMainCatalogPhoto(${i}, this)">
-                   <img src="${src}" alt="">
-                 </div>`;
-      });
-    } else {
-      local.forEach((src, i)=>{
-        html += `<div class="pd-thumb ${i===0?'active':''}" onclick="setMainPhoto(${i})">
-                   <img src="${src}" alt="">
-                   <button class="rm-btn" onclick="event.stopPropagation(); removePhoto(${i})">×</button>
-                 </div>`;
-      });
-    }
-    html += `<div class="pd-add-tile" onclick="document.getElementById('pdFileInput').click()">
-               <span>📷</span><span class="he-txt">הוסף</span><span class="en-txt">Add</span>
-             </div>`;
+    catalogImgs.forEach((src, i)=>{
+      html += `<div class="pd-thumb ${i===0?'active':''}" onclick="setMainCatalogPhoto(${i}, this)">
+                 <img src="${src}" alt="" draggable="false">
+               </div>`;
+    });
     thumbsEl.innerHTML = html;
   }
 
@@ -261,37 +243,6 @@
     document.getElementById('pdMainImgWrap').innerHTML = productImgHtml(p);
     renderThumbs();
   }
-
-  window.setMainPhoto = function(index){
-    const local = getProductPhotos(p.id);
-    if(index > 0){
-      const [chosen] = local.splice(index, 1);
-      local.unshift(chosen);
-      saveProductPhotos(p.id, local);
-    }
-    refreshMainImg();
-  };
-
-  window.removePhoto = function(index){
-    if(!confirm('למחוק את התמונה?')) return;
-    deleteProductPhoto(p.id, index);
-    refreshMainImg();
-  };
-
-  document.getElementById('pdFileInput').addEventListener('change', async (e) => {
-    const files = Array.from(e.target.files || []);
-    if(files.length === 0) return;
-    const existing = getProductPhotos(p.id);
-    for(const file of files){
-      try{
-        const dataUrl = await resizeImageFile(file, 1000, 0.82);
-        existing.push(dataUrl);
-      }catch(err){ console.error('Image resize failed', err); }
-    }
-    saveProductPhotos(p.id, existing);
-    e.target.value = '';
-    refreshMainImg();
-  });
 
   renderThumbs();
 
@@ -338,7 +289,7 @@
     st.color = p.colors.find(c => c.id === id);
     if(st.color.imgs.length){
       catalogImgs = st.color.imgs;
-      if(getProductPhotos(p.id).length === 0) showStrapMain(catalogImgs[0], true);
+      showStrapMain(catalogImgs[0], true);
       renderThumbs();
     } else {
       const cur = document.querySelector('#pdMainImgWrap img');
@@ -358,7 +309,7 @@
     if(missing.length){ warn.textContent = 'יש לבחור: ' + missing.join(', '); return; }
     if(!strapAvailable()){ warn.textContent = 'הצבע שנבחר לא זמין כרגע, יש לבחור צבע אחר.'; return; }
     warn.textContent = '';
-    buyNow(`${p.name.he}, ${st.color.he}, ${st.length.he}, ${st.size} מ״מ, כמות ${st.qty}`, p.price * st.qty);
+    buyNow(p.id, { color: st.color.id, length: st.length.id, size: st.size, qty: st.qty });
   };
   if(p.strap) renderStrap();
 </script>
