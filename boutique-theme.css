@@ -20,8 +20,11 @@ section{ padding: 128px 0 !important; }
 .section-head h2{ font-size: clamp(1.7rem,3.2vw,2.4rem) !important; }
 .section-head p{ font-weight:300 !important; }
 
-/* ---- header: quieter, more breathing room ---- */
-header{ padding-block: 22px !important; }
+/* ---- top contact/shipping strip: removed, keeps only the main header ---- */
+.topbar{ display:none !important; }
+
+/* ---- header: slim, quiet, more breathing room between logo and links ---- */
+header{ padding-block: 14px !important; }
 .mainnav{ gap: 40px !important; }
 .logo{ letter-spacing: .18em !important; font-weight:400 !important; }
 
