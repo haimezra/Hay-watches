@@ -18,8 +18,12 @@
   .cat-notice-txt b{ color:var(--gold-light); font-weight:600; }
   #productsSection.notice-active{ padding-top:26px !important; }
   @media(max-width:880px){ #productsSection.notice-active{ padding-top:18px !important; } }
-  .cat-notice-join{ display:block; width:max-content; margin:14px auto 24px; padding:10px 26px; border:1px solid var(--gold-light); border-radius:999px; background:transparent; color:var(--gold-light); font:inherit; font-size:.85rem; cursor:pointer; }
-  .cat-notice-join:hover{ background:rgba(155,127,199,.12); }
+  .cat-newsletter-wrap{ text-align:center; }
+  .cat-newsletter{ display:inline-flex; margin:14px auto 24px; border:1px solid var(--line); }
+  .cat-newsletter input{ width:220px; min-width:0; background:transparent; border:none; padding:12px 14px; color:var(--pearl); font-size:.85rem; font-family:inherit; }
+  .cat-newsletter input:focus{ outline:none; }
+  .cat-newsletter button{ background:var(--gold); border:none; padding:0 18px; color:#0D0D0D; font-size:.8rem; cursor:pointer; letter-spacing:.03em; white-space:nowrap; }
+  .cat-newsletter-msg{ text-align:center; color:var(--gold-light); font-size:.85rem; margin:0 0 24px; display:none; }
   .cat-breadcrumb{ position:relative; z-index:2; padding:14px 0 0 !important; text-align:start; }
 </style>
 <link rel="stylesheet" href="boutique-theme.css?v=202609290537">
@@ -162,10 +166,17 @@
       <div class="cat-notice">
         <div class="cat-notice-txt"><b>שווה לעקוב</b> · מלאי מתחדש משבוע לשבוע</div>
       </div>
-      <button type="button" class="cat-notice-join" id="joinNewsletterBtn"><span class="he-txt">הרשמה לניוזלטר</span><span class="en-txt">Join the Newsletter</span></button>`;
-    document.getElementById('joinNewsletterBtn').addEventListener('click', function(){
-      const form = document.querySelector('.newsletter');
-      if(form){ form.scrollIntoView({behavior:'smooth', block:'center'}); const inp = form.querySelector('input[type="email"]'); if(inp) setTimeout(()=>inp.focus(), 400); }
+      <div class="cat-newsletter-wrap">
+        <form class="cat-newsletter" id="catNewsletterForm">
+          <input type="email" id="catNewsletterEmail" placeholder="האימייל שלך" required>
+          <button type="submit"><span class="he-txt">הרשמה</span><span class="en-txt">Join</span></button>
+        </form>
+        <p class="cat-newsletter-msg" id="catNewsletterMsg">נרשמת בהצלחה, תודה!</p>
+      </div>`;
+    document.getElementById('catNewsletterForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      this.style.display = 'none';
+      document.getElementById('catNewsletterMsg').style.display = 'block';
     });
   }
 
