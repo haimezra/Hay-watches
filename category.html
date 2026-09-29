@@ -16,6 +16,10 @@
   .cat-notice{ display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; margin:0 0 24px; padding:14px 18px; border:1px solid var(--line); border-radius:10px; background:var(--card); }
   .cat-notice-txt{ color:var(--pearl); font-size:.98rem; }
   .cat-notice-txt b{ color:var(--gold-light); font-weight:600; }
+  #productsSection.notice-active{ padding-top:26px !important; }
+  @media(max-width:880px){ #productsSection.notice-active{ padding-top:18px !important; } }
+  .cat-notice-join{ display:block; width:max-content; margin:14px auto 24px; padding:10px 26px; border:1px solid var(--gold-light); border-radius:999px; background:transparent; color:var(--gold-light); font:inherit; font-size:.85rem; cursor:pointer; }
+  .cat-notice-join:hover{ background:rgba(155,127,199,.12); }
   .cat-breadcrumb{ position:relative; z-index:2; padding:14px 0 0 !important; text-align:start; }
 </style>
 <link rel="stylesheet" href="boutique-theme.css?v=202609290537">
@@ -80,7 +84,7 @@
 </section>
 
 <!-- Products -->
-<section>
+<section id="productsSection">
   <div class="wrap">
     <div id="catNotice"></div>
     <div class="prod-grid" id="prodGrid"></div>
@@ -153,10 +157,16 @@
   const prodGrid = document.getElementById('prodGrid');
 
   if(catKey === 'women'){
+    document.getElementById('productsSection').classList.add('notice-active');
     document.getElementById('catNotice').innerHTML = `
       <div class="cat-notice">
         <div class="cat-notice-txt"><b>שווה לעקוב</b> · מלאי מתחדש משבוע לשבוע</div>
-      </div>`;
+      </div>
+      <button type="button" class="cat-notice-join" id="joinNewsletterBtn"><span class="he-txt">הרשמה לניוזלטר</span><span class="en-txt">Join the Newsletter</span></button>`;
+    document.getElementById('joinNewsletterBtn').addEventListener('click', function(){
+      const form = document.querySelector('.newsletter');
+      if(form){ form.scrollIntoView({behavior:'smooth', block:'center'}); const inp = form.querySelector('input[type="email"]'); if(inp) setTimeout(()=>inp.focus(), 400); }
+    });
   }
 
   if(items.length === 0){
