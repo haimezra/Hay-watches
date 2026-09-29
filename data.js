@@ -55,6 +55,11 @@ const PRODUCTS = [
     dHe:"יד שנייה · New Old Stock, שעון שלא נענד · משנת 1982 · תנועת קוורץ · פאזת ירח ותצוגת חודשים · Swiss Made · מארז בגוון זהב · רצועת עור חומה",
     dEn:"Pre-owned · New Old Stock, unworn · 1982 · Quartz movement · Moon phase and month display · Swiss Made · Gold-tone case · Brown leather strap" },
 
+  { id:"men-16", sold:true, cat:"men", brand:"Cartier", name:{he:"Cartier Santos-Dumont, Large Model", en:"Cartier Santos-Dumont, Large Model"}, price:17000, cond:"used",
+    img:"images/products/men-16-1.webp", imgs:["images/products/men-16-1.webp"],
+    dHe:"יד שנייה · דגם Santos-Dumont, מארז Large Model · מארז פלדה מוברשת מרובע · לוח כסוף עם ספרות רומיות · כתר עם אבן ספיר · רצועת עור תנין כחולה",
+    dEn:"Pre-owned · Santos-Dumont model, Large Model case · Brushed steel square case · Silver dial with Roman numerals · Sapphire-set crown · Blue alligator leather strap" },
+
   // ---- Women's Watches ----
   { id:"women-1", cat:"women", brand:"Tissot", featured:true, name:{he:"Tissot בליסימה סמול ליידי", en:"Tissot Bellissima Small Lady"}, price:1200, cond:"used",
     img:"images/products/women-1-1.webp",
