@@ -88,9 +88,15 @@ const PRODUCTS = [
     dHe:"יד שנייה · דגם 1567 Santos Galbée · פלדה וזהב · תנועת קוורץ · קוטר 24 מ״מ · משנת 2012 · לוח לבן עם ספרות רומיות · כתר עם אבן כחולה · מגיע עם קופסה ותעודות · אחריות 6 חודשים",
     dEn:"Pre-owned · Model 1567 Santos Galbée · Steel & gold · Quartz movement · 24mm · 2012 · White dial with Roman numerals · Blue cabochon crown · Box and papers included · 6-month warranty" },
 
-  { id:"women-7", available:true, cat:"women", brand:"Cartier", name:{he:"Cartier Tank Must", en:"Cartier Tank Must"}, price:13500, cond:"used",
+  { id:"women-7", available:true, cat:"women", brand:"Cartier", name:{he:"Cartier Santos", en:"Cartier Santos"}, price:13500, cond:"used",
     img:"images/products/women-7-1.webp",
-    imgs:["images/products/women-7-1.webp","images/products/women-7-2.webp"],
+    imgs:["images/products/women-7-1.webp"],
+    dHe:"יד שנייה · דגם Santos · מארז פלדה · לוח לבן עם ספרות רומיות ומחוגים כחולים · כתר עם אבן כחולה · רצועת עור שחורה",
+    dEn:"Pre-owned · Santos model · Steel case · White dial with Roman numerals and blue hands · Blue cabochon crown · Black leather strap" },
+
+  { id:"women-8", available:true, cat:"women", brand:"Cartier", name:{he:"Cartier Tank", en:"Cartier Tank"}, price:13500, cond:"used",
+    img:"images/products/women-7-2.webp",
+    imgs:["images/products/women-7-2.webp"],
     dHe:"יד שנייה · דגם Tank, מארז מלבני קלאסי · מארז פלדה · לוח לבן עם ספרות רומיות ומחוגים כחולים · כתר עם אבן כחולה · רצועת עור שחורה · עיצוב קלאסי ונצחי משנת 1917",
     dEn:"Pre-owned · Tank model, classic rectangular case · Steel case · White dial with Roman numerals and blue hands · Blue cabochon crown · Black leather strap · A timeless design dating back to 1917" },
 
