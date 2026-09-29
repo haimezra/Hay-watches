@@ -170,15 +170,29 @@ function productImgHtml(p){
 }
 
 // ===== סליקת HYPAY (יאד) =====
-// TODO: להחליף כאן את מספר המסוף (Masof) שיתקבל מחברת הסליקה.
-const HYP_MASOF = "YOUR_MASOF_NUMBER";
-
-function buyNow(name, priceILS){
-  if(HYP_MASOF === "YOUR_MASOF_NUMBER"){
-    alert('עוד לא הוגדר מספר מסוף לסליקה. יש להחליף את HYP_MASOF בקובץ data.js עם המספר שתקבל מחברת הסליקה.');
-    return;
+// הלקוח שולח לשרת רק מזהה מוצר ואפשרויות. המחיר, שם המוצר וחתימת התשלום נקבעים בשרת (api/checkout.js),
+// כך שאי אפשר לשנות מחיר מהדפדפן.
+let _buying = false;
+async function buyNow(productId, opts){
+  if(_buying) return;
+  _buying = true;
+  try{
+    const r = await fetch('/api/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: String(productId), opts: opts || {} })
+    });
+    const data = await r.json().catch(() => ({}));
+    if(r.ok && data.ok && typeof data.url === 'string' && data.url.indexOf('https://icom.yaad.net/') === 0){
+      window.location.href = data.url;
+      return;
+    }
+    if(data.error === 'payment_not_configured') alert('התשלום באתר עדיין לא הופעל. אפשר ליצור קשר בטלפון או בוואטסאפ להשלמת הרכישה.');
+    else if(data.error === 'not_available') alert('המוצר הזה כבר לא זמין לרכישה.');
+    else alert('אירעה שגיאה בפתיחת עמוד התשלום. נסו שוב או צרו קשר.');
+  }catch(e){
+    alert('אירעה שגיאה בחיבור. נסו שוב בעוד רגע.');
+  }finally{
+    _buying = false;
   }
-  const amount = String(priceILS).replace(/[^\d.]/g,'');
-  const url = `https://icom.yaad.net/p/?action=pay&Masof=${HYP_MASOF}&Amount=${amount}&Info=${encodeURIComponent(name)}&UTF8=True&UTF8out=True`;
-  window.location.href = url;
 }
