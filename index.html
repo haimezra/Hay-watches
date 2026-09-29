@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Assistant:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Rubik:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=202609290103">
+<link rel="stylesheet" href="styles.css?v=202609290532">
 <style>
   /* =====================================================================
      HAY WATCHES — Luxury dark re-skin (purple accent), same structure
@@ -199,6 +199,7 @@
   .cat-video:hover .cat-bg-video{ transform:scale(1.045); }
   @media (prefers-reduced-motion: reduce){ .cat-video .cat-bg-video{ display:none; } .cat-video{ background-image:url("assets/accessories-tile-poster.jpg"); background-size:cover; background-position:center; } }
 </style>
+<link rel="stylesheet" href="boutique-theme.css?v=202609290532">
 </head>
 <body>
 
@@ -395,8 +396,8 @@
   </div>
 </footer>
 
-<script src="data.js?v=202609290103"></script>
-<script src="main.js?v=202609290103"></script>
+<script src="data.js?v=202609290532"></script>
+<script src="main.js?v=202609290532"></script>
 <script>
   // Homepage shows the curated "featured" products from the shared catalog (data.js)
   const prodGrid = document.getElementById('prodGrid');
@@ -409,6 +410,7 @@
               <span class="he-txt">${p.cond==='used'?'יד שנייה':'חדש'}</span><span class="en-txt">${p.cond==='used'?'Pre-Owned':'New'}</span>
             </span>
             ${productImgHtml(p)}
+            <span class="view-details"><span class="he-txt">לצפייה בפרטים</span><span class="en-txt">View Details</span></span>
           </div>
           <div class="prod-body">
             <h4><span class="he-txt">${p.name.he}</span><span class="en-txt">${p.name.en}</span></h4>

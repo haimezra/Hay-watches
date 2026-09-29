@@ -1,0 +1,69 @@
+/* ============================================================
+   HAY WATCHES — Boutique Theme Layer
+   אותה פלטת צבעים בדיוק (bg #0A0A10, card #131019, pearl #F3F0FA, purple #9B6EF3).
+   משנה רק ריווח, טיפוגרפיה והתנהגות hover. לא נוגע בטקסט הקיים.
+   טוען אחרי styles.css והעיצוב המוטבע בכל דף, ולכן דורס אותם.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap');
+
+h1,h2,h3,h4{
+  font-family:'Playfair Display', 'Rubik', serif !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+}
+
+/* ---- generous whitespace ---- */
+section{ padding: 128px 0 !important; }
+@media (max-width:880px){ section{ padding: 88px 0 !important; } }
+.section-head{ margin-bottom: 72px !important; }
+.section-head h2{ font-size: clamp(1.7rem,3.2vw,2.4rem) !important; }
+.section-head p{ font-weight:300 !important; }
+
+/* ---- header: quieter, more breathing room ---- */
+header{ padding-block: 22px !important; }
+.mainnav{ gap: 40px !important; }
+.logo{ letter-spacing: .18em !important; font-weight:400 !important; }
+
+/* ---- hero: smaller, calmer headline; subtle outline button. Video/poster untouched. ---- */
+.hero h1, .hero .eyebrow{ letter-spacing: .02em !important; }
+.hero p{ font-weight:300 !important; max-width:520px; margin-inline:auto; }
+.btn.solid{
+  background: transparent !important;
+  border: 1px solid rgba(155,110,243,.5) !important;
+  box-shadow:none !important;
+  border-radius:0 !important;
+  letter-spacing:.14em !important;
+  font-weight:300 !important;
+}
+.btn.solid:hover{ background: rgba(155,110,243,.12) !important; border-color:var(--purple) !important; }
+
+/* ---- product cards: gallery-style, not a sales tile ---- */
+.prod-card{ background:transparent !important; border:none !important; border-radius:0 !important; }
+.prod-img{ background:transparent !important; border-bottom:1px solid var(--line) !important; position:relative; }
+.prod-body{ padding:20px 2px !important; }
+.prod-body h4{ font-weight:400 !important; }
+.prod-price{ font-weight:400 !important; color:var(--pearl) !important; }
+.add-cart{ border-radius:0 !important; font-weight:300 !important; letter-spacing:.06em !important; }
+
+/* quiet condition label instead of a loud pill */
+.badge{
+  background:transparent !important; border:none !important; padding:0 !important;
+  font-weight:300 !important; letter-spacing:.08em !important; font-size:.68rem !important;
+  color: var(--mute) !important;
+}
+.badge.used{ color: var(--purple) !important; }
+
+/* hover reveal: "View Details" fades in over the watch photo */
+.view-details{
+  position:absolute; inset-inline:0; bottom:14px; text-align:center;
+  font-size:.72rem; letter-spacing:.1em; color:var(--pearl);
+  opacity:0; transform:translateY(6px);
+  transition:opacity .45s var(--ease), transform .45s var(--ease);
+  pointer-events:none;
+}
+.prod-card:hover .view-details{ opacity:1; transform:translateY(0); }
+
+/* ---- category tiles: calmer imagery, no oversaturation ---- */
+.cat img{ filter:brightness(.85) saturate(.9); }
+.cat h3{ font-weight:300 !important; letter-spacing:.05em !important; }
