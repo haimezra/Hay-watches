@@ -169,7 +169,7 @@
   const items = PRODUCTS.filter(p=>p.cat===catKey);
   const prodGrid = document.getElementById('prodGrid');
 
-  if(catKey === 'women'){
+  if(catKey === 'women' || catKey === 'men'){
     document.getElementById('productsSection').classList.add('notice-active');
     document.getElementById('catNotice').innerHTML = `
       <div class="cat-notice">
@@ -182,10 +182,27 @@
         </form>
         <p class="cat-newsletter-msg" id="catNewsletterMsg">נרשמת בהצלחה, תודה!</p>
       </div>`;
-    document.getElementById('catNewsletterForm').addEventListener('submit', function(e){
+    document.getElementById('catNewsletterForm').addEventListener('submit', async function(e){
       e.preventDefault();
-      this.style.display = 'none';
-      document.getElementById('catNewsletterMsg').style.display = 'block';
+      const form = this, msg = document.getElementById('catNewsletterMsg');
+      const email = document.getElementById('catNewsletterEmail').value.trim();
+      const btn = form.querySelector('button');
+      btn.disabled = true;
+      try{
+        const r = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: 'הרשמה לניוזלטר (' + (catKey === 'men' ? 'שעוני גברים' : 'שעוני נשים') + ')', email: email, message: 'בקשה להרשמה לעדכוני מלאי: ' + email })
+        });
+        const d = await r.json().catch(() => ({}));
+        if(!r.ok || !d.ok) throw new Error('fail');
+        form.style.display = 'none';
+        msg.textContent = 'נרשמת בהצלחה, תודה!';
+      }catch(err){
+        btn.disabled = false;
+        msg.textContent = 'לא הצלחנו לשמור את ההרשמה. נסו שוב בעוד רגע.';
+      }
+      msg.style.display = 'block';
     });
   }
 
