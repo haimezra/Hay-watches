@@ -210,6 +210,12 @@
   .cat-video .cat-bg-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; opacity:.8; transition:transform 1.4s var(--lx-ease,ease); }
   .cat-video:hover .cat-bg-video{ transform:scale(1.045); }
   @media (prefers-reduced-motion: reduce){ .cat-video .cat-bg-video{ display:none; } .cat-video{ background-image:var(--tile-poster); background-size:cover; background-position:center; } }
+
+  /* header music toggle, centered */
+  .headrow{ position:relative; }
+  .music-toggle{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:30px; height:30px; display:flex; align-items:center; justify-content:center; border:1px solid var(--line); border-radius:50%; background:transparent; color:var(--pearl); cursor:pointer; }
+  .music-toggle:hover{ border-color:var(--gold-light); color:var(--gold-light); }
+  .music-toggle[aria-pressed="true"]{ border-color:var(--gold-light); color:var(--gold-light); }
 </style>
 <link rel="stylesheet" href="boutique-theme.css?v=202609290943">
 </head>
@@ -231,6 +237,11 @@
 <header>
   <div class="wrap headrow">
     <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="menu" onclick="toggleMobileMenu()">☰</button>
+    <button type="button" class="music-toggle" id="musicToggle" aria-label="נגן מוזיקה" aria-pressed="false">
+      <svg id="musicPlayIcon" viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M7 5.5v13l12-6.5-12-6.5Z"/></svg>
+      <svg id="musicStopIcon" viewBox="0 0 24 24" width="15" height="15" fill="currentColor" style="display:none"><rect x="6" y="6" width="12" height="12" rx="1.5"/></svg>
+    </button>
+    <audio id="bgMusic" src="assets/site-music.mp3" loop preload="none"></audio>
     <nav class="mainnav">
       <a href="#"><span class="he-txt">בית</span><span class="en-txt">Home</span></a>
       <a href="#catalog"><span class="he-txt">קטלוג</span><span class="en-txt">Catalog</span></a>

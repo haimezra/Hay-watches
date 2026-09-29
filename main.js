@@ -33,3 +33,25 @@ function toggleMobileMenu(){
   const open = nav.classList.toggle('open');
   if(btn) btn.textContent = open ? '✕' : '☰';
 }
+
+// ===== Header music toggle (home page only) =====
+(function(){
+  const btn = document.getElementById('musicToggle');
+  const audio = document.getElementById('bgMusic');
+  if(!btn || !audio) return;
+  const playIcon = document.getElementById('musicPlayIcon');
+  const stopIcon = document.getElementById('musicStopIcon');
+  btn.addEventListener('click', function(){
+    if(audio.paused){
+      audio.play().catch(function(){});
+      btn.setAttribute('aria-pressed','true');
+      playIcon.style.display = 'none';
+      stopIcon.style.display = '';
+    } else {
+      audio.pause();
+      btn.setAttribute('aria-pressed','false');
+      playIcon.style.display = '';
+      stopIcon.style.display = 'none';
+    }
+  });
+})();
