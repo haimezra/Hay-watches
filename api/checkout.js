@@ -13,6 +13,10 @@ const path = require('path');
 const vm = require('vm');
 const crypto = require('crypto');
 
+// Shipping policy shown on the site: free over 1,500, otherwise a flat 45.
+const FREE_SHIPPING_OVER = 1500;
+const SHIPPING_FEE = 45;
+
 let CATALOG = null;
 function catalog() {
   if (!CATALOG) {
@@ -78,7 +82,10 @@ module.exports = async (req, res) => {
     info = `${product.name.he}, ${color.he}, ${length.he}, ${size} מ״מ, כמות ${qty}`;
   }
 
-  const amount = Math.round(Number(product.price) * qty * 100) / 100; // computed here, never from the client
+  const subtotal = Math.round(Number(product.price) * qty * 100) / 100; // computed here, never from the client
+  const shipping = subtotal >= FREE_SHIPPING_OVER ? 0 : SHIPPING_FEE;
+  const amount = subtotal + shipping;
+  info = shipping ? `${info} (כולל משלוח ${SHIPPING_FEE} ש״ח)` : `${info} (משלוח חינם)`;
   if (!(amount > 0)) return res.status(500).json({ ok: false, error: 'bad_price' });
 
   const order = crypto.randomUUID().replace(/-/g, '').slice(0, 20);

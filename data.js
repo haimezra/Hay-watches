@@ -173,6 +173,19 @@ function productImgHtml(p){
 // הלקוח שולח לשרת רק מזהה מוצר ואפשרויות. המחיר, שם המוצר וחתימת התשלום נקבעים בשרת (api/checkout.js),
 // כך שאי אפשר לשנות מחיר מהדפדפן.
 let _buying = false;
+const WHATSAPP_NUMBER = "972543771767";
+
+function whatsappOrder(productId, opts){
+  const p = PRODUCTS.find(x => x.id === productId);
+  let text = 'היי, אני מעוניין/ת לרכוש: ' + (p ? p.name.he : productId);
+  if(p && p.strap && opts){
+    const c = (p.colors || []).find(x => x.id === opts.color);
+    const l = (p.lengths || []).find(x => x.id === opts.length);
+    text += [c && ', ' + c.he, l && ', ' + l.he, opts.size && ', ' + opts.size + ' מ״מ', opts.qty && ', כמות ' + opts.qty].filter(Boolean).join('');
+  }
+  window.location.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(text);
+}
+
 async function buyNow(productId, opts){
   if(_buying) return;
   _buying = true;
@@ -187,8 +200,9 @@ async function buyNow(productId, opts){
       window.location.href = data.url;
       return;
     }
-    if(data.error === 'payment_not_configured') alert('התשלום באתר עדיין לא הופעל. אפשר ליצור קשר בטלפון או בוואטסאפ להשלמת הרכישה.');
-    else if(data.error === 'not_available') alert('המוצר הזה כבר לא זמין לרכישה.');
+    // Payment not enabled yet (no terminal) or API unavailable: continue the order over WhatsApp.
+    if(data.error === 'payment_not_configured' || r.status === 404 || r.status === 503){ whatsappOrder(productId, opts); return; }
+    if(data.error === 'not_available') alert('המוצר הזה כבר לא זמין לרכישה.');
     else alert('אירעה שגיאה בפתיחת עמוד התשלום. נסו שוב או צרו קשר.');
   }catch(e){
     alert('אירעה שגיאה בחיבור. נסו שוב בעוד רגע.');
