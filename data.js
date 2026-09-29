@@ -88,6 +88,11 @@ const PRODUCTS = [
     dHe:"יד שנייה · דגם 1567 Santos Galbée · פלדה וזהב · תנועת קוורץ · קוטר 24 מ״מ · משנת 2012 · לוח לבן עם ספרות רומיות · כתר עם אבן כחולה · מגיע עם קופסה ותעודות · אחריות 6 חודשים",
     dEn:"Pre-owned · Model 1567 Santos Galbée · Steel & gold · Quartz movement · 24mm · 2012 · White dial with Roman numerals · Blue cabochon crown · Box and papers included · 6-month warranty" },
 
+  { id:"women-7", available:true, cat:"women", brand:"Cartier", name:{he:"Cartier Tank Large 2015", en:"Cartier Tank Large 2015"}, price:14000, cond:"used",
+    img:"images/products/women-7-1.webp", imgs:["images/products/women-7-1.webp"],
+    dHe:"יד שנייה · דגם Tank Large · משנת 2015 · במצב כמו חדש · מארז פלדה מלבני · לוח לבן עם ספרות רומיות ומחוגים כחולים · כתר עם אבן כחולה · רצועת עור שחורה",
+    dEn:"Pre-owned · Tank Large model · 2015 · Like-new condition · Steel rectangular case · White dial with Roman numerals and blue hands · Blue cabochon crown · Black leather strap" },
+
   // ---- Premium Straps ----
   { id:"strap-1", cat:"straps", strap:true, name:{he:"רצועת עור פרימיום לשעון", en:"Premium Leather Watch Strap"}, price:120, cond:"new",
     img:"images/products/strap-black-1.webp",
