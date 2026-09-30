@@ -142,6 +142,31 @@
       .mx-info h4{ font-size:1.05rem; }
   }
   @media (prefers-reduced-motion: reduce){ .mx-row, .mx-img img, .mx-line, .mx-more i{ transition:none !important; } }
+  /* ---- We buy / trade-in (compact) ---- */
+  #sellwatch{ padding:72px 0 !important; }
+  @media (max-width:880px){ #sellwatch{ padding:56px 0 !important; } }
+  .sw-card{ display:grid; grid-template-columns:150px 1fr; gap:34px; align-items:start; max-width:900px; margin:0 auto; padding:34px; background:var(--card2); border:1px solid var(--line); border-radius:2px; }
+  .sw-img{ width:150px; aspect-ratio:4/5; object-fit:cover; border-radius:2px; opacity:.92; display:block; }
+  .sw-card h2{ font-size:clamp(1.35rem,2.4vw,1.8rem) !important; margin:0 0 8px; color:var(--pearl); }
+  .sw-sub{ color:var(--purple); font-size:.74rem; letter-spacing:.1em; text-transform:uppercase; margin-bottom:14px; display:block; }
+  .sw-card p.sw-copy{ color:var(--mute); font-size:.95rem; line-height:1.85; margin:0 0 22px; font-weight:300; }
+  .sw-form{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .sw-form .full{ grid-column:1 / -1; }
+  .sw-form input:not([type=file]), .sw-form select{ width:100%; padding:12px 14px; background:transparent; border:1px solid var(--line); color:var(--pearl); font:inherit; font-size:.92rem; border-radius:2px; }
+  .sw-form input:focus, .sw-form select:focus{ outline:none; border-color:var(--purple); }
+  .sw-form select option{ background:#131019; color:#F3F0FA; }
+  .sw-file{ display:flex; align-items:center; gap:12px; padding:10px 14px; border:1px dashed var(--line); color:var(--mute); font-size:.88rem; cursor:pointer; border-radius:2px; transition:border-color .3s, color .3s; }
+  .sw-file:hover{ border-color:var(--purple); color:var(--pearl); }
+  .sw-file input{ display:none; }
+  .sw-form button{ justify-self:start; }
+  .sw-status{ font-size:.88rem; min-height:1.2em; color:var(--mute); }
+  .sw-status.ok{ color:#7fd4a0; } .sw-status.err{ color:#ff8f8f; }
+  .sw-hp{ position:absolute; left:-9999px; opacity:0; height:0; width:0; }
+  @media (max-width:720px){
+    .sw-card{ grid-template-columns:1fr; padding:24px 20px; gap:20px; }
+    .sw-img{ width:96px; aspect-ratio:1/1; }
+    .sw-form{ grid-template-columns:1fr; }
+  }
   .fb-strip{ background:var(--bg); text-align:center; padding:22px 0; border-bottom:1px solid var(--line); }
   .fb-follow{ display:inline-flex; align-items:center; justify-content:center; gap:9px; color:var(--mute); font-size:.9rem; text-decoration:none; transition:color .2s; }
   .fb-follow:hover{ color:var(--gold-light); }
@@ -407,6 +432,33 @@
   </div>
 </section>
 
+<!-- Sell / trade-in your watch -->
+<section id="sellwatch">
+  <div class="wrap">
+    <div class="sw-card">
+      <img class="sw-img" src="https://images.unsplash.com/photo-1434704504321-71a8bc15a685?auto=format&fit=crop&w=400&q=70" alt="" loading="lazy" width="150" height="188">
+      <div>
+        <span class="sw-sub"><span class="he-txt">רכישה וטרייד-אין</span><span class="en-txt">Buy-back &amp; Trade-in</span></span>
+        <h2><span class="he-txt">מוכרים שעון? אנחנו קונים</span><span class="en-txt">Selling a watch? We buy</span></h2>
+        <p class="sw-copy"><span class="he-txt">אנחנו רוכשים שעונים מלקוחות פרטיים, ומציעים גם טרייד-אין: שווי השעון שלכם מקוזז מול שעון מהקולקציה שלנו. שלחו תמונה ופרטים קצרים, ונחזור אליכם בהקדם עם הצעת מחיר ראשונית, ללא התחייבות.</span><span class="en-txt">We purchase watches from private customers and also offer trade-in: the value of your watch is credited toward a piece from our collection. Send a photo and a few details and we will get back to you shortly with an initial quote, no obligation.</span></p>
+        <form class="sw-form" id="swForm" novalidate>
+          <input class="sw-hp" type="text" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="text" name="name" placeholder="שם מלא / Full name" required autocomplete="name">
+          <input type="tel" name="phone" placeholder="טלפון / Phone" required autocomplete="tel" dir="ltr" style="text-align:start">
+          <select name="kind" class="full" aria-label="סוג פנייה">
+            <option value="מכירה">רוצה למכור את השעון / Sell</option>
+            <option value="טרייד-אין">רוצה טרייד-אין לשעון אחר / Trade-in</option>
+          </select>
+          <input class="full" type="text" name="watch" placeholder="מותג, דגם ושנת רכישה / Brand, model &amp; year" required>
+          <label class="sw-file full"><input type="file" name="attachment" accept="image/*"><span id="swFileName"><span class="he-txt">צירוף תמונה של השעון</span><span class="en-txt">Attach a photo of the watch</span></span></label>
+          <button type="submit" class="btn solid full"><span class="he-txt">שליחה לבדיקה</span><span class="en-txt">Send for evaluation</span></button>
+          <div class="sw-status full" id="swStatus" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Trust -->
 <section class="trust">
   <div class="wrap trust-grid">
@@ -529,6 +581,37 @@
           <span class="mx-more"><span class="he-txt">קריאה נוספת</span><span class="en-txt">Read more</span><i>&larr;</i></span>
         </span>
       </a>`).join('');
+  })();
+  /* ---- Sell / trade-in form ---- */
+  (function(){
+    const f = document.getElementById('swForm'); if(!f) return;
+    const st = document.getElementById('swStatus'), fn = document.getElementById('swFileName');
+    const file = f.querySelector('input[type=file]');
+    const say = (cls, he, en)=>{ st.className = 'sw-status full ' + cls; st.innerHTML = `<span class="he-txt">${he}</span><span class="en-txt">${en}</span>`; };
+    file.addEventListener('change', ()=>{ if(file.files[0]) fn.textContent = file.files[0].name; });
+    f.addEventListener('submit', async e=>{
+      e.preventDefault();
+      if(f.botcheck.value) return;
+      const name = f.name.value.trim(), phone = f.phone.value.trim(), watch = f.watch.value.trim();
+      if(!name || !phone || !watch){ say('err','נא למלא שם, טלפון ופרטי השעון.','Please fill in name, phone and watch details.'); return; }
+      const img = file.files[0];
+      if(img && (!/^image\//.test(img.type) || img.size > 5*1024*1024)){ say('err','נא לצרף תמונה עד 5MB.','Please attach an image up to 5MB.'); return; }
+      const btn = f.querySelector('button'); btn.disabled = true; say('', 'שולח...', 'Sending...');
+      const fd = new FormData();
+      fd.append('access_key','95b8a106-1310-471e-be43-03182c258c41');
+      fd.append('subject','שעון למכירה/טרייד-אין: ' + name);
+      fd.append('from_name','HAY Watches');
+      fd.append('name', name); fd.append('phone', phone);
+      fd.append('סוג פנייה', f.kind.value); fd.append('פרטי השעון', watch);
+      if(img) fd.append('attachment', img);
+      try{
+        const r = await fetch('https://api.web3forms.com/submit', {method:'POST', body:fd});
+        const j = await r.json();
+        if(j.success){ f.reset(); fn.innerHTML = '<span class="he-txt">צירוף תמונה של השעון</span><span class="en-txt">Attach a photo of the watch</span>'; say('ok','תודה! קיבלנו את הפרטים ונחזור אליכם בהקדם.','Thank you! We received your details and will be in touch shortly.'); }
+        else say('err','השליחה נכשלה. נסו שוב או פנו אלינו בטלפון.','Sending failed. Please try again or call us.');
+      }catch(err){ say('err','השליחה נכשלה. נסו שוב או פנו אלינו בטלפון.','Sending failed. Please try again or call us.'); }
+      btn.disabled = false;
+    });
   })();
 </script>
 <!-- Style articles (popup) -->
