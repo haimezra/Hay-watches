@@ -60,16 +60,45 @@ function toggleMobileMenu(){
 document.querySelectorAll('form.newsletter').forEach(function(form){
   const input = form.querySelector('input[type="email"]');
   const btn = form.querySelector('button[type="submit"]');
+
+  // Privacy-policy consent checkbox (required before sending)
+  const consent = document.createElement('label');
+  consent.style.cssText = 'display:flex;align-items:flex-start;gap:8px;margin-top:12px;font-size:.85rem;line-height:1.5;cursor:pointer;';
+  consent.innerHTML = '<input type="checkbox" id="nlConsent" style="margin-top:3px;flex:none;width:16px;height:16px;accent-color:#9b6ef3;cursor:pointer;">' +
+    '<span>קראתי ואני מאשר/ת את <a href="index.html#policy" target="_blank" rel="noopener" style="text-decoration:underline;">מדיניות הפרטיות</a> ומסכים/ה לקבל עדכונים למייל.</span>';
+  form.insertAdjacentElement('afterend', consent);
+  const cb = consent.querySelector('input');
+
   const note = document.createElement('div');
   note.setAttribute('role', 'status');
   note.style.cssText = 'margin-top:12px;font-size:.95rem;min-height:1.4em;display:flex;align-items:center;gap:8px;';
-  form.insertAdjacentElement('afterend', note);
+  consent.insertAdjacentElement('afterend', note);
+
+  let sending = false;
+  function sync(){
+    btn.disabled = sending || !cb.checked;
+    btn.style.opacity = btn.disabled ? '.5' : '';
+    btn.style.cursor = btn.disabled ? 'not-allowed' : '';
+  }
+  cb.addEventListener('change', function(){
+    if(cb.checked && note.dataset.kind === 'consent'){ note.textContent = ''; note.dataset.kind = ''; }
+    sync();
+  });
+  sync();
+
   const CHECK = '<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#2e9e5b;color:#fff;font-size:14px;font-weight:700;flex:none;">✓</span>';
   form.addEventListener('submit', async function(e){
     e.preventDefault();
     const email = (input.value || '').trim();
     if(!email) return;
-    btn.disabled = true;
+    if(!cb.checked){
+      note.dataset.kind = 'consent';
+      note.style.color = '#e07a7a';
+      note.textContent = 'כדי להירשם יש לאשר את מדיניות הפרטיות.';
+      return;
+    }
+    sending = true; sync();
+    note.dataset.kind = '';
     note.style.color = '';
     note.textContent = 'שולח...';
     const ctrl = new AbortController();
@@ -83,19 +112,21 @@ document.querySelectorAll('form.newsletter').forEach(function(form){
           _subject: 'הרשמה חדשה לניוזלטר VIP',
           _captcha: 'false',
           _template: 'table',
-          'אימייל': email
+          'אימייל': email,
+          'אישור מדיניות פרטיות': 'כן'
         })
       });
       if(!r.ok) throw new Error('fail');
       note.style.color = '#7fd18b';
       note.innerHTML = CHECK + '<span>תודה! הפרטים נקלטו בהצלחה.</span>';
       form.reset();
+      cb.checked = false;
     }catch(err){
       note.style.color = '#e07a7a';
       note.textContent = 'משהו השתבש. נסו שוב או כתבו לנו ל-info@haywatches.co.il';
     }finally{
       clearTimeout(timer);
-      btn.disabled = false;
+      sending = false; sync();
     }
   });
 });
