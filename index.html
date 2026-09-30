@@ -84,24 +84,26 @@
   @media (max-width: 640px){ .hero-inner{ margin-top:74px !important; } }
   /* lift logo + subtitle a bit; transform doesn't affect layout, so the button stays exactly where it is */
   .hero-logo-main{ transform: translateY(-30px); }
-  .hero p{ transform: translateY(-30px); }
-  @media (max-width: 640px){ .hero-logo-main, .hero p{ transform: translateY(-22px); } }
+  .hero p{ transform: translateY(-48px); }
+  @media (max-width: 640px){ .hero-logo-main{ transform: translateY(-22px); } .hero p{ transform: translateY(-38px); } }
   .hero::before{ content:''; display:block; width:56px; height:1px; background:var(--purple); margin:0 auto 34px; }
   .hero p{ color: var(--mute) !important; font-size:1.1rem !important; margin: 0 auto 40px !important; max-width:560px; font-weight:300 !important; }
   /* Hero subtitle: shimmering, glittering text */
   .hero p{ position:relative; }
-  .hero p .he-txt, .hero p .en-txt{
-    background:linear-gradient(110deg,#b3a9d4 0%,#d8d0ee 32%,#ffffff 46%,#ffe7a3 51%,#ffffff 56%,#d8d0ee 68%,#b3a9d4 100%);
-    background-size:260% 100%;
+  .hero p{
+    background:linear-gradient(225deg,#b3a9d4 0%,#d8d0ee 36%,#ffffff 46%,#ffe7a3 50%,#ffffff 54%,#d8d0ee 64%,#b3a9d4 100%);
+    background-size:300% 300%;
+    background-position:100% 0;
     -webkit-background-clip:text; background-clip:text;
-    -webkit-text-fill-color:transparent; color:transparent !important;
-    font-weight:400;
+    -webkit-text-fill-color:transparent;
     filter:drop-shadow(0 0 7px rgba(190,165,255,.45));
     animation:hayShimmer 9s linear infinite;
   }
-  @keyframes hayShimmer{ 0%{ background-position:160% 0; } 100%{ background-position:-100% 0; } }
+  .hero p .he-txt, .hero p .en-txt{ font-weight:400; }
+  /* the golden glint starts in the top-right corner and travels to the bottom-left */
+  @keyframes hayShimmer{ 0%{ background-position:100% 0; } 100%{ background-position:0 100%; } }
   @media (prefers-reduced-motion: reduce){
-    .hero p .he-txt, .hero p .en-txt{ animation:none; }
+    .hero p{ animation:none; }
   }
   .fb-strip{ background:var(--bg); text-align:center; padding:22px 0; border-bottom:1px solid var(--line); }
   .fb-follow{ display:inline-flex; align-items:center; justify-content:center; gap:9px; color:var(--mute); font-size:.9rem; text-decoration:none; transition:color .2s; }
