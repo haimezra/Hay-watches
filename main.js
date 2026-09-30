@@ -140,3 +140,41 @@ document.querySelectorAll('form.newsletter').forEach(function(form){
     }
   });
 });
+
+// ===== Keep the accessibility button on the same baseline as the cookie-settings button =====
+// (fixes in-app browsers such as Facebook's, where the two floating buttons drift apart)
+(function(){
+  function align(){
+    var ck = document.querySelector('.cky-btn-revisit-wrapper');
+    if(!ck) return;
+    var cr = ck.getBoundingClientRect();
+    if(!cr.width || !cr.height) return;
+    var kids = document.body.children;
+    for(var i = 0; i < kids.length; i++){
+      var el = kids[i];
+      if(el === ck || ck.contains(el) || el.contains(ck)) continue;
+      var cls = String(el.className || '');
+      if(cls.indexOf('cky') > -1) continue;
+      var cs = getComputedStyle(el);
+      if(cs.position !== 'fixed') continue;
+      var r = el.getBoundingClientRect();
+      if(r.width < 36 || r.width > 120 || r.height < 36 || r.height > 120) continue;
+      if(r.left < window.innerWidth / 2 || r.bottom < window.innerHeight / 2) continue;
+      var delta = cr.bottom - r.bottom;
+      if(Math.abs(delta) < 2) continue;
+      var b = parseFloat(cs.bottom);
+      if(isNaN(b)) continue;
+      el.style.setProperty('bottom', (b - delta) + 'px', 'important');
+      el.style.setProperty('top', 'auto', 'important');
+    }
+  }
+  var t = null;
+  function soon(){ clearTimeout(t); t = setTimeout(align, 150); }
+  window.addEventListener('load', function(){
+    var n = 0;
+    var iv = setInterval(function(){ align(); if(++n > 12) clearInterval(iv); }, 700);
+  });
+  window.addEventListener('resize', soon);
+  window.addEventListener('orientationchange', soon);
+  window.addEventListener('scroll', soon, {passive: true});
+})();
