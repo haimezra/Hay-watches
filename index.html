@@ -108,39 +108,34 @@
   /* move only the hero button further down (relative offset: nothing else shifts) */
   .hero .btn.solid{ position:relative; top:64px; }
   @media (max-width: 640px){ .hero .btn.solid{ top:52px; } }
-  /* ---- Magazine: "book" spread. Photo splits into 5 panels that flip like turning pages ---- */
-  .mbook{ display:grid; grid-template-columns:1.25fr 1fr; gap:0; align-items:stretch; max-width:1080px; margin:0 auto; }
-  .mb-stage{ position:relative; display:block; aspect-ratio:4/3; perspective:1600px; overflow:hidden; background:var(--card2); direction:ltr; border-radius:2px 0 0 2px; }
-  .mb-strip{ position:absolute; top:0; bottom:0; transform-style:preserve-3d; transition:transform 1.05s cubic-bezier(.6,.05,.25,1); transition-delay:var(--dl,0s); }
-  .mb-flip .mb-strip{ transform:rotateY(var(--rot,-180deg)); }
-  .mb-reset .mb-strip{ transition:none !important; }
-  .mb-face{ position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; background-repeat:no-repeat; }
-  .mb-back{ transform:rotateY(180deg); }
-  .mb-stage::after{ content:''; position:absolute; inset:0; pointer-events:none; background:linear-gradient(90deg, rgba(0,0,0,.28), transparent 12%, transparent 88%, rgba(0,0,0,.18)); }
-  .mb-page{ position:relative; display:flex; flex-direction:column; justify-content:space-between; padding:38px 34px 30px; background:var(--card2); border:1px solid var(--line); border-inline-end:none; perspective:1200px; }
-  .mb-page::before{ content:''; position:absolute; inset:0; pointer-events:none; background:linear-gradient(270deg, rgba(0,0,0,.35), transparent 16%); }
-  .mb-count{ font-family:'Heebo',sans-serif; color:var(--mute); font-size:.85rem; letter-spacing:.14em; direction:ltr; text-align:start; }
-  .mb-count b{ color:var(--pearl); font-weight:300; font-size:2.6rem; letter-spacing:.02em; margin-inline-end:8px; }
-  .mb-txt{ transform-origin:left center; transition:opacity .38s ease, transform .5s cubic-bezier(.4,0,.2,1); padding:26px 0; }
-  .mb-txt.out{ opacity:0; transform:rotateY(-16deg) translateX(-14px); }
-  .mb-tag{ color:var(--purple); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; }
-  .mb-txt h4{ color:var(--pearl); font-weight:400; font-size:1.35rem; line-height:1.55; margin:14px 0 24px; }
-  .mb-txt .readmore{ display:inline-block; color:var(--mute); font-size:.88rem; border-bottom:1px solid var(--line); padding-bottom:3px; transition:color .3s, border-color .3s; }
-  .mb-txt .readmore:hover{ color:var(--pearl); border-color:var(--purple); }
-  .mb-ctrl{ display:flex; align-items:center; gap:14px; }
-  .mb-btn{ width:42px; height:42px; border-radius:50%; border:1px solid var(--line); background:transparent; color:var(--pearl); font-size:1.1rem; cursor:pointer; transition:border-color .3s, background .3s; }
-  .mb-btn:hover{ border-color:var(--purple); background:rgba(155,110,243,.1); }
-  .mb-dots{ display:flex; gap:8px; margin-inline-start:auto; }
-  .mb-dot{ width:8px; height:8px; padding:0; border:none; border-radius:8px; background:var(--line); cursor:pointer; transition:width .4s, background .4s; }
-  .mb-dot.on{ width:26px; background:var(--purple); }
+  /* ---- Magazine: stacked editorial list ---- */
+  .mx-list{ max-width:1080px; margin:0 auto; display:flex; flex-direction:column; gap:28px; }
+  .mx-row{ display:grid; grid-template-columns:1.15fr 1fr; align-items:stretch; background:var(--card2); border:1px solid var(--line); text-decoration:none; color:inherit; overflow:hidden; transition:border-color .4s var(--ease), transform .5s var(--ease); }
+  .mx-row:hover{ border-color:var(--purple-soft); transform:translateY(-3px); }
+  .mx-row:nth-child(even) .mx-img{ order:2; }
+  .mx-img{ position:relative; display:block; aspect-ratio:16/10; overflow:hidden; }
+  .mx-img img{ width:100%; height:100%; object-fit:cover; display:block; filter:saturate(.9) brightness(.9); transition:transform 1.2s var(--ease), filter .6s; }
+  .mx-row:hover .mx-img img{ transform:scale(1.05); filter:saturate(1) brightness(1); }
+  .mx-img::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,10,16,0) 55%, rgba(10,10,16,.55)); pointer-events:none; }
+  .mx-info{ position:relative; display:flex; flex-direction:column; justify-content:center; padding:44px 42px; }
+  .mx-num{ font-family:'Heebo',sans-serif; font-weight:200; font-size:3.6rem; line-height:1; color:transparent; -webkit-text-stroke:1px var(--purple-soft); letter-spacing:.04em; direction:ltr; text-align:start; }
+  .mx-tag{ margin-top:22px; color:var(--purple); font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; }
+  .mx-info h4{ color:var(--pearl); font-weight:400; font-size:1.5rem; line-height:1.5; margin:12px 0 0; }
+  .mx-line{ display:block; width:44px; height:1px; background:var(--purple); margin:22px 0; transition:width .5s var(--ease); }
+  .mx-row:hover .mx-line{ width:84px; }
+  .mx-more{ color:var(--pearl); font-size:.9rem; letter-spacing:.03em; display:inline-flex; align-items:center; gap:10px; }
+  .mx-more i{ font-style:normal; color:var(--purple); transition:transform .4s var(--ease); }
+  .mx-row:hover .mx-more i{ transform:translateX(-6px); }
   @media (max-width:880px){
-    .mbook{ grid-template-columns:1fr; }
-    .mb-stage{ border-radius:2px 2px 0 0; }
-    .mb-page{ border-inline-end:1px solid var(--line); border-top:none; padding:26px 22px 24px; }
-    .mb-page::before{ display:none; }
-    .mb-txt h4{ font-size:1.15rem; }
+    .mx-list{ gap:22px; }
+    .mx-row{ grid-template-columns:1fr; }
+    .mx-row:nth-child(even) .mx-img{ order:0; }
+    .mx-img{ aspect-ratio:16/10; }
+    .mx-info{ padding:26px 22px 28px; }
+    .mx-num{ font-size:2.6rem; }
+    .mx-info h4{ font-size:1.2rem; }
   }
-  @media (prefers-reduced-motion: reduce){ .mb-strip, .mb-txt{ transition:none !important; } }
+  @media (prefers-reduced-motion: reduce){ .mx-row, .mx-img img, .mx-line, .mx-more i{ transition:none !important; } }
   .fb-strip{ background:var(--bg); text-align:center; padding:22px 0; border-bottom:1px solid var(--line); }
   .fb-follow{ display:inline-flex; align-items:center; justify-content:center; gap:9px; color:var(--mute); font-size:.9rem; text-decoration:none; transition:color .2s; }
   .fb-follow:hover{ color:var(--gold-light); }
@@ -513,81 +508,23 @@
       </div>`);
   });
 
-  /* ---- Magazine: book-style spread; photo splits into panels that flip to the next article ---- */
+  /* ---- Magazine: stacked editorial list ---- */
   (function(){
     const root = document.getElementById('magBook');
     if(!root || typeof ARTICLES === 'undefined' || !ARTICLES.length) return;
-    const list = ARTICLES, N = 5, L = list.length;
-    const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let cur = 0, busy = false, timer = null;
     const pad = n => String(n+1).padStart(2,'0');
-    let strips = '';
-    for(let i=0;i<N;i++) strips += `<span class="mb-strip" style="left:${i*100/N}%;width:calc(${100/N}% + 1px)"><span class="mb-face mb-front"></span><span class="mb-face mb-back"></span></span>`;
-    root.innerHTML = `
-      <a class="mb-stage" id="mbStage" href="#">${strips}</a>
-      <div class="mb-page">
-        <div class="mb-count"><b id="mbNum">01</b><span>/ ${pad(L-1)}</span></div>
-        <div class="mb-txt" id="mbTxt"></div>
-        <div class="mb-ctrl">
-          <button class="mb-btn" id="mbPrev" type="button" aria-label="הקודם / Previous">&rarr;</button>
-          <button class="mb-btn" id="mbNext" type="button" aria-label="הבא / Next">&larr;</button>
-          <div class="mb-dots" id="mbDots">${list.map((_,i)=>`<button class="mb-dot" type="button" aria-label="${i+1}"></button>`).join('')}</div>
-        </div>
-      </div>`;
-    const stage = root.querySelector('#mbStage'), txt = root.querySelector('#mbTxt'), num = root.querySelector('#mbNum');
-    const fronts = [...root.querySelectorAll('.mb-front')], backs = [...root.querySelectorAll('.mb-back')];
-    const dots = [...root.querySelectorAll('.mb-dot')];
-    function paint(el, img, i){
-      el.style.backgroundImage = `url("${img}")`;
-      el.style.backgroundSize = (N*100)+'% 100%';
-      el.style.backgroundPosition = (i*100/(N-1))+'% 50%';
-    }
-    function setText(n){
-      const a = list[n], href = a.link || '#';
-      stage.href = href; stage.setAttribute('aria-label', a.en);
-      num.textContent = pad(n);
-      txt.innerHTML = `<span class="mb-tag"><span class="he-txt">מדריך</span><span class="en-txt">Guide</span></span>
-        <h4><span class="he-txt">${a.he}</span><span class="en-txt">${a.en}</span></h4>
-        <a href="${href}" class="readmore"><span class="he-txt">קריאה נוספת</span><span class="en-txt">Read more</span></a>`;
-      dots.forEach((d,i)=>d.classList.toggle('on', i===n));
-    }
-    fronts.forEach((f,i)=>paint(f, list[0].img, i));
-    setText(0);
-    function go(n, dir){
-      n = (n+L)%L;
-      if(busy || n===cur) return;
-      busy = true;
-      if(reduce){ fronts.forEach((f,i)=>paint(f, list[n].img, i)); cur = n; setText(n); busy = false; return; }
-      backs.forEach((b,i)=>paint(b, list[n].img, i));
-      root.style.setProperty('--rot', dir>0 ? '-180deg' : '180deg');
-      root.querySelectorAll('.mb-strip').forEach((s,i)=>s.style.setProperty('--dl', ((dir>0 ? i : N-1-i)*0.09)+'s'));
-      txt.classList.add('out');
-      stage.classList.add('mb-flip');
-      setTimeout(()=>{ setText(n); txt.classList.remove('out'); }, 420);
-      setTimeout(()=>{
-        fronts.forEach((f,i)=>paint(f, list[n].img, i));
-        stage.classList.add('mb-reset');
-        stage.classList.remove('mb-flip');
-        void stage.offsetWidth;
-        stage.classList.remove('mb-reset');
-        cur = n; busy = false;
-      }, 1050 + (N-1)*90 + 60);
-    }
-    const next = ()=>go(cur+1, 1), prev = ()=>go(cur-1, -1);
-    root.querySelector('#mbNext').addEventListener('click', ()=>{ next(); restart(); });
-    root.querySelector('#mbPrev').addEventListener('click', ()=>{ prev(); restart(); });
-    dots.forEach((d,i)=>d.addEventListener('click', ()=>{ go(i, i>cur ? 1 : -1); restart(); }));
-    let sx = null;
-    stage.addEventListener('touchstart', e=>{ sx = e.touches[0].clientX; }, {passive:true});
-    stage.addEventListener('touchend', e=>{
-      if(sx===null) return;
-      const dx = e.changedTouches[0].clientX - sx; sx = null;
-      if(Math.abs(dx) > 40){ (dx<0 ? next : prev)(); restart(); }
-    }, {passive:true});
-    function restart(){ clearInterval(timer); if(!reduce) timer = setInterval(()=>{ if(!document.hidden) next(); }, 7000); }
-    root.addEventListener('mouseenter', ()=>clearInterval(timer));
-    root.addEventListener('mouseleave', restart);
-    restart();
+    root.className = 'mx-list';
+    root.innerHTML = ARTICLES.map((a,i)=>`
+      <a class="mx-row" href="${a.link || '#'}" aria-label="${a.en}">
+        <span class="mx-img"><img src="${a.img}" alt="${a.en}" loading="lazy"></span>
+        <span class="mx-info">
+          <span class="mx-num">${pad(i)}</span>
+          <span class="mx-tag"><span class="he-txt">מדריך</span><span class="en-txt">Guide</span></span>
+          <h4><span class="he-txt">${a.he}</span><span class="en-txt">${a.en}</span></h4>
+          <span class="mx-line"></span>
+          <span class="mx-more"><span class="he-txt">קריאה נוספת</span><span class="en-txt">Read more</span><i>&larr;</i></span>
+        </span>
+      </a>`).join('');
   })();
 </script>
 <!-- Style articles (popup) -->
