@@ -62,8 +62,9 @@ document.querySelectorAll('form.newsletter').forEach(function(form){
   const btn = form.querySelector('button[type="submit"]');
   const note = document.createElement('div');
   note.setAttribute('role', 'status');
-  note.style.cssText = 'margin-top:10px;font-size:.9rem;min-height:1.2em;';
-  form.appendChild(note);
+  note.style.cssText = 'margin-top:12px;font-size:.95rem;min-height:1.4em;display:flex;align-items:center;gap:8px;';
+  form.insertAdjacentElement('afterend', note);
+  const CHECK = '<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#2e9e5b;color:#fff;font-size:14px;font-weight:700;flex:none;">✓</span>';
   form.addEventListener('submit', async function(e){
     e.preventDefault();
     const email = (input.value || '').trim();
@@ -71,9 +72,12 @@ document.querySelectorAll('form.newsletter').forEach(function(form){
     btn.disabled = true;
     note.style.color = '';
     note.textContent = 'שולח...';
+    const ctrl = new AbortController();
+    const timer = setTimeout(function(){ ctrl.abort(); }, 15000);
     try{
       const r = await fetch('https://formsubmit.co/ajax/info@haywatches.co.il', {
         method: 'POST',
+        signal: ctrl.signal,
         headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
         body: JSON.stringify({
           _subject: 'הרשמה חדשה לניוזלטר VIP',
@@ -84,12 +88,14 @@ document.querySelectorAll('form.newsletter').forEach(function(form){
       });
       if(!r.ok) throw new Error('fail');
       note.style.color = '#7fd18b';
-      note.textContent = 'תודה! נרשמת בהצלחה לניוזלטר.';
+      note.innerHTML = CHECK + '<span>תודה! הפרטים נקלטו בהצלחה.</span>';
       form.reset();
     }catch(err){
       note.style.color = '#e07a7a';
       note.textContent = 'משהו השתבש. נסו שוב או כתבו לנו ל-info@haywatches.co.il';
+    }finally{
+      clearTimeout(timer);
+      btn.disabled = false;
     }
-    btn.disabled = false;
   });
 });

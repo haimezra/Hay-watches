@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="https://web.cmp.usercentrics.eu/modules/autoblocker.js"></script>
+<script id="usercentrics-cmp" src="https://web.cmp.usercentrics.eu/ui/loader.js" data-ruleset-id="VAV3uErMM8BVTG" async></script>
 <title>צור קשר | HAY Watches</title>
 <meta name="description" content="צרו קשר עם HAY Watches בטלפון, בוואטסאפ או בטופס. שירות לקוחות, משלוחים, החזרות ואחריות.">
 <meta name="theme-color" content="#0A0A10">
@@ -186,7 +188,7 @@
 </footer>
 
 <script src="data.js?v=202609290943"></script>
-<script src="main.js?v=202609300536"></script>
+<script src="main.js?v=202609300539"></script>
 <script>
   document.getElementById('ctForm').addEventListener('submit', async function(e){
     e.preventDefault();
@@ -205,7 +207,7 @@
       if(data.website){ st.textContent=''; btn.disabled=false; return; }
       const r=await fetch('https://formsubmit.co/ajax/info@haywatches.co.il',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({_subject:'פנייה מהאתר: '+data.name,_captcha:'false',_template:'table',_replyto:data.email||undefined,'שם':data.name,'טלפון':data.phone||'-','אימייל':data.email||'-','הודעה':data.message})});
       if(r.ok){
-        st.style.color='#7CFFB2'; st.textContent=en?'Thank you! Your message was sent.':'תודה! ההודעה נשלחה, נחזור אליכם בהקדם.';
+        st.style.color='#7CFFB2'; st.innerHTML='<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#2e9e5b;color:#fff;font-size:14px;font-weight:700;margin-inline-end:8px;vertical-align:middle;">✓</span>'+(en?'Thank you! Your message was sent.':'תודה! הפרטים נקלטו וההודעה נשלחה, נחזור אליכם בהקדם.');
         document.getElementById('ctForm').reset(); btn.disabled=false;
       } else if(r.status===400){
         st.style.color='#ff8a8a'; st.textContent=en?'Please check the form fields.':'נא לבדוק את השדות בטופס.'; btn.disabled=false;
