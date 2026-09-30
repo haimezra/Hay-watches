@@ -145,8 +145,8 @@
   /* ---- We buy / trade-in (compact) ---- */
   #sellwatch{ padding:72px 0 !important; overflow:hidden; }
   @media (max-width:880px){ #sellwatch{ padding:56px 0 !important; } }
-  .sw-card{ display:grid; grid-template-columns:150px 1fr; gap:34px; align-items:start; max-width:900px; margin:0 auto; padding:34px 0; background:none; border:none; }
-  .sw-img{ width:150px; aspect-ratio:4/5; object-fit:cover; border-radius:2px; opacity:.92; display:block; }
+  .sw-card{ display:grid; grid-template-columns:260px 1fr; gap:34px; align-items:start; max-width:900px; margin:0 auto; padding:34px 0; background:none; border:none; }
+  .sw-img{ width:260px; aspect-ratio:3/2; object-fit:cover; border-radius:2px; opacity:.92; display:block; }
   .sw-card h2{ font-size:clamp(1.35rem,2.4vw,1.8rem) !important; margin:0 0 8px; color:var(--pearl); }
   .sw-sub{ color:var(--purple); font-size:.74rem; letter-spacing:.1em; text-transform:uppercase; margin-bottom:14px; display:block; }
   .sw-card p.sw-copy{ color:var(--mute); font-size:.95rem; line-height:1.85; margin:0 0 22px; font-weight:300; }
@@ -164,7 +164,7 @@
   .sw-hp{ position:absolute; opacity:0; pointer-events:none; height:0; width:0; padding:0 !important; border:0 !important; overflow:hidden; }
   @media (max-width:720px){
     .sw-card{ grid-template-columns:1fr; padding:8px 0; gap:20px; }
-    .sw-img{ width:96px; aspect-ratio:1/1; }
+    .sw-img{ width:100%; max-width:340px; aspect-ratio:16/9; }
     .sw-form{ grid-template-columns:1fr; }
   }
   .fb-strip{ background:var(--bg); text-align:center; padding:22px 0; border-bottom:1px solid var(--line); }
@@ -436,7 +436,7 @@
 <section id="sellwatch">
   <div class="wrap">
     <div class="sw-card">
-      <img class="sw-img" src="https://images.unsplash.com/photo-1628678172909-13a7209c7d62?auto=format&fit=crop&w=400&q=70" alt="" loading="lazy" width="150" height="188">
+      <img class="sw-img" src="https://images.unsplash.com/photo-1628678172909-13a7209c7d62?auto=format&fit=crop&w=700&q=70" alt="" loading="lazy" width="260" height="173">
       <div>
         <span class="sw-sub"><span class="he-txt">רכישה וטרייד-אין</span><span class="en-txt">Buy-back &amp; Trade-in</span></span>
         <h2><span class="he-txt">מוכרים שעון? אנחנו קונים</span><span class="en-txt">Selling a watch? We buy</span></h2>
