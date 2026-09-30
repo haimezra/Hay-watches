@@ -116,7 +116,9 @@ document.querySelectorAll('form.newsletter').forEach(function(form){
           'אישור מדיניות פרטיות': 'כן'
         })
       });
-      if(!r.ok) throw new Error('fail');
+      let j = null;
+      try{ j = await r.clone().json(); }catch(_){}
+      if(!r.ok || (j && String(j.success) === 'false')) throw new Error('HTTP ' + r.status + ' ' + ((j && j.message) || ''));
       note.style.color = '#7fd18b';
       note.innerHTML = CHECK + '<span>תודה! הפרטים נקלטו בהצלחה.</span>';
       form.reset();
@@ -124,6 +126,13 @@ document.querySelectorAll('form.newsletter').forEach(function(form){
     }catch(err){
       note.style.color = '#e07a7a';
       note.textContent = 'משהו השתבש. נסו שוב או כתבו לנו ל-info@haywatches.co.il';
+      if(/[?&]ucdebug=1/.test(location.search)){
+        const d = document.createElement('div');
+        d.dir = 'ltr';
+        d.style.cssText = 'font:12px monospace;color:#bbb;margin-top:6px;word-break:break-all;';
+        d.textContent = 'DEBUG: ' + String(err && (err.name + ': ' + err.message));
+        note.appendChild(d);
+      }
     }finally{
       clearTimeout(timer);
       sending = false; sync();
