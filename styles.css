@@ -248,3 +248,7 @@ img, video{
   user-select: none;
   -webkit-touch-callout: none;
 }
+
+/* Email in the bottom bar: blue + underline */
+.foot-bottom .email-em{ color:#4da3ff !important; text-decoration:underline !important; text-underline-offset:3px; }
+.foot-bottom .email-em:hover{ color:#7dbcff !important; }
