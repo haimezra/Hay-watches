@@ -25,11 +25,11 @@
   .ct-hero p{ color:var(--mute); font-size:1.05rem; }
   .ct-crumb{ padding:14px 0 0; text-align:start; }
   .ct-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:10px 0 56px; }
-  .ct-card{ display:block; background:var(--card); border:1px solid var(--line); padding:26px 18px; text-align:center; color:var(--pearl); transition:border-color .3s ease, transform .3s ease; }
-  .ct-card:hover{ border-color:var(--gold); transform:translateY(-3px); }
-  .ct-card .ic{ font-size:1.6rem; margin-bottom:10px; display:block; }
-  .ct-card b{ display:block; font-weight:600; margin-bottom:4px; }
-  .ct-card span.v{ color:var(--gold-light); direction:ltr; unicode-bidi:embed; word-break:break-all; font-size:1rem; }
+  .ct-card{ display:block; background:var(--card); border:1px solid var(--line); border-top:2px solid var(--gold); padding:30px 20px 28px; text-align:center; color:var(--pearl); transition:border-color .3s ease, transform .3s ease, box-shadow .3s ease; }
+  .ct-card:hover{ border-color:var(--gold); transform:translateY(-3px); box-shadow:0 10px 26px rgba(0,0,0,.35); }
+  .ct-card b{ display:block; font-weight:500; font-size:.82rem; letter-spacing:.14em; text-transform:uppercase; color:var(--mute); margin-bottom:10px; }
+  .ct-card span.v{ display:block; color:var(--pearl); direction:ltr; unicode-bidi:embed; word-break:break-all; font-size:1.15rem; font-weight:500; letter-spacing:.02em; }
+  .ct-card:hover span.v{ color:var(--gold-light); }
   .ct-form{ position:relative; max-width:640px; margin:0 auto 64px; background:var(--card); border:1px solid var(--line); padding:30px; }
   .ct-form h2, .ct-sec h2{ font-size:1.5rem; font-weight:500; margin-bottom:6px; }
   .ct-form p.sub{ color:var(--mute); font-size:.92rem; margin-bottom:20px; }
@@ -107,9 +107,9 @@
 <section style="padding-top:10px;">
   <div class="wrap">
     <div class="ct-grid">
-      <a class="ct-card" href="tel:0543771767"><span class="ic">📱</span><b><span class="he-txt">נייד</span><span class="en-txt">Mobile</span></b><span class="v">054-3771767</span></a>
-      <a class="ct-card" href="https://wa.me/972543771767" target="_blank" rel="noopener"><span class="ic">💬</span><b><span class="he-txt">וואטסאפ</span><span class="en-txt">WhatsApp</span></b><span class="v">054-3771767</span></a>
-      <a class="ct-card" href="mailto:info@haywatches.co.il"><span class="ic">✉️</span><b><span class="he-txt">אימייל</span><span class="en-txt">Email</span></b><span class="v">info@haywatches.co.il</span></a>
+      <a class="ct-card" href="tel:0543771767"><b><span class="he-txt">נייד</span><span class="en-txt">Mobile</span></b><span class="v">054-3771767</span></a>
+      <a class="ct-card" href="https://wa.me/972543771767" target="_blank" rel="noopener"><b><span class="he-txt">וואטסאפ</span><span class="en-txt">WhatsApp</span></b><span class="v">054-3771767</span></a>
+      <a class="ct-card" href="mailto:info@haywatches.co.il"><b><span class="he-txt">אימייל</span><span class="en-txt">Email</span></b><span class="v">info@haywatches.co.il</span></a>
     </div>
 
     <form class="ct-form" id="ctForm">
