@@ -104,21 +104,22 @@ document.querySelectorAll('form.newsletter').forEach(function(form){
     const ctrl = new AbortController();
     const timer = setTimeout(function(){ ctrl.abort(); }, 15000);
     try{
-      const r = await fetch('https://formsubmit.co/ajax/info@haywatches.co.il', {
+      const r = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         signal: ctrl.signal,
         headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
         body: JSON.stringify({
-          _subject: 'הרשמה חדשה לניוזלטר VIP',
-          _captcha: 'false',
-          _template: 'table',
-          'אימייל': email,
-          'אישור מדיניות פרטיות': 'כן'
+          access_key: '95b8a106-1310-471e-be43-03182c258c41',
+          subject: 'הרשמה חדשה לניוזלטר VIP',
+          from_name: 'HAY Watches',
+          name: 'מנוי ניוזלטר',
+          email: email,
+          message: 'הרשמה חדשה לניוזלטר VIP\nאימייל: ' + email + '\nאישור מדיניות פרטיות: כן'
         })
       });
       let j = null;
       try{ j = await r.clone().json(); }catch(_){}
-      if(!r.ok || (j && String(j.success) === 'false')) throw new Error('HTTP ' + r.status + ' ' + ((j && j.message) || ''));
+      if(!r.ok || !j || j.success !== true) throw new Error('HTTP ' + r.status + ' ' + ((j && j.message) || ''));
       note.style.color = '#7fd18b';
       note.innerHTML = CHECK + '<span>תודה! הפרטים נקלטו בהצלחה.</span>';
       form.reset();

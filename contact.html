@@ -187,7 +187,7 @@
 </footer>
 
 <script src="data.js?v=202609290943"></script>
-<script src="main.js?v=202609300556"></script>
+<script src="main.js?v=202609300601"></script>
 <script>
   document.getElementById('ctForm').addEventListener('submit', async function(e){
     e.preventDefault();
@@ -204,7 +204,7 @@
     };
     try{
       if(data.website){ st.textContent=''; btn.disabled=false; return; }
-      const r=await fetch('https://formsubmit.co/ajax/info@haywatches.co.il',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({_subject:'פנייה מהאתר: '+data.name,_captcha:'false',_template:'table',_replyto:data.email||undefined,'שם':data.name,'טלפון':data.phone||'-','אימייל':data.email||'-','הודעה':data.message})});
+      const payload={access_key:'95b8a106-1310-471e-be43-03182c258c41',subject:'פנייה מהאתר: '+data.name,from_name:'HAY Watches',name:data.name,message:data.message+'\n\nטלפון: '+(data.phone||'-')+'\nאימייל: '+(data.email||'-')};if(data.email) payload.email=data.email;const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)});
       if(r.ok){
         st.style.color='#7CFFB2'; st.innerHTML='<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#2e9e5b;color:#fff;font-size:14px;font-weight:700;margin-inline-end:8px;vertical-align:middle;">✓</span>'+(en?'Thank you! Your message was sent.':'תודה! הפרטים נקלטו וההודעה נשלחה, נחזור אליכם בהקדם.');
         document.getElementById('ctForm').reset(); btn.disabled=false;
