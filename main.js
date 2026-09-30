@@ -72,10 +72,15 @@ document.querySelectorAll('form.newsletter').forEach(function(form){
     note.style.color = '';
     note.textContent = 'שולח...';
     try{
-      const r = await fetch('/api/newsletter', {
+      const r = await fetch('https://formsubmit.co/ajax/info@haywatches.co.il', {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({email: email})
+        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+        body: JSON.stringify({
+          _subject: 'הרשמה חדשה לניוזלטר VIP',
+          _captcha: 'false',
+          _template: 'table',
+          'אימייל': email
+        })
       });
       if(!r.ok) throw new Error('fail');
       note.style.color = '#7fd18b';

@@ -186,7 +186,7 @@
 </footer>
 
 <script src="data.js?v=202609290943"></script>
-<script src="main.js?v=202609300515"></script>
+<script src="main.js?v=202609300536"></script>
 <script>
   document.getElementById('ctForm').addEventListener('submit', async function(e){
     e.preventDefault();
@@ -202,7 +202,8 @@
       st.textContent=en?'Opening your email app...':'פותח את אפליקציית המייל שלכם...'; btn.disabled=false;
     };
     try{
-      const r=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+      if(data.website){ st.textContent=''; btn.disabled=false; return; }
+      const r=await fetch('https://formsubmit.co/ajax/info@haywatches.co.il',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({_subject:'פנייה מהאתר: '+data.name,_captcha:'false',_template:'table',_replyto:data.email||undefined,'שם':data.name,'טלפון':data.phone||'-','אימייל':data.email||'-','הודעה':data.message})});
       if(r.ok){
         st.style.color='#7CFFB2'; st.textContent=en?'Thank you! Your message was sent.':'תודה! ההודעה נשלחה, נחזור אליכם בהקדם.';
         document.getElementById('ctForm').reset(); btn.disabled=false;
