@@ -211,3 +211,101 @@ input[type=text], input[type=email], input[type=tel], textarea, select{ border-r
 }
 .cat-newsletter button:hover, .newsletter button:hover{ background: rgba(155,110,243,.26) !important; }
 .cat-notice{ border-radius: var(--r-card) !important; }
+
+/* ============================================================
+   BREATHING ROOM: more generous, calmer spacing site-wide
+   (placed last so it overrides the earlier compact values)
+   ============================================================ */
+:root{ --gap-grid: 18px; }
+@media (min-width:881px){ :root{ --gap-grid: 32px; } }
+
+body{ line-height: 1.85; }
+p{ line-height: 1.85; }
+
+/* side gutters */
+.wrap{ padding-inline: 32px !important; }
+@media (max-width:880px){ .wrap{ padding-inline: 26px !important; } }
+@media (max-width:640px){ .wrap{ padding-inline: 22px !important; } }
+
+/* header */
+.headrow{ padding-block: 22px !important; }
+@media (max-width:640px){ .headrow{ padding-block: 16px !important; } }
+.logo-bar{ padding: 44px 0 34px !important; }
+@media (max-width:640px){ .logo-bar{ padding: 32px 0 26px !important; } }
+.mobile-nav a{ padding: 18px 26px !important; }
+
+/* section rhythm (hero excluded, it keeps its own layout) */
+section:not(.hero){ padding: 136px 0 !important; }
+@media (max-width:880px){ section:not(.hero){ padding: 84px 0 !important; } }
+.section-head{ margin-bottom: 68px !important; }
+@media (max-width:880px){ .section-head{ margin-bottom: 44px !important; } }
+.section-head h2{ margin-bottom: 20px !important; }
+.section-head p{ margin-top: 22px !important; line-height: 1.9 !important; }
+#catalog{ padding-top: 96px !important; }
+@media (max-width:880px){ #catalog{ padding-top: 56px !important; padding-bottom: 64px !important; } }
+
+/* category tiles */
+.cat{ padding: 32px !important; }
+@media (max-width:880px){ .cat{ padding: 22px !important; } }
+.cat-grid{ gap: var(--gap-grid) !important; }
+
+/* product cards */
+.prod-grid{ gap: var(--gap-grid) !important; }
+.prod-body{ padding: 24px 22px 12px !important; }
+@media (max-width:640px){ .prod-body{ padding: 18px 16px 10px !important; } }
+.prod-body h4{ margin-bottom: 12px !important; line-height: 1.55 !important; }
+.prod-detail{ margin-bottom: 20px !important; line-height: 1.85 !important; }
+.prod-price{ margin-bottom: 24px !important; }
+.prod-card > .add-cart{ width: calc(100% - 44px) !important; margin-inline: 22px !important; }
+@media (max-width:640px){ .prod-card > .add-cart{ width: calc(100% - 32px) !important; margin-inline: 16px !important; } }
+.prod-card > .add-cart:last-child{ margin-bottom: 24px !important; }
+@media (max-width:640px){ .prod-card > .add-cart:last-child{ margin-bottom: 18px !important; } }
+.add-cart, .add-cart.buy-now{ padding: 14px 16px !important; }
+.add-cart.buy-now{ margin-top: 12px !important; }
+
+/* magazine cards */
+.mag-grid{ gap: var(--gap-grid) !important; }
+.mag-body{ padding: 32px 28px 34px !important; }
+@media (max-width:640px){ .mag-body{ padding: 26px 22px 28px !important; } }
+.mag-tag{ margin-bottom: 16px !important; }
+.mag-body h4{ margin-bottom: 20px !important; line-height: 1.6 !important; }
+
+/* trust row */
+.trust-grid{ gap: 56px !important; }
+@media (max-width:880px){ .trust-grid{ row-gap: 52px !important; column-gap: 28px !important; } }
+.trust-icon{ margin-bottom: 26px !important; }
+.trust h4{ margin-bottom: 14px !important; }
+.trust p{ line-height: 1.85 !important; }
+
+/* footer */
+footer{ padding: 112px 0 44px !important; }
+@media (max-width:640px){ footer{ padding: 76px 0 36px !important; } }
+.foot-grid{ gap: 60px !important; padding-bottom: 64px !important; }
+@media (max-width:880px){ .foot-grid{ row-gap: 48px !important; column-gap: 32px !important; } }
+.foot-col h5{ margin-bottom: 28px !important; }
+.foot-col li{ margin-bottom: 16px !important; }
+.foot-col p{ line-height: 2 !important; }
+.newsletter{ margin-top: 20px !important; }
+.foot-bottom{ padding-top: 40px !important; gap: 14px !important; line-height: 2; }
+
+/* category page */
+.breadcrumb{ padding: 34px 0 !important; }
+.cat-hero{ padding: 72px 0 56px !important; }
+.cat-hero .hero-logo{ margin-bottom: 38px !important; }
+.cat-hero h1{ margin-bottom: 18px !important; }
+
+/* product page */
+.pd-wrap{ gap: 68px !important; padding: 72px 0 44px !important; }
+@media (max-width:880px){ .pd-wrap{ gap: 44px !important; padding-top: 40px !important; } }
+.pd-info h1{ margin-bottom: 20px !important; }
+.pd-price{ margin-bottom: 30px !important; }
+.pd-desc{ line-height: 2.05 !important; margin-bottom: 40px !important; }
+.pd-actions{ gap: 16px !important; margin-bottom: 52px !important; }
+.pd-facts{ padding-top: 26px !important; line-height: 2.2 !important; }
+.pd-policy summary{ padding: 20px 0 !important; }
+.pd-policy .pd-policy-body{ padding-bottom: 24px !important; line-height: 2 !important; }
+.pd-thumbs{ gap: 12px !important; margin-top: 16px !important; }
+
+/* contact page */
+.ct-grid{ gap: 26px !important; margin: 24px 0 80px !important; }
+.ct-card{ padding: 40px 24px 36px !important; }
