@@ -55,3 +55,36 @@ function toggleMobileMenu(){
     }
   });
 })();
+
+// ===== Newsletter sign-up (footer form on every page) =====
+document.querySelectorAll('form.newsletter').forEach(function(form){
+  const input = form.querySelector('input[type="email"]');
+  const btn = form.querySelector('button[type="submit"]');
+  const note = document.createElement('div');
+  note.setAttribute('role', 'status');
+  note.style.cssText = 'margin-top:10px;font-size:.9rem;min-height:1.2em;';
+  form.appendChild(note);
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    const email = (input.value || '').trim();
+    if(!email) return;
+    btn.disabled = true;
+    note.style.color = '';
+    note.textContent = 'שולח...';
+    try{
+      const r = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({email: email})
+      });
+      if(!r.ok) throw new Error('fail');
+      note.style.color = '#7fd18b';
+      note.textContent = 'תודה! נרשמת בהצלחה לניוזלטר.';
+      form.reset();
+    }catch(err){
+      note.style.color = '#e07a7a';
+      note.textContent = 'משהו השתבש. נסו שוב או כתבו לנו ל-info@haywatches.co.il';
+    }
+    btn.disabled = false;
+  });
+});
