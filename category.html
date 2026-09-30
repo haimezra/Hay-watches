@@ -23,6 +23,11 @@
   .hero-logo-main{ display:block; width:190px; max-width:60%; height:auto; margin:56px auto 0; position:relative; z-index:2; }
   @media (max-width: 640px){ .hero-logo-main{ width:150px; margin-top:40px; } }
   .cat-hero{ padding-top:0 !important; }
+  .cat-hero.has-video{ overflow:hidden; background:url("assets/men-tile-poster.jpg") center/cover no-repeat, var(--bg); }
+  .cat-hero-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; z-index:0; pointer-events:none; }
+  .cat-hero-video-overlay{ position:absolute; inset:0; z-index:0; pointer-events:none; background:linear-gradient(180deg, rgba(10,10,16,.6) 0%, rgba(10,10,16,.88) 100%); }
+  .cat-hero.has-video .cat-hero-inner{ position:relative; z-index:1; }
+  @media (prefers-reduced-motion: reduce){ .cat-hero-video{ display:none; } }
   .cat-notice{ display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; margin:0 0 24px; padding:14px 18px; border:1px solid var(--line); border-radius:10px; background:var(--card); }
   .cat-notice-txt{ color:var(--pearl); font-size:.98rem; }
   .cat-notice-txt b{ color:var(--gold-light); font-weight:600; }
@@ -157,7 +162,11 @@
 <script>
   const catKey = qs('cat') || 'men';
   const meta = CATEGORIES[catKey] || CATEGORIES.men;
-  if(meta.img){
+  if(catKey === 'men'){
+    const hero = document.querySelector('.cat-hero');
+    hero.classList.add('has-video');
+    hero.insertAdjacentHTML('afterbegin', '<video class="cat-hero-video" autoplay muted loop playsinline preload="auto" poster="assets/men-tile-poster.jpg" aria-hidden="true"><source src="assets/men-tile.mp4" type="video/mp4"></video><div class="cat-hero-video-overlay"></div>');
+  } else if(meta.img){
     document.querySelector('.cat-hero').style.backgroundImage =
       `linear-gradient(180deg, rgba(10,10,16,.6) 0%, rgba(10,10,16,.88) 100%), url("${meta.img}")`;
   }
