@@ -3,24 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<script>/* temporary Usercentrics diagnostics: only active with ?ucdebug=1 */
-(function(){ if(!/[?&]ucdebug=1/.test(location.search)) return;
-  var logs=['ucdebug on'];
-  function render(){ var d=document.getElementById('ucdbg'); if(!d){ d=document.createElement('div'); d.id='ucdbg';
-    d.style.cssText='position:fixed;bottom:0;left:0;right:0;z-index:2147483647;background:#000;color:#0f0;font:12px monospace;padding:8px;max-height:55%;overflow:auto;direction:ltr;white-space:pre-wrap;text-align:left';
-    (document.body||document.documentElement).appendChild(d);} d.textContent=logs.join('\n'); }
-  document.addEventListener('securitypolicyviolation',function(e){ logs.push('CSP BLOCKED: '+e.blockedURI+' ['+e.violatedDirective+']'); render(); });
-  window.addEventListener('error',function(e){ if(e.target&&(e.target.src||e.target.href)) logs.push('LOAD ERROR: '+(e.target.src||e.target.href)); render(); },true);
-  window.addEventListener('load',function(){ setTimeout(function(){
-    logs.push('loader tag: '+(document.getElementById('usercentrics-cmp')?'present':'MISSING'));
-    logs.push('UC_UI object: '+(window.UC_UI?'yes':'NO'));
-    var r=performance.getEntriesByType('resource').filter(function(x){return x.name.indexOf('usercentrics')>-1;});
-    r.forEach(function(x){ logs.push('req: '+x.name.slice(0,90)+' status='+(x.responseStatus||'?')); });
-    render(); },4000); });
-  render();
-})();
-</script>
-<script id="usercentrics-cmp" src="https://web.cmp.usercentrics.eu/ui/loader.js" data-ruleset-id="VAV3uErMM8BVTG" async></script>
+<!-- Start cookieyes banner --> <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/b5c79bfc042da7ab64dac9b5111770f7/script.js"></script> <!-- End cookieyes banner -->
 <title>HAY Watches | שעונים חדשים ומשומשים, רצועות ואביזרים</title>
 <meta name="description" content="HAY Watches: שעוני יוקרה חדשים ומשומשים שנבדקו ואומתו, רצועות עור פרימיום ואביזרים לשעונים. משלוח עד הבית ואחריות.">
 <meta name="theme-color" content="#0A0A10">
