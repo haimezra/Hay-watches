@@ -109,31 +109,29 @@
   .hero .btn.solid{ position:relative; top:64px; }
   @media (max-width: 640px){ .hero .btn.solid{ top:52px; } }
   /* ---- Magazine: stacked editorial list ---- */
-  .mx-list{ max-width:1080px; margin:0 auto; display:flex; flex-direction:column; gap:28px; }
-  .mx-row{ display:grid; grid-template-columns:1.15fr 1fr; align-items:stretch; background:var(--card2); border:1px solid var(--line); text-decoration:none; color:inherit; overflow:hidden; transition:border-color .4s var(--ease), transform .5s var(--ease); }
+  .mx-list{ max-width:860px; margin:0 auto; display:flex; flex-direction:column; gap:16px; }
+  .mx-row{ display:grid; grid-template-columns:1fr 1.2fr; align-items:stretch; background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.07); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); text-decoration:none; color:inherit; overflow:hidden; transition:border-color .4s var(--ease), transform .5s var(--ease); }
   .mx-row:hover{ border-color:var(--purple-soft); transform:translateY(-3px); }
   .mx-row:nth-child(even) .mx-img{ order:2; }
-  .mx-img{ position:relative; display:block; aspect-ratio:16/10; overflow:hidden; }
+  .mx-img{ position:relative; display:block; aspect-ratio:16/9; overflow:hidden; }
   .mx-img img{ width:100%; height:100%; object-fit:cover; display:block; filter:saturate(.9) brightness(.9); transition:transform 1.2s var(--ease), filter .6s; }
   .mx-row:hover .mx-img img{ transform:scale(1.05); filter:saturate(1) brightness(1); }
   .mx-img::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,10,16,0) 55%, rgba(10,10,16,.55)); pointer-events:none; }
-  .mx-info{ position:relative; display:flex; flex-direction:column; justify-content:center; padding:44px 42px; }
-  .mx-num{ font-family:'Heebo',sans-serif; font-weight:200; font-size:3.6rem; line-height:1; color:transparent; -webkit-text-stroke:1px var(--purple-soft); letter-spacing:.04em; direction:ltr; text-align:start; }
-  .mx-tag{ margin-top:22px; color:var(--purple); font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; }
-  .mx-info h4{ color:var(--pearl); font-weight:400; font-size:1.5rem; line-height:1.5; margin:12px 0 0; }
-  .mx-line{ display:block; width:44px; height:1px; background:var(--purple); margin:22px 0; transition:width .5s var(--ease); }
+  .mx-info{ position:relative; display:flex; flex-direction:column; justify-content:center; padding:22px 30px; }
+  .mx-tag{ margin-top:0; color:var(--purple); font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; }
+  .mx-info h4{ color:var(--pearl); font-weight:400; font-size:1.2rem; line-height:1.5; margin:8px 0 0; }
+  .mx-line{ display:block; width:44px; height:1px; background:var(--purple); margin:14px 0; transition:width .5s var(--ease); }
   .mx-row:hover .mx-line{ width:84px; }
   .mx-more{ color:var(--pearl); font-size:.9rem; letter-spacing:.03em; display:inline-flex; align-items:center; gap:10px; }
   .mx-more i{ font-style:normal; color:var(--purple); transition:transform .4s var(--ease); }
   .mx-row:hover .mx-more i{ transform:translateX(-6px); }
   @media (max-width:880px){
-    .mx-list{ gap:22px; }
+    .mx-list{ gap:14px; }
     .mx-row{ grid-template-columns:1fr; }
     .mx-row:nth-child(even) .mx-img{ order:0; }
-    .mx-img{ aspect-ratio:16/10; }
-    .mx-info{ padding:26px 22px 28px; }
-    .mx-num{ font-size:2.6rem; }
-    .mx-info h4{ font-size:1.2rem; }
+    .mx-img{ aspect-ratio:16/8; }
+    .mx-info{ padding:18px 18px 20px; }
+      .mx-info h4{ font-size:1.05rem; }
   }
   @media (prefers-reduced-motion: reduce){ .mx-row, .mx-img img, .mx-line, .mx-more i{ transition:none !important; } }
   .fb-strip{ background:var(--bg); text-align:center; padding:22px 0; border-bottom:1px solid var(--line); }
@@ -512,13 +510,11 @@
   (function(){
     const root = document.getElementById('magBook');
     if(!root || typeof ARTICLES === 'undefined' || !ARTICLES.length) return;
-    const pad = n => String(n+1).padStart(2,'0');
     root.className = 'mx-list';
     root.innerHTML = ARTICLES.map((a,i)=>`
       <a class="mx-row" href="${a.link || '#'}" aria-label="${a.en}">
         <span class="mx-img"><img src="${a.img}" alt="${a.en}" loading="lazy"></span>
         <span class="mx-info">
-          <span class="mx-num">${pad(i)}</span>
           <span class="mx-tag"><span class="he-txt">מדריך</span><span class="en-txt">Guide</span></span>
           <h4><span class="he-txt">${a.he}</span><span class="en-txt">${a.en}</span></h4>
           <span class="mx-line"></span>
