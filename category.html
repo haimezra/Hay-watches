@@ -170,10 +170,16 @@
 <script>
   const catKey = qs('cat') || 'men';
   const meta = CATEGORIES[catKey] || CATEGORIES.men;
-  if(catKey === 'men'){
+  const HERO_VIDEOS = {
+    men:         { src:'assets/men-tile.mp4',  poster:'assets/men-tile-poster.jpg' },
+    accessories: { src:'assets/showreel.mp4',  poster:'assets/showreel-poster.jpg' }
+  };
+  const hv = HERO_VIDEOS[catKey];
+  if(hv){
     const hero = document.querySelector('.cat-hero');
     hero.classList.add('has-video');
-    hero.insertAdjacentHTML('afterbegin', '<video class="cat-hero-video" autoplay muted loop playsinline preload="auto" poster="assets/men-tile-poster.jpg" aria-hidden="true"><source src="assets/men-tile.mp4" type="video/mp4"></video><div class="cat-hero-video-overlay"></div>');
+    hero.style.backgroundImage = `url("${hv.poster}")`;
+    hero.insertAdjacentHTML('afterbegin', `<video class="cat-hero-video" autoplay muted loop playsinline preload="auto" poster="${hv.poster}" aria-hidden="true"><source src="${hv.src}" type="video/mp4"></video><div class="cat-hero-video-overlay"></div>`);
   } else if(meta.img){
     document.querySelector('.cat-hero').style.backgroundImage =
       `linear-gradient(180deg, rgba(10,10,16,.6) 0%, rgba(10,10,16,.88) 100%), url("${meta.img}")`;
