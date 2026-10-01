@@ -142,8 +142,21 @@
       .mx-info h4{ font-size:1.05rem; }
   }
   @media (prefers-reduced-motion: reduce){ .mx-row, .mx-img img, .mx-line, .mx-more i{ transition:none !important; } }
+  /* ---- Decorative gold clock between magazine and FAQ ---- */
+  #magazine{ padding-bottom:0 !important; }
+  .bc-wrap{ display:flex; justify-content:center; padding:44px 0 36px; }
+  .bc{ --gold:#c9a45c; --gold-soft:#d9bd85; position:relative; width:min(44vw,160px); aspect-ratio:1; }
+  .bc-mark{ position:absolute; inset:0; }
+  .bc-mark::before{ content:""; position:absolute; left:50%; top:0; width:1.5px; height:6%; margin-left:-.75px; background:var(--gold); border-radius:2px; }
+  .bc-mark.q::before{ height:9%; width:2px; margin-left:-1px; }
+  .bc-hand{ position:absolute; left:50%; bottom:50%; transform-origin:50% 100%; border-radius:3px; }
+  .bc-hour{ width:3px; height:24%; margin-left:-1.5px; background:var(--gold); }
+  .bc-minute{ width:2px; height:36%; margin-left:-1px; background:var(--gold); }
+  .bc-second{ width:1px; height:41%; margin-left:-.5px; background:var(--gold-soft); }
+  .bc-second::after{ content:""; position:absolute; left:0; top:100%; width:1px; height:10%; background:var(--gold-soft); }
+  .bc-pin{ position:absolute; left:50%; top:50%; width:7px; height:7px; margin:-3.5px 0 0 -3.5px; border-radius:50%; background:var(--gold); }
   /* ---- FAQ tabs: no background, aligned/slide in from the right ---- */
-  #faq{ padding:40px 0 16px !important; margin-top:48px; overflow:hidden; }
+  #faq{ padding:8px 0 16px !important; margin-top:0; overflow:hidden; }
   .faq{ max-width:760px; margin-inline-start:0; margin-inline-end:auto; }
   .faq details{ border-bottom:1px solid var(--line); background:none; }
   .faq details:first-child{ border-top:1px solid var(--line); }
@@ -458,6 +471,16 @@
   </div>
 </section>
 
+<!-- Decorative clock -->
+<div class="bc-wrap">
+  <div class="bc" id="bc" role="img" aria-label="שעון">
+    <div class="bc-hand bc-hour" id="bcH"></div>
+    <div class="bc-hand bc-minute" id="bcM"></div>
+    <div class="bc-hand bc-second" id="bcS"></div>
+    <div class="bc-pin"></div>
+  </div>
+</div>
+
 <!-- FAQ -->
 <section id="faq" aria-label="שאלות נפוצות">
   <div class="wrap">
@@ -675,6 +698,38 @@
     const io = new IntersectionObserver(es=>{ if(es[0].isIntersecting){ l.classList.add('in'); io.disconnect(); } }, {threshold:.15});
     io.observe(l);
     setTimeout(()=>l.classList.add('in'), 6000);
+  })();
+  /* ---- Gold clock (runs only while visible) ---- */
+  (function(){
+    const clock = document.getElementById('bc'); if(!clock) return;
+    const TIMEZONE = null; // null = visitor's device time; for Israel time use 'Asia/Jerusalem'
+    for(let i=0;i<12;i++){
+      const d = document.createElement('div');
+      d.className = 'bc-mark' + (i%3===0 ? ' q' : '');
+      d.style.transform = `rotate(${i*30}deg)`;
+      clock.prepend(d);
+    }
+    const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const fmt = new Intl.DateTimeFormat('en-GB', {timeZone: TIMEZONE || undefined, hourCycle:'h23', hour:'numeric', minute:'numeric', second:'numeric'});
+    const H = document.getElementById('bcH'), M = document.getElementById('bcM'), S = document.getElementById('bcS');
+    let raf = 0, visible = false;
+    function tick(){
+      const now = Date.now(), p = {};
+      fmt.formatToParts(now).forEach(x=>{ if(x.type !== 'literal') p[x.type] = +x.value; });
+      const sf = reduce ? p.second : p.second + (now % 1000)/1000;
+      const mf = p.minute + sf/60, hf = (p.hour % 12) + mf/60;
+      S.style.transform = `rotate(${sf*6}deg)`;
+      M.style.transform = `rotate(${mf*6}deg)`;
+      H.style.transform = `rotate(${hf*30}deg)`;
+      raf = visible ? (reduce ? setTimeout(tick, 1000) : requestAnimationFrame(tick)) : 0;
+    }
+    tick();
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(es=>{
+        visible = es[0].isIntersecting;
+        if(visible && !raf) tick();
+      }).observe(clock);
+    } else { visible = true; tick(); }
   })();
 </script>
 <!-- Style articles (popup) -->
