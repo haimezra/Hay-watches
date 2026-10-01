@@ -106,6 +106,21 @@
   .foot-bottom{ border-top:1px solid var(--line) !important; color:var(--mute) !important; }
   .foot-bottom a{ color:var(--pearl) !important; }
   .logo-img-footer{ width:190px !important; max-width:60% !important; height:auto !important; }
+
+  /* ---- refreshed layout: icon on the left, full-width text & photos, numbered items ---- */
+  .guide-wrap{ counter-reset:gi; padding-top:40px !important; }
+  .guide-wrap .g-item{ display:grid !important; grid-template-columns:1fr 56px; column-gap:18px; align-items:center; padding:34px 0 !important; counter-increment:gi; }
+  .guide-wrap .g-item > div:last-child{ display:contents; }
+  .guide-wrap .g-icon{ grid-column:2; grid-row:1; width:56px !important; height:56px !important; flex:none; border-radius:50% !important; border:1px solid var(--purple-soft) !important; background:radial-gradient(circle at 30% 25%, rgba(155,110,243,.22), var(--card2) 70%) !important; box-shadow:0 0 0 5px rgba(155,110,243,.06), 0 6px 18px rgba(0,0,0,.35); }
+  .guide-wrap .g-icon svg{ width:25px; height:25px; }
+  .guide-wrap .g-item h2{ grid-column:1; grid-row:1; margin:0 !important; font-size:1.35rem !important; line-height:1.3; color:var(--pearl) !important; }
+  .guide-wrap .g-item h2::before{ content:counter(gi, decimal-leading-zero); display:block; margin-bottom:6px; font-family:'Rubik',sans-serif; font-size:.7rem; font-weight:500; letter-spacing:.2em; color:var(--purple); }
+  .guide-wrap .g-item p{ grid-column:1 / -1; margin:0 !important; font-size:.98rem !important; line-height:1.95; color:var(--mute) !important; }
+  .guide-wrap .g-item h2 + p{ margin-top:18px !important; }
+  .guide-wrap .g-item p + p{ margin-top:10px !important; }
+  .guide-wrap .g-photo{ grid-column:1 / -1; margin:18px 0 0 !important; border:1px solid var(--line); border-radius:4px; box-shadow:0 14px 34px rgba(0,0,0,.4); }
+  .guide-wrap .g-caption{ grid-column:1 / -1; margin:10px 0 0 !important; padding-inline-start:12px; border-inline-start:2px solid var(--purple-soft); opacity:.85; }
+  @media (min-width:700px){ .guide-wrap .g-item{ column-gap:22px; } .guide-wrap .g-item h2{ font-size:1.5rem !important; } }
 </style>
 <link rel="stylesheet" href="boutique-theme.css?v=202609301105">
 </head>
