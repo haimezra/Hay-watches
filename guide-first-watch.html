@@ -94,6 +94,11 @@
   .checklist li{ display:flex; gap:14px; padding:16px 0; border-top:1px solid var(--line); align-items:flex-start; }
   .checklist li:first-child{ border-top:none; }
   .checklist .mark{ color:var(--purple); font-family:'Rubik',sans-serif; flex-shrink:0; width:20px; text-align:center; padding-top:2px; }
+  .checklist.blink .mark{ animation:markBlink 1.8s ease-in-out infinite; }
+  .checklist.blink li:nth-child(2) .mark{ animation-delay:.3s; }
+  .checklist.blink li:nth-child(3) .mark{ animation-delay:.6s; }
+  @keyframes markBlink{ 0%,100%{ opacity:1; transform:scale(1.12); text-shadow:0 0 10px rgba(155,110,243,.85); } 50%{ opacity:.2; transform:scale(.8); text-shadow:none; } }
+  @media (prefers-reduced-motion: reduce){ .checklist.blink .mark{ animation:none; } }
   .checklist strong{ color:var(--pearl); font-weight:500; }
   .checklist p{ margin:4px 0 0 !important; font-size:.9rem !important; }
 
@@ -256,7 +261,7 @@
     <p>הרצועה משפיעה על הנוחות היומית ועל האופי הכללי של השעון, ולעיתים ניתן להחליף אותה בהמשך.</p>
     <img class="g-photo" src="images/guides/first-watch-strap.jpg" alt="שעון עם רצועת עור חומה" loading="lazy">
     <p class="g-caption">רצועת עור מוסיפה חום וגימור אלגנטי, ומתפתחת עם השימוש לאורך זמן.</p>
-    <ul class="checklist">
+    <ul class="checklist blink">
       <li>
         <span class="mark">◆</span>
         <div>
