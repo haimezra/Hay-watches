@@ -791,14 +791,14 @@
   /* ---- Soft reveal on scroll for sections' headings and cards (hero excluded) ---- */
   (function(){
     if(!('IntersectionObserver' in window) || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
-    const sel = 'section:not(.hero) .section-head, .prod-grid > *, .cat-grid > *, .style-card, .mx-row, .sw-card, .trust-grid > *';
+    const sel = 'section:not(.hero) .section-head, .prod-grid > *, .cat-grid > *, .mx-row, .sw-card, .trust-grid > *'; // style gallery cards are excluded: they stay fixed
     const els = [...document.querySelectorAll(sel)];
     const io = new IntersectionObserver(es=>{
       es.forEach(e=>{
         if(!e.isIntersecting) return;
         const el = e.target; io.unobserve(el);
         el.classList.add('in');
-        setTimeout(()=>el.classList.remove('rv','in'), 1300); // hand control back to the element's own transitions
+        setTimeout(()=>{ el.classList.remove('rv','in'); el.style.transitionDelay=''; }, 1300); // hand control back to the element's own transitions
       });
     }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
     els.forEach((el,i)=>{
