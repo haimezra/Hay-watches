@@ -143,6 +143,7 @@ const PRODUCTS = [
 const ARTICLES = [
   { he:"איך לבחור את השעון הראשון שלך", en:"How to Choose Your First Watch",
     img:"images/guides/first-watch.jpg",
+    video:"assets/showreel.mp4", poster:"assets/showreel-poster.jpg",
     link:"guide-first-watch.html" },
   { he:"שעון אוטומטי מול קוורץ", en:"Automatic vs. Quartz",
     img:"images/guides/automatic-vs-quartz.jpg",

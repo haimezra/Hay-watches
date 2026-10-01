@@ -122,8 +122,8 @@
   .mx-row:hover{ border-color:var(--purple-soft); transform:translateY(-3px); }
   .mx-row:nth-child(even) .mx-img{ order:2; }
   .mx-img{ position:relative; display:block; aspect-ratio:16/9; overflow:hidden; }
-  .mx-img img{ width:100%; height:100%; object-fit:cover; display:block; filter:saturate(.9) brightness(.9); transition:transform 1.2s var(--ease), filter .6s; }
-  .mx-row:hover .mx-img img{ transform:scale(1.05); filter:saturate(1) brightness(1); }
+  .mx-img img, .mx-img video{ width:100%; height:100%; object-fit:cover; display:block; filter:saturate(.9) brightness(.9); transition:transform 1.2s var(--ease), filter .6s; }
+  .mx-row:hover .mx-img img, .mx-row:hover .mx-img video{ transform:scale(1.05); filter:saturate(1) brightness(1); }
   .mx-img::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,10,16,0) 55%, rgba(10,10,16,.55)); pointer-events:none; }
   .mx-info{ position:relative; display:flex; flex-direction:column; justify-content:center; padding:22px 30px; }
   .mx-tag{ margin-top:0; color:var(--purple); font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; }
@@ -141,7 +141,7 @@
     .mx-info{ padding:18px 18px 20px; }
       .mx-info h4{ font-size:1.05rem; }
   }
-  @media (prefers-reduced-motion: reduce){ .mx-row, .mx-img img, .mx-line, .mx-more i{ transition:none !important; } }
+  @media (prefers-reduced-motion: reduce){ .mx-row, .mx-img img, .mx-img video, .mx-line, .mx-more i{ transition:none !important; } }
   /* tighter, professional spacing between magazine and FAQ */
   #magazine{ padding-bottom:36px !important; }
   /* ---- FAQ tabs: no background, aligned/slide in from the right ---- */
@@ -629,7 +629,9 @@
     root.className = 'mx-list';
     root.innerHTML = ARTICLES.map((a,i)=>`
       <a class="mx-row" href="${a.link || '#'}" aria-label="${a.en}">
-        <span class="mx-img"><img src="${a.img}" alt="${a.en}" loading="lazy"></span>
+        <span class="mx-img">${a.video
+          ? `<video src="${a.video}" poster="${a.poster || a.img}" autoplay muted loop playsinline preload="metadata" aria-label="${a.en}"></video>`
+          : `<img src="${a.img}" alt="${a.en}" loading="lazy">`}</span>
         <span class="mx-info">
           <span class="mx-tag"><span class="he-txt">מדריך</span><span class="en-txt">Guide</span></span>
           <h4><span class="he-txt">${a.he}</span><span class="en-txt">${a.en}</span></h4>
