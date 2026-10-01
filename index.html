@@ -488,6 +488,17 @@
   </div>
 </section>
 
+<!-- Featured Products: men's watches -->
+<section id="featuredMen">
+  <div class="wrap">
+    <div class="section-head">
+      <h2><span class="he-txt">מוצרים נבחרים · שעוני גברים</span><span class="en-txt">Featured Pieces · Men's Watches</span></h2>
+      <p><span class="he-txt">בחירות מובילות מקולקציית שעוני הגברים: שעונים חדשים וגם יד שנייה, כל אחד עם בדיקת מקוריות ותיעוד מלא</span><span class="en-txt">Top picks from our men's collection: new and pre-owned watches, each authenticated and fully documented</span></p>
+    </div>
+    <div class="prod-grid" id="prodGridMen"></div>
+  </div>
+</section>
+
 <!-- Sell / trade-in your watch -->
 <section id="sellwatch">
   <div class="wrap">
@@ -597,9 +608,8 @@
 <script src="main.js?v=202609301013"></script>
 <script>
   // Homepage shows the curated "featured" products from the shared catalog (data.js)
-  const prodGrid = document.getElementById('prodGrid');
-  PRODUCTS.filter(p=>p.featured).forEach(p=>{
-    prodGrid.insertAdjacentHTML('beforeend', `
+  function prodCardHtml(p){
+    return `
       <div class="prod-card">
         <a class="prod-link" href="product.html?id=${p.id}">
           <div class="prod-img">
@@ -619,8 +629,12 @@
           <button class="add-cart"><span class="he-txt">הוסף לעגלה</span><span class="en-txt">Add to Cart</span></button>
           <button class="add-cart buy-now" onclick="buyNow('${p.id}')"><span class="he-txt">קנה עכשיו</span><span class="en-txt">Buy Now</span></button>
         </div>
-      </div>`);
-  });
+      </div>`;
+  }
+  const prodGrid = document.getElementById('prodGrid');
+  PRODUCTS.filter(p=>p.featured).forEach(p=>prodGrid.insertAdjacentHTML('beforeend', prodCardHtml(p)));
+  const prodGridMen = document.getElementById('prodGridMen');
+  if(prodGridMen) PRODUCTS.filter(p=>p.featuredMen).forEach(p=>prodGridMen.insertAdjacentHTML('beforeend', prodCardHtml(p)));
 
   /* ---- Magazine: stacked editorial list ---- */
   (function(){
