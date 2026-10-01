@@ -416,6 +416,35 @@
 .rv.in{ opacity:1; translate:0 0; }
 @media (prefers-reduced-motion: reduce){ .rv{ opacity:1; translate:none; transition:none !important; } }
 </style>
+<style id="fix-overflow">
+/* =====================================================================
+   FIX: horizontal scroll / content overflowing the screen
+   ===================================================================== */
+*, *::before, *::after{ box-sizing:border-box; }
+
+/* block sideways scrolling (fallback for older browsers) */
+html{ overflow-x:hidden; max-width:100%; }
+body{ overflow-x:clip; max-width:100%; position:relative; }
+@supports not (overflow:clip){ body{ overflow-x:hidden; } }
+
+img, video, iframe, svg{ max-width:100%; }
+
+/* sell / trade-in form */
+.sw-card, .sw-card > *, .sw-form, .sw-form > *{ min-width:0; max-width:100%; }
+.sw-form input, .sw-form select, .sw-file{ width:100%; max-width:100%; }
+#swFileName{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0; }
+
+/* footer + newsletter */
+.foot-grid > *, .foot-bottom > *, .foot-col{ min-width:0; }
+.foot-grid{ max-width:100%; }
+.foot-bottom{ flex-wrap:wrap; gap:8px; }
+footer a, footer p, footer span, #policy p, #policy h3{ overflow-wrap:anywhere; }
+.newsletter{ display:flex; flex-wrap:wrap; max-width:100%; gap:8px; }
+.newsletter input{ flex:1 1 140px; min-width:0; width:auto; }
+
+/* external widget must not exceed the screen */
+[id*="negishot"], [class*="negishot"], [id*="ngs"], [class*="ngs"]{ max-width:100vw; }
+</style>
 </head>
 <body>
 
