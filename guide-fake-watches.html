@@ -77,13 +77,15 @@
   .page-hero::after{ content:''; display:block; width:56px; height:1px; background:var(--purple); margin:28px auto 0; }
 
   .guide-wrap{ max-width:760px; margin:0 auto; padding:56px 24px 100px; }
-  .g-item{ display:flex; gap:22px; padding:36px 0; border-top:1px solid var(--line); align-items:flex-start; }
+  .g-item{ display:flex; flex-direction:column; gap:16px; padding:40px 0; border-top:1px solid var(--line); align-items:flex-start; text-align:start; }
   .g-item:first-child{ border-top:none; }
-  .g-icon{ flex:0 0 52px; width:52px; height:52px; border:1px solid var(--purple-soft); border-radius:2px; display:flex; align-items:center; justify-content:center; background:var(--card2); }
+  .g-icon{ flex:0 0 auto; width:52px; height:52px; border:1px solid var(--purple-soft); border-radius:2px; display:flex; align-items:center; justify-content:center; background:var(--card2); }
   .g-icon svg{ width:24px; height:24px; stroke:var(--purple); fill:none; stroke-width:1.5; }
   .g-item h2{ font-size:1.25rem !important; color:var(--pearl) !important; margin-bottom:10px; font-weight:400 !important; }
   .g-item p{ color:var(--mute) !important; font-size:.96rem; font-weight:300; }
-  .g-item p + p{ margin-top:8px; }
+  .g-item > div:last-child{ width:100%; }
+.page-hero h1{ padding:0 20px; }
+.g-item p + p{ margin-top:8px; }
   .g-photo{ width:100%; aspect-ratio:16/9; object-fit:cover; border:1px solid var(--line); border-radius:2px; margin:6px 0 4px; display:block; }
   .g-caption{ color:var(--mute) !important; font-size:.76rem !important; margin-top:8px !important; opacity:.75; }
 
