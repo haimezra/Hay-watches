@@ -440,19 +440,12 @@ footer a, footer p, footer span, #policy p, #policy h3{ overflow-wrap:anywhere; 
 .newsletter{ display:flex; flex-wrap:wrap; max-width:100%; gap:8px; }
 .newsletter input{ flex:1 1 140px; min-width:0; width:auto; }
 
+/* ---- no elastic sideways overscroll on touch screens ---- */
+html, body{ overscroll-behavior-x:none; }
+
 /* external widget must not exceed the screen */
 [id*="negishot"], [class*="negishot"], [id*="ngs"], [class*="ngs"]{ max-width:100vw; }
 
-/* ---- WatchCharts preview card ---- */
-.wc-section{ background:var(--bg); padding:32px 20px 44px; border-bottom:1px solid var(--line); text-align:center; }
-.wc-lead{ color:var(--pearl); font-size:1.05rem; line-height:1.7; max-width:520px; margin:0 auto 18px; }
-.wc-card{ display:block; max-width:420px; margin:0 auto; background:#100f17; border:0; outline:0; border-radius:14px; overflow:hidden; text-decoration:none; text-align:start; transition:transform .2s; -webkit-tap-highlight-color:transparent; }
-.wc-card:hover{ transform:translateY(-3px); }
-.wc-img{ display:block; width:100%; height:150px; background:transparent; }
-.wc-body{ padding:14px 18px 18px; }
-.wc-domain{ color:var(--pearl); opacity:.75; font-size:.78rem; letter-spacing:.06em; text-transform:lowercase; }
-.wc-title{ color:var(--pearl); font-size:1.1rem; font-weight:600; margin:4px 0; }
-.wc-desc{ color:var(--pearl); font-size:1rem; font-weight:700; line-height:1.55; }
 
 
 /* sell-watch icon: small transparent line drawing */
@@ -461,17 +454,8 @@ footer a, footer p, footer span, #policy p, #policy h3{ overflow-wrap:anywhere; 
 /* trust strip: no background */
 section.trust, .trust-grid, .trust-grid .trust{ background:transparent !important; background-color:transparent !important; }
 
-.wc-main{ background:linear-gradient(180deg,rgba(13,13,13,.25) 0%,rgba(13,13,13,.8) 100%),url("images/wc-bg.webp") center/cover no-repeat, var(--card); }
-.wc-note{ padding:14px 18px 20px; margin:0; font-size:1rem; font-weight:300; line-height:1.6; color:var(--pearl); opacity:.85; }
 
-.wc-note > div{ text-align:right; }
-.wc-note-en{ margin-top:6px; opacity:.85; font-size:.92rem; }
 
-/* keep card texts on a single line */
-.wc-desc{ white-space:nowrap; font-size:clamp(.8rem,4.1vw,1rem) !important; }
-.wc-note{ padding:14px 14px 20px !important; }
-.wc-note > div{ white-space:nowrap; font-size:clamp(.62rem,3.3vw,1rem); }
-.wc-note > .wc-note-en{ font-size:clamp(.58rem,2.7vw,.8rem); }
 </style>
 </head>
 <body>
@@ -555,26 +539,6 @@ section.trust, .trust-grid, .trust-grid .trust{ background:transparent !importan
   <a href="#" class="fb-follow"><span class="he-txt">אודות</span><span class="en-txt">About</span></a>
 </div>
 
-
-<!-- WatchCharts value check preview -->
-<div class="wc-section">
-  <p class="wc-lead"><span class="he-txt">אפשר לבדוק את שווי השעון באתר WatchCharts</span><span class="en-txt">You can check your watch's value on WatchCharts</span></p>
-  <a class="wc-card" href="https://watchcharts.com" target="_blank" rel="noopener noreferrer" aria-label="WatchCharts">
-    <div class="wc-main">
-    <svg class="wc-img" viewBox="0 0 420 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <g stroke="#2A2825" stroke-width="1"><line x1="0" y1="38" x2="420" y2="38"/><line x1="0" y1="75" x2="420" y2="75"/><line x1="0" y1="112" x2="420" y2="112"/></g>
-      <polyline points="0,118 50,104 100,110 150,82 200,90 250,62 300,70 350,42 420,28" fill="none" stroke="#9B7FC7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      <polyline points="0,118 50,104 100,110 150,82 200,90 250,62 300,70 350,42 420,28 420,150 0,150" fill="#6E4FA3" opacity=".18"/>
-      <circle cx="350" cy="42" r="5" fill="#9B7FC7"/>
-    </svg>
-    <div class="wc-body">
-      <div class="wc-domain">watchcharts.com</div>
-      <div class="wc-title">WatchCharts</div>
-      <div class="wc-desc"><span class="he-txt">מחירי שוק, מגמות ושווי עדכני</span><span class="en-txt">Market prices, trends and up-to-date values</span></div>
-    </div>
-    </div>
-  </a>
-</div>
 
 <!-- Categories -->
 <section id="catalog" style="padding-top:0;">
