@@ -1,0 +1,29 @@
+/* HAY Watches: luxury light theme (airy, soft lavender accents). Loaded last. */
+:root{
+  --bg:#FBF9F6; --card:#FFFFFF; --pearl:#1F1C26; --mute:#6F6A78; --line:#E9E4EE;
+  --gold:#8F7DB5; --gold-light:#B3A5D1; --lav:#F4F0F9;
+}
+/* dark editorial zones keep light text */
+.topbar,.hero,.cat-hero,#pdHero,.pd-hero,footer,.wc-card{
+  --pearl:#F4F1EC; --mute:#BDB8C6; --line:rgba(255,255,255,.14);
+}
+body{ background:var(--bg); color:var(--pearl); -webkit-font-smoothing:antialiased; }
+h1,h2,h3{ font-weight:300; letter-spacing:.03em; }
+section:not(.hero):not(.cat-hero){ padding-top:96px !important; padding-bottom:96px !important; }
+@media (max-width:880px){ section:not(.hero):not(.cat-hero){ padding-top:56px !important; padding-bottom:56px !important; } }
+/* fine lines, sharp elegant corners, no heavy shadows */
+.cat,.pd-img,.product,.card,[class*="prod-card"]{ border-radius:2px !important; box-shadow:none !important; border:1px solid var(--line); background:var(--card); }
+.cat{ border-color:transparent; }
+/* buttons: quiet, refined */
+.add-cart,.btn,button.buy,.pd-actions button{ border-radius:2px !important; font-weight:400; letter-spacing:.12em; background:transparent; color:var(--pearl); border:1px solid #1F1C26; transition:background .25s,color .25s; }
+.add-cart:hover,.btn:hover,.pd-actions button:hover{ background:#1F1C26; color:#FBF9F6; }
+.pd-actions .buy-now{ background:var(--gold) !important; border-color:var(--gold) !important; color:#fff !important; }
+.pd-actions .buy-now:hover{ background:#7C6AA3 !important; }
+.badge{ background:var(--lav) !important; color:#6B5A91 !important; border:0 !important; letter-spacing:.1em; font-weight:400; }
+.pd-price,.price{ font-weight:300; letter-spacing:.04em; }
+.pd-policy{ border-color:var(--line) !important; }
+/* strips and added blocks */
+.fb-strip,.wc-section,.side-tabs{ background:var(--lav) !important; }
+.fb-strip{ border-color:var(--line) !important; }
+.side-tab{ border-color:rgba(111,95,145,.45) !important; color:#3A3348; }
+.wc-card{ border-radius:2px !important; }
