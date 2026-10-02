@@ -65,6 +65,11 @@ const PRODUCTS = [
     dHe:"יד שנייה · וינטג׳ · קוטר 34 מ״מ · מארז וביזל בצבע זהב צהוב · לוח שמפניה עם סממני מקל ללא ספרות · זכוכית פלקסיגלס · תנועה אוטומטית · רצועת עור שחורה",
     dEn:"Pre-owned · Vintage · 34mm case · Yellow gold case and bezel · Champagne dial with baton markers, no numerals · Plexiglass crystal · Automatic movement · Black leather strap" },
 
+  { id:"men-18", cat:"men", brand:"Omega × Swatch", name:{he:"Omega × Swatch MoonSwatch Mission to Earthphase Snoopy (Moonshine Gold)", en:"Omega × Swatch MoonSwatch Mission to Earthphase Snoopy (Moonshine Gold)"}, price:2500, cond:"used",
+    img:"images/products/men-18-1.webp", imgs:["images/products/men-18-1.webp","images/products/men-18-2.webp","images/products/men-18-3.webp","images/products/men-18-4.webp"],
+    dHe:"יד שנייה במצב כחדש · שיתוף הפעולה של אומגה וסווטש בהשראת החלל · על דיסק הירח מופיע סנופי, הקשור למשימות החלל מאז שנות ה-60 · תחת אור UV נחשף ציטוט נסתר מהקומיקס של סנופי לצד ירחים וכוכבים זוהרים · קוטר 42 מ״מ · עובי 13.25 מ״מ · מארז ביו-קרמי (שני שלישים קרמיקה ושליש חומר ממקור ביולוגי משמן קיק) בגימור מט-משי · מגיע עם קופסה וכרטיס",
+    dEn:"Pre-owned, like new · The Omega × Swatch space-inspired collaboration · Snoopy lounges on the moon sub-dial, a nod to human spaceflight since the 1960s · Under UV light a hidden Snoopy comic quote appears, alongside glowing moons and stars · 42mm diameter · 13.25mm thick · Bioceramic case (two-thirds ceramic, one-third bio-sourced material from castor oil) with a silky matte finish · Comes with box and card" },
+
   // ---- Women's Watches ----
   { id:"women-1", cat:"women", brand:"Tissot", featured:true, name:{he:"Tissot בליסימה סמול ליידי", en:"Tissot Bellissima Small Lady"}, price:1200, cond:"used",
     img:"images/products/women-1-1.webp",
