@@ -326,3 +326,7 @@ section.cat-hero{ padding: 56px 0 80px !important; }
 .wrap.breadcrumb{ padding-inline: 32px !important; }
 @media (max-width:880px){ .wrap.breadcrumb{ padding-inline: 26px !important; } }
 @media (max-width:640px){ .wrap.breadcrumb{ padding-inline: 22px !important; } }
+
+/* ---- consistent professional spacing ---- */
+section:not(.hero):not(.cat-hero):not(.pd-hero){ padding-top:96px !important; padding-bottom:96px !important; }
+@media (max-width:880px){ section:not(.hero):not(.cat-hero):not(.pd-hero){ padding-top:56px !important; padding-bottom:56px !important; } }
