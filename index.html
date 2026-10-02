@@ -442,6 +442,17 @@ footer a, footer p, footer span, #policy p, #policy h3{ overflow-wrap:anywhere; 
 
 /* external widget must not exceed the screen */
 [id*="negishot"], [class*="negishot"], [id*="ngs"], [class*="ngs"]{ max-width:100vw; }
+
+/* ---- WatchCharts preview card ---- */
+.wc-section{ background:var(--bg); padding:34px 20px 38px; border-bottom:1px solid var(--line); text-align:center; }
+.wc-lead{ color:var(--pearl); font-size:1.05rem; line-height:1.7; max-width:520px; margin:0 auto 18px; }
+.wc-card{ display:block; max-width:420px; margin:0 auto; background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden; text-decoration:none; text-align:start; transition:transform .2s, border-color .2s; }
+.wc-card:hover{ transform:translateY(-3px); border-color:var(--gold-light); }
+.wc-img{ display:block; width:100%; height:150px; background:linear-gradient(135deg,#14121c,#1f1a2e); }
+.wc-body{ padding:14px 18px 18px; }
+.wc-domain{ color:var(--mute); font-size:.78rem; letter-spacing:.06em; text-transform:lowercase; }
+.wc-title{ color:var(--pearl); font-size:1.1rem; font-weight:600; margin:4px 0; }
+.wc-desc{ color:var(--mute); font-size:.9rem; line-height:1.55; }
 </style>
 </head>
 <body>
@@ -524,6 +535,24 @@ footer a, footer p, footer span, #policy p, #policy h3{ overflow-wrap:anywhere; 
   <span class="social-sep" aria-hidden="true"></span>
   <a href="#" class="fb-follow"><span class="he-txt">אודות</span><span class="en-txt">About</span></a>
 </div>
+
+<!-- WatchCharts value check preview -->
+<section class="wc-section">
+  <p class="wc-lead"><span class="he-txt">רוצים לדעת מה שווי השעון שלכם בשוק? אפשר לבדוק את שווי השעון באתר WatchCharts, הפלטפורמה המובילה למעקב אחר מחירי שעונים. לחצו על התצוגה המקדימה ותגיעו ישירות לאתר.</span><span class="en-txt">Curious what your watch is worth on the market? You can check its value on WatchCharts, the leading platform for tracking watch prices. Tap the preview to go straight to the site.</span></p>
+  <a class="wc-card" href="https://watchcharts.com" target="_blank" rel="noopener noreferrer" aria-label="WatchCharts">
+    <svg class="wc-img" viewBox="0 0 420 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <g stroke="#2A2825" stroke-width="1"><line x1="0" y1="38" x2="420" y2="38"/><line x1="0" y1="75" x2="420" y2="75"/><line x1="0" y1="112" x2="420" y2="112"/></g>
+      <polyline points="0,118 50,104 100,110 150,82 200,90 250,62 300,70 350,42 420,28" fill="none" stroke="#9B7FC7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline points="0,118 50,104 100,110 150,82 200,90 250,62 300,70 350,42 420,28 420,150 0,150" fill="#6E4FA3" opacity=".18"/>
+      <circle cx="350" cy="42" r="5" fill="#9B7FC7"/>
+    </svg>
+    <div class="wc-body">
+      <div class="wc-domain">watchcharts.com</div>
+      <div class="wc-title">WatchCharts</div>
+      <div class="wc-desc"><span class="he-txt">מחירי שוק, מגמות ושווי עדכני של שעוני יוקרה</span><span class="en-txt">Market prices, trends and up-to-date values for luxury watches</span></div>
+    </div>
+  </a>
+</section>
 
 <!-- Categories -->
 <section id="catalog" style="padding-top:0;">
