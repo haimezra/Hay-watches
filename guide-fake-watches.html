@@ -108,6 +108,16 @@
   .foot-bottom{ border-top:1px solid var(--line) !important; color:var(--mute) !important; }
   .foot-bottom a{ color:var(--pearl) !important; }
   .logo-img-footer{ width:190px !important; max-width:60% !important; height:auto !important; }
+
+/* ---- refined guide items: icon above heading, no numbering ---- */
+.guide-wrap .g-item{ display:flex !important; flex-direction:column !important; align-items:flex-start !important; gap:0 !important; padding:44px 0 !important; counter-increment:none !important; }
+.guide-wrap .g-item > div:last-child{ display:block !important; width:100%; }
+.guide-wrap .g-icon{ grid-column:auto; grid-row:auto; width:48px !important; height:48px !important; border-radius:2px !important; background:transparent !important; box-shadow:none !important; border:1px solid var(--purple-soft) !important; margin-bottom:22px; }
+.guide-wrap .g-item h2{ grid-column:auto; grid-row:auto; font-size:1.4rem !important; font-weight:300 !important; letter-spacing:.02em; margin:0 0 14px !important; }
+.guide-wrap .g-item h2::before{ content:none !important; display:none !important; }
+.guide-wrap .g-item p{ grid-column:auto; margin:0 !important; line-height:1.9; }
+.guide-wrap .g-item h2 + p{ margin-top:0 !important; }
+.guide-wrap .g-item p + p{ margin-top:12px !important; }
 </style>
 <link rel="stylesheet" href="boutique-theme.css?v=202609301105">
 </head>
