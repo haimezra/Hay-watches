@@ -157,6 +157,7 @@ const ARTICLES = [
     link:"guide-first-watch.html" },
   { he:"שעון אוטומטי מול קוורץ", en:"Automatic vs. Quartz",
     img:"images/guides/automatic-vs-quartz.jpg",
+    video:"assets/automatic-vs-quartz.mp4", poster:"assets/automatic-vs-quartz-poster.jpg",
     link:"guide-automatic-vs-quartz.html" },
   { he:"המדריך לשמירה על רצועות עור", en:"Caring for Leather Straps",
     img:"images/guides/strap-care.jpg",
