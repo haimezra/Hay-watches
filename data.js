@@ -60,6 +60,11 @@ const PRODUCTS = [
     dHe:"יד שנייה · דגם Santos-Dumont, מארז Large Model · מארז פלדה מוברשת מרובע עם ברגים גלויים במסגרת, בהשראת השעון שעיצב לואי קרטייה ב-1904 עבור הטייס אלברטו סנטוס-דומון, ונחשב לאחד השעונים הראשונים שנועדו לענידה על פרק היד · לוח כסוף עם ספרות רומיות ומחוגים כחולים · כתר עם אבן ספיר · רצועת עור תנין כחולה",
     dEn:"Pre-owned · Santos-Dumont model, Large Model case · Brushed steel square case with exposed screws on the bezel, inspired by the watch Louis Cartier designed in 1904 for aviator Alberto Santos-Dumont, regarded as one of the first watches made for the wrist · Silver dial with Roman numerals and blue hands · Sapphire-set crown · Blue alligator leather strap" },
 
+  { id:"men-17", cat:"men", brand:"Rolex", name:{he:"Rolex Oyster Perpetual וינטג׳ (לוח שמפניה, 34 מ״מ)", en:"Vintage Rolex Oyster Perpetual (Champagne Dial, 34mm)"}, price:13000, cond:"used",
+    img:"images/products/men-17-1.webp", imgs:["images/products/men-17-1.webp","images/products/men-17-2.webp","images/products/men-17-3.webp","images/products/men-17-4.webp"],
+    dHe:"יד שנייה · וינטג׳ · קוטר 34 מ״מ · מארז וביזל בצבע זהב צהוב · לוח שמפניה עם סממני מקל ללא ספרות · זכוכית פלקסיגלס · תנועה אוטומטית · רצועת עור שחורה",
+    dEn:"Pre-owned · Vintage · 34mm case · Yellow gold case and bezel · Champagne dial with baton markers, no numerals · Plexiglass crystal · Automatic movement · Black leather strap" },
+
   // ---- Women's Watches ----
   { id:"women-1", cat:"women", brand:"Tissot", featured:true, name:{he:"Tissot בליסימה סמול ליידי", en:"Tissot Bellissima Small Lady"}, price:1200, cond:"used",
     img:"images/products/women-1-1.webp",
