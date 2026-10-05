@@ -276,3 +276,7 @@ img, video{
   animation:hayShimmer 9s linear infinite;
 }
 @media (prefers-reduced-motion: reduce){ .polish-sec .section-head h2, #featured .section-head h2, #style .section-head h2, #magazine .section-head h2{ animation:none; } }
+
+/* Small English line under the Hebrew text (hidden in English mode, where the main text is already English) */
+.polish-sec .section-head p.polish-en{margin-top:10px; font-size:.78rem !important; line-height:1.5; color:var(--mute); opacity:.8; font-weight:300 !important;}
+body.en-mode .polish-sec .section-head p.polish-en{display:none;}
