@@ -264,6 +264,7 @@ img, video{
 
 /* Polish heading: same shimmering glitter as the hero subtitle (keyframes hayShimmer live in index.html) */
 .polish-sec .section-head h2,
+#featured .section-head h2,
 #style .section-head h2,
 #magazine .section-head h2{
   background:linear-gradient(135deg,#b3a9d4 0%,#d8d0ee 36%,#ffffff 46%,#ffe7a3 50%,#ffffff 54%,#d8d0ee 64%,#b3a9d4 100%);
@@ -274,4 +275,4 @@ img, video{
   filter:drop-shadow(0 0 7px rgba(190,165,255,.45));
   animation:hayShimmer 9s linear infinite;
 }
-@media (prefers-reduced-motion: reduce){ .polish-sec .section-head h2, #style .section-head h2, #magazine .section-head h2{ animation:none; } }
+@media (prefers-reduced-motion: reduce){ .polish-sec .section-head h2, #featured .section-head h2, #style .section-head h2, #magazine .section-head h2{ animation:none; } }
