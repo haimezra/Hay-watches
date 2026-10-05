@@ -261,3 +261,15 @@ img, video{
 .polish-fig figcaption{padding:14px 0 0; text-align:center; color:var(--mute); font-size:.9rem;}
 .polish-cta{text-align:center; margin-top:22px;}
 .polish-cta a{color:var(--gold-light); text-decoration:none; border-bottom:1px solid var(--gold); padding-bottom:2px; font-size:.95rem;}
+
+/* Polish heading: same shimmering glitter as the hero subtitle (keyframes hayShimmer live in index.html) */
+.polish-sec .section-head h2{
+  background:linear-gradient(135deg,#b3a9d4 0%,#d8d0ee 36%,#ffffff 46%,#ffe7a3 50%,#ffffff 54%,#d8d0ee 64%,#b3a9d4 100%);
+  background-size:300% 300%;
+  background-position:0 0;
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 7px rgba(190,165,255,.45));
+  animation:hayShimmer 9s linear infinite;
+}
+@media (prefers-reduced-motion: reduce){ .polish-sec .section-head h2{ animation:none; } }
