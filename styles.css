@@ -255,8 +255,9 @@ img, video{
 
 /* Polish & restoration section */
 .polish-sec{padding-bottom:0;}
-.polish-fig{margin:0 auto; max-width:760px; border-radius:14px; overflow:hidden; border:1px solid var(--line); background:var(--card);}
-.polish-fig img{display:block; width:100%; height:auto;}
-.polish-fig figcaption{padding:14px 18px; text-align:center; color:var(--mute); font-size:.9rem;}
+.polish-sec{background:transparent !important;}
+.polish-fig{margin:0 auto; max-width:760px; background:transparent; border:0; box-shadow:none;}
+.polish-fig img{display:block; width:100%; height:auto; border-radius:12px;}
+.polish-fig figcaption{padding:14px 0 0; text-align:center; color:var(--mute); font-size:.9rem;}
 .polish-cta{text-align:center; margin-top:22px;}
 .polish-cta a{color:var(--gold-light); text-decoration:none; border-bottom:1px solid var(--gold); padding-bottom:2px; font-size:.95rem;}
