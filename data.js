@@ -71,7 +71,7 @@ const PRODUCTS = [
     dEn:"Pre-owned, like new · The Omega × Swatch space-inspired collaboration · Snoopy lounges on the moon sub-dial, a nod to human spaceflight since the 1960s · Under UV light a hidden Snoopy comic quote appears, alongside glowing moons and stars · 42mm diameter · 13.25mm thick · Bioceramic case (two-thirds ceramic, one-third bio-sourced material from castor oil) with a silky matte finish · Comes with box and card" },
 
   // ---- Women's Watches ----
-  { id:"women-1", cat:"women", brand:"Tissot", featured:true, name:{he:"Tissot בליסימה סמול ליידי", en:"Tissot Bellissima Small Lady"}, price:1200, cond:"used",
+  { id:"women-1", cat:"women", brand:"Tissot", name:{he:"Tissot בליסימה סמול ליידי", en:"Tissot Bellissima Small Lady"}, price:1200, cond:"used",
     img:"images/products/women-1-1.webp",
     imgs:["images/products/women-1-1.webp","images/products/women-1-2.webp","images/products/women-1-3.webp"],
     dHe:"יד שנייה · מק״ט T126.010.66.113.00 · קוטר 26 מ״מ · מארז פלדת אל-חלד 316L משובץ אבנים · זכוכית ספיר עמידה בשריטות עם ציפוי אנטי-רפלקטיבי · תנועת קוורץ שוויצרית (קליבר ETA F03.111) · רצועת עור אמיתית באדום עז עם אבזם פרפר · עמיד למים עד 50 מ׳ · כולל קופסה מקורית של המותג",
@@ -86,12 +86,12 @@ const PRODUCTS = [
     imgs:["images/products/women-3-1.webp","images/products/women-3-2.webp"],
     dHe:"יד שנייה · מצב מעולה (Near Mint) · שעון וינטג׳ מסדרת Tissot A282 · קוטר 23 מ״מ · מארז מלבני מצופה זהב · לוח לבן עם אינדקסים רומיים · תת-חוגה שניות קטנה · תנועת קוורץ שוויצרית · רצועת עור חום מקורית בגימור קרוקודיל · פריט אספנות קלאסי מתקופת שנות ה-80",
     dEn:"Pre-owned · Near Mint condition · Vintage Tissot A282 series · 23mm gold-plated rectangular case · White dial with Roman numerals · Small seconds sub-dial · Swiss quartz movement · Original brown crocodile-embossed leather strap · Classic 1980s collector's piece" },
-  { id:"women-4", cat:"women", brand:"Tissot", name:{he:"Tissot PRX קוורץ 25 מ״מ פנינת-אם", en:"Tissot PRX Quartz 25mm Mother of Pearl"}, price:1000, cond:"used",
+  { id:"women-4", cat:"women", brand:"Tissot", featured:true, name:{he:"Tissot PRX קוורץ 25 מ״מ פנינת-אם", en:"Tissot PRX Quartz 25mm Mother of Pearl"}, price:1000, cond:"used",
     img:"images/products/women-4-1.webp",
     imgs:["images/products/women-4-1.webp","images/products/women-4-2.webp","images/products/women-4-3.webp"],
     dHe:"יד שנייה · מק״ט T137.010.21.111.00 · קוטר 25 מ״מ · מארז פלדת אל-חלד 316L עם לינטה מצופה זהב ורוד (PVD) · לוח פנינת-אם ייחודי עם אינדקסים ורוד-זהב · זכוכית ספיר אנטי-רפלקטיבית · תנועת קוורץ שוויצרית · צמיד פלדה מקורי · עמיד למים עד 100 מ׳ · עיצוב וינטג׳-מודרני בהשראת שנות ה-70",
     dEn:"Pre-owned · Ref. T137.010.21.111.00 · 25mm case · 316L stainless steel case with rose gold PVD coated bezel · Distinctive mother-of-pearl dial with rose gold indices · Antireflective sapphire crystal · Swiss quartz movement · Original steel bracelet · 100m water resistant · 70's-inspired modern-vintage design" },
-  { id:"women-5", cat:"women", brand:"Burberry", featured:true, name:{he:"Burberry The City זהב ורוד", en:"Burberry The City Rose Gold"}, price:1000, cond:"new", available:true,
+  { id:"women-5", cat:"women", brand:"Burberry", name:{he:"Burberry The City זהב ורוד", en:"Burberry The City Rose Gold"}, price:1000, cond:"new", available:true,
     img:"images/products/women-5-1.webp",
     imgs:["images/products/women-5-1.webp","images/products/women-5-2.webp","images/products/women-5-3.webp"],
     dHe:"חדש · דגם BU9039 מסדרת The City · קוטר 38 מ״מ · מארז וצמיד פלדת אל-חלד בציפוי זהב ורוד · לוח בגימור סאנריי עם תבנית ה-Check האייקונית של המותג · חלון תאריך · זכוכית ספיר · תנועת קוורץ שוויצרית · אבזם פרפר · עמיד למים עד 50 מ׳ · כולל קופסה מקורית של המותג",
@@ -103,7 +103,7 @@ const PRODUCTS = [
     dHe:"יד שנייה · דגם 1567 Santos Galbée · פלדה וזהב · תנועת קוורץ · קוטר 24 מ״מ · משנת 2012 · לוח לבן עם ספרות רומיות · כתר עם אבן כחולה · מגיע עם קופסה ותעודות · אחריות 6 חודשים",
     dEn:"Pre-owned · Model 1567 Santos Galbée · Steel & gold · Quartz movement · 24mm · 2012 · White dial with Roman numerals · Blue cabochon crown · Box and papers included · 6-month warranty" },
 
-  { id:"women-7", available:true, cat:"women", brand:"Cartier", name:{he:"Cartier Tank Large 2015", en:"Cartier Tank Large 2015"}, price:14000, cond:"used",
+  { id:"women-7", available:true, cat:"women", brand:"Cartier", featured:true, name:{he:"Cartier Tank Large 2015", en:"Cartier Tank Large 2015"}, price:14000, cond:"used",
     img:"images/products/women-7-1.webp", imgs:["images/products/women-7-1.webp"],
     dHe:"יד שנייה · דגם Tank Large · משנת 2015 · במצב כמו חדש · מארז פלדה מלבני · לוח לבן עם ספרות רומיות ומחוגים כחולים · כתר עם אבן כחולה · רצועת עור שחורה",
     dEn:"Pre-owned · Tank Large model · 2015 · Like-new condition · Steel rectangular case · White dial with Roman numerals and blue hands · Blue cabochon crown · Black leather strap" },
