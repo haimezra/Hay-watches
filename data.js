@@ -218,14 +218,14 @@ async function buyNow(productId, opts){
       body: JSON.stringify({ id: String(productId), opts: opts || {} })
     });
     const data = await r.json().catch(() => ({}));
-    if(r.ok && data.ok && typeof data.url === 'string' && data.url.indexOf('https://icom.yaad.net/') === 0){
+    if(r.ok && data.ok && typeof data.url === 'string' && (data.url.indexOf('https://pay.hyp.co.il/') === 0 || data.url.indexOf('https://icom.yaad.net/') === 0)){
       window.location.href = data.url;
       return;
     }
     // Payment not enabled yet (no terminal) or API unavailable: continue the order over WhatsApp.
     if(data.error === 'payment_not_configured' || r.status === 404 || r.status === 503){ whatsappOrder(productId, opts); return; }
     if(data.error === 'not_available') alert('המוצר הזה כבר לא זמין לרכישה.');
-    else alert('אירעה שגיאה בפתיחת עמוד התשלום. נסו שוב או צרו קשר.');
+    else alert('אירעה שגיאה בפתיחת עמוד התשלום. נסו שוב או צרו קשר.' + (data.error ? '\n(' + data.error + (data.detail ? ': ' + data.detail : '') + ')' : ''));
   }catch(e){
     alert('אירעה שגיאה בחיבור. נסו שוב בעוד רגע.');
   }finally{

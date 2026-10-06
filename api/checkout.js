@@ -105,12 +105,21 @@ module.exports = async (req, res) => {
     Sign: 'True',
   });
 
-  try {
-    const r = await fetch('https://icom.yaad.net/p/?' + params.toString());
-    const text = (await r.text()).trim();
-    if (!r.ok || !/signature=/i.test(text)) return res.status(502).json({ ok: false, error: 'sign_failed' });
-    return res.status(200).json({ ok: true, url: 'https://icom.yaad.net/p/?action=pay&' + text });
-  } catch (e) {
-    return res.status(502).json({ ok: false, error: 'sign_failed' });
+  // Hyp's current host first, the legacy Yaad host as a fallback.
+  const HOSTS = ['https://pay.hyp.co.il', 'https://icom.yaad.net'];
+  const redact = (t) => [HYP_KEY, HYP_PASSP, HYP_MASOF].reduce((a, v) => (v ? a.split(v).join('***') : a), String(t));
+  let detail = '';
+  for (const host of HOSTS) {
+    try {
+      const r = await fetch(host + '/p/?' + params.toString());
+      const text = (await r.text()).trim();
+      if (r.ok && /signature=/i.test(text)) {
+        return res.status(200).json({ ok: true, url: host + '/p/?action=pay&' + text });
+      }
+      detail = redact(text).replace(/\s+/g, ' ').slice(0, 160);
+    } catch (e) {
+      detail = 'fetch_error';
+    }
   }
+  return res.status(502).json({ ok: false, error: 'sign_failed', detail });
 };
