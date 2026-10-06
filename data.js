@@ -225,9 +225,13 @@ async function buyNow(productId, opts){
     // Payment not enabled yet (no terminal) or API unavailable: continue the order over WhatsApp.
     if(data.error === 'payment_not_configured' || r.status === 404 || r.status === 503){ whatsappOrder(productId, opts); return; }
     if(data.error === 'not_available') alert('המוצר הזה כבר לא זמין לרכישה.');
-    else alert('אירעה שגיאה בפתיחת עמוד התשלום. נסו שוב או צרו קשר.' + (data.error ? '\n(' + data.error + (data.detail ? ': ' + data.detail : '') + ')' : ''));
+    else {
+      console.warn('checkout error', data.error, data.detail || '');
+      // Temporary: online payment is being finalized. Offer to complete the order over WhatsApp.
+      if(confirm('התשלום המקוון באתר יהיה זמין בקרוב, ואנחנו עובדים על זה.\nבינתיים מוזמנים ליצור איתנו קשר ונשמח להשלים את ההזמנה יחד.\n\nלפתוח שיחת וואטסאפ?')) whatsappOrder(productId, opts);
+    }
   }catch(e){
-    alert('אירעה שגיאה בחיבור. נסו שוב בעוד רגע.');
+    alert('אירעה שגיאה בחיבור. נסו שוב בעוד רגע, או צרו איתנו קשר.');
   }finally{
     _buying = false;
   }
