@@ -54,7 +54,16 @@ section{ padding: 128px 0 !important; }
   font-weight:300 !important; letter-spacing:.08em !important; font-size:.68rem !important;
   color: var(--mute) !important;
 }
-.badge.used{ color:#fff !important; background:transparent !important; text-shadow:0 1px 3px rgba(0,0,0,.65); }
+.badge.used{
+  color:#fff !important;
+  padding:3px 9px !important;
+  border-radius:4px !important;
+  background: rgba(10,10,16,.6) !important;
+  border:1px solid rgba(255,255,255,.1) !important;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  font-size:.62rem !important; letter-spacing:.06em !important;
+  text-shadow:none !important;
+}
 
 /* hover reveal: "View Details" fades in over the watch photo */
 .view-details{
