@@ -54,7 +54,7 @@ section{ padding: 128px 0 !important; }
   font-weight:300 !important; letter-spacing:.08em !important; font-size:.68rem !important;
   color: var(--mute) !important;
 }
-.badge.used{
+.badge, .badge.used{
   color:#fff !important;
   padding:3px 9px !important;
   border-radius:4px !important;
