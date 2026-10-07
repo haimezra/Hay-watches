@@ -254,7 +254,6 @@ img, video{
 .foot-bottom .email-em:hover{ color:#7dbcff !important; }
 
 /* Polish & restoration section */
-.polish-sec{padding-bottom:0;}
 .polish-sec{background:transparent !important;}
 .polish-fig{margin:0 auto; max-width:760px; background:transparent; border:0; box-shadow:none;}
 .polish-fig img{display:block; width:100%; height:auto; border-radius:12px;}
@@ -280,3 +279,13 @@ img, video{
 /* Small English line under the Hebrew text (hidden in English mode, where the main text is already English) */
 .polish-sec .section-head p.polish-en{margin-top:10px; font-size:.78rem !important; line-height:1.5; color:var(--mute); opacity:.8; font-weight:300 !important;}
 body.en-mode .polish-sec .section-head p.polish-en{display:none;}
+
+/* Even vertical rhythm between homepage sections (IDs beat the generic section padding rules) */
+#featured, #style, #magazine, #polish, #faq, #sellwatch{
+  padding-top:80px !important; padding-bottom:80px !important;
+}
+@media (max-width:880px){
+  #featured, #style, #magazine, #polish, #faq, #sellwatch{
+    padding-top:52px !important; padding-bottom:52px !important;
+  }
+}
