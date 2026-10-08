@@ -12,15 +12,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <!-- Start cookieyes banner --> <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/b5c79bfc042da7ab64dac9b5111770f7/script.js"></script> <!-- End cookieyes banner -->
-<title>העגלה שלי | HAY Watches</title>
-<meta name="description" content="העגלה שלך ב-HAY Watches.">
-<meta name="robots" content="noindex">
+<title>מארזי מתנה | HAY Watches</title>
+<meta name="description" content="הרכיבו מארז מתנה לשעון: בחרו קופסה, שעון ותוספות וראו את המארז נבנה מולכם. HAY Watches.">
 <meta name="theme-color" content="#0A0A10">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="HAY Watches">
 <meta property="og:locale" content="he_IL">
-<meta property="og:title" content="העגלה שלי | HAY Watches">
-<meta property="og:description" content="העגלה שלך ב-HAY Watches.">
+<meta property="og:title" content="מארזי מתנה | HAY Watches">
+<meta property="og:description" content="הרכיבו מארז מתנה לשעון וראו אותו נבנה מולכם.">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,13 +56,6 @@
   .mobile-nav a{ color:var(--mute) !important; border-bottom:1px solid var(--line) !important; }
   .mobile-nav a:hover{ color:var(--purple) !important; }
 
-  .cart-hero{ text-align:center; padding:170px 24px 100px; min-height:60vh; display:flex; flex-direction:column; align-items:center; justify-content:center; }
-  .cart-hero .cart-icon{ width:64px; height:64px; border:1px solid var(--purple-soft); border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:26px; }
-  .cart-hero .cart-icon svg{ width:28px; height:28px; stroke:var(--purple); fill:none; stroke-width:1.5; }
-  .cart-hero h1{ font-size:clamp(1.6rem,3.6vw,2.1rem) !important; color:var(--pearl) !important; margin-bottom:14px; }
-  .cart-hero p{ color:var(--mute) !important; font-size:1rem !important; max-width:440px; margin:0 auto 34px; font-weight:300 !important; }
-  .cart-hero a.btn{ display:inline-flex; align-items:center; justify-content:center; padding:14px 36px; border:1px solid var(--purple); color:#0A0A10; background:var(--purple); border-radius:2px; letter-spacing:.05em; font-weight:400; text-decoration:none; font-size:1.02rem; transition:background .4s var(--ease); }
-  .cart-hero a.btn:hover{ background:var(--purple-2); border-color:var(--purple-2); }
 
   footer{ background:var(--bg) !important; border-top:1px solid var(--line) !important; }
   footer h5{ color:var(--pearl) !important; font-weight:500 !important; letter-spacing:.06em; font-size:.82rem; }
@@ -80,6 +72,8 @@
   .logo-img-footer{ width:190px !important; max-width:60% !important; height:auto !important; }
 </style>
 <link rel="stylesheet" href="boutique-theme.css?v=202609301105">
+<link rel="stylesheet" href="gift-box.css?v=1">
+<link rel="stylesheet" href="gifts.css?v=1">
 </head>
 <body>
 
@@ -127,14 +121,30 @@
   </nav>
 </header>
 
-<section class="cart-hero">
-  <div class="cart-icon">
-    <svg viewBox="0 0 24 24"><path d="M6 7h12l-1 12.2a2 2 0 0 1-2 1.8H9a2 2 0 0 1-2-1.8L6 7Z"/><path d="M9 7V5.5a3 3 0 0 1 6 0V7"/></svg>
-  </div>
-  <h1>העגלה שלך ריקה</h1>
-  <p>עדיין לא הוספתם פריטים לעגלה. תוכלו לעיין בקולקציה שלנו ולבחור את השעון המושלם עבורכם.</p>
-  <a href="index.html#catalog" class="btn">לצפייה בקולקציה</a>
-</section>
+<div class="gb-app">
+  <section class="gb-stage gbx-stage" id="gbStage" aria-label="תצוגת המארז">
+    <div class="gbx-persp">
+      <div class="gbx-scene" id="gbScene" data-box="matte">
+        <div class="gbx-f gbx-floor"></div>
+        <div class="gbx-f gbx-wf bk"></div><div class="gbx-f gbx-ws l"></div><div class="gbx-f gbx-ws r"></div><div class="gbx-f gbx-wf fr"></div>
+        <div class="gbx-f gbx-lid"><i>HAY</i></div>
+      </div>
+    </div>
+    <div class="gb-hint"><span>גררו כדי לסובב</span><button id="gbLid" type="button">סגירת המכסה</button></div>
+  </section>
+
+  <main class="gb-panel">
+    <h1 class="gb-h1">הרכיבו את מארז המתנה</h1>
+    <p class="gb-sub">ארבעה שלבים קצרים. המארז מתעדכן מולכם בזמן אמת.</p>
+    <div class="gb-steps" id="gbSteps"></div>
+    <div class="gb-body" id="gbBody"></div>
+    <div class="gb-bar">
+      <div class="tt"><small>סה״כ למארז</small><strong id="gbTotal">₪0</strong></div>
+      <button class="gb-btn ghost" id="gbPrev" type="button">הקודם</button>
+      <button class="gb-btn pri" id="gbNext" type="button">המשך</button>
+    </div>
+  </main>
+</div>
 
 <footer>
   <div class="wrap">
@@ -180,6 +190,9 @@
 </footer>
 
 <script src="main.js?v=202609301013"></script>
+<script src="data.js?v=202610081900"></script>
+<script src="gift-art.js?v=1"></script>
+<script src="gifts.js?v=1"></script>
 <script src="https://negishot.co.il/cdn/widget.php?code=NGS_F5225CBBB994"></script>
 <!-- Vercel Speed Insights -->
 <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>

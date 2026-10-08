@@ -1,0 +1,55 @@
+/* HAY Watches — 3D gift box scene (shared by the homepage teaser and gifts.html) */
+:root{ --gbx-rz:-28deg; --gbx-line:rgba(155,110,243,.38); --gbx-accent:#9B6EF3; --gbx-accent-soft:#c7b3fa; }
+.gbx-stage{ position:relative; overflow:hidden; user-select:none; -webkit-user-select:none; }
+.gbx-persp{ position:absolute; inset:0; perspective:1200px; perspective-origin:50% 25%; }
+.gbx-scene{ position:absolute; left:50%; top:56%; width:0; height:0; transform-style:preserve-3d; --k:1.25; --lid:0deg;
+  transform:scale(var(--k)) rotateX(55deg) rotateZ(var(--gbx-rz)); }
+.gbx-f{ position:absolute; left:50%; top:50%; border:1px solid var(--gbx-line); background:var(--wall); }
+.gbx-floor{ width:300px; height:220px; margin:-110px 0 0 -150px; transform:translateZ(1px); background:var(--floor); }
+.gbx-wf{ width:300px; height:44px; margin:-22px 0 0 -150px; }
+.gbx-wf.fr{ transform:translateY(110px) translateZ(22px) rotateX(90deg); }
+.gbx-wf.bk{ transform:translateY(-110px) translateZ(22px) rotateX(90deg); }
+.gbx-ws{ width:44px; height:220px; margin:-110px 0 0 -22px; }
+.gbx-ws.r{ transform:translateX(150px) translateZ(22px) rotateY(90deg); }
+.gbx-ws.l{ transform:translateX(-150px) translateZ(22px) rotateY(90deg); }
+.gbx-lid{ width:300px; height:220px; margin:-110px 0 0 -150px; transform-origin:50% 0;
+  transform:translateZ(46px) rotateX(var(--lid)); transition:transform 1.2s cubic-bezier(.65,0,.25,1);
+  background:var(--lidbg); display:grid; place-items:center; }
+.gbx-lid::after{ content:""; position:absolute; inset:14px; border:1px solid rgba(155,110,243,.55); }
+.gbx-lid i{ font:600 26px 'Heebo',sans-serif; color:var(--gbx-accent-soft); font-style:normal; letter-spacing:.32em; padding-inline-start:.32em; }
+.gbx-scene[data-box=matte]{ --wall:#1b1b24; --floor:#0b0b10; --lidbg:linear-gradient(135deg,#242430,#12121a); }
+.gbx-scene[data-box=wood]{ --wall:repeating-linear-gradient(90deg,rgba(0,0,0,.16) 0 2px,transparent 2px 11px),#6d4527; --floor:#3b2413;
+  --lidbg:repeating-linear-gradient(90deg,rgba(0,0,0,.16) 0 2px,transparent 2px 11px),#744a2a; }
+.gbx-scene[data-box=velvet]{ --wall:radial-gradient(circle at 30% 20%,#5a1c2e,#3a1220); --floor:#220a12; --lidbg:radial-gradient(circle at 30% 20%,#63203a,#3a1220); }
+.gbx-it{ position:absolute; left:50%; top:50%; width:var(--w); height:var(--h); margin-left:calc(var(--w)/-2); margin-top:calc(var(--h)*-1);
+  transform-origin:50% 100%; pointer-events:none;
+  transform:translate3d(var(--x),var(--y),2px) rotateZ(calc(var(--gbx-rz)*-1)) rotateX(-55deg); }
+.gbx-it.flat{ margin-top:calc(var(--h)/-2); transform-origin:50% 50%; transform:translate3d(var(--x),var(--y),3px) rotateZ(var(--r,0deg)); }
+.gbx-it .in{ width:100%; height:100%; animation:gbxDrop .8s cubic-bezier(.2,.9,.3,1.15) both; }
+.gbx-it svg{ width:100%; height:100%; filter:drop-shadow(0 8px 6px rgba(0,0,0,.55)); }
+/* items are taller than the lid gap, so they fade out while the lid closes and back in as it opens */
+.gbx-scene .gbx-it{ transition:opacity .3s ease .2s; }
+.gbx-scene.shut .gbx-it{ opacity:0; transition-delay:.7s; }
+@keyframes gbxDrop{ from{ opacity:0; transform:translateY(-90px) scale(.92); } }
+
+/* Homepage teaser: the lid opens and closes on its own, the contents drop in each time it opens */
+.gbx-loop .gbx-lid{ transition:none; animation:gbxLid 8s cubic-bezier(.65,0,.25,1) infinite; }
+.gbx-loop .gbx-it .in{ animation:gbxPop 8s ease-out infinite backwards; }
+.gbx-loop .gbx-it.d1 .in{ animation-delay:.12s; }
+.gbx-loop .gbx-it.d2 .in{ animation-delay:.24s; }
+@keyframes gbxLid{
+  0%,10%{ transform:translateZ(46px) rotateX(0deg); }
+  30%,68%{ transform:translateZ(46px) rotateX(108deg); }
+  88%,100%{ transform:translateZ(46px) rotateX(0deg); }
+}
+@keyframes gbxPop{
+  0%,26%{ opacity:0; transform:translateY(-80px) scale(.94); }
+  38%,84%{ opacity:1; transform:none; }
+  100%{ opacity:0; transform:none; }
+}
+@media (prefers-reduced-motion:reduce){
+  .gbx-lid, .gbx-scene .gbx-it{ transition:none; }
+  .gbx-it .in{ animation:none; }
+  .gbx-loop .gbx-lid{ animation:none; transform:translateZ(46px) rotateX(108deg); }
+  .gbx-loop .gbx-it .in{ animation:none; opacity:1; }
+}

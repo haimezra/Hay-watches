@@ -264,6 +264,7 @@ img, video{
 /* Polish heading: same shimmering glitter as the hero subtitle (keyframes hayShimmer live in index.html) */
 .polish-sec .section-head h2,
 #featured .section-head h2,
+#gifts .gift-copy h2,
 #style .section-head h2,
 #magazine .section-head h2{
   background:linear-gradient(135deg,#b3a9d4 0%,#d8d0ee 36%,#ffffff 46%,#ffe7a3 50%,#ffffff 54%,#d8d0ee 64%,#b3a9d4 100%);
@@ -274,18 +275,34 @@ img, video{
   filter:drop-shadow(0 0 7px rgba(190,165,255,.45));
   animation:hayShimmer 9s linear infinite;
 }
-@media (prefers-reduced-motion: reduce){ .polish-sec .section-head h2, #featured .section-head h2, #style .section-head h2, #magazine .section-head h2{ animation:none; } }
+@media (prefers-reduced-motion: reduce){ .polish-sec .section-head h2, #featured .section-head h2, #gifts .gift-copy h2, #style .section-head h2, #magazine .section-head h2{ animation:none; } }
 
 /* Small English line under the Hebrew text (hidden in English mode, where the main text is already English) */
 .polish-sec .section-head p.polish-en{margin-top:10px; font-size:.78rem !important; line-height:1.5; color:var(--mute); opacity:.8; font-weight:300 !important;}
 body.en-mode .polish-sec .section-head p.polish-en{display:none;}
 
 /* Even vertical rhythm between homepage sections (IDs beat the generic section padding rules) */
-#featured, #style, #magazine, #polish, #faq, #sellwatch{
+#featured, #gifts, #style, #magazine, #polish, #faq, #sellwatch{
   padding-top:80px !important; padding-bottom:80px !important;
 }
 @media (max-width:880px){
-  #featured, #style, #magazine, #polish, #faq, #sellwatch{
+  #featured, #gifts, #style, #magazine, #polish, #faq, #sellwatch{
     padding-top:52px !important; padding-bottom:52px !important;
   }
+}
+
+/* Gift box teaser on the homepage */
+.gift-teaser{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:48px; align-items:center; }
+.gift-copy{ max-width:460px; }
+.gift-copy h2{ margin-bottom:16px; }
+.gift-copy p{ color:var(--mute); font-size:1.02rem; margin-bottom:30px; }
+.gift-cta{ display:inline-flex; align-items:center; justify-content:center; padding:14px 36px; border:1px solid var(--purple); background:var(--purple); color:#0A0A10; border-radius:2px; letter-spacing:.05em; font-weight:400; transition:background .3s, border-color .3s; }
+.gift-cta:hover{ background:var(--purple-2); border-color:var(--purple-2); }
+.gift-art.gbx-stage{ height:460px; overflow:visible; }
+.gift-art .gbx-scene{ --k:1.04; top:64%; }
+@media (max-width:880px){
+  .gift-teaser{ grid-template-columns:1fr; gap:8px; }
+  .gift-copy{ max-width:none; text-align:center; margin:0 auto; }
+  .gift-art.gbx-stage{ height:350px; overflow:visible; }
+  .gift-art .gbx-scene{ --k:.68; top:68%; }
 }

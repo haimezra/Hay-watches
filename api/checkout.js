@@ -17,13 +17,59 @@ const crypto = require('crypto');
 const FREE_SHIPPING_OVER = 1500;
 const SHIPPING_FEE = 45;
 
-let CATALOG = null;
-function catalog() {
-  if (!CATALOG) {
+let DATA = null;
+function data() {
+  if (!DATA) {
     const src = fs.readFileSync(path.join(process.cwd(), 'data.js'), 'utf8');
-    CATALOG = vm.runInNewContext(src + '\n;PRODUCTS', {}, { timeout: 1000 });
+    DATA = vm.runInNewContext(
+      src + '\n;({ PRODUCTS, GIFT_BOXES: (typeof GIFT_BOXES !== "undefined" ? GIFT_BOXES : []) })',
+      {},
+      { timeout: 1000 }
+    );
   }
-  return CATALOG;
+  return DATA;
+}
+function catalog() { return data().PRODUCTS; }
+
+const unavailable = (p) => p.sold === true || p.available === false;
+
+// Validates strap options exactly like a single-product purchase. Returns { qty, label } or { status, error }.
+function resolveStrap(product, o) {
+  o = o || {};
+  const color = (product.colors || []).find((c) => c.id === o.color);
+  const length = (product.lengths || []).find((l) => l.id === o.length);
+  const size = (product.sizes || []).find((n) => n === Number(o.size));
+  if (!color || !length || !size) return { status: 400, error: 'bad_options' };
+  if (!((color.imgs && color.imgs.length > 0) || color.available === true)) return { status: 409, error: 'not_available' };
+  const qty = Math.max(1, Math.min(20, parseInt(o.qty, 10) || 1));
+  return { qty, label: `${product.name.he}, ${color.he}, ${length.he}, ${size} מ״מ, כמות ${qty}` };
+}
+
+// Gift bundle: box (price from GIFT_BOXES) + one available watch + up to 4 available accessories/straps.
+function buildGift(g) {
+  const box = data().GIFT_BOXES.find((b) => b.id === String(g.box || ''));
+  if (!box) return { status: 400, error: 'bad_gift' };
+  const watch = catalog().find((x) => x.id === String(g.watch || ''));
+  if (!watch || (watch.cat !== 'men' && watch.cat !== 'women')) return { status: 400, error: 'unknown_product' };
+  if (unavailable(watch)) return { status: 409, error: 'not_available' };
+
+  const list = Array.isArray(g.addons) ? g.addons.slice(0, 4) : [];
+  const seen = new Set();
+  let subtotal = Number(box.price) + Number(watch.price);
+  for (const a of list) {
+    const p = catalog().find((x) => x.id === String((a && a.id) || ''));
+    if (!p || (p.cat !== 'accessories' && !p.strap) || seen.has(p.id)) return { status: 400, error: 'bad_gift' };
+    seen.add(p.id);
+    if (unavailable(p)) return { status: 409, error: 'not_available' };
+    if (p.strap) {
+      const r = resolveStrap(p, Object.assign({}, a.opts, { qty: 1 }));
+      if (r.error) return r;
+    }
+    subtotal += Number(p.price);
+  }
+  const note = String(g.note || '').replace(/\s+/g, ' ').trim().slice(0, 60);
+  const info = `מארז: ${box.short} | ${watch.name.he.slice(0, 24)} | +${seen.size}` + (note ? ` | ברכה: ${note}` : '');
+  return { subtotal, info };
 }
 
 // Best-effort rate limit per IP (resets when the serverless instance recycles)
@@ -61,31 +107,33 @@ module.exports = async (req, res) => {
   if (typeof body === 'string') { try { body = JSON.parse(body); } catch (e) { body = {}; } }
   body = body || {};
 
-  const product = catalog().find((x) => x.id === String(body.id || ''));
-  if (!product) return res.status(400).json({ ok: false, error: 'unknown_product' });
-  if (product.sold === true || product.available === false) {
-    return res.status(409).json({ ok: false, error: 'not_available' });
-  }
+  let subtotal;
+  let info;
+  let isGift = false;
+  if (body.gift && typeof body.gift === 'object') {
+    const g = buildGift(body.gift);
+    if (g.error) return res.status(g.status).json({ ok: false, error: g.error });
+    subtotal = Math.round(g.subtotal * 100) / 100; // computed here, never from the client
+    info = g.info;
+    isGift = true;
+  } else {
+    const product = catalog().find((x) => x.id === String(body.id || ''));
+    if (!product) return res.status(400).json({ ok: false, error: 'unknown_product' });
+    if (unavailable(product)) return res.status(409).json({ ok: false, error: 'not_available' });
 
-  let qty = 1;
-  let info = product.name.he;
-  if (product.strap) {
-    const o = body.opts || {};
-    const color = (product.colors || []).find((c) => c.id === o.color);
-    const length = (product.lengths || []).find((l) => l.id === o.length);
-    const size = (product.sizes || []).find((n) => n === Number(o.size));
-    if (!color || !length || !size) return res.status(400).json({ ok: false, error: 'bad_options' });
-    if (!((color.imgs && color.imgs.length > 0) || color.available === true)) {
-      return res.status(409).json({ ok: false, error: 'not_available' });
+    let qty = 1;
+    info = product.name.he;
+    if (product.strap) {
+      const r = resolveStrap(product, body.opts);
+      if (r.error) return res.status(r.status).json({ ok: false, error: r.error });
+      qty = r.qty;
+      info = r.label;
     }
-    qty = Math.max(1, Math.min(20, parseInt(o.qty, 10) || 1));
-    info = `${product.name.he}, ${color.he}, ${length.he}, ${size} מ״מ, כמות ${qty}`;
+    subtotal = Math.round(Number(product.price) * qty * 100) / 100; // computed here, never from the client
   }
-
-  const subtotal = Math.round(Number(product.price) * qty * 100) / 100; // computed here, never from the client
   const shipping = subtotal >= FREE_SHIPPING_OVER ? 0 : SHIPPING_FEE;
   const amount = subtotal + shipping;
-  info = shipping ? `${info} (כולל משלוח ${SHIPPING_FEE} ש״ח)` : `${info} (משלוח חינם)`;
+  if (!isGift) info = shipping ? `${info} (כולל משלוח ${SHIPPING_FEE} ש״ח)` : `${info} (משלוח חינם)`;
   if (!(amount > 0)) return res.status(500).json({ ok: false, error: 'bad_price' });
 
   const order = crypto.randomUUID().replace(/-/g, '').slice(0, 20);

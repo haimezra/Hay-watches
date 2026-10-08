@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Assistant:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Rubik:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=202609301043">
+<link rel="stylesheet" href="styles.css?v=202610081900">
 <style>
   /* =====================================================================
      HAY WATCHES — Luxury dark re-skin (purple accent), same structure
@@ -322,6 +322,7 @@
   .music-toggle[aria-pressed="true"]{ border-color:var(--gold-light); color:var(--gold-light); }
 </style>
 <link rel="stylesheet" href="boutique-theme.css?v=202609301105">
+<link rel="stylesheet" href="gift-box.css?v=1">
 <style id="comfort">
 /* =====================================================================
    COMFORT PASS (homepage only): calmer spacing, standard reading sizes.
@@ -488,6 +489,7 @@ header{ background:rgba(13,13,13,.3) !important; backdrop-filter:blur(8px) !impo
       <a href="#"><span class="he-txt">בית</span><span class="en-txt">Home</span></a>
       <a href="#catalog"><span class="he-txt">קטלוג</span><span class="en-txt">Catalog</span></a>
       <a href="category.html?cat=accessories"><span class="he-txt">אביזרים</span><span class="en-txt">Accessories</span></a>
+      <a href="gifts.html"><span class="he-txt">מתנות</span><span class="en-txt">Gifts</span></a>
       <a href="#magazine"><span class="he-txt">מגזין</span><span class="en-txt">Magazine</span></a>
       <a href="about.html"><span class="he-txt">אודות</span><span class="en-txt">About</span></a>
       <a href="contact.html"><span class="he-txt">צור קשר</span><span class="en-txt">Contact</span></a>
@@ -505,6 +507,7 @@ header{ background:rgba(13,13,13,.3) !important; backdrop-filter:blur(8px) !impo
     <a href="#" onclick="toggleMobileMenu()"><span class="he-txt">בית</span><span class="en-txt">Home</span></a>
     <a href="#catalog" onclick="toggleMobileMenu()"><span class="he-txt">קטלוג</span><span class="en-txt">Catalog</span></a>
     <a href="category.html?cat=accessories" onclick="toggleMobileMenu()"><span class="he-txt">אביזרים</span><span class="en-txt">Accessories</span></a>
+    <a href="gifts.html" onclick="toggleMobileMenu()"><span class="he-txt">מתנות</span><span class="en-txt">Gifts</span></a>
     <a href="#magazine" onclick="toggleMobileMenu()"><span class="he-txt">מגזין</span><span class="en-txt">Magazine</span></a>
     <a href="about.html" onclick="toggleMobileMenu()"><span class="he-txt">אודות</span><span class="en-txt">About</span></a>
     <a href="contact.html" onclick="toggleMobileMenu()"><span class="he-txt">צור קשר</span><span class="en-txt">Contact</span></a>
@@ -561,6 +564,28 @@ header{ background:rgba(13,13,13,.3) !important; backdrop-filter:blur(8px) !impo
       <p><span class="he-txt">הבחירות המובילות של השבוע: אנו מציעים שעונים חדשים וגם שעונים יד שנייה, כל אחד עם בדיקת מקוריות ותיעוד מלא</span><span class="en-txt">This week's top picks: we offer both brand-new and pre-owned watches, each authenticated and fully documented</span></p>
     </div>
     <div class="prod-grid" id="prodGrid"></div>
+  </div>
+</section>
+
+<!-- Gift box teaser -->
+<section id="gifts">
+  <div class="wrap">
+    <div class="gift-teaser">
+      <div class="gift-copy">
+        <h2><span class="he-txt">מארז מתנה שנבנה בשבילכם</span><span class="en-txt">A gift box, built just for them</span></h2>
+        <p><span class="he-txt">בחרו קופסה, שעון ותוספות, וראו את המארז מתמלא מול העיניים. הכול נארז ומוכן למתנה.</span><span class="en-txt">Choose a box, a watch and a few extras, and watch the gift come together in front of you. Packed and ready to give.</span></p>
+        <a class="gift-cta" href="gifts.html"><span class="he-txt">לבניית מארז מתנה</span><span class="en-txt">Build a gift box</span></a>
+      </div>
+      <div class="gift-art gbx-stage gbx-loop" aria-hidden="true">
+        <div class="gbx-persp">
+          <div class="gbx-scene" id="giftTeaserScene" data-box="matte">
+            <div class="gbx-f gbx-floor"></div>
+            <div class="gbx-f gbx-wf bk"></div><div class="gbx-f gbx-ws l"></div><div class="gbx-f gbx-ws r"></div><div class="gbx-f gbx-wf fr"></div>
+            <div class="gbx-f gbx-lid"><i>HAY</i></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -717,6 +742,7 @@ header{ background:rgba(13,13,13,.3) !important; backdrop-filter:blur(8px) !impo
         <ul>
           <li><a href="#catalog"><span class="he-txt">קטלוג</span><span class="en-txt">Catalog</span></a></li>
           <li><a href="category.html?cat=accessories"><span class="he-txt">אביזרים</span><span class="en-txt">Accessories</span></a></li>
+          <li><a href="gifts.html"><span class="he-txt">מתנות</span><span class="en-txt">Gifts</span></a></li>
           <li><a href="#magazine"><span class="he-txt">מגזין</span><span class="en-txt">Magazine</span></a></li>
           <li><a href="about.html"><span class="he-txt">אודות</span><span class="en-txt">About</span></a></li>
         </ul>
@@ -748,7 +774,7 @@ header{ background:rgba(13,13,13,.3) !important; backdrop-filter:blur(8px) !impo
   </div>
 </footer>
 
-<script src="data.js?v=202609290943"></script>
+<script src="data.js?v=202610081900"></script>
 <script src="main.js?v=202609301013"></script>
 <script>
   // Homepage shows the curated "featured" products from the shared catalog (data.js)
@@ -907,6 +933,19 @@ header{ background:rgba(13,13,13,.3) !important; backdrop-filter:blur(8px) !impo
 })();
 </script>
 <script src="https://negishot.co.il/cdn/widget.php?code=NGS_F5225CBBB994"></script>
+<script src="gift-art.js?v=1"></script>
+<script>
+(function(){
+  var sc=document.getElementById('giftTeaserScene'); if(!sc||!window.GiftArt) return;
+  [['d0','--w:96px;--h:125px;--x:0px;--y:46px',GiftArt.watch({cs:'#d4d7dc',dial:'#6cc4ea',kind:'bracelet',mk:'#f4fbff'}),''],
+   ['d1','--w:92px;--h:74px;--x:-88px;--y:-8px',GiftArt.box('#2c2430'),''],
+   ['d2','--w:76px;--h:76px;--x:92px;--y:-6px',GiftArt.care('#8fa3b8'),'']
+  ].forEach(function(it){
+    var el=document.createElement('div'); el.className='gbx-it '+it[0]+' '+it[3]; el.style.cssText=it[1];
+    el.innerHTML='<div class="in">'+it[2]+'</div>'; sc.appendChild(el);
+  });
+})();
+</script>
 <!-- Vercel Speed Insights -->
 <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
