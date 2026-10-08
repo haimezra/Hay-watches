@@ -90,7 +90,8 @@ label.gb-l{ display:block; margin-top:22px; font-size:14px; color:var(--gb-mute)
 
 @media (max-width:880px){
   .gb-app{ display:block; }
-  .gb-stage{ height:300px; max-height:none; z-index:5; border-bottom:1px solid var(--gb-line); }
+  /* phones: the box scrolls away with the page so the options get the whole screen */
+  .gb-stage{ position:relative; top:auto; height:300px; max-height:none; z-index:5; border-bottom:1px solid var(--gb-line); }
   .gb-stage .gbx-scene{ --k:.56; top:64%; }
   .gb-panel{ min-height:0; border:0; padding-top:26px; }
   .gb-hint{ bottom:8px; }
