@@ -296,8 +296,8 @@ body.en-mode .polish-sec .section-head p.polish-en{display:none;}
 .gift-copy{ max-width:460px; }
 .gift-copy h2{ margin-bottom:16px; }
 .gift-copy p{ color:var(--mute); font-size:1.02rem; margin-bottom:30px; }
-.gift-cta{ display:inline-flex; align-items:center; justify-content:center; padding:14px 36px; border:1px solid var(--purple); background:var(--purple); color:#0A0A10; border-radius:2px; letter-spacing:.05em; font-weight:400; transition:background .3s, border-color .3s; }
-.gift-cta:hover{ background:var(--purple-2); border-color:var(--purple-2); }
+.gift-cta{ display:inline-flex; align-items:center; justify-content:center; padding:14px 36px; border:1px solid var(--purple); background:transparent; color:var(--pearl); border-radius:2px; letter-spacing:.05em; font-weight:400; transition:background .3s, border-color .3s, color .3s; }
+.gift-cta:hover{ background:rgba(155,110,243,.14); border-color:var(--purple-2); color:#fff; }
 .gift-art.gbx-stage{ height:460px; overflow:visible; }
 .gift-art .gbx-scene{ --k:1.04; top:64%; }
 @media (max-width:880px){
