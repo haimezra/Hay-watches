@@ -339,3 +339,116 @@ section.cat-hero{ padding: 56px 0 80px !important; }
 /* ---- consistent professional spacing ---- */
 section:not(.hero):not(.cat-hero):not(.pd-hero){ padding-top:96px !important; padding-bottom:96px !important; }
 @media (max-width:880px){ section:not(.hero):not(.cat-hero):not(.pd-hero){ padding-top:56px !important; padding-bottom:56px !important; } }
+
+/* ============================================================
+   AIRY & CLEAN — unified spacing layer (loaded last, wins over page-level styles)
+   One rhythm for the whole site: generous gutters, calm gaps,
+   roomy cards, soft hairlines. Only spacing/finish, no colours or copy.
+   ============================================================ */
+:root{
+  --sp-section: 112px;
+  --sp-section-m: 76px;
+  --sp-head: 64px;
+  --sp-head-m: 44px;
+  --sp-gutter: 40px;
+  --sp-gutter-m: 26px;
+  --sp-gap: 32px;
+  --sp-gap-m: 18px;
+}
+
+/* ---- side gutters ---- */
+html body .wrap{ padding-inline: var(--sp-gutter) !important; }
+html body .wrap.breadcrumb{ padding-inline: var(--sp-gutter) !important; }
+@media (max-width:880px){
+  html body .wrap, html body .wrap.breadcrumb{ padding-inline: var(--sp-gutter-m) !important; }
+}
+
+/* ---- vertical rhythm between sections ---- */
+html body section:not(.hero):not(.cat-hero):not(.pd-hero){ padding-block: var(--sp-section) !important; }
+html body #featured, html body #gifts, html body #style, html body #magazine,
+html body #polish, html body #faq, html body #sellwatch, html body #catalog{
+  padding-block: var(--sp-section) !important;
+}
+html body #faq{ padding-block: 24px var(--sp-section) !important; }
+@media (max-width:880px){
+  html body section:not(.hero):not(.cat-hero):not(.pd-hero),
+  html body #featured, html body #gifts, html body #style, html body #magazine,
+  html body #polish, html body #sellwatch, html body #catalog{
+    padding-block: var(--sp-section-m) !important;
+  }
+  html body #faq{ padding-block: 12px var(--sp-section-m) !important; }
+}
+html body .section-head{ margin-bottom: var(--sp-head) !important; }
+@media (max-width:880px){ html body .section-head{ margin-bottom: var(--sp-head-m) !important; } }
+html body .section-head h2::before{ margin-bottom: 18px !important; }
+html body .section-head p{ margin-top: 20px !important; max-width: 520px; margin-inline: auto; }
+
+/* ---- grids: roomy gaps ---- */
+html body .cat-grid{ gap: var(--sp-gap) !important; padding-inline: var(--sp-gutter) !important; max-width: 1180px; margin-inline: auto; }
+html body .prod-grid, html body .mag-grid, html body .style-grid{ gap: var(--sp-gap) !important; }
+html body .mx-list{ gap: 32px !important; }
+@media (max-width:880px){
+  html body .cat-grid, html body .prod-grid, html body .mag-grid{ gap: var(--sp-gap-m) !important; }
+  html body .cat-grid{ padding-inline: var(--sp-gutter-m) !important; }
+  html body .style-grid{ gap: 16px !important; padding-inline: var(--sp-gutter-m) !important; margin-inline: calc(var(--sp-gutter-m) * -1) !important; }
+  html body .mx-list{ gap: 24px !important; }
+}
+
+/* ---- cards: soft outline, more inner room ---- */
+html body .prod-card, html body .mag-card, html body .mx-row, html body .cat, html body .style-card{
+  border-color: rgba(255,255,255,.07) !important;
+}
+html body .prod-body{ padding: 26px 24px 14px !important; }
+html body .prod-body h4{ margin-bottom: 12px !important; }
+html body .prod-detail{ margin-bottom: 20px !important; }
+html body .prod-price{ margin-bottom: 24px !important; }
+html body .prod-card > .add-cart{ width: calc(100% - 48px) !important; margin-inline: 24px !important; }
+html body .prod-card > .add-cart:last-child{ margin-bottom: 26px !important; }
+html body .add-cart.buy-now{ margin-top: 12px !important; }
+@media (max-width:640px){
+  html body .prod-body{ padding: 18px 16px 10px !important; }
+  html body .prod-card > .add-cart{ width: calc(100% - 32px) !important; margin-inline: 16px !important; }
+  html body .prod-card > .add-cart:last-child{ margin-bottom: 18px !important; }
+  html body .prod-detail{ margin-bottom: 16px !important; }
+  html body .prod-price{ margin-bottom: 18px !important; }
+}
+html body .mag-body{ padding: 32px 30px 34px !important; }
+html body .mx-info{ padding: 36px 42px !important; }
+@media (max-width:880px){
+  html body .mag-body{ padding: 24px 22px 28px !important; }
+  html body .mx-info{ padding: 24px 22px 28px !important; }
+}
+
+/* ---- homepage gift teaser: give the button and the box room ---- */
+html body .gift-teaser{ gap: 72px !important; }
+html body .gift-copy h2{ margin-bottom: 20px !important; }
+html body .gift-copy p{ margin-bottom: 36px !important; line-height: 1.9 !important; }
+@media (max-width:880px){
+  html body .gift-teaser{ gap: 36px !important; }
+}
+
+/* ---- sell / trade-in, FAQ, trust, footer ---- */
+html body .sw-card{ gap: 56px !important; }
+html body .sw-form{ gap: 18px !important; }
+html body .faq summary{ padding: 28px 0 !important; }
+html body .faq .faq-a{ padding-bottom: 34px !important; }
+html body .trust-grid{ gap: 56px !important; }
+html body .fb-strip{ padding: 40px 0 !important; }
+html body .social-strip{ gap: 32px !important; }
+html body footer{ padding: 104px 0 44px !important; }
+html body .foot-grid{ gap: 56px !important; padding-bottom: 60px !important; }
+@media (max-width:880px){
+  html body .foot-grid{ row-gap: 44px !important; }
+  html body footer{ padding: 72px 0 36px !important; }
+  html body .trust-grid{ row-gap: 44px !important; }
+}
+
+/* ---- inner pages: breadcrumb, category header, product page ---- */
+html body .breadcrumb{ padding-block: 32px !important; }
+html body .pd-wrap{ gap: 72px !important; padding: 64px 0 56px !important; }
+@media (max-width:880px){ html body .pd-wrap{ gap: 40px !important; padding-top: 32px !important; } }
+html body .pd-desc{ margin-bottom: 40px !important; }
+html body .pd-actions{ gap: 16px !important; }
+
+/* ---- reading comfort ---- */
+html body p{ line-height: 1.9; }
