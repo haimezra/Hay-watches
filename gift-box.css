@@ -1,30 +1,109 @@
-/* HAY Watches — 3D gift box scene (shared by the homepage teaser and gifts.html) */
-:root{ --gbx-rz:-28deg; --gbx-line:rgba(155,110,243,.38); --gbx-accent:#9B6EF3; --gbx-accent-soft:#c7b3fa; }
+/* HAY Watches — 3D gift box scene (shared by the homepage teaser and gifts.html)
+   A solid box: wall thickness, quilted lining, raised cushion, hinged lid with a latch.
+   Geometry is plain CSS 3D (no images); materials are pure CSS/SVG data-URI textures. */
+:root{ --gbx-rz:-28deg; --gbx-accent:#9B6EF3; --gbx-accent-soft:#c7b3fa; }
 .gbx-stage{ position:relative; overflow:hidden; user-select:none; -webkit-user-select:none; }
 .gbx-persp{ position:absolute; inset:0; perspective:1200px; perspective-origin:50% 25%; }
 .gbx-scene{ position:absolute; left:50%; top:56%; width:0; height:0; transform-style:preserve-3d; --k:1.25; --lid:0deg;
+  --W:300px; --D:220px; --H:46px; --T:9px; --Tl:13px; --P:8px;
   transform:scale(var(--k)) rotateX(55deg) rotateZ(var(--gbx-rz)); }
-.gbx-f{ position:absolute; left:50%; top:50%; border:1px solid var(--gbx-line); background:var(--wall); }
-.gbx-floor{ width:300px; height:220px; margin:-110px 0 0 -150px; transform:translateZ(1px); background:var(--floor); }
-.gbx-wf{ width:300px; height:44px; margin:-22px 0 0 -150px; }
-.gbx-wf.fr{ transform:translateY(110px) translateZ(22px) rotateX(90deg); }
-.gbx-wf.bk{ transform:translateY(-110px) translateZ(22px) rotateX(90deg); }
-.gbx-ws{ width:44px; height:220px; margin:-110px 0 0 -22px; }
-.gbx-ws.r{ transform:translateX(150px) translateZ(22px) rotateY(90deg); }
-.gbx-ws.l{ transform:translateX(-150px) translateZ(22px) rotateY(90deg); }
-.gbx-lid{ width:300px; height:220px; margin:-110px 0 0 -150px; transform-origin:50% 0;
-  transform:translateZ(46px) rotateX(var(--lid)); transition:transform 1.2s cubic-bezier(.65,0,.25,1);
-  background:var(--lidbg); display:grid; place-items:center; }
-.gbx-lid::after{ content:""; position:absolute; inset:14px; border:1px solid rgba(155,110,243,.55); }
-.gbx-lid i{ font:600 26px 'Heebo',sans-serif; color:var(--gbx-accent-soft); font-style:normal; letter-spacing:.32em; padding-inline-start:.32em; }
-.gbx-scene[data-box=matte]{ --wall:#1b1b24; --floor:#0b0b10; --lidbg:linear-gradient(135deg,#242430,#12121a); }
-.gbx-scene[data-box=wood]{ --wall:repeating-linear-gradient(90deg,rgba(0,0,0,.16) 0 2px,transparent 2px 11px),#6d4527; --floor:#3b2413;
-  --lidbg:repeating-linear-gradient(90deg,rgba(0,0,0,.16) 0 2px,transparent 2px 11px),#744a2a; }
-.gbx-scene[data-box=velvet]{ --wall:radial-gradient(circle at 30% 20%,#5a1c2e,#3a1220); --floor:#220a12; --lidbg:radial-gradient(circle at 30% 20%,#63203a,#3a1220); }
+
+/* every face is a centred rectangle placed by its own transform */
+.gbx-f{ position:absolute; left:50%; top:50%; width:var(--w); height:var(--h);
+  margin:calc(var(--h)/-2) 0 0 calc(var(--w)/-2); box-sizing:border-box; }
+
+/* ---- materials ---- */
+.gbx-scene{
+  --leather:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.3 0 0 0 -.5'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  --fuzz:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .62 0 0 0 0 .7 0.75 0 0 0 -.27'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='120'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.006 .45' numOctaves='4' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .1 0 0 0 0 .045 0 0 0 0 .01 1.5 0 0 0 -.52'/%3E%3C/filter%3E%3Crect width='300' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+  --quiltL:repeating-linear-gradient(45deg,rgba(60,40,20,.09) 0 1px,transparent 1px 15px),repeating-linear-gradient(-45deg,rgba(60,40,20,.09) 0 1px,transparent 1px 15px);
+  --quilt:repeating-linear-gradient(45deg,rgba(0,0,0,.2) 0 1px,transparent 1px 15px),repeating-linear-gradient(-45deg,rgba(0,0,0,.2) 0 1px,transparent 1px 15px);
+  --metal:linear-gradient(135deg,#f2e9ff 0%,#b9a4e6 28%,#6f55b3 55%,#d9ccf5 78%,#8467c9 100%);
+}
+.gbx-scene[data-box=matte]{ --matc:#202029; --tex:var(--leather); --edge:rgba(255,255,255,.16); --stitch:rgba(199,179,250,.5);
+  --linc:#2a2236; --linimg:var(--quilt),radial-gradient(ellipse at 30% 25%,rgba(199,179,250,.2),transparent 65%);
+  --padc:#33293f; --padimg:var(--quilt); }
+.gbx-scene[data-box=wood]{ --matc:#7a4c29; --tex:var(--grain); --edge:rgba(255,226,180,.3); --stitch:transparent;
+  --linc:#d9cdb6; --linimg:radial-gradient(ellipse at 35% 25%,rgba(255,255,255,.35),transparent 70%),var(--fuzz);
+  --padc:#cbbd9f; --padimg:radial-gradient(ellipse at 35% 25%,rgba(255,255,255,.3),transparent 70%),var(--fuzz); }
+.gbx-scene[data-box=velvet]{ --matc:#5d1d30; --tex:var(--fuzz); --edge:rgba(255,190,205,.22); --stitch:rgba(255,215,222,.4);
+  --linc:#ebe1d4; --linimg:var(--quiltL),radial-gradient(ellipse at 30% 25%,rgba(255,255,255,.55),transparent 65%);
+  --padc:#f1e8dc; --padimg:var(--quiltL); }
+
+/* ---- shading by orientation (light comes from the top-left front) ---- */
+.gbx-f.m{ background:linear-gradient(var(--sh,transparent),var(--sh,transparent)),var(--tex,none),var(--matc); }
+.gbx-f.l{ background:linear-gradient(var(--sh,transparent),var(--sh,transparent)),var(--linimg,none),var(--linc); }
+.gbx-f.m::after{ content:""; position:absolute; inset:5px 6px auto 6px; height:0; border-top:1px dashed var(--stitch); pointer-events:none; }
+
+/* ---- soft contact shadow on the table ---- */
+.gbx-shadow{ --w:calc(var(--W) + 170px); --h:calc(var(--D) + 170px); transform:translate3d(14px,22px,-1px);
+  background:radial-gradient(ellipse at center,rgba(0,0,0,.62) 0,rgba(0,0,0,.38) 38%,transparent 68%); }
+
+/* ---- base: outer skin ---- */
+.o-f{ --w:var(--W); --h:var(--H); --sh:rgba(0,0,0,.04); transform:translate3d(0,calc(var(--D)/2),calc(var(--H)/2)) rotateX(90deg); box-shadow:inset 0 1px 0 var(--edge); }
+.o-b{ --w:var(--W); --h:var(--H); --sh:rgba(0,0,0,.4);  transform:translate3d(0,calc(var(--D)/-2),calc(var(--H)/2)) rotateX(90deg); }
+.o-r{ --w:var(--H); --h:var(--D); --sh:rgba(0,0,0,.34); transform:translate3d(calc(var(--W)/2),0,calc(var(--H)/2)) rotateY(90deg); box-shadow:inset 1px 0 0 var(--edge); }
+.o-l{ --w:var(--H); --h:var(--D); --sh:rgba(0,0,0,.12); transform:translate3d(calc(var(--W)/-2),0,calc(var(--H)/2)) rotateY(90deg); box-shadow:inset -1px 0 0 var(--edge); }
+/* ---- base: inner lining ---- */
+.i-f{ --w:calc(var(--W) - 2*var(--T)); --h:var(--H); --sh:rgba(0,0,0,.5);  transform:translate3d(0,calc(var(--D)/2 - var(--T)),calc(var(--H)/2)) rotateX(90deg); }
+.i-b{ --w:calc(var(--W) - 2*var(--T)); --h:var(--H); --sh:rgba(0,0,0,.08); transform:translate3d(0,calc(var(--D)/-2 + var(--T)),calc(var(--H)/2)) rotateX(90deg); }
+.i-r{ --w:var(--H); --h:calc(var(--D) - 2*var(--T)); --sh:rgba(0,0,0,.34); transform:translate3d(calc(var(--W)/2 - var(--T)),0,calc(var(--H)/2)) rotateY(90deg); }
+.i-l{ --w:var(--H); --h:calc(var(--D) - 2*var(--T)); --sh:rgba(0,0,0,.2); transform:translate3d(calc(var(--W)/-2 + var(--T)),0,calc(var(--H)/2)) rotateY(90deg); }
+.i-f,.i-b,.i-r,.i-l{ box-shadow:inset 0 14px 16px -10px rgba(0,0,0,.45); }
+/* ---- base: top rim (the visible thickness of the walls) ---- */
+.r-f,.r-b{ --w:calc(var(--W) - 2*var(--T)); --h:var(--T); }
+.r-f{ transform:translate3d(0,calc(var(--D)/2 - var(--T)/2),var(--H)); }
+.r-b{ transform:translate3d(0,calc(var(--D)/-2 + var(--T)/2),var(--H)); }
+.r-r,.r-l{ --w:var(--T); --h:var(--D); }
+.r-r{ transform:translate3d(calc(var(--W)/2 - var(--T)/2),0,var(--H)); }
+.r-l{ transform:translate3d(calc(var(--W)/-2 + var(--T)/2),0,var(--H)); }
+.r-f,.r-b,.r-r,.r-l{ --sh:rgba(255,255,255,.1); box-shadow:inset 0 0 0 1px var(--edge); }
+.r-f::after,.r-b::after,.r-r::after,.r-l::after{ display:none; }
+/* ---- interior floor and the raised cushion ---- */
+.gbx-floor{ --w:calc(var(--W) - 2*var(--T)); --h:calc(var(--D) - 2*var(--T)); --sh:rgba(0,0,0,.55); transform:translateZ(1px); }
+.pd{ --pw:calc(var(--W) - 2*var(--T) - 22px); --pd:calc(var(--D) - 2*var(--T) - 22px); }
+.pd-t{ --w:var(--pw); --h:var(--pd); --sh:rgba(0,0,0,0); transform:translateZ(var(--P)); border-radius:5px;
+  background:var(--padimg),var(--padc); box-shadow:inset 0 0 0 1px rgba(255,255,255,.1),inset 0 0 22px rgba(0,0,0,.22); }
+.pd-f,.pd-b{ --w:var(--pw); --h:var(--P); background:var(--padc); }
+.pd-f{ transform:translate3d(0,calc(var(--pd)/2),calc(var(--P)/2)) rotateX(90deg); filter:brightness(.62); }
+.pd-b{ transform:translate3d(0,calc(var(--pd)/-2),calc(var(--P)/2)) rotateX(90deg); filter:brightness(.8); }
+.pd-r,.pd-l{ --w:var(--P); --h:var(--pd); background:var(--padc); }
+.pd-r{ transform:translate3d(calc(var(--pw)/2),0,calc(var(--P)/2)) rotateY(90deg); filter:brightness(.55); }
+.pd-l{ transform:translate3d(calc(var(--pw)/-2),0,calc(var(--P)/2)) rotateY(90deg); filter:brightness(.7); }
+/* ---- hinges on the back wall ---- */
+.hg{ --w:30px; --h:13px; background:var(--metal); border-radius:2px; box-shadow:0 0 0 1px rgba(0,0,0,.35); }
+.hg.a{ transform:translate3d(-86px,calc(var(--D)/-2 - .8px),calc(var(--H) - 8px)) rotateX(90deg); }
+.hg.b{ transform:translate3d(86px,calc(var(--D)/-2 - .8px),calc(var(--H) - 8px)) rotateX(90deg); }
+
+/* ---- lid: a shell with thickness, hinged on the back edge ---- */
+.gbx-lid{ position:absolute; left:50%; top:50%; width:var(--W); height:var(--D); margin:calc(var(--D)/-2) 0 0 calc(var(--W)/-2);
+  transform-style:preserve-3d; transform-origin:50% 0; transform:translateZ(var(--H)) rotateX(var(--lid));
+  transition:transform 1.2s cubic-bezier(.65,0,.25,1); }
+.gbx-lid .lt{ --w:var(--W); --h:var(--D); --sh:rgba(255,255,255,.04); transform:translateZ(var(--Tl)); display:grid; place-items:center;
+  box-shadow:inset 0 0 0 1px var(--edge),inset 0 0 40px rgba(0,0,0,.28); background:radial-gradient(ellipse at 28% 18%,rgba(255,255,255,.14),transparent 62%),var(--tex,none),var(--matc); }
+.gbx-lid .lt::after{ inset:12px; height:auto; border:1px dashed var(--stitch); }
+.gbx-lid .lt i{ font:600 26px 'Heebo',sans-serif; font-style:normal; letter-spacing:.32em; padding-inline-start:.32em;
+  background:var(--metal); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; filter:drop-shadow(0 1px 0 rgba(0,0,0,.6)); }
+.gbx-lid .lu{ --w:var(--W); --h:var(--D); transform:translateZ(.6px);
+  background:var(--linimg,none),var(--linc); box-shadow:inset 0 0 0 8px var(--matc),inset 0 0 26px rgba(0,0,0,.3); }
+.gbx-lid .s-f,.gbx-lid .s-b{ --w:var(--W); --h:var(--Tl); }
+.gbx-lid .s-f{ --sh:rgba(0,0,0,.04); transform:translate3d(0,calc(var(--D)/2),calc(var(--Tl)/2)) rotateX(90deg); }
+.gbx-lid .s-b{ --sh:rgba(0,0,0,.4); transform:translate3d(0,calc(var(--D)/-2),calc(var(--Tl)/2)) rotateX(90deg); }
+.gbx-lid .s-r,.gbx-lid .s-l{ --w:var(--Tl); --h:var(--D); }
+.gbx-lid .s-r{ --sh:rgba(0,0,0,.34); transform:translate3d(calc(var(--W)/2),0,calc(var(--Tl)/2)) rotateY(90deg); }
+.gbx-lid .s-l{ --sh:rgba(0,0,0,.12); transform:translate3d(calc(var(--W)/-2),0,calc(var(--Tl)/2)) rotateY(90deg); }
+.gbx-lid .s-f::after,.gbx-lid .s-b::after,.gbx-lid .s-r::after,.gbx-lid .s-l::after{ display:none; }
+/* latch strap crossing the seam on the front */
+.gbx-lid .lc{ --w:24px; --h:calc(var(--Tl) + 15px); transform:translate3d(0,calc(var(--D)/2 + .9px),-2px) rotateX(90deg);
+  background:var(--metal); border-radius:3px 3px 8px 8px; box-shadow:0 0 0 1px rgba(0,0,0,.4),inset 0 -6px 8px rgba(0,0,0,.18); }
+.gbx-lid .lc::after{ content:""; position:absolute; left:50%; bottom:5px; width:5px; height:5px; margin-left:-2.5px; border-radius:50%; background:#1a1326; box-shadow:0 0 0 1px rgba(255,255,255,.35); }
+
+/* ---- items placed in the box (watch, strap, extras) rest on the cushion ---- */
 .gbx-it{ position:absolute; left:50%; top:50%; width:var(--w); height:var(--h); margin-left:calc(var(--w)/-2); margin-top:calc(var(--h)*-1);
   transform-origin:50% 100%; pointer-events:none;
-  transform:translate3d(var(--x),var(--y),2px) rotateZ(calc(var(--gbx-rz)*-1)) rotateX(-55deg); }
-.gbx-it.flat{ margin-top:calc(var(--h)/-2); transform-origin:50% 50%; transform:translate3d(var(--x),var(--y),3px) rotateZ(var(--r,0deg)); }
+  transform:translate3d(var(--x),var(--y),calc(var(--P) + 1px)) rotateZ(calc(var(--gbx-rz)*-1)) rotateX(-55deg); }
+.gbx-it.flat{ margin-top:calc(var(--h)/-2); transform-origin:50% 50%; transform:translate3d(var(--x),var(--y),calc(var(--P) + 2px)) rotateZ(var(--r,0deg)); }
 .gbx-it .in{ width:100%; height:100%; animation:gbxDrop .8s cubic-bezier(.2,.9,.3,1.15) both; }
 .gbx-it svg{ width:100%; height:100%; filter:drop-shadow(0 8px 6px rgba(0,0,0,.55)); }
 /* items are taller than the lid gap, so they fade out while the lid closes and back in as it opens */
@@ -38,9 +117,9 @@
 .gbx-loop .gbx-it.d1 .in{ animation-delay:.12s; }
 .gbx-loop .gbx-it.d2 .in{ animation-delay:.24s; }
 @keyframes gbxLid{
-  0%,10%{ transform:translateZ(46px) rotateX(0deg); }
-  30%,68%{ transform:translateZ(46px) rotateX(108deg); }
-  88%,100%{ transform:translateZ(46px) rotateX(0deg); }
+  0%,10%{ transform:translateZ(var(--H)) rotateX(0deg); }
+  30%,68%{ transform:translateZ(var(--H)) rotateX(108deg); }
+  88%,100%{ transform:translateZ(var(--H)) rotateX(0deg); }
 }
 @keyframes gbxPop{
   0%,26%{ opacity:0; transform:translateY(-80px) scale(.94); }
@@ -50,6 +129,6 @@
 @media (prefers-reduced-motion:reduce){
   .gbx-lid, .gbx-scene .gbx-it{ transition:none; }
   .gbx-it .in{ animation:none; }
-  .gbx-loop .gbx-lid{ animation:none; transform:translateZ(46px) rotateX(108deg); }
+  .gbx-loop .gbx-lid{ animation:none; transform:translateZ(var(--H)) rotateX(108deg); }
   .gbx-loop .gbx-it .in{ animation:none; opacity:1; }
 }
