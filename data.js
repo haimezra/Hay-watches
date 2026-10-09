@@ -153,8 +153,8 @@ const PRODUCTS = [
 // ===== Gift boxes (packaging options for the gift builder, gifts.html). Prices are validated on the server. =====
 const GIFT_BOXES = [
   { id:"matte",  name:"קופסת שחור מט",     short:"מט",    desc:"גימור מט עם מסגרת סגולה דקה", price:0,   sw:"#1c1c24" },
-  { id:"wood",   name:"קופסת עץ יוקרתית",  short:"עץ",    desc:"עץ אגוז עם ליטוש ידני",        price:180, sw:"#6d4527" },
-  { id:"velvet", name:"קופסת קטיפה",       short:"קטיפה", desc:"בטנת קטיפה בגוון בורדו עמוק",  price:260, sw:"#4a1a2a" }
+  { id:"wood",   name:"קופסת עץ יוקרתית",  short:"עץ",    desc:"עץ אגוז עם ליטוש ידני",        price:80, sw:"#6d4527" },
+  { id:"velvet", name:"קופסת קטיפה",       short:"קטיפה", desc:"בטנת קטיפה בגוון בורדו עמוק",  price:100, sw:"#4a1a2a" }
 ];
 
 // ===== Gift extras that are not shop products: roses that fill the gift box (gifts.html). Price is validated on the server. =====
