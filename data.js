@@ -210,7 +210,7 @@ function productImgHtml(p){
 // הלקוח שולח לשרת רק מזהה מוצר ואפשרויות. המחיר, שם המוצר וחתימת התשלום נקבעים בשרת (api/checkout.js),
 // כך שאי אפשר לשנות מחיר מהדפדפן.
 let _buying = false;
-const WHATSAPP_NUMBER = "972543771767";
+const WHATSAPP_NUMBER = "97229999119";
 
 function whatsappOrder(productId, opts){
   const p = PRODUCTS.find(x => x.id === productId);
