@@ -103,7 +103,12 @@ module.exports = async (req, res) => {
   const ip = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'unknown';
   if (limited(ip)) return res.status(429).json({ ok: false, error: 'too_many_requests' });
 
-  const { HYP_MASOF, HYP_KEY, HYP_PASSP } = process.env;
+  // Pasted values often carry a trailing space/newline; Hyp wants the Masof as a 10-digit number (leading zeros included).
+  const clean = (v) => String(v == null ? '' : v).trim().replace(/^["']|["']$/g, '').trim();
+  const HYP_KEY = clean(process.env.HYP_KEY);
+  const HYP_PASSP = clean(process.env.HYP_PASSP);
+  let HYP_MASOF = clean(process.env.HYP_MASOF);
+  if (/^\d{1,10}$/.test(HYP_MASOF)) HYP_MASOF = HYP_MASOF.padStart(10, '0');
   if (!HYP_MASOF || !HYP_KEY || !HYP_PASSP) {
     return res.status(503).json({ ok: false, error: 'payment_not_configured' });
   }
@@ -174,5 +179,12 @@ module.exports = async (req, res) => {
       detail = 'fetch_error';
     }
   }
-  return res.status(502).json({ ok: false, error: 'sign_failed', detail });
+  // Non-secret shape info so a misconfigured variable can be spotted without exposing it.
+  const raw = process.env;
+  const shape = {
+    masofLen: HYP_MASOF.length, masofDigitsOnly: /^\d+$/.test(HYP_MASOF),
+    keyLen: HYP_KEY.length, passpLen: HYP_PASSP.length,
+    rawHadWhitespace: [raw.HYP_MASOF, raw.HYP_KEY, raw.HYP_PASSP].some((v) => v != null && String(v) !== String(v).trim()),
+  };
+  return res.status(502).json({ ok: false, error: 'sign_failed', detail, shape });
 };
