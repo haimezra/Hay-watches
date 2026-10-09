@@ -83,8 +83,8 @@
 .gbx-lid .lt{ --w:var(--W); --h:var(--D); --sh:rgba(255,255,255,.04); transform:translateZ(var(--Tl)); display:grid; place-items:center;
   box-shadow:inset 0 0 0 1px var(--edge),inset 0 0 40px rgba(0,0,0,.28); background:radial-gradient(ellipse at 28% 18%,rgba(255,255,255,.14),transparent 62%),var(--tex,none),var(--matc); }
 .gbx-lid .lt::after{ inset:12px; height:auto; border:1px dashed var(--stitch); }
-.gbx-lid .lt i{ font:600 26px 'Heebo',sans-serif; font-style:normal; letter-spacing:.32em; padding-inline-start:.32em;
-  background:var(--metal); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; filter:drop-shadow(0 1px 0 rgba(0,0,0,.6)); }
+/* the site's main logo, small and centred on the lid like a foil stamp */
+.gbx-lid .lt img{ display:block; width:36%; height:auto; opacity:.92; filter:drop-shadow(0 1px 0 rgba(0,0,0,.55)); pointer-events:none; }
 .gbx-lid .lu{ --w:var(--W); --h:var(--D); transform:translateZ(.6px);
   background:var(--linimg,none),var(--linc); box-shadow:inset 0 0 0 8px var(--matc),inset 0 0 26px rgba(0,0,0,.3); }
 .gbx-lid .s-f,.gbx-lid .s-b{ --w:var(--W); --h:var(--Tl); }
