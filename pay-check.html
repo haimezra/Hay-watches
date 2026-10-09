@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>בדיקת סליקה</title>
+<style>body{margin:0;padding:24px;background:#0A0A10;color:#F3F0FA;font:18px/1.7 system-ui,sans-serif}
+button{font:inherit;padding:14px 28px;background:#9B6EF3;color:#0A0A10;border:0;border-radius:6px;margin:12px 0}
+pre{white-space:pre-wrap;word-break:break-all;background:#131019;border:1px solid #2a2540;padding:14px;border-radius:8px;direction:ltr;text-align:left;font-size:15px}
+</style></head><body>
+<h1>בדיקת סליקה</h1>
+<p>לחצו על הכפתור וצלמו את התוצאה. לא מתבצע חיוב.</p>
+<button id="go" type="button">הרצת בדיקה</button>
+<pre id="out">...</pre>
+<script src="data.js"></script>
+<script>
+document.getElementById('go').onclick = async function(){
+  var out = document.getElementById('out'), L = [];
+  function show(){ out.textContent = L.join('\n'); }
+  L.push('page origin: ' + location.origin); show();
+  try{
+    var g = await fetch('/api/checkout', { method:'GET' });
+    L.push('GET /api/checkout -> HTTP ' + g.status + '  (405 = function is deployed)');
+  }catch(e){ L.push('GET failed: ' + e); }
+  show();
+  var p = PRODUCTS.filter(function(x){ return (x.cat==='men'||x.cat==='women') && x.sold!==true && x.available!==false; })[0];
+  if(!p){ L.push('no available watch found in data.js'); show(); return; }
+  try{
+    var r = await fetch('/api/checkout', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ id:p.id }) });
+    var d = await r.json().catch(function(){ return {}; });
+    var safe = JSON.parse(JSON.stringify(d));
+    if(safe.url){ try{ safe.url = 'OK, payment link received from ' + new URL(safe.url).host; }catch(e){ safe.url = '(link received)'; } }
+    L.push('POST /api/checkout (' + p.id + ') -> HTTP ' + r.status);
+    L.push(JSON.stringify(safe, null, 2));
+    var hints = { payment_not_configured:'HYP_MASOF / HYP_KEY / HYP_PASSP missing in Vercel Production (redeploy after adding)',
+      forbidden:'Origin does not match the site host', sign_failed:'Hypay rejected the signing request - see detail', too_many_requests:'rate limit, wait a minute',
+      unknown_product:'product not found', not_available:'product unavailable', bad_price:'amount is 0' };
+    if(d.error) L.push('=> ' + (hints[d.error] || d.error));
+  }catch(e){ L.push('POST failed: ' + e); }
+  show();
+};
+</script></body></html>

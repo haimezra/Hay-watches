@@ -90,7 +90,9 @@ function sameOrigin(req) {
   if (!origin) return false; // browsers always send Origin on cross-origin/POST fetches
   const host = req.headers['x-forwarded-host'] || req.headers.host;
   const extra = (process.env.ALLOWED_ORIGINS || '').split(',').map((s) => s.trim()).filter(Boolean);
-  return origin === 'https://' + host || extra.includes(origin);
+  // www.example.com and example.com are the same site: accept either spelling on either side.
+  const bare = (h) => String(h || '').replace(/^https:\/\//, '').replace(/^www\./, '');
+  return origin === 'https://' + host || bare(origin) === bare(host) && /^https:\/\//.test(origin) || extra.includes(origin);
 }
 
 module.exports = async (req, res) => {
