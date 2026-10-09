@@ -158,7 +158,7 @@ const GIFT_BOXES = [
 ];
 
 // ===== Gift extras that are not shop products: roses that fill the gift box (gifts.html). Price is validated on the server. =====
-const ROSE_PRICE = 90;
+const ROSE_PRICE = 35;
 const GIFT_EXTRAS = [
   { id:"rose-black",  cat:"gift-extra", color:"black",  name:{he:"ורדים שחורים", en:"Black Roses"},  price:ROSE_PRICE },
   { id:"rose-red",    cat:"gift-extra", color:"red",    name:{he:"ורדים אדומים", en:"Red Roses"},    price:ROSE_PRICE },
