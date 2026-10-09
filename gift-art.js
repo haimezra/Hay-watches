@@ -83,5 +83,24 @@
       + '<rect x="78" y="22" width="14" height="14" rx="2" fill="none" stroke="#c9ccd2" stroke-width="2.2"/><line x1="85" y1="22" x2="85" y2="36" stroke="#c9ccd2" stroke-width="1.8"/></svg>';
   }
 
-  window.GiftArt = { watch: watch, box: box, stand: stand, care: care, strap: strap };
+  // Top-down rose (used to fill the gift box and as the option thumbnail). Colours come from CSS variables --r1..--r5.
+  function rose(){
+    var o = '<circle cx="50" cy="50" r="48" class="rz1"/>', k;
+    for(k=0;k<6;k++) o += '<ellipse cx="50" cy="26" rx="19" ry="25" transform="rotate('+(k*60)+' 50 50)" class="rz2"/>';
+    for(k=0;k<5;k++) o += '<ellipse cx="50" cy="35" rx="14" ry="19" transform="rotate('+(k*72+18)+' 50 50)" class="rz3"/>';
+    for(k=0;k<4;k++) o += '<ellipse cx="50" cy="42" rx="9" ry="12" transform="rotate('+(k*90+40)+' 50 50)" class="rz4"/>';
+    o += '<circle cx="50" cy="50" r="6" class="rz5"/><path d="M50 48a2 2 0 1 1-2 2a4 4 0 1 1 5 4" class="rz6" fill="none"/>';
+    return '<svg viewBox="0 0 100 100" aria-hidden="true">'+o+'</svg>';
+  }
+  var ROSE_PAL = {
+    red:    ['#6b0b1b','#a3122a','#c81e3a','#e0405a','#f06b82'],
+    black:  ['#08080b','#17161d','#25232e','#34323f','#4a4858'],
+    purple: ['#3b1f78','#5f37c4','#7c4dff','#a07eff','#c3adff']
+  };
+  function roseVars(color){
+    var p = ROSE_PAL[color] || ROSE_PAL.red;
+    return '--r1:'+p[0]+';--r2:'+p[1]+';--r3:'+p[2]+';--r4:'+p[3]+';--r5:'+p[4]+';';
+  }
+
+  window.GiftArt = { watch: watch, box: box, stand: stand, care: care, strap: strap, rose: rose, roseVars: roseVars };
 })();

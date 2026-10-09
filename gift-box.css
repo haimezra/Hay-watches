@@ -107,9 +107,28 @@
 .gbx-it .in{ width:100%; height:100%; animation:gbxDrop .8s cubic-bezier(.2,.9,.3,1.15) both; }
 .gbx-it svg{ width:100%; height:100%; filter:drop-shadow(0 8px 6px rgba(0,0,0,.55)); }
 /* items are taller than the lid gap, so they fade out while the lid closes and back in as it opens */
-.gbx-scene .gbx-it{ transition:opacity .3s ease .2s; }
+.gbx-scene .gbx-it{ translate:0 0 var(--lift,0px); transition:opacity .3s ease .2s, translate .9s ease 1.2s; }
+.gbx-scene.has-roses{ --lift:18px; }
 .gbx-scene.shut .gbx-it{ opacity:0; transition-delay:.7s; }
 @keyframes gbxDrop{ from{ opacity:0; transform:translateY(-90px) scale(.92); } }
+
+/* ---- roses that rain from above and fill the box (gifts.html) ---- */
+.gbx-rose{ position:absolute; left:50%; top:50%; width:var(--s); height:var(--s); margin:calc(var(--s)/-2) 0 0 calc(var(--s)/-2);
+  transform:translate3d(var(--x),var(--y),var(--z)) rotateZ(var(--r)); pointer-events:none;
+  animation:roseFall .95s cubic-bezier(.4,0,.6,1) var(--d,0s) both; transition:opacity .3s ease .2s; }
+.gbx-rose svg{ display:block; width:100%; height:100%; }
+.gbx-scene.shut .gbx-rose{ opacity:0; transition-delay:.7s; }
+@keyframes roseFall{
+  0%{ transform:translate3d(var(--x),var(--y),560px) rotateZ(var(--r0)) scale(.85); opacity:0; }
+  14%{ opacity:1; }
+  100%{ transform:translate3d(var(--x),var(--y),var(--z)) rotateZ(var(--r)) scale(1); opacity:1; }
+}
+.rz1{ fill:var(--r1); stroke:rgba(255,255,255,.14); stroke-width:1; }
+.rz2{ fill:var(--r2); stroke:rgba(0,0,0,.4); stroke-width:.8; }
+.rz3{ fill:var(--r3); stroke:rgba(0,0,0,.38); stroke-width:.8; }
+.rz4{ fill:var(--r4); stroke:rgba(0,0,0,.34); stroke-width:.8; }
+.rz5{ fill:var(--r5); }
+.rz6{ stroke:rgba(0,0,0,.45); stroke-width:1.2; }
 
 /* Homepage teaser: the lid opens and closes on its own, the contents drop in each time it opens */
 .gbx-loop .gbx-lid{ transition:none; animation:gbxLid 8s cubic-bezier(.65,0,.25,1) infinite; }
@@ -128,7 +147,7 @@
 }
 @media (prefers-reduced-motion:reduce){
   .gbx-lid, .gbx-scene .gbx-it{ transition:none; }
-  .gbx-it .in{ animation:none; }
+  .gbx-it .in, .gbx-rose{ animation:none; }
   .gbx-loop .gbx-lid{ animation:none; transform:translateZ(var(--H)) rotateX(108deg); }
   .gbx-loop .gbx-it .in{ animation:none; opacity:1; }
 }

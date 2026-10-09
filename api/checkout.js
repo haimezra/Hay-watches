@@ -22,7 +22,7 @@ function data() {
   if (!DATA) {
     const src = fs.readFileSync(path.join(process.cwd(), 'data.js'), 'utf8');
     DATA = vm.runInNewContext(
-      src + '\n;({ PRODUCTS, GIFT_BOXES: (typeof GIFT_BOXES !== "undefined" ? GIFT_BOXES : []) })',
+      src + '\n;({ PRODUCTS, GIFT_BOXES: (typeof GIFT_BOXES !== "undefined" ? GIFT_BOXES : []), GIFT_EXTRAS: (typeof GIFT_EXTRAS !== "undefined" ? GIFT_EXTRAS : []) })',
       {},
       { timeout: 1000 }
     );
@@ -55,10 +55,13 @@ function buildGift(g) {
 
   const list = Array.isArray(g.addons) ? g.addons.slice(0, 4) : [];
   const seen = new Set();
+  let roseSeen = false;
   let subtotal = Number(box.price) + Number(watch.price);
   for (const a of list) {
-    const p = catalog().find((x) => x.id === String((a && a.id) || ''));
-    if (!p || (p.cat !== 'accessories' && !p.strap) || seen.has(p.id)) return { status: 400, error: 'bad_gift' };
+    const aid = String((a && a.id) || '');
+    const p = catalog().find((x) => x.id === aid) || data().GIFT_EXTRAS.find((x) => x.id === aid);
+    if (!p || (p.cat !== 'accessories' && p.cat !== 'gift-extra' && !p.strap) || seen.has(p.id)) return { status: 400, error: 'bad_gift' };
+    if (p.cat === 'gift-extra') { if (roseSeen) return { status: 400, error: 'bad_gift' }; roseSeen = true; }
     seen.add(p.id);
     if (unavailable(p)) return { status: 409, error: 'not_available' };
     if (p.strap) {

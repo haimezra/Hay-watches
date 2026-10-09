@@ -40,16 +40,18 @@
     return c;
   }).filter(function(c){ return c.items.length; });
 
-  var STEPS = ['קופסה','שעון','תוספות','סיכום'];
+  var ROSES = (typeof GIFT_EXTRAS !== 'undefined' ? GIFT_EXTRAS : []).filter(function(x){ return x.cat==='gift-extra'; });
+  var STEPS = ['קופסה','שעון','ורדים','תוספות','סיכום'], LAST = STEPS.length - 1;
   var qs = new URLSearchParams(location.search);
   var pre = byId(WATCHES, qs.get('watch'));
   var S = { step:0, box:'matte', watch:pre?pre.id:null, filter:'all',
-            add:{ cases:null, care:null, strap:null },
+            rose:null, add:{ cases:null, care:null, strap:null },
             strap:{ color:null, length:'standard', size:20 }, note:'', closed:false };
 
   /* ---------- pricing ---------- */
   function addonItems(){
-    var out = [];
+    var out = [], rs = S.rose && byId(ROSES,S.rose);
+    if(rs) out.push(rs);
     CATS.forEach(function(c){ var id = S.add[c.id]; if(id){ var p = byId(PRODUCTS,id); if(p) out.push(p); } });
     return out;
   }
@@ -95,7 +97,35 @@
     var c = S.add.cases && byId(PRODUCTS,S.add.cases), k = S.add.care && byId(PRODUCTS,S.add.care), sp = strapPick();
     setSlot('cases', c&&c.id, c?addonArt(c):'', '--w:92px;--h:74px;--x:-88px;--y:-8px');
     setSlot('care',  k&&k.id, k?addonArt(k):'', '--w:76px;--h:76px;--x:92px;--y:-6px');
+    setRoses(S.rose);
     setSlot('strap', sp&&(sp.p.id+sp.c.id), sp?GiftArt.strap(sp.c.hex):'', '--w:96px;--h:70px;--x:-78px;--y:66px;--r:-9deg', 'flat');
+  }
+  /* roses: a seeded heap (so it looks the same every time) that rains into the box from above */
+  var ROSE_SPOTS = (function(){
+    var a = 7, out = [];
+    function R(){ a|=0; a = a+0x6D2B79F5|0; var t = Math.imul(a^a>>>15, 1|a); t = t+Math.imul(t^t>>>7, 61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }
+    [{nx:6,ny:5,dx:46,dy:34,z:11,s:52},{nx:5,ny:4,dx:46,dy:34,z:18,s:50},{nx:3,ny:2,dx:52,dy:36,z:25,s:46}].forEach(function(L,li){
+      for(var j=0;j<L.ny;j++) for(var i=0;i<L.nx;i++){
+        var x = (i-(L.nx-1)/2)*L.dx + (R()-.5)*10, y = (j-(L.ny-1)/2)*L.dy + (R()-.5)*8, r = R()*360;
+        out.push({ x:Math.max(-112,Math.min(112,x)).toFixed(1), y:Math.max(-72,Math.min(72,y)).toFixed(1), z:(L.z+R()*3).toFixed(1),
+                   r:r.toFixed(0), r0:(r+(R()-.5)*160).toFixed(0), s:(L.s+(R()-.5)*6).toFixed(0), d:(R()*1.1+li*.4).toFixed(2) });
+      }
+    });
+    return out;
+  })();
+  var roseKey = null, roseEls = [];
+  function setRoses(id){
+    if(id === roseKey) return;
+    roseKey = id;
+    roseEls.forEach(function(e){ e.remove(); }); roseEls = [];
+    scene.classList.toggle('has-roses', !!id);
+    var r = id && byId(ROSES,id); if(!r) return;
+    var vars = GiftArt.roseVars(r.color), svg = GiftArt.rose();
+    ROSE_SPOTS.forEach(function(p){
+      var el = document.createElement('div'); el.className = 'gbx-rose';
+      el.style.cssText = '--x:'+p.x+'px;--y:'+p.y+'px;--z:'+p.z+'px;--r:'+p.r+'deg;--r0:'+p.r0+'deg;--s:'+p.s+'px;--d:'+p.d+'s;'+vars;
+      el.innerHTML = svg; scene.appendChild(el); roseEls.push(el);
+    });
   }
   function setClosed(closed){
     S.closed = closed;
@@ -126,6 +156,11 @@
   function optWatch(p){
     return '<button class="gb-opt" type="button" data-watch="'+p.id+'" aria-pressed="'+(S.watch===p.id)+'"><span class="gb-thumb"><img src="'+p.img+'" alt="" loading="lazy"></span>'
       + '<span class="gb-t"><div class="gb-n">'+esc(p.name.he)+'</div><div class="gb-d">'+esc(watchDesc(p))+'</div><div class="gb-p">'+money(p.price)+'</div></span></button>';
+  }
+  function optRose(r){
+    var on = S.rose === r.id;
+    return '<button class="gb-opt" type="button" data-rose="'+r.id+'" aria-pressed="'+on+'"><span class="gb-thumb" style="'+GiftArt.roseVars(r.color)+'">'+GiftArt.rose()+'</span>'
+      + '<span class="gb-t"><div class="gb-n">'+esc(r.name.he)+'</div><div class="gb-d">'+(on?'נוסף למארז · לחיצה נוספת מסירה':'ימלאו את הקופסה סביב השעון')+'</div><div class="gb-p">'+(r.price?'+ '+money(r.price):'כלול במחיר')+'</div></span></button>';
   }
   function optAdd(cat, p){
     var on = S.add[cat.id]===p.id;
@@ -176,6 +211,8 @@
       h = '<h2 class="gb-h2">בחרו את השעון</h2><p class="gb-lead">'+(pre?'השעון נבחר מעמוד המוצר. אפשר להחליף אותו כאן.':'כל השעונים שזמינים כרגע באתר. השעון יוצב במרכז המארז.')+'</p>'
         + '<div class="gb-chips">'+chips+'</div><div class="gb-grid">'+shown.map(optWatch).join('')+'</div>';
     } else if(S.step===2){
+      h = '<h2 class="gb-h2">הוסיפו ורדים</h2><p class="gb-lead">ורדים בצבע לבחירתכם ימלאו את הקופסה סביב השעון. אפשר לבחור צבע אחד, או לדלג.</p><div class="gb-grid">'+ROSES.map(optRose).join('')+'</div>';
+    } else if(S.step===3){
       h = CATS.map(function(c){
         return '<h2 class="gb-h2">'+c.title+'</h2><p class="gb-lead">'+c.lead+'. אפשר לבחור פריט אחד, או לדלג.</p><div class="gb-grid c2">'
           + c.items.map(function(p){ return optAdd(c,p); }).join('') + '</div>' + (c.id==='strap' ? strapOpts() : '');
@@ -191,21 +228,22 @@
       return '<button type="button" data-step="'+i+'" class="'+(i===S.step?'on':i<S.step?'done':'')+'" '+(ok?'':'disabled')+'><b>'+(i<S.step?'✓':i+1)+'</b><span>'+s+'</span></button>';
     }).join('');
     $('gbPrev').style.visibility = S.step ? 'visible' : 'hidden';
-    var n = $('gbNext'); n.textContent = S.step===3 ? 'לתשלום' : 'המשך'; n.disabled = (S.step===1 && !S.watch);
+    var n = $('gbNext'); n.textContent = S.step===LAST ? 'לתשלום' : 'המשך'; n.disabled = (S.step===1 && !S.watch);
     $('gbTotal').textContent = money(subtotal());
     paint(); syncStage();
   }
   function go(i){
     S.step = i; view();
-    setClosed(i===3);                    // the lid closes once the box is complete
+    setClosed(i===LAST);                    // the lid closes once the box is complete
     if(window.innerWidth <= 880) window.scrollTo({ top:0, behavior:'smooth' });
   }
   document.addEventListener('click', function(e){
-    var b = e.target.closest('[data-box],[data-watch],[data-add],[data-step],[data-filter],[data-scolor],[data-slen],[data-ssize]');
+    var b = e.target.closest('[data-box],[data-watch],[data-rose],[data-add],[data-step],[data-filter],[data-scolor],[data-slen],[data-ssize]');
     if(!b || !$('gbBody').contains(b) && !$('gbSteps').contains(b)) return;
     var d = b.dataset;
     if(d.box){ S.box = d.box; }
     else if(d.watch){ S.watch = d.watch; }
+    else if(d.rose){ S.rose = S.rose===d.rose ? null : d.rose; if(S.rose && window.innerWidth<=880) window.scrollTo({ top:0, behavior:'smooth' }); }
     else if(d.filter){ S.filter = d.filter; }
     else if(d.add){
       var on = S.add[d.cat] === d.add; S.add[d.cat] = on ? null : d.add;
@@ -219,7 +257,7 @@
   });
   document.addEventListener('input', function(e){ if(e.target.id==='gbNote') S.note = e.target.value.slice(0,NOTE_MAX); });
   $('gbPrev').onclick = function(){ go(S.step-1); };
-  $('gbNext').onclick = function(){ if(S.step<3) go(S.step+1); else checkout(); };
+  $('gbNext').onclick = function(){ if(S.step<LAST) go(S.step+1); else checkout(); };
 
   /* ---------- checkout ---------- */
   function payload(){

@@ -157,6 +157,14 @@ const GIFT_BOXES = [
   { id:"velvet", name:"קופסת קטיפה",       short:"קטיפה", desc:"בטנת קטיפה בגוון בורדו עמוק",  price:260, sw:"#4a1a2a" }
 ];
 
+// ===== Gift extras that are not shop products: roses that fill the gift box (gifts.html). Price is validated on the server. =====
+const ROSE_PRICE = 90;
+const GIFT_EXTRAS = [
+  { id:"rose-black",  cat:"gift-extra", color:"black",  name:{he:"ורדים שחורים", en:"Black Roses"},  price:ROSE_PRICE },
+  { id:"rose-red",    cat:"gift-extra", color:"red",    name:{he:"ורדים אדומים", en:"Red Roses"},    price:ROSE_PRICE },
+  { id:"rose-purple", cat:"gift-extra", color:"purple", name:{he:"ורדים סגולים", en:"Purple Roses"}, price:ROSE_PRICE }
+];
+
 const ARTICLES = [
   { he:"איך לבחור את השעון הראשון שלך", en:"How to Choose Your First Watch",
     img:"images/guides/first-watch.jpg",
