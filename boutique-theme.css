@@ -630,3 +630,19 @@ html body .foot-bottom{ padding-top:34px !important; }
   html body .prod-card > .add-cart{ width:calc(100% - 28px) !important; margin-inline:14px !important; }
   html body .mobile-nav a{ padding:20px 24px !important; }
 }
+
+/* Divider between Featured Pieces and Our Straps */
+html body #straps-guide{ position:relative !important; padding-top:var(--sp-section) !important; }
+html body #straps-guide::before{
+  content:""; position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width:min(calc(100% - var(--sp-gutter) * 2), 1100px); height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.16) 20%,rgba(155,120,230,.55) 50%,rgba(255,255,255,.16) 80%,transparent);
+}
+html body #straps-guide::after{
+  content:""; position:absolute; top:-3px; left:50%; width:7px; height:7px; margin-left:-3.5px;
+  background:var(--bg,#0a0a0f); border:1px solid rgba(155,120,230,.8); transform:rotate(45deg);
+}
+@media (max-width:880px){
+  html body #straps-guide{ padding-top:var(--sp-section-m) !important; }
+  html body #straps-guide::before{ width:calc(100% - var(--sp-gutter-m) * 2); }
+}
