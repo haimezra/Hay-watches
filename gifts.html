@@ -73,7 +73,7 @@
 </style>
 <link rel="stylesheet" href="boutique-theme.css?v=202609301105">
 <link rel="stylesheet" href="gift-box.css?v=4">
-<link rel="stylesheet" href="gifts.css?v=3">
+<link rel="stylesheet" href="gifts.css?v=4">
 </head>
 <body>
 
@@ -122,6 +122,7 @@
 </header>
 
 <div class="gb-app">
+  <div class="gb-left">
   <section class="gb-stage gbx-stage" id="gbStage" aria-label="תצוגת המארז">
     <div class="gbx-persp">
       <div class="gbx-scene" id="gbScene" data-box="matte">
@@ -137,6 +138,23 @@
     </div>
     <div class="gb-hint"><span>גררו כדי לסובב</span><button id="gbLid" type="button">סגירת המכסה</button></div>
   </section>
+
+  <section class="gg" id="gbGallery" aria-roledescription="carousel" aria-label="השראה למארזי מתנה">
+    <div class="gg-head">
+      <h2 class="gg-title">השראה למארזים</h2>
+      <div class="gg-nav">
+        <button type="button" class="gg-btn" id="ggPrev" aria-label="הקודם">&#8250;</button>
+        <button type="button" class="gg-btn" id="ggNext" aria-label="הבא">&#8249;</button>
+      </div>
+    </div>
+    <div class="gg-track" id="ggTrack" tabindex="0">
+      <figure class="gg-slide"><img src="images/gifts/gift-1.webp" width="960" height="540" alt="מארז מתנה שחור עם ורדים שחורים, שעון פלדה ואביזרי טיפול" loading="lazy" decoding="async"><figcaption><b>מארז שחור</b><span>ורדים שחורים · שעון פלדה</span></figcaption></figure>
+      <figure class="gg-slide"><img src="images/gifts/gift-2.webp" width="960" height="540" alt="מארז מתנה בצבע שמנת וזהב עם ורדים סגולים, שעון עם רצועה אדומה, ארנק עור" loading="lazy" decoding="async"><figcaption><b>מארז שמנת וזהב</b><span>ורדים סגולים · שעון וארנק</span></figcaption></figure>
+      <figure class="gg-slide"><img src="images/gifts/gift-3.webp" width="960" height="540" alt="מארז מתנה בורדו עם ורדים אדומים, שעון כרונוגרף ורצועת עור" loading="lazy" decoding="async"><figcaption><b>מארז בורדו</b><span>ורדים אדומים · רצועת עור</span></figcaption></figure>
+    </div>
+    <div class="gg-dots" id="ggDots" role="tablist" aria-label="בחירת תמונה"></div>
+  </section>
+  </div>
 
   <main class="gb-panel">
     <h1 class="gb-h1">הרכיבו את מארז המתנה</h1>
@@ -198,6 +216,7 @@
 <script src="data.js?v=202610091135"></script>
 <script src="gift-art.js?v=2"></script>
 <script src="gifts.js?v=2"></script>
+<script src="gift-slider.js?v=1"></script>
 <script src="https://negishot.co.il/cdn/widget.php?code=NGS_F5225CBBB994"></script>
 <!-- Vercel Speed Insights -->
 <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
