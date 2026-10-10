@@ -4,8 +4,8 @@
 
 const CATEGORIES = {
   men:         { he:"שעוני גברים",        en:"Men's Watches",       img:"images/products/men-7-2.webp" },
-  women:       { he:"שעוני נשים",         en:"Women's Watches",     img:"images/categories/women.jpg" },
-  straps:      { he:"רצועות פרימיום",      en:"Premium Straps",      img:"images/categories/straps.jpg" },
+  women:       { he:"שעוני נשים",         en:"Women's Watches",     img:"images/categories/women.webp" },
+  straps:      { he:"רצועות פרימיום",      en:"Premium Straps",      img:"images/categories/straps.webp" },
   accessories: { he:"אביזרים וקופסאות",    en:"Accessories & Boxes", img:"images/categories/accessories-box.jpg" }
 };
 
@@ -175,7 +175,7 @@ const ARTICLES = [
     video:"assets/automatic-vs-quartz.mp4", poster:"assets/automatic-vs-quartz-poster.jpg",
     link:"guide-automatic-vs-quartz.html" },
   { he:"המדריך לשמירה על רצועות עור", en:"Caring for Leather Straps",
-    img:"images/guides/strap-care.jpg",
+    img:"images/guides/strap-care.webp",
     link:"guide-strap-care.html" },
   { he:"למה לא לענוד שעונים מזויפים", en:"Why You Shouldn't Wear Fake Watches",
     img:"https://images.unsplash.com/photo-1646724810360-abfa1bb76d6d?auto=format&fit=crop&w=900&q=70",
