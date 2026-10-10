@@ -239,13 +239,32 @@
     setClosed(i===LAST);                    // the lid closes once the box is complete
     if(window.innerWidth <= 880) window.scrollTo({ top:0, behavior:'smooth' });
   }
+  /* roses of the chosen colour rain down the screen whenever a rose colour is picked */
+  function rosesFall(color){
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var old = document.querySelector('.gb-fall'); if(old) old.remove();
+    var layer = document.createElement('div'); layer.className = 'gb-fall'; layer.setAttribute('aria-hidden','true');
+    layer.style.cssText = GiftArt.roseVars(color);
+    var n = window.innerWidth <= 880 ? 18 : 28, i, size, el, inn;
+    for(i=0;i<n;i++){
+      size = 30 + Math.random()*36;
+      el = document.createElement('div'); el.className = 'gb-fall-r';
+      el.style.cssText = 'left:'+(Math.random()*96).toFixed(1)+'%;width:'+size.toFixed(0)+'px;height:'+size.toFixed(0)+'px;animation-duration:'+(2.6+Math.random()*1.8).toFixed(2)+'s;animation-delay:'+(Math.random()*1.1).toFixed(2)+'s';
+      inn = document.createElement('div'); inn.className = 'gb-fall-i';
+      inn.style.cssText = '--sw:'+((Math.random()*44+16)*(Math.random()<.5?-1:1)).toFixed(0)+'px;--tilt:'+((Math.random()*50+20)*(Math.random()<.5?-1:1)).toFixed(0)+'deg;animation-duration:'+(1.2+Math.random()*1.1).toFixed(2)+'s';
+      inn.innerHTML = GiftArt.rose();
+      el.appendChild(inn); layer.appendChild(el);
+    }
+    document.body.appendChild(layer);
+    setTimeout(function(){ layer.remove(); }, 6200);
+  }
   document.addEventListener('click', function(e){
     var b = e.target.closest('[data-box],[data-watch],[data-rose],[data-add],[data-step],[data-filter],[data-scolor],[data-slen],[data-ssize]');
     if(!b || !$('gbBody').contains(b) && !$('gbSteps').contains(b)) return;
     var d = b.dataset;
     if(d.box){ S.box = d.box; }
     else if(d.watch){ S.watch = d.watch; }
-    else if(d.rose){ S.rose = S.rose===d.rose ? null : d.rose; if(S.rose && window.innerWidth<=880) window.scrollTo({ top:0, behavior:'smooth' }); }
+    else if(d.rose){ S.rose = S.rose===d.rose ? null : d.rose; if(S.rose){ var rr = byId(ROSES,S.rose); if(rr) rosesFall(rr.color); if(window.innerWidth<=880) window.scrollTo({ top:0, behavior:'smooth' }); } }
     else if(d.filter){ S.filter = d.filter; }
     else if(d.add){
       var on = S.add[d.cat] === d.add; S.add[d.cat] = on ? null : d.add;
