@@ -89,14 +89,4 @@
     });
   });
 
-  /* gift CTA background video: load + play only while the button is on screen (saves data and battery) */
-  (function(){
-    var v=document.querySelector('.gift-cta-vid'); if(!v) return;
-    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var play=function(){ var r=v.play(); if(r&&r.catch) r.catch(function(){}); };
-    if(!('IntersectionObserver' in window)){ v.preload='auto'; play(); return; }
-    new IntersectionObserver(function(es){
-      es.forEach(function(e){ if(e.isIntersecting){ if(v.preload!=='auto') v.preload='auto'; play(); } else { v.pause(); } });
-    },{rootMargin:'120px'}).observe(v);
-  })();
 })();

@@ -708,23 +708,9 @@ html body .gift-cta:hover{ background-color:#0d0a1d !important; }
 html body .hs-card-en{ font-size:.64rem !important; letter-spacing:.16em !important; font-weight:400 !important; opacity:.8; }
 html body .hs-card-body h3{ font-size:.95rem !important; font-weight:400 !important; color:rgba(255,255,255,.82) !important; letter-spacing:.01em; }
 
-/* Gift CTA: looping rose video replaces the starfield as the button background.
-   Button size is untouched (the video is absolutely positioned and clipped by the button). */
+/* Gift CTA: transparent background (no video, no starfield). Size is unchanged. */
 html body .gift-cta{
-  background-image:none !important; background-color:#050409 !important; animation:none !important;
+  background:transparent !important; background-color:transparent !important; background-image:none !important; animation:none !important;
 }
-html body .gift-cta .gift-cta-vid{
-  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:42% 60%;
-  z-index:-2; pointer-events:none; background:#050409;
-}
-html body .gift-cta::before{
-  background-image:linear-gradient(180deg,rgba(5,4,10,.3),rgba(5,4,10,.46)) !important; background-size:auto !important; animation:none !important; opacity:1;
-}
-html body .gift-cta > span{ position:relative; text-shadow:0 1px 10px rgba(0,0,0,.85); }
-html body .gift-cta:hover{ background-color:#050409 !important; }
-html body .gift-cta:hover::before{ background-image:linear-gradient(180deg,rgba(5,4,10,.18),rgba(5,4,10,.34)) !important; }
-@media (prefers-reduced-motion:reduce){
-  html body .gift-cta .gift-cta-vid{ display:none; }
-  html body .gift-cta{ background-image:url("assets/gift-cta-poster.webp") !important; background-size:cover !important; background-position:42% 60% !important; }
-}
-
+html body .gift-cta::before{ content:none !important; display:none !important; }
+html body .gift-cta:hover{ background:rgba(155,110,243,.14) !important; background-color:rgba(155,110,243,.14) !important; }
