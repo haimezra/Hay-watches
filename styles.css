@@ -388,10 +388,15 @@ html body #straps-guide{ padding-block:0 var(--sp-section) !important; }
 
 .hs-straps .hs-nav{ display:none !important; }
 
-/* Small corner thumbnail on a strap card: tap to enlarge */
-.hs-mini{ position:absolute; bottom:10px; inset-inline-end:10px; z-index:2; width:50px; height:50px; padding:0; border:1.5px solid rgba(243,240,250,.85); border-radius:4px; overflow:hidden; background:#0A0A10; cursor:zoom-in;
-  box-shadow:0 4px 16px rgba(0,0,0,.55); transition:transform .3s ease, border-color .3s ease; }
-.hs-mini::before{ content:""; position:absolute; inset:-8px; }
-.hs-card-img .hs-mini img{ position:static; inset:auto; width:100%; height:100%; object-fit:cover; transform:none !important; transition:none; }
-.hs-mini:hover, .hs-mini:focus-visible{ transform:scale(1.08); border-color:var(--purple); outline:none; }
-@media (max-width:880px){ .hs-mini{ width:46px; height:46px; bottom:9px; inset-inline-end:9px; } }
+/* Small round corner thumbnail on a strap card: slowly pulses, tap to enlarge */
+.hs-mini{ position:absolute; bottom:12px; inset-inline-end:12px; z-index:2; width:54px; height:54px; padding:0; border:1.5px solid rgba(243,240,250,.9); border-radius:50%; overflow:hidden; background:#0A0A10; cursor:zoom-in;
+  box-shadow:0 4px 16px rgba(0,0,0,.55); animation:hsPulse 2.8s ease-in-out infinite; transition:border-color .3s ease; -webkit-tap-highlight-color:transparent; }
+.hs-card-img .hs-mini img{ position:static; inset:auto; width:100%; height:100%; object-fit:cover; border-radius:50%; transform:none !important; transition:none; }
+@keyframes hsPulse{
+  0%   { transform:scale(1);    box-shadow:0 4px 16px rgba(0,0,0,.55), 0 0 0 0 rgba(155,110,243,.55); }
+  55%  { transform:scale(1.07); box-shadow:0 4px 16px rgba(0,0,0,.55), 0 0 0 13px rgba(155,110,243,0); }
+  100% { transform:scale(1);    box-shadow:0 4px 16px rgba(0,0,0,.55), 0 0 0 0 rgba(155,110,243,0); }
+}
+.hs-mini:hover, .hs-mini:focus-visible{ animation:none; transform:scale(1.1); border-color:var(--purple); outline:none; box-shadow:0 4px 16px rgba(0,0,0,.55), 0 0 0 4px rgba(155,110,243,.28); }
+@media (max-width:880px){ .hs-mini{ width:52px; height:52px; bottom:11px; inset-inline-end:11px; } }
+@media (prefers-reduced-motion:reduce){ .hs-mini{ animation:none; } }
