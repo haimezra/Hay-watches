@@ -387,3 +387,11 @@ html body #straps-guide{ padding-block:0 var(--sp-section) !important; }
 }
 
 .hs-straps .hs-nav{ display:none !important; }
+
+/* Small corner thumbnail on a strap card: tap to enlarge */
+.hs-mini{ position:absolute; bottom:10px; inset-inline-end:10px; z-index:2; width:50px; height:50px; padding:0; border:1.5px solid rgba(243,240,250,.85); border-radius:4px; overflow:hidden; background:#0A0A10; cursor:zoom-in;
+  box-shadow:0 4px 16px rgba(0,0,0,.55); transition:transform .3s ease, border-color .3s ease; }
+.hs-mini::before{ content:""; position:absolute; inset:-8px; }
+.hs-card-img .hs-mini img{ position:static; inset:auto; width:100%; height:100%; object-fit:cover; transform:none !important; transition:none; }
+.hs-mini:hover, .hs-mini:focus-visible{ transform:scale(1.08); border-color:var(--purple); outline:none; }
+@media (max-width:880px){ .hs-mini{ width:46px; height:46px; bottom:9px; inset-inline-end:9px; } }
