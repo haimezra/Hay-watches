@@ -717,3 +717,9 @@ html body .gift-cta{
 }
 html body .gift-cta::before{ content:none !important; display:none !important; }
 html body .gift-cta:hover{ background:rgba(155,120,230,.12) !important; background-color:rgba(155,120,230,.12) !important; border-color:rgba(155,120,230,.9) !important; }
+
+/* Homepage gift teaser (mobile): bring the box closer to the copy/button.
+   The open lid rises ~100px above the closed box, so this is as tight as it can go without covering the button. */
+@media (max-width:880px){
+  html body #gifts .gift-teaser{ gap:4px !important; }
+}
