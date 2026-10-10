@@ -145,8 +145,10 @@
   window.addEventListener('pointerup', function(){ drag = null; });
 
   /* ---------- panel ---------- */
+  /* box option photos (same shots as the homepage inspiration slider, cropped to squares) */
+  var BOX_IMG = { matte:'images/gifts/box-matte.webp', wood:'images/gifts/box-wood.webp', velvet:'images/gifts/box-velvet.webp' };
   function optBox(b){
-    return '<button class="gb-opt" type="button" data-box="'+b.id+'" aria-pressed="'+(S.box===b.id)+'"><span class="gb-thumb"><span class="gb-sw" data-bg="'+b.sw+'"></span></span>'
+    return '<button class="gb-opt" type="button" data-box="'+b.id+'" aria-pressed="'+(S.box===b.id)+'"><span class="gb-thumb">'+(BOX_IMG[b.id]?'<img src="'+BOX_IMG[b.id]+'" alt="" loading="lazy" decoding="async">':'<span class="gb-sw" data-bg="'+b.sw+'"></span>')+'</span>'
       + '<span class="gb-t"><div class="gb-n">'+b.name+'</div><div class="gb-d">'+b.desc+'</div><div class="gb-p">'+(b.price?'+ '+money(b.price):'כלול במחיר')+'</div></span></button>';
   }
   function watchDesc(p){
