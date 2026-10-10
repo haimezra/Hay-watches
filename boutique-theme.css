@@ -656,3 +656,54 @@ html body .straps-more-btn{
   letter-spacing:.04em; text-decoration:none !important; transition:border-color .25s,background .25s;
 }
 html body .straps-more-btn:hover{ border-color:rgba(155,120,230,.9) !important; background:rgba(155,120,230,.12) !important; }
+
+/* Gift CTA — slow-drifting starfield inside the button */
+html body .gift-cta{
+  position:relative !important; overflow:hidden !important; isolation:isolate;
+  background-color:#06050d !important;
+  background-image:
+    radial-gradient(2px 2px at 44% 24%,#fff,transparent 62%),
+    radial-gradient(1.6px 1.6px at 12% 73%,rgba(215,195,255,.95),transparent 62%),
+    radial-gradient(2.4px 2.4px at 77% 12%,rgba(255,255,255,.9),transparent 62%),
+    radial-gradient(2px 2px at 7% 16%,rgba(255,255,255,.75),transparent 62%),
+    radial-gradient(1.6px 1.6px at 11% 35%,rgba(255,255,255,.75),transparent 62%),
+    radial-gradient(1.6px 1.6px at 10% 77%,rgba(255,255,255,.9),transparent 62%),
+    radial-gradient(2.4px 2.4px at 83% 85%,#fff,transparent 62%),
+    radial-gradient(2px 2px at 76% 79%,#fff,transparent 62%),
+    radial-gradient(2.4px 2.4px at 31% 10%,rgba(255,255,255,.9),transparent 62%),
+    radial-gradient(1.6px 1.6px at 40% 58%,#fff,transparent 62%),
+    radial-gradient(2.4px 2.4px at 76% 44%,rgba(255,255,255,.9),transparent 62%),
+    radial-gradient(2.4px 2.4px at 16% 79%,rgba(255,255,255,.9),transparent 62%),
+    radial-gradient(2.4px 2.4px at 50% 17%,#fff,transparent 62%),
+    radial-gradient(2.4px 2.4px at 75% 12%,rgba(255,255,255,.9),transparent 62%),
+    radial-gradient(2.4px 2.4px at 66% 92%,rgba(255,255,255,.75),transparent 62%),
+    radial-gradient(2.4px 2.4px at 43% 64%,rgba(255,255,255,.75),transparent 62%) !important;
+  background-size:150px 64px !important; background-repeat:repeat !important;
+  animation:ctaStarsA 45s linear infinite;
+}
+html body .gift-cta::before{
+  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+  background-image:
+    radial-gradient(1.4px 1.4px at 49% 43%,rgba(255,255,255,.9),transparent 62%),
+    radial-gradient(1.4px 1.4px at 92% 36%,rgba(215,195,255,.95),transparent 62%),
+    radial-gradient(2px 2px at 70% 68%,rgba(255,255,255,.75),transparent 62%),
+    radial-gradient(1.4px 1.4px at 39% 82%,#fff,transparent 62%),
+    radial-gradient(1.4px 1.4px at 68% 58%,rgba(215,195,255,.95),transparent 62%),
+    radial-gradient(2px 2px at 22% 67%,#fff,transparent 62%),
+    radial-gradient(2.8px 2.8px at 88% 14%,rgba(215,195,255,.95),transparent 62%),
+    radial-gradient(2px 2px at 46% 93%,rgba(255,255,255,.75),transparent 62%),
+    radial-gradient(1.4px 1.4px at 77% 63%,#fff,transparent 62%),
+    radial-gradient(2.8px 2.8px at 37% 65%,#fff,transparent 62%),
+    radial-gradient(2px 2px at 10% 94%,rgba(255,255,255,.75),transparent 62%),
+    radial-gradient(2.8px 2.8px at 39% 54%,rgba(215,195,255,.95),transparent 62%);
+  background-size:210px 80px; animation:ctaStarsB 80s linear infinite, ctaTwinkle 5s ease-in-out infinite;
+}
+@keyframes ctaStarsA{ to{ background-position:-150px 0 } }
+@keyframes ctaStarsB{ to{ background-position:210px 0 } }
+@keyframes ctaTwinkle{ 0%,100%{ opacity:.55 } 50%{ opacity:1 } }
+@media (prefers-reduced-motion:reduce){ html body .gift-cta, html body .gift-cta::before{ animation:none !important; } }
+html body .gift-cta:hover{ background-color:#0d0a1d !important; }
+
+/* Straps cards — lighter, smaller headings */
+html body .hs-card-en{ font-size:.64rem !important; letter-spacing:.16em !important; font-weight:400 !important; opacity:.8; }
+html body .hs-card-body h3{ font-size:.95rem !important; font-weight:400 !important; color:rgba(255,255,255,.82) !important; letter-spacing:.01em; }
