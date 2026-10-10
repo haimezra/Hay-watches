@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Assistant:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Rubik:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=202610081510">
+<link rel="stylesheet" href="styles.css?v=202610101100">
 <style>
   /* =====================================================================
      HAY WATCHES — Luxury dark re-skin (purple accent), same structure
@@ -591,6 +591,21 @@ header{ background:rgba(13,13,13,.3) !important; backdrop-filter:blur(8px) !impo
         </div>
       </div>
     </div>
+    <div class="hs" data-slider aria-roledescription="carousel" aria-label="השראה למארזי מתנה">
+      <div class="hs-head">
+        <div class="hs-title"><span class="he-txt">השראה למארזים</span><span class="en-txt">Gift box inspiration</span></div>
+        <div class="hs-nav">
+          <button type="button" class="hs-btn" data-prev aria-label="הקודם">&#8250;</button>
+          <button type="button" class="hs-btn" data-next aria-label="הבא">&#8249;</button>
+        </div>
+      </div>
+      <div class="hs-track" tabindex="0">
+        <figure class="hs-slide"><img src="images/gifts/gift-1.webp" width="960" height="540" alt="מארז מתנה שחור עם ורדים שחורים, שעון פלדה ואביזרי טיפול" loading="lazy" decoding="async"><figcaption><b><span class="he-txt">מארז שחור</span><span class="en-txt">Black box</span></b><span class="hs-sub"><span class="he-txt">ורדים שחורים · שעון פלדה</span><span class="en-txt">Black roses · steel watch</span></span></figcaption></figure>
+        <figure class="hs-slide"><img src="images/gifts/gift-2.webp" width="960" height="540" alt="מארז מתנה בצבע שמנת וזהב עם ורדים סגולים, שעון עם רצועה אדומה וארנק עור" loading="lazy" decoding="async"><figcaption><b><span class="he-txt">מארז שמנת וזהב</span><span class="en-txt">Cream &amp; gold box</span></b><span class="hs-sub"><span class="he-txt">ורדים סגולים · ארנק עור</span><span class="en-txt">Purple roses · leather wallet</span></span></figcaption></figure>
+        <figure class="hs-slide"><img src="images/gifts/gift-3.webp" width="960" height="540" alt="מארז מתנה בורדו עם ורדים אדומים, שעון כרונוגרף ורצועת עור" loading="lazy" decoding="async"><figcaption><b><span class="he-txt">מארז בורדו</span><span class="en-txt">Burgundy box</span></b><span class="hs-sub"><span class="he-txt">ורדים אדומים · רצועת עור</span><span class="en-txt">Red roses · leather strap</span></span></figcaption></figure>
+      </div>
+      <div class="hs-dots" role="tablist" aria-label="בחירת תמונה"></div>
+    </div>
   </div>
 </section>
 
@@ -939,6 +954,7 @@ header{ background:rgba(13,13,13,.3) !important; backdrop-filter:blur(8px) !impo
 </script>
 <script src="https://negishot.co.il/cdn/widget.php?code=NGS_F5225CBBB994"></script>
 <script src="gift-art.js?v=1"></script>
+<script src="gift-slider.js?v=2"></script>
 <script>
 (function(){
   var sc=document.getElementById('giftTeaserScene'); if(!sc||!window.GiftArt) return;
