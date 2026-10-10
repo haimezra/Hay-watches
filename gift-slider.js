@@ -17,10 +17,10 @@
       var i=Math.round(Math.abs(track.scrollLeft)/step()); if(atEnd()) i=slides.length-1;
       idx=Math.max(0,Math.min(slides.length-1,i));
       dots.forEach(function(d,k){ d.setAttribute('aria-selected',k===idx?'true':'false'); });
-      prev.disabled=Math.abs(track.scrollLeft)<=2; next.disabled=atEnd();
+      if(prev) prev.disabled=Math.abs(track.scrollLeft)<=2; if(next) next.disabled=atEnd();
     }
-    prev.addEventListener('click',function(){ go(idx-1); });
-    next.addEventListener('click',function(){ go(idx+1); });
+    if(prev) prev.addEventListener('click',function(){ go(idx-1); });
+    if(next) next.addEventListener('click',function(){ go(idx+1); });
     var t; track.addEventListener('scroll',function(){ clearTimeout(t); t=setTimeout(sync,40); },{passive:true});
     window.addEventListener('resize',sync); sync();
   });
