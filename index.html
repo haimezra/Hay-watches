@@ -461,6 +461,42 @@ section.trust, .trust-grid, .trust-grid .trust{ background:transparent !importan
 /* more transparent top header */
 header{ background:rgba(13,13,13,.3) !important; backdrop-filter:blur(8px) !important; -webkit-backdrop-filter:blur(8px) !important; }
 </style>
+<style id="widen">
+/* =====================================================================
+   WIDER LAYOUT: less squeezed content, bigger magazine images.
+   Placed last so it wins over earlier spacing layers.
+   ===================================================================== */
+html body{ --sp-gutter:36px; --sp-gutter-m:18px; }
+html body .wrap{ max-width:1360px !important; }
+html body .cat-grid{ max-width:1360px !important; }
+html body .section-head{ max-width:780px !important; }
+
+/* magazine: full-width rows, large images that alternate sides */
+html body .mx-list{ max-width:none !important; gap:36px !important; }
+html body .mx-row{ grid-template-columns:1.7fr 1fr !important; min-height:0; }
+html body .mx-img{ aspect-ratio:16/9 !important; }
+html body .mx-info{ padding:40px 48px !important; }
+html body .mx-info h4{ font-size:1.5rem !important; }
+
+/* other narrow blocks */
+html body .faq{ max-width:1000px !important; }
+html body .faq .faq-a{ max-width:820px !important; }
+html body .sw-card{ max-width:1120px !important; }
+html body #policy .wrap{ max-width:1000px !important; }
+
+@media (max-width:1100px){
+  html body .mx-row{ grid-template-columns:1.4fr 1fr !important; }
+  html body .mx-info{ padding:28px 30px !important; }
+  html body .mx-info h4{ font-size:1.3rem !important; }
+}
+@media (max-width:880px){
+  html body .mx-list{ gap:22px !important; }
+  html body .mx-row{ grid-template-columns:1fr !important; }
+  html body .mx-img{ aspect-ratio:3/2 !important; }
+  html body .mx-info{ padding:22px 20px 26px !important; }
+  html body .mx-info h4{ font-size:1.2rem !important; }
+}
+</style>
 </head>
 <body>
 
