@@ -37,6 +37,7 @@
     document.body.appendChild(lb);
     lbImg=lb.querySelector('img'); lbCap=lb.querySelector('.hs-lb-cap'); lbCount=lb.querySelector('.hs-lb-count');
     lbPrev=lb.querySelector('.hs-lb-prev'); lbNext=lb.querySelector('.hs-lb-next');
+    lb.addEventListener('wheel',function(e){ e.preventDefault(); },{passive:false});
     lb.querySelector('.hs-lb-x').addEventListener('click',close);
     lbPrev.addEventListener('click',function(e){ e.stopPropagation(); show(cur-1); });
     lbNext.addEventListener('click',function(e){ e.stopPropagation(); show(cur+1); });
@@ -58,13 +59,13 @@
     build(); list=slides; lastFocus=document.activeElement;
     var rtl=getComputedStyle(document.documentElement).direction==='rtl';
     lbPrev.textContent=rtl?'\u203A':'\u2039'; lbNext.textContent=rtl?'\u2039':'\u203A';
-    lb.hidden=false; document.documentElement.classList.add('hs-lb-open'); show(i);
+    lb.hidden=false; show(i);
     lb.querySelector('.hs-lb-x').focus();
     document.addEventListener('keydown',onKey);
   }
   function close(){
     if(!lb||lb.hidden) return;
-    lb.hidden=true; lbImg.removeAttribute('src'); document.documentElement.classList.remove('hs-lb-open');
+    lb.hidden=true; lbImg.removeAttribute('src');
     document.removeEventListener('keydown',onKey); if(lastFocus&&lastFocus.focus) lastFocus.focus();
   }
   function onKey(e){
