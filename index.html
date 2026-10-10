@@ -473,11 +473,11 @@ html body .section-head{ max-width:780px !important; }
 
 /* magazine: full-width rows, large images that alternate sides */
 html body .mx-list{ max-width:none !important; gap:36px !important; }
-html body .mx-row{ grid-template-columns:2.3fr 1fr !important; min-height:0; align-items:stretch; }
-html body .mx-row:nth-child(even){ grid-template-columns:1fr 2.3fr !important; }
-html body .mx-img{ aspect-ratio:21/9 !important; height:auto !important; min-height:0 !important; }
+html body .mx-row{ grid-template-columns:3fr 1fr !important; min-height:0; align-items:stretch; }
+html body .mx-row:nth-child(even){ grid-template-columns:1fr 3fr !important; }
+html body .mx-img{ aspect-ratio:3/1 !important; height:auto !important; min-height:0 !important; }
 html body .mx-img img,html body .mx-img video{ width:100% !important; height:100% !important; object-fit:cover !important; }
-html body .mx-info{ padding:28px 36px !important; }
+html body .mx-info{ padding:24px 28px !important; }
 html body .mx-info h4{ font-size:1.5rem !important; }
 
 /* other narrow blocks */
@@ -495,7 +495,7 @@ html body #policy .wrap{ max-width:1000px !important; }
 @media (max-width:880px){
   html body .mx-list{ gap:22px !important; }
   html body .mx-row, html body .mx-row:nth-child(even){ grid-template-columns:1fr !important; }
-  html body .mx-img{ aspect-ratio:16/9 !important; }
+  html body .mx-img{ aspect-ratio:2/1 !important; }
   html body .mx-info{ padding:22px 20px 26px !important; }
   html body .mx-info h4{ font-size:1.2rem !important; }
 }
