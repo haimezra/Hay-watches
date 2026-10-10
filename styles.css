@@ -343,7 +343,7 @@ body.en-mode .polish-sec .section-head p.polish-en{display:none;}
 /* Gift slider: full-size lightbox */
 .hs-slide[role=button]{ cursor:zoom-in; }
 .hs-slide[role=button]:focus-visible{ outline:2px solid var(--purple); outline-offset:3px; }
-.hs-slide::after{ content:""; position:absolute; top:10px; inset-inline-end:10px; width:30px; height:30px; border-radius:50%; background:rgba(10,10,16,.6) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23F3F0FA' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7'/%3E%3C/svg%3E") center/16px no-repeat; border:1px solid rgba(255,255,255,.18); pointer-events:none; }
+.hs-slide[data-full]::after{ content:""; position:absolute; top:10px; inset-inline-end:10px; width:30px; height:30px; border-radius:50%; background:rgba(10,10,16,.6) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23F3F0FA' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7'/%3E%3C/svg%3E") center/16px no-repeat; border:1px solid rgba(255,255,255,.18); pointer-events:none; }
 #gifts{ overflow-x:clip; }
 .hs-lb[hidden]{ display:none; }
 .hs-lb{ position:fixed; inset:0; z-index:2147483000; display:flex; align-items:center; justify-content:center; background:rgba(6,5,10,.95);
@@ -365,3 +365,24 @@ body.en-mode .polish-sec .section-head p.polish-en{display:none;}
   .hs-lb-prev{ inset-inline-start:calc(50% - 66px); } .hs-lb-next{ inset-inline-end:calc(50% - 66px); }
 }
 @media (prefers-reduced-motion:reduce){ .hs-lb{ animation:none; } }
+
+/* Strap leathers explained (homepage, under Featured) */
+html body #straps-guide{ padding-block:0 var(--sp-section) !important; }
+@media (max-width:880px){ html body #straps-guide{ padding-block:0 var(--sp-section-m) !important; } }
+.hs-straps{ margin-top:0; }
+.hs-straps .hs-head{ justify-content:center; margin-bottom:26px; }
+.hs-straps h2.hs-title{ font-size:clamp(1.05rem,.9rem + .6vw,1.3rem); font-weight:500; letter-spacing:.02em; color:var(--pearl); text-transform:none; margin:0; text-align:center; }
+.hs-straps .hs-slide{ aspect-ratio:auto; display:flex; flex-direction:column; background:#131019; }
+.hs-card-img{ position:relative; aspect-ratio:4/3; overflow:hidden; border-bottom:1px solid var(--line,rgba(255,255,255,.1)); }
+.hs-card-img img{ position:absolute; inset:0; }
+.hs-card-tag{ position:absolute; top:12px; inset-inline-start:12px; padding:4px 11px; border-radius:99px; background:rgba(10,10,16,.74); border:1px solid rgba(255,255,255,.18); color:#c7b3fa; font-size:.76rem; letter-spacing:.03em; }
+.hs-card-body{ display:flex; flex-direction:column; gap:8px; padding:18px 20px 24px; text-align:start; flex:1; }
+.hs-card-en{ font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:#c7b3fa; direction:ltr; text-align:start; }
+.hs-card-body h3{ font-size:1.12rem; font-weight:500; color:var(--pearl); margin:0; line-height:1.35; }
+.hs-card-body p{ margin:0; color:var(--mute); font-size:.92rem; line-height:1.8; }
+@media (max-width:880px){
+  .hs-straps .hs-head{ justify-content:space-between; margin-bottom:18px; }
+  .hs-straps h2.hs-title{ text-align:start; }
+  .hs-straps .hs-slide{ flex:0 0 84%; max-width:400px; }
+  .hs-card-body{ padding:16px 16px 20px; }
+}

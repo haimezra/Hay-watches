@@ -79,7 +79,7 @@
     }
   }
   [].forEach.call(document.querySelectorAll('[data-slider]'),function(root){
-    var slides=[].slice.call(root.querySelectorAll('.hs-slide'));
+    var slides=[].slice.call(root.querySelectorAll('.hs-slide[data-full]')); /* only image galleries open the lightbox */
     slides.forEach(function(sl,i){
       sl.addEventListener('click',function(){ open(slides,i); });
       sl.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(slides,i); } });
