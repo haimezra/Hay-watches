@@ -708,9 +708,11 @@ html body .gift-cta:hover{ background-color:#0d0a1d !important; }
 html body .hs-card-en{ font-size:.64rem !important; letter-spacing:.16em !important; font-weight:400 !important; opacity:.8; }
 html body .hs-card-body h3{ font-size:.95rem !important; font-weight:400 !important; color:rgba(255,255,255,.82) !important; letter-spacing:.01em; }
 
-/* Gift CTA: transparent background (no video, no starfield). Size is unchanged. */
+/* Gift CTA: transparent background, same frame as the "Our Straps" details button. Size is unchanged. */
 html body .gift-cta{
   background:transparent !important; background-color:transparent !important; background-image:none !important; animation:none !important;
+  border:1px solid rgba(255,255,255,.28) !important; border-radius:999px !important;
+  transition:border-color .25s, background .25s !important;
 }
 html body .gift-cta::before{ content:none !important; display:none !important; }
-html body .gift-cta:hover{ background:rgba(155,110,243,.14) !important; background-color:rgba(155,110,243,.14) !important; }
+html body .gift-cta:hover{ background:rgba(155,120,230,.12) !important; background-color:rgba(155,120,230,.12) !important; border-color:rgba(155,120,230,.9) !important; }
