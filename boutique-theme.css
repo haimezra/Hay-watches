@@ -646,3 +646,13 @@ html body #straps-guide::after{
   html body #straps-guide{ padding-top:var(--sp-section-m) !important; }
   html body #straps-guide::before{ width:calc(100% - var(--sp-gutter-m) * 2); }
 }
+
+/* "Our Straps" — small ghost button */
+html body .straps-more{ text-align:center !important; margin-top:36px !important; }
+html body .straps-more-btn{
+  display:inline-block !important; background:transparent !important; color:var(--pearl,#eee) !important;
+  border:1px solid rgba(255,255,255,.28) !important; border-radius:999px !important;
+  padding:10px 30px !important; font-size:.85rem !important; line-height:1.4 !important;
+  letter-spacing:.04em; text-decoration:none !important; transition:border-color .25s,background .25s;
+}
+html body .straps-more-btn:hover{ border-color:rgba(155,120,230,.9) !important; background:rgba(155,120,230,.12) !important; }
