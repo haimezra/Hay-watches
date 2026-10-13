@@ -755,3 +755,12 @@ html body .cat-sort{
 }
 html body .cat-sort option{ background:#14131c; color:#eee; }
 html body .cat-count{ color:var(--mute,#aaa); font-size:.8rem; }
+
+/* WhatsApp button: smaller, same purple + white ring as the accessibility button */
+html body .hay-wa{
+  width:44px !important; height:44px !important; background:#4b2f5f !important;
+  border:3px solid #fff !important; box-shadow:0 4px 14px rgba(0,0,0,.45) !important;
+  right:23px !important; bottom:100px !important;
+}
+html body .hay-wa svg{ width:22px; height:22px; }
+@media (max-width:880px){ html body .hay-wa{ width:42px !important; height:42px !important; right:22px !important; bottom:96px !important; } }
