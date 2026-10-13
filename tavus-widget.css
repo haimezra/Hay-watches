@@ -1,0 +1,37 @@
+/* HAY Watches - AI advisor widget */
+.tv-fab, .tv-panel{ font-family:inherit; direction:rtl; }
+.tv-fab{ position:fixed; right:16px; bottom:calc(76px + env(safe-area-inset-bottom,0px)); z-index:9980; display:inline-flex; align-items:center; gap:9px;
+  padding:11px 17px; border-radius:999px; border:1px solid rgba(255,255,255,.28); background:rgba(10,10,16,.9); color:var(--pearl,#F3F0FA);
+  -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); font-size:.88rem; letter-spacing:.02em; cursor:pointer; box-shadow:0 8px 28px rgba(0,0,0,.45);
+  transition:border-color .25s, background .25s, transform .25s; -webkit-tap-highlight-color:transparent; }
+.tv-fab:hover, .tv-fab:focus-visible{ border-color:rgba(155,120,230,.9); background:rgba(155,120,230,.16); outline:none; }
+.tv-fab.tv-lift{ bottom:calc(172px + env(safe-area-inset-bottom,0px)); }
+.tv-fab.tv-on{ display:none; }
+.tv-fab svg{ color:var(--purple,#9B6EF3); flex:none; }
+
+.tv-panel[hidden]{ display:none !important; }
+.tv-panel{ position:fixed; right:16px; bottom:calc(20px + env(safe-area-inset-bottom,0px)); z-index:9985; width:380px; height:min(620px, calc(100vh - 40px)); height:min(620px, calc(100svh - 40px));
+  display:flex; flex-direction:column; border-radius:14px; overflow:hidden; background:#0d0b14; border:1px solid rgba(255,255,255,.14); box-shadow:0 24px 70px rgba(0,0,0,.6); color:var(--pearl,#F3F0FA); }
+.tv-head{ display:flex; align-items:center; gap:10px; padding:11px 14px; border-bottom:1px solid rgba(255,255,255,.1); background:#100e18; }
+.tv-title{ display:flex; align-items:center; gap:8px; flex:1; min-width:0; font-size:.95rem; }
+.tv-title b{ font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.tv-ai{ font-size:.66rem; letter-spacing:.1em; padding:2px 7px; border-radius:99px; border:1px solid rgba(155,120,230,.6); color:#c7b3fa; flex:none; }
+.tv-timer{ font-size:.82rem; color:#c7b3fa; font-variant-numeric:tabular-nums; direction:ltr; }
+.tv-x{ width:34px; height:34px; border-radius:50%; border:1px solid rgba(255,255,255,.2); background:transparent; color:#fff; font-size:22px; line-height:1; cursor:pointer; display:grid; place-items:center; flex:none; }
+.tv-x:hover, .tv-x:focus-visible{ border-color:var(--purple,#9B6EF3); outline:none; }
+.tv-body{ position:relative; flex:1; min-height:0; background:#08070d; }
+.tv-frame{ position:absolute; inset:0; width:100%; height:100%; border:0; background:#000; }
+.tv-msg{ height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:14px; padding:26px 24px; }
+.tv-msg h3{ margin:0; font-size:1.2rem; font-weight:500; }
+.tv-msg p{ margin:0; color:var(--mute,#A79FBF); font-size:.92rem; line-height:1.75; }
+.tv-msg .tv-note{ font-size:.78rem; opacity:.85; }
+.tv-btn{ margin-top:6px; padding:12px 30px; border-radius:999px; border:1px solid rgba(155,120,230,.9); background:rgba(155,120,230,.14); color:#fff; font-size:.95rem; cursor:pointer; transition:background .25s; }
+.tv-btn:hover, .tv-btn:focus-visible{ background:rgba(155,120,230,.3); outline:none; }
+.tv-wa{ color:#c7b3fa; font-size:.88rem; text-decoration:underline; text-underline-offset:3px; }
+.tv-spin{ width:34px; height:34px; border-radius:50%; border:2px solid rgba(255,255,255,.15); border-top-color:var(--purple,#9B6EF3); animation:tvSpin .9s linear infinite; }
+@keyframes tvSpin{ to{ transform:rotate(360deg); } }
+@media (max-width:640px){
+  .tv-fab{ padding:11px 15px; font-size:.84rem; }
+  .tv-panel{ left:8px; right:8px; bottom:calc(8px + env(safe-area-inset-bottom,0px)); width:auto; height:min(82vh, 680px); height:min(82svh, 680px); }
+}
+@media (prefers-reduced-motion:reduce){ .tv-spin{ animation-duration:2.4s; } .tv-fab{ transition:none; } }
