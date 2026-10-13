@@ -154,7 +154,7 @@ document.querySelectorAll('form.newsletter').forEach(function(form){
       var el = kids[i];
       if(el === ck || ck.contains(el) || el.contains(ck)) continue;
       var cls = String(el.className || '');
-      if(cls.indexOf('cky') > -1) continue;
+      if(cls.indexOf('cky') > -1 || cls.indexOf('hay-wa') > -1) continue;
       var cs = getComputedStyle(el);
       if(cs.position !== 'fixed') continue;
       var r = el.getBoundingClientRect();
@@ -177,4 +177,20 @@ document.querySelectorAll('form.newsletter').forEach(function(form){
   window.addEventListener('resize', soon);
   window.addEventListener('orientationchange', soon);
   window.addEventListener('scroll', soon, {passive: true});
+})();
+
+
+// ===== Floating WhatsApp button (number comes from WHATSAPP_NUMBER in data.js) =====
+(function(){
+  try{
+    if(typeof WHATSAPP_NUMBER === 'undefined') return;
+    if(/(^|\/)(gifts|cart)(\.html)?$/.test(location.pathname)) return; // keep checkout/builder flows clear
+    var a = document.createElement('a');
+    a.className = 'hay-wa';
+    a.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent('היי, אשמח לקבל פרטים נוספים');
+    a.target = '_blank'; a.rel = 'noopener';
+    a.setAttribute('aria-label', 'שלחו לנו הודעה בוואטסאפ');
+    a.innerHTML = '<svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M16.04 4C9.4 4 4 9.38 4 16c0 2.1.55 4.15 1.6 5.96L4 28l6.22-1.63A12.04 12.04 0 0 0 16.04 28C22.66 28 28 22.62 28 16S22.66 4 16.04 4zm0 21.9c-1.8 0-3.56-.48-5.1-1.4l-.37-.22-3.7.97.99-3.6-.24-.38A9.85 9.85 0 0 1 6.1 16c0-5.47 4.46-9.9 9.94-9.9 5.47 0 9.9 4.43 9.9 9.9 0 5.46-4.43 9.9-9.9 9.9zm5.44-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.8-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.5.7.3 1.26.48 1.7.62.72.23 1.37.2 1.88.12.57-.08 1.76-.72 2-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z"/></svg>';
+    document.body.appendChild(a);
+  }catch(e){}
 })();

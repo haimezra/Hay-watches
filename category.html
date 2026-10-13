@@ -49,7 +49,7 @@
   .cat-newsletter-msg{ text-align:center; color:var(--gold-light); font-size:.85rem; margin:0 0 24px; display:none; }
   .cat-breadcrumb{ position:relative; z-index:2; padding:14px 0 0 !important; text-align:start; }
 </style>
-<link rel="stylesheet" href="boutique-theme.css?v=202610101006">
+<link rel="stylesheet" href="boutique-theme.css?v=202610131709">
 </head>
 <body>
 
@@ -116,6 +116,18 @@
 <section id="productsSection">
   <div class="wrap">
     <div id="catNotice"></div>
+    <div class="cat-filters" id="catFilters" style="display:none;">
+      <div class="cat-chips" role="group" aria-label="סינון לפי מצב">
+        <button type="button" class="cat-chip on" data-f="all"><span class="he-txt">הכל</span><span class="en-txt">All</span></button>
+        <button type="button" class="cat-chip" data-f="new"><span class="he-txt">חדש</span><span class="en-txt">New</span></button>
+        <button type="button" class="cat-chip" data-f="used"><span class="he-txt">יד שנייה</span><span class="en-txt">Pre-Owned</span></button>
+      </div>
+      <select class="cat-sort" id="catSort" aria-label="מיון">
+        <option value="def">מיון: ברירת מחדל</option>
+        <option value="asc">מחיר: מהנמוך לגבוה</option>
+        <option value="desc">מחיר: מהגבוה לנמוך</option>
+      </select>
+    </div>
     <div class="prod-grid" id="prodGrid"></div>
     <div class="empty-msg" id="emptyMsg" style="display:none;">
       <span class="he-txt">לא נמצאו מוצרים בקטגוריה זו כרגע.</span><span class="en-txt">No products found in this category right now.</span>
@@ -169,7 +181,7 @@
 </footer>
 
 <script src="data.js?v=202610100955"></script>
-<script src="main.js?v=202609301013"></script>
+<script src="main.js?v=202610131709"></script>
 <script>
   const catKey = qs('cat') || 'men';
   const meta = CATEGORIES[catKey] || CATEGORIES.men;
@@ -234,8 +246,7 @@
   if(items.length === 0){
     document.getElementById('emptyMsg').style.display = 'block';
   }else{
-    items.forEach(p=>{
-      prodGrid.insertAdjacentHTML('beforeend', `
+    const cardHtml = p => `
         <div class="prod-card">
           <a class="prod-link" href="product.html?id=${p.id}">
             <div class="prod-img">
@@ -255,8 +266,25 @@
             <button class="add-cart"><span class="he-txt">הוסף לעגלה</span><span class="en-txt">Add to Cart</span></button>
             <button class="add-cart buy-now" style="margin-top:8px; background:var(--gold); color:#0D0D0D; border-color:var(--gold);" onclick="buyNow('${p.id}')"><span class="he-txt">קנה עכשיו</span><span class="en-txt">Buy Now</span></button>
           </div>
-        </div>`);
-    });
+        </div>`;
+    let fCond = 'all', fSort = 'def';
+    function renderItems(){
+      let list = items.filter(p => fCond==='all' || (fCond==='used') === (p.cond==='used'));
+      if(fSort==='asc') list = list.slice().sort((x,y)=>x.price-y.price);
+      if(fSort==='desc') list = list.slice().sort((x,y)=>y.price-x.price);
+      prodGrid.innerHTML = list.map(cardHtml).join('');
+      document.getElementById('emptyMsg').style.display = list.length ? 'none' : 'block';
+    }
+    renderItems();
+    if(items.length > 3){
+      const bar = document.getElementById('catFilters');
+      bar.style.display = '';
+      bar.querySelectorAll('.cat-chip').forEach(btn => btn.addEventListener('click', () => {
+        bar.querySelectorAll('.cat-chip').forEach(b => b.classList.toggle('on', b === btn));
+        fCond = btn.dataset.f; renderItems();
+      }));
+      document.getElementById('catSort').addEventListener('change', e => { fSort = e.target.value; renderItems(); });
+    }
   }
 </script>
 <script src="https://negishot.co.il/cdn/widget.php?code=NGS_F5225CBBB994"></script>

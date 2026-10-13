@@ -723,3 +723,35 @@ html body .gift-cta:hover{ background:rgba(155,120,230,.12) !important; backgrou
 @media (max-width:880px){
   html body #gifts .gift-teaser{ gap:4px !important; }
 }
+
+/* Floating WhatsApp button — sits above the accessibility button, bottom-right */
+html body .hay-wa{
+  position:fixed !important; right:20px; bottom:96px; z-index:2147482000;
+  width:52px; height:52px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:#1faa59; color:#fff !important; text-decoration:none !important;
+  box-shadow:0 6px 20px rgba(0,0,0,.4); transition:transform .2s, box-shadow .2s;
+}
+html body .hay-wa:hover{ transform:translateY(-2px) scale(1.04); box-shadow:0 10px 26px rgba(0,0,0,.5); }
+html body .hay-wa:focus-visible{ outline:2px solid #fff; outline-offset:3px; }
+@media (max-width:880px){ html body .hay-wa{ right:16px; bottom:92px; width:50px; height:50px; } }
+
+/* Catalog filters */
+html body .cat-filters{
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:14px 20px;
+  margin:0 0 var(--sp-gap-m,20px);
+}
+html body .cat-chips{ display:flex; gap:10px; flex-wrap:wrap; }
+html body .cat-chip{
+  background:transparent; color:var(--mute,#aaa); border:1px solid rgba(255,255,255,.18);
+  border-radius:999px; padding:8px 20px; font:inherit; font-size:.84rem; cursor:pointer;
+  transition:border-color .2s,color .2s,background .2s;
+}
+html body .cat-chip:hover{ color:var(--pearl,#eee); border-color:rgba(255,255,255,.4); }
+html body .cat-chip.on{ color:#fff; border-color:rgba(155,120,230,.9); background:rgba(155,120,230,.14); }
+html body .cat-sort{
+  background:transparent; color:var(--pearl,#eee); border:1px solid rgba(255,255,255,.18);
+  border-radius:999px; padding:8px 16px; font:inherit; font-size:.84rem;
+}
+html body .cat-sort option{ background:#14131c; color:#eee; }
+html body .cat-count{ color:var(--mute,#aaa); font-size:.8rem; }
