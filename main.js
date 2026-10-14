@@ -216,3 +216,35 @@ document.querySelectorAll('form.newsletter').forEach(function(form){
     sec.hidden = false;
   }catch(e){}
 })();
+
+
+// ===== Performance: only animate / play what is on screen =====
+(function(){
+  try{
+    if(!('IntersectionObserver' in window)) return;
+    // 1) Videos: play only while visible (autoplay videos otherwise keep decoding off-screen)
+    var vio = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        var v = e.target;
+        if(e.isIntersecting){ var pr = v.play(); if(pr && pr.catch) pr.catch(function(){}); }
+        else { v.pause(); }
+      });
+    }, {rootMargin:'120px 0px', threshold:0.01});
+    function watchVideos(root){
+      (root || document).querySelectorAll('video').forEach(function(v){
+        if(v.__hayWatched) return; v.__hayWatched = true;
+        if(!v.classList.contains('hero-video')) v.preload = 'metadata';
+        vio.observe(v);
+      });
+    }
+    watchVideos();
+    // videos injected later (magazine / category hero)
+    new MutationObserver(function(){ watchVideos(); }).observe(document.body, {childList:true, subtree:true});
+
+    // 2) Infinite CSS animations (shimmer headings, starfield button): pause when off-screen
+    var aio = new IntersectionObserver(function(es){
+      es.forEach(function(e){ e.target.classList.toggle('anim-off', !e.isIntersecting); });
+    }, {rootMargin:'80px 0px'});
+    document.querySelectorAll('.section-head h2, .gift-copy h2, .polish-sec h2, .gift-cta, .hero h1, .hero p').forEach(function(el){ aio.observe(el); });
+  }catch(e){}
+})();

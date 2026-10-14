@@ -842,3 +842,22 @@ html body .hay-wa.hide{ opacity:0; pointer-events:none; transform:translateY(8px
   html body .foot-col li{ margin-bottom:14px !important; }
   html body .foot-col a, html body footer ul a{ font-size:.9rem !important; }
 }
+
+/* ==========================================================================
+   Performance
+   ========================================================================== */
+html body .anim-off, html body .anim-off::before{ animation-play-state:paused !important; }
+/* backdrop blur on the sticky header repaints on every scroll frame on phones — use a solid-ish bar there */
+@media (max-width:880px){
+  html body header{ -webkit-backdrop-filter:none !important; backdrop-filter:none !important; background:rgba(11,10,16,.94) !important; }
+}
+/* skip rendering work for far-away sections until they approach the viewport */
+html body #magazine, html body #style, html body #policy, html body footer, html body #faq, html body .trust{
+  content-visibility:auto; contain-intrinsic-size:auto 900px;
+}
+
+/* Terms & privacy: smaller, calmer text */
+html body #policy .wrap > div:last-child{ font-size:.82rem !important; line-height:1.85 !important; }
+html body #policy h3{ font-size:.95rem !important; margin-bottom:8px !important; font-weight:500 !important; }
+html body #policy p{ margin-bottom:20px !important; font-size:.82rem !important; line-height:1.85 !important; }
+html body #policy h2{ font-size:1.3rem !important; }
