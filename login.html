@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0A0A10">
+<title>כניסה ללקוחות | HAY Watches</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600&display=swap">
+<link rel="icon" href="favicon-32.png">
+<style>
+  :root{ --bg:#0A0A10; --pearl:#F3F0FA; --mute:#A79FBF; --purple:#9B6EF3; --line:rgba(255,255,255,.14); }
+  *{ box-sizing:border-box; }
+  html,body{ height:100%; margin:0; }
+  body{ background:radial-gradient(ellipse 70% 50% at 50% 30%, #17132a 0, var(--bg) 70%); color:var(--pearl); font-family:'Heebo','Assistant',system-ui,sans-serif; font-weight:300;
+        display:flex; align-items:center; justify-content:center; padding:24px; -webkit-font-smoothing:antialiased; }
+  main{ width:100%; max-width:380px; text-align:center; }
+  .logo{ font-size:1.7rem; letter-spacing:.34em; font-weight:500; margin:0 0 34px; padding-inline-start:.34em; direction:ltr; }
+  .logo span{ color:var(--purple); font-weight:300; }
+  h1{ font-size:1.25rem; font-weight:400; margin:0 0 10px; letter-spacing:.02em; }
+  p{ color:var(--mute); font-size:.95rem; line-height:1.8; margin:0 0 26px; }
+  form{ display:flex; flex-direction:column; gap:14px; }
+  label{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+  input[type=password]{ width:100%; padding:15px 18px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,.04); color:var(--pearl); font:inherit; font-size:1rem; text-align:center; letter-spacing:.12em; outline:none; transition:border-color .25s, background .25s; }
+  input[type=password]:focus{ border-color:rgba(155,120,230,.9); background:rgba(155,120,230,.1); }
+  button{ padding:14px 20px; border-radius:999px; border:1px solid rgba(155,120,230,.9); background:rgba(155,120,230,.16); color:#fff; font:inherit; font-size:1rem; font-weight:400; cursor:pointer; transition:background .25s; }
+  button:hover, button:focus-visible{ background:rgba(155,120,230,.34); outline:none; }
+  .err{ display:none; color:#ff9aa8; font-size:.9rem; margin:-6px 0 18px; }
+  .help{ margin-top:30px; font-size:.85rem; }
+  .help a{ color:#c7b3fa; text-underline-offset:3px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="logo">HAY<span>WATCHES</span></div>
+  <h1>כניסה ללקוחות</h1>
+  <p>האתר פתוח ללקוחות HAY Watches בלבד.<br>הזינו את הסיסמה שקיבלתם מאיתנו.</p>
+  <div class="err" id="err" role="alert"></div>
+  <form method="post" action="/login" autocomplete="on">
+    <input type="hidden" name="next" id="next" value="/">
+    <label for="pw">סיסמה</label>
+    <input type="password" id="pw" name="password" placeholder="סיסמה" autocomplete="current-password" required autofocus>
+    <button type="submit">כניסה</button>
+  </form>
+  <p class="help">אין לכם סיסמה? <a href="https://wa.me/97229999119">כתבו לנו בוואטסאפ</a></p>
+</main>
+<script>
+  (function(){
+    var q = new URLSearchParams(location.search), n = q.get('next');
+    if (n && /^\/(?!\/|\\)/.test(n)) document.getElementById('next').value = n;
+    var e = q.get('e'), box = document.getElementById('err');
+    if (e === '1') { box.textContent = 'הסיסמה שגויה, נסו שוב.'; box.style.display = 'block'; }
+    if (e === '2') { box.textContent = 'יותר מדי ניסיונות. נסו שוב בעוד כמה דקות.'; box.style.display = 'block'; }
+  })();
+</script>
+</body>
+</html>

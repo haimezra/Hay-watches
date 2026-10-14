@@ -1,0 +1,8 @@
+{
+  "name": "hay-watches",
+  "private": true,
+  "description": "HAY Watches storefront (static site + Vercel functions). The only dependency is used by middleware.js (customer password gate).",
+  "dependencies": {
+    "@vercel/functions": "3.10.1"
+  }
+}
