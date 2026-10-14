@@ -827,3 +827,18 @@ html body a:focus-visible, html body button:focus-visible, html body select:focu
   outline:1px solid rgba(255,255,255,.75); outline-offset:3px;
 }
 @media (prefers-reduced-motion:reduce){ html body .prod-card, html body .prod-img img{ transition:none !important; } html body .prod-card:hover{ transform:none; } }
+
+/* WhatsApp float: fade away over the footer */
+html body .hay-wa{ transition:opacity .3s, transform .3s, box-shadow .2s !important; }
+html body .hay-wa.hide{ opacity:0; pointer-events:none; transform:translateY(8px); }
+
+/* Footer on mobile: centred logo, two link columns side by side, full-width newsletter */
+@media (max-width:880px){
+  html body .foot-grid{ display:grid !important; grid-template-columns:1fr 1fr; column-gap:28px !important; row-gap:44px !important; }
+  html body .foot-grid > .foot-col:first-child{ grid-column:1 / -1; text-align:center; }
+  html body .foot-grid > .foot-col:first-child .logo{ display:flex; justify-content:center; margin-bottom:0 !important; }
+  html body .foot-grid > .foot-col:first-child .logo-img{ max-width:190px; height:auto; }
+  html body .foot-grid > .foot-col:last-child{ grid-column:1 / -1; }
+  html body .foot-col li{ margin-bottom:14px !important; }
+  html body .foot-col a, html body footer ul a{ font-size:.9rem !important; }
+}
