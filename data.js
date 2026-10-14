@@ -251,3 +251,9 @@ async function buyNow(productId, opts){
     _buying = false;
   }
 }
+
+
+// ===== Customer reviews =====
+// Add ONLY real reviews (with the customer's permission). The reviews section stays hidden while this list is empty.
+// Format: { name:"שם פרטי + אות", stars:5, text:"הטקסט של הלקוח", source:"Google" /* optional */, date:"2026-09" /* optional */ }
+const REVIEWS = [];

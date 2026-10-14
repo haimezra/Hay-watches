@@ -764,3 +764,15 @@ html body .hay-wa{
 }
 html body .hay-wa svg{ width:22px; height:22px; }
 @media (max-width:880px){ html body .hay-wa{ width:42px !important; height:42px !important; right:22px !important; bottom:96px !important; } }
+
+/* Customer reviews */
+html body #reviews[hidden]{ display:none !important; }
+html body #reviews{ padding-block:var(--sp-section) 0 !important; }
+html body .rev-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:var(--sp-gap-m,20px); }
+html body .rev-card{ margin:0; padding:28px 24px; border:1px solid rgba(255,255,255,.1); border-radius:14px; background:rgba(255,255,255,.02); display:flex; flex-direction:column; gap:16px; }
+html body .rev-stars{ color:#c7b3fa; letter-spacing:.18em; font-size:.9rem; }
+html body .rev-stars span{ color:rgba(255,255,255,.18); }
+html body .rev-card blockquote{ margin:0; color:var(--pearl,#eee); font-size:.95rem; line-height:1.9; }
+html body .rev-card figcaption{ display:flex; flex-direction:column; gap:4px; font-size:.82rem; color:var(--mute,#aaa); }
+html body .rev-card figcaption b{ color:var(--pearl,#eee); font-weight:500; }
+@media (max-width:880px){ html body #reviews{ padding-block:var(--sp-section-m) 0 !important; } }

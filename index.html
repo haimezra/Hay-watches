@@ -321,7 +321,7 @@
   .music-toggle:hover{ border-color:var(--gold-light); color:var(--gold-light); }
   .music-toggle[aria-pressed="true"]{ border-color:var(--gold-light); color:var(--gold-light); }
 </style>
-<link rel="stylesheet" href="boutique-theme.css?v=202610131714">
+<link rel="stylesheet" href="boutique-theme.css?v=202610140758">
 <link rel="stylesheet" href="gift-box.css?v=4">
 <style id="comfort">
 /* =====================================================================
@@ -633,6 +633,16 @@ html body #policy .wrap{ max-width:1000px !important; }
   </div>
 </section>
 
+<!-- Customer reviews (hidden until REVIEWS in data.js has real entries) -->
+<section id="reviews" aria-label="ביקורות לקוחות" hidden>
+  <div class="wrap">
+    <div class="section-head">
+      <h2><span class="he-txt">מה הלקוחות אומרים</span><span class="en-txt">What customers say</span></h2>
+    </div>
+    <div class="rev-grid" id="revGrid"></div>
+  </div>
+</section>
+
 <!-- Gift box teaser -->
 <section id="gifts">
   <div class="wrap">
@@ -860,8 +870,8 @@ html body #policy .wrap{ max-width:1000px !important; }
   </div>
 </footer>
 
-<script src="data.js?v=202610100955"></script>
-<script src="main.js?v=202610131709"></script>
+<script src="data.js?v=202610140758"></script>
+<script src="main.js?v=202610140758"></script>
 <script>
   // Homepage shows the curated "featured" products from the shared catalog (data.js)
   function prodCardHtml(p){

@@ -194,3 +194,20 @@ document.querySelectorAll('form.newsletter').forEach(function(form){
     document.body.appendChild(a);
   }catch(e){}
 })();
+
+
+// ===== Customer reviews (renders only real entries from REVIEWS in data.js) =====
+(function(){
+  try{
+    var sec = document.getElementById('reviews'), grid = document.getElementById('revGrid');
+    if(!sec || !grid || typeof REVIEWS === 'undefined' || !REVIEWS.length) return;
+    function esc(t){ return String(t).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+    grid.innerHTML = REVIEWS.map(function(r){
+      var n = Math.max(1, Math.min(5, +r.stars || 5));
+      var meta = [r.source, r.date].filter(Boolean).map(esc).join(' · ');
+      return '<figure class="rev-card"><div class="rev-stars" role="img" aria-label="' + n + ' מתוך 5">' + '★'.repeat(n) + '<span>' + '★'.repeat(5 - n) + '</span></div>' +
+        '<blockquote>' + esc(r.text) + '</blockquote><figcaption><b>' + esc(r.name) + '</b>' + (meta ? '<span>' + meta + '</span>' : '') + '</figcaption></figure>';
+    }).join('');
+    sec.hidden = false;
+  }catch(e){}
+})();
