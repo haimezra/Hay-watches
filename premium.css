@@ -363,10 +363,12 @@ footer{
     var(--ink-0) !important;
 }
 
-/* ---- Magazine section: violet brushed-metal backdrop, faded into the page at top and bottom ---- */
-#magazine{
+/* ---- Magazine: each card gets its own violet brushed-metal backdrop ---- */
+#magazine .mx-row{
   background:
-    linear-gradient(180deg, var(--ink-1) 0%, rgba(10,10,16,.15) 14%, rgba(10,10,16,.2) 86%, var(--ink-1) 100%),
-    url('assets/bg-violet-metal.webp') 70% 100%/cover no-repeat,
-    var(--ink-1) !important;
+    linear-gradient(180deg, rgba(10,10,16,.25), rgba(10,10,16,.5)),
+    url('assets/bg-violet-metal.webp') 75% 85%/cover no-repeat,
+    var(--ink-2) !important;
 }
+#magazine .mx-row:nth-child(even){ background-position:center, 25% 85%, 0 0 !important; }
+#magazine .mx-info{ background:transparent !important; }
