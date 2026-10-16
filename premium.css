@@ -339,3 +339,26 @@ html{ scrollbar-color:#3a2f5c var(--ink-1); scrollbar-width:thin; }
 .ab-btn:hover, .guide-cta a:hover{ transform:translateY(-2px); box-shadow:0 0 0 5px var(--v-glow); }
 .ab-rule{ background:linear-gradient(90deg, transparent, var(--v-400), transparent) !important; height:1px; border:0; }
 .ct-form input, .ct-form textarea, .ct-form select{ background:rgba(255,255,255,.03) !important; }
+
+/* ============================================================
+   Violet brushed-metal backdrop (Canva) — under a dark veil so text stays crisp
+   ============================================================ */
+.page-hero, .ab-hero, .ct-hero{
+  background:
+    linear-gradient(180deg, rgba(10,10,16,.30) 0%, rgba(10,10,16,.62) 70%, var(--ink-1) 100%),
+    radial-gradient(900px 380px at 50% 0%, rgba(124,77,255,.14), transparent 70%),
+    url('assets/bg-violet-metal.webp') center/cover no-repeat,
+    var(--ink-1) !important;
+}
+.trust{
+  background:
+    linear-gradient(180deg, rgba(10,10,16,.68), rgba(10,10,16,.82)),
+    url('assets/bg-violet-metal.webp') center 80%/cover no-repeat,
+    var(--ink-1) !important;
+}
+footer{
+  background:
+    linear-gradient(180deg, var(--ink-1) 0%, rgba(7,7,12,.9) 40%, rgba(7,7,12,.96) 100%),
+    url('assets/bg-violet-metal.webp') center bottom/cover no-repeat,
+    var(--ink-0) !important;
+}
