@@ -5,7 +5,6 @@
    violet ramp, hairline gradient borders, softer light and glass.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap');
 
 :root{
   /* ink: four stepped surfaces instead of one flat black */
@@ -48,7 +47,7 @@ body{
     radial-gradient(1200px 600px at 85% -10%, rgba(124,77,255,.10), transparent 60%),
     radial-gradient(900px 500px at 5% 40%, rgba(155,110,243,.06), transparent 65%),
     var(--ink-1) !important;
-  background-attachment:fixed;
+  background-attachment:scroll;
   color:var(--pearl) !important;
   font-weight:300 !important;
   -webkit-font-smoothing:antialiased;
@@ -372,3 +371,15 @@ footer{
 }
 #magazine .mx-row:nth-child(even){ background-position:center, 25% 85%, 0 0 !important; }
 #magazine .mx-info{ background:transparent !important; }
+
+
+/* ---------- performance (scroll smoothness) ---------- */
+/* blur on every product-card badge forced a re-blur of the backdrop on each scroll frame */
+.badge, .badge.used, .avail-badge, .btn.solid{
+  -webkit-backdrop-filter:none !important; backdrop-filter:none !important;
+}
+.badge, .badge.used, .avail-badge{ background:rgba(10,10,16,.82) !important; }
+/* infinite box-shadow pulse on every card's availability dot = constant repaints while scrolling */
+.avail-dot, .avail-badge.unavailable .avail-dot{ animation:none !important; box-shadow:none !important; }
+/* let the browser skip rendering of long, off-screen blocks */
+footer{ content-visibility:auto; contain-intrinsic-size:auto 420px; }

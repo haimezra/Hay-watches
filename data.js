@@ -203,7 +203,7 @@ function productImgHtml(p){
   const src = (typeof bestProductImg === 'function') ? bestProductImg(p) : p.img;
   const avail = availabilityHtml(p);
   if(src){
-    return `${avail}<img src="${src}" alt="${p.name.en}" loading="lazy">`;
+    return `${avail}<img src="${src}" alt="${p.name.en}" loading="lazy" decoding="async">`;
   }
   const brand = p.brand ? p.brand.toUpperCase() : '';
   return `${avail}<div class="img-placeholder">
