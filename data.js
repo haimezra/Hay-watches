@@ -147,7 +147,13 @@ const PRODUCTS = [
     dHe:"עמדת עץ ממותג · מקום לשלושה שעונים · גימור מט", dEn:"Branded wooden stand · Holds 3 watches · Matte finish" },
   { id:"acc-3", cat:"accessories", name:{he:"ערכת טיפוח וניקוי לשעונים", en:"Watch Care & Cleaning Kit"}, price:170, cond:"new",
     img:"images/products/acc-3.webp",
-    dHe:"מברשת עדינה · מטלית מיקרופייבר · תרסיס ניקוי לזכוכית", dEn:"Soft brush · Microfiber cloth · Crystal cleaning spray" }
+    dHe:"מברשת עדינה · מטלית מיקרופייבר · תרסיס ניקוי לזכוכית", dEn:"Soft brush · Microfiber cloth · Crystal cleaning spray" },
+  { id:"acc-4", cat:"accessories", name:{he:"ארנק חכם לכרטיסים", en:"Smart Card Wallet"}, price:100, cond:"new",
+    img:"images/products/acc-4.webp",
+    dHe:"עיצוב קרבון אלגנטי · מנגנון שליפת כרטיסים בלחיצה · כיס לשטרות · קומפקטי · מתנה לכל מי שרוכש מוצר מהחנות", dEn:"Elegant carbon-fiber look · Push-button card ejector · Bill pocket · Compact · A gift with any purchase from the store" },
+  { id:"acc-5", cat:"accessories", name:{he:"מכוון שעון אוטומטי (Watch Winder)", en:"Automatic Watch Winder"}, price:300, cond:"new",
+    img:"images/products/acc-5.webp",
+    dHe:"שומר על השעון האוטומטי שלכם תמיד מכוון ומוכן ללבישה · מארז עץ אלגנטי · כרית עור שחורה · 900 סיבובים ביום · סיבוב דו-כיווני · מסך תצוגה", dEn:"Keeps your automatic watch wound and ready to wear · Elegant wooden case · Black leather cushion · 900 turns per day · Bi-directional rotation · Display screen" }
 ];
 
 // ===== Gift boxes (packaging options for the gift builder, gifts.html). Prices are validated on the server. =====
