@@ -5,7 +5,7 @@
    violet ramp, hairline gradient borders, softer light and glass.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Playfair+Display:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap');
 
 :root{
   /* ink: four stepped surfaces instead of one flat black */
@@ -58,13 +58,10 @@ body{
 
 /* ---------- typography ---------- */
 h1,h2,h3,h4{
-  font-family:'Frank Ruhl Libre','Playfair Display',serif !important;
-  font-weight:400 !important;
+  font-family:'Playfair Display','Rubik',serif !important;
+  font-weight:500 !important;
   letter-spacing:0 !important;
   color:var(--pearl) !important;
-}
-body.en-mode h1, body.en-mode h2, body.en-mode h3, body.en-mode h4{
-  font-family:'Playfair Display','Frank Ruhl Libre',serif !important;
 }
 h1{ line-height:1.1 !important; }
 h2{ line-height:1.2 !important; }
