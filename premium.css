@@ -362,3 +362,11 @@ footer{
     url('assets/bg-violet-metal.webp') center bottom/cover no-repeat,
     var(--ink-0) !important;
 }
+
+/* ---- Magazine section: violet brushed-metal backdrop, faded into the page at top and bottom ---- */
+#magazine{
+  background:
+    linear-gradient(180deg, var(--ink-1) 0%, rgba(10,10,16,.15) 14%, rgba(10,10,16,.2) 86%, var(--ink-1) 100%),
+    url('assets/bg-violet-metal.webp') 70% 100%/cover no-repeat,
+    var(--ink-1) !important;
+}
