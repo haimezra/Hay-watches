@@ -11,8 +11,8 @@ const CATEGORIES = {
 
 const PRODUCTS = [
   // ---- Men's Watches ----
-  { id:"men-6", cat:"men", brand:"Citizen", name:{he:"Citizen Tsuyosa NJ0151 (ירוק/מנטה)", en:"Citizen Tsuyosa NJ0151 (Mint/Green)"}, price:1690, cond:"new", img:"images/products/men-6-1.webp",
-    imgs:["images/products/men-6-1.webp","images/products/men-6-2.webp"],
+  { id:"men-6", cat:"men", brand:"Citizen", name:{he:"Citizen Tsuyosa NJ0151 (ירוק/מנטה)", en:"Citizen Tsuyosa NJ0151 (Mint/Green)"}, price:1690, cond:"new", img:"images/products/men-6-2.webp",
+    imgs:["images/products/men-6-2.webp","images/products/men-6-1.webp"],
     dHe:"קוטר 40 מ״מ · פלדת אל-חלד · תנועה אוטומטית קליבר 8210 · 21 אבנים · זכוכית ספיר · עמיד למים 50מ׳ · גב שקוף · צמיד משולב",
     dEn:"40mm stainless steel case · Automatic Caliber 8210 · 21 jewels · Sapphire crystal · 50m water resistant · Exhibition caseback · Integrated bracelet" },
   { id:"men-7", cat:"men", brand:"Citizen", name:{he:"Citizen Tsuyosa NJ0151-53M (Ice Blue)", en:"Citizen Tsuyosa NJ0151-53M (Ice Blue)"}, price:1790, cond:"new", img:"images/products/men-7-1.webp",
@@ -147,7 +147,13 @@ const PRODUCTS = [
     dHe:"עמדת עץ ממותג · מקום לשלושה שעונים · גימור מט", dEn:"Branded wooden stand · Holds 3 watches · Matte finish" },
   { id:"acc-3", cat:"accessories", name:{he:"ערכת טיפוח וניקוי לשעונים", en:"Watch Care & Cleaning Kit"}, price:170, cond:"new",
     img:"images/products/acc-3.webp",
-    dHe:"מברשת עדינה · מטלית מיקרופייבר · תרסיס ניקוי לזכוכית", dEn:"Soft brush · Microfiber cloth · Crystal cleaning spray" }
+    dHe:"מברשת עדינה · מטלית מיקרופייבר · תרסיס ניקוי לזכוכית", dEn:"Soft brush · Microfiber cloth · Crystal cleaning spray" },
+  { id:"acc-4", cat:"accessories", name:{he:"ארנק חכם לכרטיסים", en:"Smart Card Wallet"}, price:100, cond:"new",
+    img:"images/products/acc-4.webp",
+    dHe:"עיצוב קרבון אלגנטי · מנגנון שליפת כרטיסים בלחיצה · כיס לשטרות · קומפקטי · מתנה לכל מי שרוכש מוצר מהחנות", dEn:"Elegant carbon-fiber look · Push-button card ejector · Bill pocket · Compact · A gift with any purchase from the store" },
+  { id:"acc-5", cat:"accessories", name:{he:"מכוון שעון אוטומטי (Watch Winder)", en:"Automatic Watch Winder"}, price:300, cond:"new",
+    img:"images/products/acc-5.webp",
+    dHe:"שומר על השעון האוטומטי שלכם תמיד מכוון ומוכן ללבישה · מארז עץ אלגנטי · כרית עור שחורה · 900 סיבובים ביום · סיבוב דו-כיווני · מסך תצוגה", dEn:"Keeps your automatic watch wound and ready to wear · Elegant wooden case · Black leather cushion · 900 turns per day · Bi-directional rotation · Display screen" }
 ];
 
 // ===== Gift boxes (packaging options for the gift builder, gifts.html). Prices are validated on the server. =====
