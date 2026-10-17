@@ -41,7 +41,7 @@ const PRODUCTS = [
     dHe:"יד שנייה · גודל מידי (Mid Size) · לוח שחור · תנועה אוטומטית קליבר 571 · 24 אבנים · גב סגור עם סמל Seamaster · רצועת עור שחורה",
     dEn:"Pre-owned · Mid Size · Black dial · Automatic Caliber 571 · 24 jewels · Seamaster medallion caseback · Black leather strap" },
 
-  { id:"men-13", cat:"men", brand:"Omega", name:{he:"Omega Genève וינטג׳ זהב 14K מלא (משנות השישים)", en:"Vintage Omega Genève Solid 14K Gold (1960s)"}, price:5500, cond:"used", img:"images/products/men-13-1.webp?v=20261023",
+  { id:"men-13", cat:"men", brand:"Omega", name:{he:"Omega Genève וינטג׳ זהב 14K מלא (משנות השישים)", en:"Vintage Omega Genève Solid 14K Gold (1960s)"}, price:5500, cond:"used", img:"images/products/men-13-1.webp?v=20261027",
     dHe:"יד שנייה · זהב 14K מלא, לא ציפוי · לוח כסוף עם מחוגים מוזהבים · שעון וינטג׳ משנות השישים · רצועת עור חומה",
     dEn:"Pre-owned · Solid 14K gold, not plated · Silver dial with gold-tone hands · 1960s vintage piece · Brown leather strap" },
 
