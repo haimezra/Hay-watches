@@ -166,7 +166,7 @@
   </div>
 </footer>
 
-<script src="data.js?v=202610181200"></script>
+<script src="data.js?v=202610241200"></script>
 <script src="main.js?v=202610140813"></script>
 <script>
   const pid = qs('id');
@@ -203,9 +203,10 @@
         <span class="en-txt">${p.dEn}. This piece meets our strict quality standards and arrives with a warranty certificate and original packaging.</span>`}
       </p>
       ${p.strap ? '<div id="strapOpts"></div>' : ''}
+      ${p.boxColors ? '<div id="boxOpts"></div>' : ''}
       <div class="pd-actions">
         <button class="add-cart"><span class="he-txt">הוסף לעגלה</span><span class="en-txt">Add to Cart</span></button>
-        <button class="add-cart buy-now" id="pdBuyNow" style="background:var(--gold); color:#0D0D0D; border-color:var(--gold);" onclick="${p.strap ? 'strapBuy()' : `buyNow('${p.id}')`}"><span class="he-txt">קנה עכשיו</span><span class="en-txt">Buy Now</span></button>
+        <button class="add-cart buy-now" id="pdBuyNow" style="background:var(--gold); color:#0D0D0D; border-color:var(--gold);" onclick="${p.strap ? 'strapBuy()' : p.boxColors ? 'boxBuy()' : `buyNow('${p.id}')`}"><span class="he-txt">קנה עכשיו</span><span class="en-txt">Buy Now</span></button>
       </div>
       <div class="pd-facts">
         <div><b><span class="he-txt">מצב: </span><span class="en-txt">Condition: </span></b><span class="he-txt">${p.cond==='used'?'יד שנייה, נבדק ומאומת':'חדש, אריזה סגורה'}</span><span class="en-txt">${p.cond==='used'?'Pre-owned, inspected & authenticated':'New, sealed packaging'}</span></div>
@@ -333,6 +334,25 @@
     buyNow(p.id, { color: st.color.id, length: st.length.id, size: st.size, qty: st.qty });
   };
   if(p.strap) renderStrap();
+
+  // ===== Box colour option (leather watch box) =====
+  let boxColor = null;
+  function renderBox(){
+    const box = document.getElementById('boxOpts');
+    if(!box) return;
+    box.innerHTML = `
+      <div class="st-row">
+        <div class="st-label"><b>צבע:</b> <span>${boxColor ? boxColor.he : 'לא נבחר'}</span></div>
+        <div class="st-swatches">${p.boxColors.map(c => `<button type="button" class="st-sw ${boxColor&&boxColor.id===c.id?'active':''}" title="${c.he}" aria-label="${c.he}" onclick="pickBoxColor('${c.id}')"><i style="background:${c.hex};"></i></button>`).join('')}</div>
+      </div>
+      <div class="st-warn" id="stWarn"></div>`;
+  }
+  window.pickBoxColor = function(id){ boxColor = p.boxColors.find(c => c.id === id); renderBox(); };
+  window.boxBuy = function(){
+    if(!boxColor){ document.getElementById('stWarn').textContent = 'יש לבחור צבע'; return; }
+    buyNow(p.id, { color: boxColor.id });
+  };
+  if(p.boxColors) renderBox();
 </script>
 <script src="https://negishot.co.il/cdn/widget.php?code=NGS_F5225CBBB994"></script>
 <!-- Vercel Speed Insights -->

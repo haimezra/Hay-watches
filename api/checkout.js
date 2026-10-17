@@ -133,6 +133,11 @@ module.exports = async (req, res) => {
 
     let qty = 1;
     info = product.name.he;
+    if (product.boxColors) {
+      const bc = product.boxColors.find((c) => c.id === String((body.opts || {}).color || ''));
+      if (!bc) return res.status(400).json({ ok: false, error: 'bad_options' });
+      info = `${product.name.he}, ${bc.he}`;
+    }
     if (product.strap) {
       const r = resolveStrap(product, body.opts);
       if (r.error) return res.status(r.status).json({ ok: false, error: r.error });

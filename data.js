@@ -140,7 +140,8 @@ const PRODUCTS = [
 
   // ---- Accessories & Boxes ----
   { id:"acc-1", cat:"accessories", name:{he:"קופסת עור לשעונים", en:"Leather Watch Box"}, price:200, cond:"new",
-    img:"images/products/acc-1.webp?v=20261023",
+    img:"images/products/acc-1.webp?v=20261024",
+    boxColors:[{id:"tan",he:"חום-קמל",en:"Tan",hex:"#b8763e"},{id:"green",he:"ירוק",en:"Green",hex:"#1f5c4d"},{id:"black",he:"שחור",en:"Black",hex:"#1a1a1a"}],
     dHe:"רפידה קטיפה פנימית · נעילה מגנטית · מקום לשעון אחד", dEn:"Velvet-lined interior · Magnetic clasp · Single watch slot" },
   { id:"acc-2", cat:"accessories", name:{he:"סט תצוגה לשלושה שעונים", en:"Triple Watch Display Set"}, price:200, cond:"new",
     img:"images/products/acc-2.webp?v=20261023",
@@ -221,6 +222,10 @@ const WHATSAPP_NUMBER = "97229999119";
 function whatsappOrder(productId, opts){
   const p = PRODUCTS.find(x => x.id === productId);
   let text = 'היי, אני מעוניין/ת לרכוש: ' + (p ? p.name.he : productId);
+  if(p && p.boxColors && opts && opts.color){
+    const bc = p.boxColors.find(x => x.id === opts.color);
+    if(bc) text += ', צבע ' + bc.he;
+  }
   if(p && p.strap && opts){
     const c = (p.colors || []).find(x => x.id === opts.color);
     const l = (p.lengths || []).find(x => x.id === opts.length);
