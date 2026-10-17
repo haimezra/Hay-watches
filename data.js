@@ -107,6 +107,10 @@ const PRODUCTS = [
     img:"images/products/women-7-1.webp?v=20261023", imgs:["images/products/women-7-1.webp?v=20261023"],
     dHe:"יד שנייה · דגם Tank Large · משנת 2015 · במצב כמו חדש · מארז פלדה מלבני · לוח לבן עם ספרות רומיות ומחוגים כחולים · כתר עם אבן כחולה · רצועת עור שחורה",
     dEn:"Pre-owned · Tank Large model · 2015 · Like-new condition · Steel rectangular case · White dial with Roman numerals and blue hands · Blue cabochon crown · Black leather strap" },
+  { id:"women-8", available:true, cat:"women", brand:"Rosefield", name:{he:"Rosefield HBBLS בורדו", en:"Rosefield HBBLS Burgundy"}, price:350, cond:"used",
+    img:"images/products/women-8-1.webp?v=20261027", imgs:["images/products/women-8-1.webp?v=20261027","images/products/women-8-2.webp?v=20261027"],
+    dHe:"יד שנייה · כמו חדש, לא נענד · אחריות מלאה · דגם HBBLS · מארז פלדה מלבני בגימור כסף · לוח בורדו עם מחוגים וסימני שעות כסופים · רצועת עור בורדו · מגיע בקופסה המקורית של המותג, עם השם ROSEFIELD · מחיר הזדמנות · יחידה אחת במלאי",
+    dEn:"Pre-owned · Like new, never worn · Full warranty · Model HBBLS · Rectangular silver-tone steel case · Burgundy dial with silver hands and indexes · Burgundy leather strap · Comes in the brand's original box, marked ROSEFIELD · Opportunity price · 1 unit in stock" },
 
   // ---- Premium Straps ----
   { id:"strap-1", cat:"straps", strap:true, name:{he:"רצועת עור פרימיום לשעון", en:"Premium Leather Watch Strap"}, price:120, cond:"new",
