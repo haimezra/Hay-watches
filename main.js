@@ -283,21 +283,32 @@ document.querySelectorAll('form.newsletter').forEach(function(form){
 })();
 
 
-/* Start the (deferred) hero videos only after the page has loaded, so the first paint isn't competing
-   with a ~1MB download (noticeably faster in in-app browsers such as Facebook's). */
+/* Start the deferred hero videos right after the page has loaded (keeps first paint light), and make sure
+   they really play: no connection-based skipping, forced muted/inline, retry if the browser refuses autoplay. */
 (function(){
-  try{
-    var c = navigator.connection || {};
-    if(c.saveData || /(^|-)2g$/.test(c.effectiveType || '')) return;
-    function start(){
-      document.querySelectorAll('video[data-src]').forEach(function(v){
-        if(v.getAttribute('src')) return;
-        v.src = v.getAttribute('data-src'); v.load();
-        var r = v.getBoundingClientRect();
-        if(r.bottom > -120 && r.top < window.innerHeight + 120){ var p = v.play(); if(p && p.catch) p.catch(function(){}); }
+  function inView(v){ var r = v.getBoundingClientRect(); return r.bottom > -120 && r.top < window.innerHeight + 120; }
+  function kick(v){
+    var p = v.play();
+    if(p && p.catch) p.catch(function(){
+      // autoplay refused (some in-app browsers): try again on the first touch / scroll
+      var again = function(){ var q = v.play(); if(q && q.catch) q.catch(function(){}); };
+      ['touchstart','pointerdown','scroll','keydown'].forEach(function(ev){
+        window.addEventListener(ev, again, {capture:true, passive:true, once:true});
       });
-    }
-    if(document.readyState === 'complete') setTimeout(start, 300);
-    else window.addEventListener('load', function(){ setTimeout(start, 300); });
+    });
+  }
+  function start(){
+    document.querySelectorAll('video[data-src]').forEach(function(v){
+      if(v.getAttribute('src')) return;
+      v.muted = true; v.defaultMuted = true; v.autoplay = true; v.loop = true;
+      v.setAttribute('playsinline',''); v.setAttribute('webkit-playsinline','');
+      v.src = v.getAttribute('data-src'); v.load();
+      if(inView(v)) kick(v);
+      setTimeout(function(){ if(v.paused && inView(v)) kick(v); }, 2500);   // second chance
+    });
+  }
+  try{
+    if(document.readyState === 'complete') setTimeout(start, 200);
+    else window.addEventListener('load', function(){ setTimeout(start, 200); });
   }catch(e){}
 })();
