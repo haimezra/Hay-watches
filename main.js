@@ -192,6 +192,39 @@ document.querySelectorAll('form.newsletter').forEach(function(form){
     a.setAttribute('aria-label', 'שלחו לנו הודעה בוואטסאפ');
     a.innerHTML = '<svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M16.04 4C9.4 4 4 9.38 4 16c0 2.1.55 4.15 1.6 5.96L4 28l6.22-1.63A12.04 12.04 0 0 0 16.04 28C22.66 28 28 22.62 28 16S22.66 4 16.04 4zm0 21.9c-1.8 0-3.56-.48-5.1-1.4l-.37-.22-3.7.97.99-3.6-.24-.38A9.85 9.85 0 0 1 6.1 16c0-5.47 4.46-9.9 9.94-9.9 5.47 0 9.9 4.43 9.9 9.9 0 5.46-4.43 9.9-9.9 9.9zm5.44-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.8-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.5.7.3 1.26.48 1.7.62.72.23 1.37.2 1.88.12.57-.08 1.76-.72 2-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z"/></svg>';
     document.body.appendChild(a);
+    // Stack the button directly above the accessibility widget wherever the browser puts it
+    // (Facebook / Instagram in-app browsers shift fixed elements, so a fixed offset made them overlap)
+    function stack(){
+      try{
+        var W = window.innerWidth, H = window.innerHeight, x = W - 34, top = null;
+        for(var y = H - 6; y > H * 0.4; y -= 6){
+          var el = document.elementFromPoint(x, y);
+          if(!el || el === document.body || el === document.documentElement) continue;
+          if(el.closest && el.closest('.hay-wa')) continue;
+          var n = el, found = null;
+          while(n && n !== document.body && n !== document.documentElement){
+            if(getComputedStyle(n).position === 'fixed'){ found = n; break; }
+            n = n.parentElement;
+          }
+          if(!found && el.shadowRoot) found = el;               // widget living in a shadow root
+          if(!found || String(found.className || '').indexOf('cky') > -1) continue;
+          var r = found.getBoundingClientRect();
+          if(r.width < 36 || r.width > 140 || r.height < 36 || r.height > 140) continue;
+          if(top === null || r.top < top) top = r.top;
+          y = r.top;                                             // keep looking above this element
+        }
+        if(top === null){ a.style.removeProperty('bottom'); return; }
+        a.style.setProperty('bottom', Math.max(12, Math.round(H - top + 10)) + 'px', 'important');
+      }catch(e){}
+    }
+    var st = null;
+    function soonStack(){ clearTimeout(st); st = setTimeout(stack, 200); }
+    var runs = 0, iv = setInterval(function(){ stack(); if(++runs > 24) clearInterval(iv); }, 500);
+    window.addEventListener('load', soonStack);
+    window.addEventListener('resize', soonStack);
+    window.addEventListener('orientationchange', soonStack);
+    window.addEventListener('scroll', soonStack, {passive: true});
+    if(window.visualViewport) window.visualViewport.addEventListener('resize', soonStack);
     // Fade the button out while the footer is on screen so it never covers footer links
     var ft = document.querySelector('footer');
     if('IntersectionObserver' in window && ft){
