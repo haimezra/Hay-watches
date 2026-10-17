@@ -139,7 +139,7 @@ const PRODUCTS = [
     sizes:[18,19,20,21,22,24] },
 
   // ---- Accessories & Boxes ----
-  { id:"acc-1", cat:"accessories", name:{he:"קופסת עור לשעונים", en:"Leather Watch Box"}, price:200, cond:"new",
+  { id:"acc-1", cat:"accessories", name:{he:"קופסת עור לשעונים", en:"Leather Watch Box"}, price:100, cond:"new",
     img:"images/products/acc-1.webp?v=20261024",
     boxColors:[{id:"tan",he:"חום-קמל",en:"Tan",hex:"#b8763e"},{id:"green",he:"ירוק",en:"Green",hex:"#1f5c4d"},{id:"black",he:"שחור",en:"Black",hex:"#1a1a1a"}],
     dHe:"רפידה קטיפה פנימית · נעילה מגנטית · מקום לשעון אחד", dEn:"Velvet-lined interior · Magnetic clasp · Single watch slot" },
