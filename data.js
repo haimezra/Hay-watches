@@ -92,8 +92,8 @@ const PRODUCTS = [
     dHe:"יד שנייה · מק״ט T137.010.21.111.00 · קוטר 25 מ״מ · מארז פלדת אל-חלד 316L עם לינטה מצופה זהב ורוד (PVD) · לוח פנינת-אם ייחודי עם אינדקסים ורוד-זהב · זכוכית ספיר אנטי-רפלקטיבית · תנועת קוורץ שוויצרית · צמיד פלדה מקורי · עמיד למים עד 100 מ׳ · עיצוב וינטג׳-מודרני בהשראת שנות ה-70",
     dEn:"Pre-owned · Ref. T137.010.21.111.00 · 25mm case · 316L stainless steel case with rose gold PVD coated bezel · Distinctive mother-of-pearl dial with rose gold indices · Antireflective sapphire crystal · Swiss quartz movement · Original steel bracelet · 100m water resistant · 70's-inspired modern-vintage design" },
   { id:"women-5", cat:"women", brand:"Burberry", name:{he:"Burberry The City זהב ורוד", en:"Burberry The City Rose Gold"}, price:1000, cond:"new", available:true,
-    img:"images/products/women-5-1.webp?v=20261023",
-    imgs:["images/products/women-5-1.webp?v=20261023","images/products/women-5-2.webp?v=20261023","images/products/women-5-3.webp?v=20261023"],
+    img:"images/products/women-5-1.webp?v=20261026",
+    imgs:["images/products/women-5-1.webp?v=20261026","images/products/women-5-2.webp?v=20261023","images/products/women-5-3.webp?v=20261023"],
     dHe:"חדש · דגם BU9039 מסדרת The City · קוטר 38 מ״מ · מארז וצמיד פלדת אל-חלד בציפוי זהב ורוד · לוח בגימור סאנריי עם תבנית ה-Check האייקונית של המותג · חלון תאריך · זכוכית ספיר · תנועת קוורץ שוויצרית · אבזם פרפר · עמיד למים עד 50 מ׳ · כולל קופסה מקורית של המותג",
     dEn:"Brand new · Model BU9039, The City collection · 38mm case · Rose gold-plated stainless steel case and bracelet · Sunray dial with the brand's iconic engraved check pattern · Date window · Sapphire crystal · Swiss quartz movement · Butterfly deployment clasp · 50m water resistant · Comes with original brand box" },
 
