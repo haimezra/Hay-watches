@@ -383,3 +383,10 @@ footer{
 .avail-dot, .avail-badge.unavailable .avail-dot{ animation:none !important; box-shadow:none !important; }
 /* let the browser skip rendering of long, off-screen blocks */
 footer{ content-visibility:auto; contain-intrinsic-size:auto 420px; }
+
+/* below-the-fold sections are rendered only when they get near the viewport */
+html body #style, html body #magazine, html body #polish, html body #faq,
+html body #sellwatch, html body .trust, html body #policy{
+  content-visibility:auto; contain-intrinsic-size:auto 640px;
+}
+html body .mx-row{ -webkit-backdrop-filter:none !important; backdrop-filter:none !important; }

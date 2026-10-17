@@ -204,7 +204,10 @@ function productImgHtml(p){
   const src = (typeof bestProductImg === 'function') ? bestProductImg(p) : p.img;
   const avail = availabilityHtml(p);
   if(src){
-    return `${avail}<img src="${src}" alt="${p.name.en}" loading="lazy" decoding="async">`;
+    // 560px variant for cards (much lighter to download and decode while scrolling); full size for large screens/zoom
+    const sm = /\.webp(\?|$)/.test(src) ? src.replace(/\.webp(\?|$)/, '-sm.webp$1') : '';
+    const srcset = sm ? ` srcset="${sm} 560w, ${src} 1000w" sizes="(max-width:640px) 48vw, (max-width:1100px) 31vw, 290px"` : '';
+    return `${avail}<img src="${src}"${srcset} alt="${p.name.en}" loading="lazy" decoding="async">`;
   }
   const brand = p.brand ? p.brand.toUpperCase() : '';
   return `${avail}<div class="img-placeholder">

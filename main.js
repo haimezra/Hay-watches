@@ -197,7 +197,7 @@ document.querySelectorAll('form.newsletter').forEach(function(form){
     function stack(){
       try{
         var W = window.innerWidth, H = window.innerHeight, x = W - 34, top = null;
-        for(var y = H - 6; y > H * 0.4; y -= 6){
+        for(var y = H - 6; y > H * 0.4; y -= 12){
           var el = document.elementFromPoint(x, y);
           if(!el || el === document.body || el === document.documentElement) continue;
           if(el.closest && el.closest('.hay-wa')) continue;
@@ -219,7 +219,7 @@ document.querySelectorAll('form.newsletter').forEach(function(form){
     }
     var st = null;
     function soonStack(){ clearTimeout(st); st = setTimeout(stack, 200); }
-    var runs = 0, iv = setInterval(function(){ stack(); if(++runs > 24) clearInterval(iv); }, 500);
+    var runs = 0, iv = setInterval(function(){ if(!document.hidden) stack(); if(++runs > 8) clearInterval(iv); }, 1000);
     window.addEventListener('load', soonStack);
     window.addEventListener('resize', soonStack);
     window.addEventListener('orientationchange', soonStack);
