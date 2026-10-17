@@ -34,6 +34,8 @@
   var CATS = [
     { id:'cases', title:'קופסאות ואחסון', lead:'לשמירה על השעון והצגתו', ids:['acc-1','acc-2'] },
     { id:'care',  title:'טיפוח וניקוי',    lead:'להחזיק את השעון במצב מושלם', ids:['acc-3'] },
+    { id:'wallet', title:'ארנקים', lead:'ארנק חכם לכרטיסים', ids:['acc-4'] },
+    { id:'winder', title:'מכווני שעון', lead:'לשעון אוטומטי תמיד מוכן', ids:['acc-5'] },
     { id:'strap', title:'רצועות עור',      lead:'רצועה נוספת להחלפה', ids:['strap-1','strap-2'] }
   ].map(function(c){
     c.items = c.ids.map(function(id){ return byId(PRODUCTS,id); }).filter(function(p){ return p && isAvail(p); });
@@ -45,7 +47,7 @@
   var qs = new URLSearchParams(location.search);
   var pre = byId(WATCHES, qs.get('watch'));
   var S = { step:0, box:'matte', watch:pre?pre.id:null, filter:'all',
-            rose:null, add:{ cases:null, care:null, strap:null },
+            rose:null, add:{ cases:null, care:null, wallet:null, winder:null, strap:null },
             strap:{ color:null, length:'standard', size:20 }, note:'', closed:false };
 
   /* ---------- pricing ---------- */
