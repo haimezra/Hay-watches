@@ -219,7 +219,7 @@ document.querySelectorAll('form.newsletter').forEach(function(form){
     }
     var st = null;
     function soonStack(){ clearTimeout(st); st = setTimeout(stack, 200); }
-    var runs = 0, iv = setInterval(function(){ if(!document.hidden) stack(); if(++runs > 8) clearInterval(iv); }, 1000);
+    var runs = 0, iv = setInterval(function(){ if(!document.hidden) stack(); if(++runs > 15) clearInterval(iv); }, 1000);
     window.addEventListener('load', soonStack);
     window.addEventListener('resize', soonStack);
     window.addEventListener('orientationchange', soonStack);
@@ -279,5 +279,25 @@ document.querySelectorAll('form.newsletter').forEach(function(form){
       es.forEach(function(e){ e.target.classList.toggle('anim-off', !e.isIntersecting); });
     }, {rootMargin:'80px 0px'});
     document.querySelectorAll('.section-head h2, .gift-copy h2, .polish-sec h2, .gift-cta, .hero h1, .hero p').forEach(function(el){ aio.observe(el); });
+  }catch(e){}
+})();
+
+
+/* Start the (deferred) hero videos only after the page has loaded, so the first paint isn't competing
+   with a ~1MB download (noticeably faster in in-app browsers such as Facebook's). */
+(function(){
+  try{
+    var c = navigator.connection || {};
+    if(c.saveData || /(^|-)2g$/.test(c.effectiveType || '')) return;
+    function start(){
+      document.querySelectorAll('video[data-src]').forEach(function(v){
+        if(v.getAttribute('src')) return;
+        v.src = v.getAttribute('data-src'); v.load();
+        var r = v.getBoundingClientRect();
+        if(r.bottom > -120 && r.top < window.innerHeight + 120){ var p = v.play(); if(p && p.catch) p.catch(function(){}); }
+      });
+    }
+    if(document.readyState === 'complete') setTimeout(start, 300);
+    else window.addEventListener('load', function(){ setTimeout(start, 300); });
   }catch(e){}
 })();

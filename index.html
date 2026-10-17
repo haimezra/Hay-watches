@@ -11,10 +11,11 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<!-- Start cookieyes banner --> <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/b5c79bfc042da7ab64dac9b5111770f7/script.js"></script> <!-- End cookieyes banner -->
+<!-- Start cookieyes banner --> <script id="cookieyes" async type="text/javascript" src="https://cdn-cookieyes.com/client_data/b5c79bfc042da7ab64dac9b5111770f7/script.js"></script> <!-- End cookieyes banner -->
 <title>HAY Watches | שעונים חדשים ומשומשים, רצועות ואביזרים</title>
 <meta name="description" content="HAY Watches: שעוני יוקרה חדשים ומשומשים שנבדקו ואומתו, רצועות עור פרימיום ואביזרים לשעונים. משלוח עד הבית ואחריות.">
 <meta name="theme-color" content="#0A0A10">
+<link rel="preload" as="image" href="assets/hero-poster.jpg" fetchpriority="high">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="HAY Watches">
 <meta property="og:locale" content="he_IL">
@@ -24,7 +25,8 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Assistant:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Assistant:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Assistant:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500&display=swap"></noscript>
 <link rel="stylesheet" href="styles.css?v=202610101800">
 <style>
   /* =====================================================================
@@ -555,9 +557,7 @@ html body #policy .wrap{ max-width:1000px !important; }
 </header>
 <!-- Hero -->
 <section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg" aria-hidden="true">
-    <source src="assets/hero.mp4" type="video/mp4">
-  </video>
+  <video class="hero-video" muted loop playsinline preload="none" poster="assets/hero-poster.jpg" data-src="assets/hero.mp4" aria-hidden="true"></video>
   <div class="hero-video-overlay"></div>
   <img src="assets/logo.png" alt="HAY Watches" class="hero-logo-main">
   <div class="hero-inner">
@@ -872,7 +872,7 @@ html body #policy .wrap{ max-width:1000px !important; }
 </footer>
 
 <script src="data.js?v=202610271200"></script>
-<script src="main.js?v=202610182000"></script>
+<script src="main.js?v=202610281200"></script>
 <script>
   // Homepage shows the curated "featured" products from the shared catalog (data.js)
   function prodCardHtml(p){
@@ -1029,7 +1029,7 @@ html body #policy .wrap{ max-width:1000px !important; }
   document.addEventListener('keydown',e=>{ if(e.key==='Escape' && modal.classList.contains('open')) close(); });
 })();
 </script>
-<script src="https://negishot.co.il/cdn/widget.php?code=NGS_F5225CBBB994"></script>
+<script>window.addEventListener('load',function(){setTimeout(function(){var s=document.createElement('script');s.src='https://negishot.co.il/cdn/widget.php?code=NGS_F5225CBBB994';s.async=true;document.body.appendChild(s);},300);});</script>
 <script src="gift-art.js?v=1"></script>
 <script src="gift-slider.js?v=11"></script>
 <script>
