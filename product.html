@@ -198,7 +198,7 @@
       <h1><span class="he-txt">${p.name.he}</span><span class="en-txt">${p.name.en}</span></h1>
       <div class="pd-price" id="pdPrice">${fmtPrice(p.price)}</div>
       <p class="pd-desc">
-        ${p.strap ? `<span class="he-txt">${p.dHe}.</span><span class="en-txt">${p.dEn}.</span>` : `
+        ${(p.strap || p.cat==='accessories') ? `<span class="he-txt">${p.dHe}.</span><span class="en-txt">${p.dEn}.</span>` : `
         <span class="he-txt">${p.dHe}. שעון זה עומד בתקני האיכות המחמירים שלנו ומגיע עם תעודת אחריות ואריזה מקורית.</span>
         <span class="en-txt">${p.dEn}. This piece meets our strict quality standards and arrives with a warranty certificate and original packaging.</span>`}
       </p>
