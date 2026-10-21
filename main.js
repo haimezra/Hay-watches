@@ -312,3 +312,13 @@ document.querySelectorAll('form.newsletter').forEach(function(form){
     else window.addEventListener('load', function(){ setTimeout(start, 200); });
   }catch(e){}
 })();
+
+/* Home header: turns solid and compact after scrolling */
+(function(){
+  try{
+    if(!document.body.classList.contains('home')) return;
+    var hd = document.querySelector('header'); if(!hd) return;
+    var on = function(){ hd.classList.toggle('scrolled', window.scrollY > 40); };
+    window.addEventListener('scroll', on, { passive:true }); on();
+  }catch(e){}
+})();

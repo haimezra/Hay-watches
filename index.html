@@ -323,7 +323,7 @@
   .music-toggle:hover{ border-color:var(--gold-light); color:var(--gold-light); }
   .music-toggle[aria-pressed="true"]{ border-color:var(--gold-light); color:var(--gold-light); }
 </style>
-<link rel="stylesheet" href="boutique-theme.css?v=202610181200">
+<link rel="stylesheet" href="boutique-theme.css?v=202610202005">
 <link rel="stylesheet" href="gift-box.css?v=4">
 <style id="comfort">
 /* =====================================================================
@@ -504,7 +504,7 @@ html body #policy .wrap{ max-width:1000px !important; }
 </style>
 <link rel="stylesheet" href="premium.css?v=202610182000">
 </head>
-<body>
+<body class="home">
 
 <!-- Top Bar -->
 <div class="topbar">
@@ -527,6 +527,17 @@ html body #policy .wrap{ max-width:1000px !important; }
       <svg id="musicStopIcon" viewBox="0 0 24 24" width="15" height="15" fill="currentColor" style="display:none"><rect x="6" y="6" width="12" height="12" rx="1.5"/></svg>
     </button>
     <audio id="bgMusic" src="assets/site-music.mp3" loop preload="none"></audio>
+    <a href="index.html" class="home-logo" aria-label="HAY Watches"><img src="assets/logo.png" alt="HAY Watches"></a>
+    <div class="headicons">
+      <a class="icon-btn" aria-label="cart" href="cart.html">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 7h12l-1 12.2a2 2 0 0 1-2 1.8H9a2 2 0 0 1-2-1.8L6 7Z"/>
+          <path d="M9 7V5.5a3 3 0 0 1 6 0V7"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div class="wrap navrow">
     <nav class="mainnav">
       <a href="#"><span class="he-txt">בית</span><span class="en-txt">Home</span></a>
       <a href="#catalog"><span class="he-txt">קטלוג</span><span class="en-txt">Catalog</span></a>
@@ -536,14 +547,6 @@ html body #policy .wrap{ max-width:1000px !important; }
       <a href="about.html"><span class="he-txt">אודות</span><span class="en-txt">About</span></a>
       <a href="contact.html"><span class="he-txt">צור קשר</span><span class="en-txt">Contact</span></a>
     </nav>
-    <div class="headicons">
-      <a class="icon-btn" aria-label="cart" href="cart.html">
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M6 7h12l-1 12.2a2 2 0 0 1-2 1.8H9a2 2 0 0 1-2-1.8L6 7Z"/>
-          <path d="M9 7V5.5a3 3 0 0 1 6 0V7"/>
-        </svg>
-      </a>
-    </div>
   </div>
   <nav class="mobile-nav" id="mobileNav">
     <a href="#" onclick="toggleMobileMenu()"><span class="he-txt">בית</span><span class="en-txt">Home</span></a>
@@ -559,8 +562,8 @@ html body #policy .wrap{ max-width:1000px !important; }
 <section class="hero">
   <video class="hero-video" muted loop playsinline preload="none" poster="assets/hero-poster.jpg" data-src="assets/hero.mp4" aria-hidden="true"></video>
   <div class="hero-video-overlay"></div>
-  <img src="assets/logo.png" alt="HAY Watches" class="hero-logo-main">
   <div class="hero-inner">
+    <h1 class="hero-title"><span class="he-txt">שעונים, בלי פשרות</span><span class="en-txt">Made Without Compromise</span></h1>
     <p>
       <span class="he-txt">שעונים שנבחרו בקפידה, עם תשומת לב לכל פרט, מהמנגנון ועד הרצועה. שעון טוב הוא לא רק מחוג שמראה את הזמן, הוא חלק מהרגעים החשובים בחיים.</span>
       <span class="en-txt">Watches carefully selected, with attention to every detail, from the movement to the strap. A good watch is not just a hand that shows the time, it is part of life's most important moments.</span>
@@ -872,7 +875,7 @@ html body #policy .wrap{ max-width:1000px !important; }
 </footer>
 
 <script src="data.js?v=202610271200"></script>
-<script src="main.js?v=202610291200"></script>
+<script src="main.js?v=202610201940"></script>
 <script>
   // Homepage shows the curated "featured" products from the shared catalog (data.js)
   function prodCardHtml(p){
