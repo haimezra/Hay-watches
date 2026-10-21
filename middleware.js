@@ -56,7 +56,13 @@ function blocked(ip) {
 const noteFail = (ip) => { const a = fails.get(ip) || []; a.push(Date.now()); fails.set(ip, a); };
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+// SITE OFFLINE SWITCH: true = every visitor gets a 404 "site not active" page (pages, images and API).
+// To reopen the site set this to false and redeploy.
+const SITE_OFFLINE = true;
+const OFFLINE_HTML = '<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>404</title><style>html,body{height:100%;margin:0}body{background:#0A0A10;color:#EDEAF2;font-family:Heebo,Arial,sans-serif;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px}h1{font-size:clamp(3rem,12vw,6rem);margin:0 0 8px;font-weight:500;letter-spacing:.05em}p{color:#9A97A6;font-size:1.15rem;margin:0}</style></head><body><main><h1>404</h1><p>האתר לא פעיל</p><p dir="ltr" style="margin-top:10px;font-size:.95rem">Site not active</p></main></body></html>';
+
 export default async function middleware(request) {
+  if (SITE_OFFLINE) return new Response(OFFLINE_HTML, { status: 404, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex, nofollow' } });
   const password = process.env.SITE_PASSWORD;
   if (!password) return next(); // gate is OFF until SITE_PASSWORD is set
 
