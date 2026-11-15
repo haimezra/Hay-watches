@@ -57,8 +57,8 @@ const PRODUCTS = [
 
   { id:"men-16", sold:true, cat:"men", brand:"Cartier", name:{he:"Cartier Santos-Dumont, Large Model", en:"Cartier Santos-Dumont, Large Model"}, price:17000, cond:"used",
     img:"images/products/men-16-1.webp?v=20261023", imgs:["images/products/men-16-1.webp?v=20261023","images/products/men-16-2.webp?v=20261115"],
-    dHe:"יד שנייה · דגם Santos-Dumont, מארז Large Model · מארז פלדה מוברשת מרובע עם ברגים גלויים במסגרת, בהשראת השעון שעיצב לואי קרטייה ב-1904 עבור הטייס אלברטו סנטוס-דומון, ונחשב לאחד השעונים הראשונים שנועדו לענידה על פרק היד · לוח כסוף עם ספרות רומיות ומחוגים כחולים · כתר עם אבן ספיר · רצועת עור תנין כחולה",
-    dEn:"Pre-owned · Santos-Dumont model, Large Model case · Brushed steel square case with exposed screws on the bezel, inspired by the watch Louis Cartier designed in 1904 for aviator Alberto Santos-Dumont, regarded as one of the first watches made for the wrist · Silver dial with Roman numerals and blue hands · Sapphire-set crown · Blue alligator leather strap" },
+    dHe:"יד שנייה · דגם Santos-Dumont, מארז Large Model · מארז פלדה מוברשת מרובע עם ברגים גלויים במסגרת, בהשראת השעון שעיצב לואי קרטייה ב-1904 עבור הטייס אלברטו סנטוס-דומון, ונחשב לאחד השעונים הראשונים שנועדו לענידה על פרק היד · לוח כסוף עם ספרות רומיות ומחוגים כחולים · כתר עם אבן ספיר · רצועת עור תנין כחולה-שחורה",
+    dEn:"Pre-owned · Santos-Dumont model, Large Model case · Brushed steel square case with exposed screws on the bezel, inspired by the watch Louis Cartier designed in 1904 for aviator Alberto Santos-Dumont, regarded as one of the first watches made for the wrist · Silver dial with Roman numerals and blue hands · Sapphire-set crown · Blue-black alligator leather strap" },
 
   { id:"men-17", cat:"men", brand:"Rolex", name:{he:"Rolex Oyster Perpetual וינטג׳ (לוח שמפניה, 34 מ״מ)", en:"Vintage Rolex Oyster Perpetual (Champagne Dial, 34mm)"}, price:13000, cond:"used",
     img:"images/products/men-17-2.webp?v=20261023", imgs:["images/products/men-17-2.webp?v=20261023","images/products/men-17-1.webp?v=20261023","images/products/men-17-3.webp?v=20261023","images/products/men-17-4.webp?v=20261023"],
