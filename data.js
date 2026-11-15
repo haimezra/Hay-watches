@@ -19,8 +19,8 @@ const PRODUCTS = [
     imgs:["images/products/men-7-1.webp?v=20261023","images/products/men-7-2.webp?v=20261023"],
     dHe:"קוטר 40 מ״מ · לוח כחול קרח בגימור סאנריי · תנועה אוטומטית קליבר 8210 · 21 אבנים · עמיד למים 50מ׳ · אחריות יצרן 5 שנים",
     dEn:"40mm case · Sunray-textured ice blue dial · Automatic Caliber 8210 · 21 jewels · 50m water resistant · 5-year manufacturer warranty" },
-  { id:"men-8", sold:true, cat:"men", brand:"Citizen", name:{he:"Citizen Challenge Diver Automatic (שחור/זהב)", en:"Citizen Challenge Diver Automatic (Black/Gold)"}, price:1290, cond:"new", img:"images/products/men-8-1.webp?v=20261115",
-    imgs:["images/products/men-8-1.webp?v=20261115","images/products/men-8-2.webp?v=20261023"],
+  { id:"men-8", sold:true, cat:"men", brand:"Citizen", name:{he:"Citizen Challenge Diver Automatic (שחור/זהב)", en:"Citizen Challenge Diver Automatic (Black/Gold)"}, price:1290, cond:"new", img:"images/products/men-8-1.webp?v=20261115b",
+    imgs:["images/products/men-8-1.webp?v=20261115b","images/products/men-8-2.webp?v=20261023"],
     dHe:"קוטר 41 מ״מ · עובי 13.7 מ״מ · לוניטה חד-כיוונית · זכוכית מינרל · תנועה אוטומטית קליבר 8204-21 · עמיד למים 200מ׳",
     dEn:"41mm case, 13.7mm thick · Unidirectional bezel · Mineral crystal · Automatic Caliber 8204-21 · 200m water resistant" },
   { id:"men-9", sold:true, cat:"men", brand:"Hamilton", name:{he:"Hamilton Khaki Field Auto H70455540 (לוח כחול)", en:"Hamilton Khaki Field Auto H70455540 (Blue Dial)"}, price:2390, cond:"new", img:"images/products/men-9-2.webp?v=20261023",
@@ -56,7 +56,7 @@ const PRODUCTS = [
     dEn:"Pre-owned · New Old Stock, unworn · 1982 · Quartz movement · Moon phase and month display · Swiss Made · Gold-tone case · Brown leather strap" },
 
   { id:"men-16", sold:true, cat:"men", brand:"Cartier", name:{he:"Cartier Santos-Dumont, Large Model", en:"Cartier Santos-Dumont, Large Model"}, price:17000, cond:"used",
-    img:"images/products/men-16-1.webp?v=20261023", imgs:["images/products/men-16-1.webp?v=20261023"],
+    img:"images/products/men-16-1.webp?v=20261023", imgs:["images/products/men-16-1.webp?v=20261023","images/products/men-16-2.webp?v=20261115"],
     dHe:"יד שנייה · דגם Santos-Dumont, מארז Large Model · מארז פלדה מוברשת מרובע עם ברגים גלויים במסגרת, בהשראת השעון שעיצב לואי קרטייה ב-1904 עבור הטייס אלברטו סנטוס-דומון, ונחשב לאחד השעונים הראשונים שנועדו לענידה על פרק היד · לוח כסוף עם ספרות רומיות ומחוגים כחולים · כתר עם אבן ספיר · רצועת עור תנין כחולה",
     dEn:"Pre-owned · Santos-Dumont model, Large Model case · Brushed steel square case with exposed screws on the bezel, inspired by the watch Louis Cartier designed in 1904 for aviator Alberto Santos-Dumont, regarded as one of the first watches made for the wrist · Silver dial with Roman numerals and blue hands · Sapphire-set crown · Blue alligator leather strap" },
 
