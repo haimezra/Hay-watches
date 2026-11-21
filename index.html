@@ -198,6 +198,9 @@
   .fb-follow{ display:inline-flex; align-items:center; justify-content:center; gap:9px; color:var(--mute); font-size:.9rem; text-decoration:none; transition:color .2s; }
   .fb-follow:hover{ color:var(--gold-light); }
 
+  /* gifts teaser: 3D box removed from the homepage, copy centered */
+  #gifts .gift-teaser{ grid-template-columns:1fr !important; gap:0 !important; }
+  #gifts .gift-copy{ max-width:620px !important; margin:0 auto 34px !important; text-align:center !important; }
   /* ---- watch value check button ---- */
   .value-check{ display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:11px 22px; border:1px solid rgba(155,110,243,.38); border-radius:12px; color:var(--mute); font-size:.88rem; letter-spacing:.03em; text-decoration:none; background:rgba(155,110,243,.05); transition:color .25s, border-color .25s, background .25s, box-shadow .25s; }
   .value-check:hover, .value-check:focus-visible{ color:var(--pearl); border-color:var(--purple); background:rgba(155,110,243,.12); box-shadow:0 0 22px rgba(155,110,243,.22); }
@@ -688,20 +691,6 @@ html body #policy .wrap{ max-width:1000px !important; }
         <h2><span class="he-txt">מארז מתנה שנבנה בשבילכם</span><span class="en-txt">A gift box, built just for them</span></h2>
         <p><span class="he-txt">בחרו קופסה, שעון ותוספות, הכול נארז ומוכן למתנה.</span><span class="en-txt">Choose a box, a watch and a few extras. Packed and ready to give.</span></p>
         <a class="gift-cta" href="gifts.html"><span class="he-txt">לבניית מארז מתנה</span><span class="en-txt">Build a gift box</span></a>
-      </div>
-      <div class="gift-art gbx-stage gbx-loop" aria-hidden="true">
-        <div class="gbx-persp">
-          <div class="gbx-scene" id="giftTeaserScene" data-box="matte">
-            <div class="gbx-f gbx-shadow"></div>
-            <div class="gbx-f l gbx-floor"></div>
-            <div class="gbx-f pd pd-f"></div><div class="gbx-f pd pd-b"></div><div class="gbx-f pd pd-r"></div><div class="gbx-f pd pd-l"></div><div class="gbx-f pd pd-t"></div>
-            <div class="gbx-f m o-f"></div><div class="gbx-f m o-b"></div><div class="gbx-f m o-r"></div><div class="gbx-f m o-l"></div>
-            <div class="gbx-f l i-f"></div><div class="gbx-f l i-b"></div><div class="gbx-f l i-r"></div><div class="gbx-f l i-l"></div>
-            <div class="gbx-f m r-f"></div><div class="gbx-f m r-b"></div><div class="gbx-f m r-r"></div><div class="gbx-f m r-l"></div>
-            <div class="gbx-f hg a"></div><div class="gbx-f hg b"></div>
-            <div class="gbx-lid"><div class="gbx-f m lt"><img src="assets/logo.png" alt="" draggable="false"></div><div class="gbx-f lu"></div><div class="gbx-f m s-f"></div><div class="gbx-f m s-b"></div><div class="gbx-f m s-r"></div><div class="gbx-f m s-l"></div><div class="gbx-f lc"></div></div>
-          </div>
-        </div>
       </div>
     </div>
     <div class="hs" data-slider aria-roledescription="carousel" aria-label="השראה למארזי מתנה">
