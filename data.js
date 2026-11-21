@@ -112,6 +112,11 @@ const PRODUCTS = [
     dHe:"יד שנייה · כמו חדש, לא נענד · אחריות מלאה · דגם HBBLS · מארז פלדה מלבני בגימור כסף · לוח בורדו עם מחוגים וסימני שעות כסופים · רצועת עור בורדו · מגיע בקופסה המקורית של המותג, עם השם ROSEFIELD · מחיר הזדמנות · יחידה אחת במלאי",
     dEn:"Pre-owned · Like new, never worn · Full warranty · Model HBBLS · Rectangular silver-tone steel case · Burgundy dial with silver hands and indexes · Burgundy leather strap · Comes in the brand's original box, marked ROSEFIELD · Opportunity price · 1 unit in stock" },
 
+  { id:"women-9", available:true, cat:"women", brand:"Cartier", name:{he:"Cartier Tank Solo Large", en:"Cartier Tank Solo Large"}, price:13500, cond:"used",
+    img:"images/products/women-9-1.webp?v=20261121", imgs:["images/products/women-9-1.webp?v=20261121"],
+    dHe:"יד שנייה · דגם Tank Solo Large, רפרנס 2715 · מתאים לנשים ולגברים · במצב מצוין, עם סוללה חדשה ובדיקת אטימות · מארז פלדת אל חלד מלבני, רוחב 27.5 מ״מ ועובי 7 מ״מ · זכוכית ספיר · לוח לבן עם ספרות רומיות ומחוגים כחולים · כתר עם אבן ספיר כחולה · מנגנון קוורץ שווייצרי, ללא תאריכון · עמיד במים עד 30 מטר (3 ATM) · רצועת עור שחורה חדשה · מגיע עם תעודות מקוריות של קרטייה וקופסה · מק״ט HAY-TS-4172",
+    dEn:"Pre-owned · Tank Solo Large, reference 2715 · Suits women and men · Excellent condition, fresh battery and water-resistance check · Rectangular stainless steel case, 27.5mm wide and 7mm thick · Sapphire crystal · White dial with Roman numerals and blue hands · Blue sapphire cabochon crown · Swiss quartz movement, no date · Water resistant to 30m (3 ATM) · New black leather strap · Includes original Cartier papers and box · SKU HAY-TS-4172" },
+
   // ---- Premium Straps ----
   { id:"strap-1", cat:"straps", strap:true, name:{he:"רצועת עור פרימיום לשעון", en:"Premium Leather Watch Strap"}, price:120, cond:"new",
     img:"images/products/strap-black-1.webp?v=20261023",
