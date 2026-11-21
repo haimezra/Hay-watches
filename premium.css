@@ -390,3 +390,11 @@ html body #sellwatch, html body .trust, html body #policy{
   content-visibility:auto; contain-intrinsic-size:auto 640px;
 }
 html body .mx-row{ -webkit-backdrop-filter:none !important; backdrop-filter:none !important; }
+
+/* ---- Top bar: same violet brushed-metal backdrop as the magazine cards ---- */
+html body header{
+  background:
+    linear-gradient(180deg, rgba(10,10,16,.28), rgba(10,10,16,.55)),
+    url('assets/bg-violet-metal.webp') 75% 85%/cover no-repeat,
+    var(--ink-2, #0d0c14) !important;
+}
