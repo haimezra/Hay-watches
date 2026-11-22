@@ -398,3 +398,24 @@ html body header{
     url('assets/bg-violet-metal.webp') 75% 85%/cover no-repeat,
     var(--ink-2, #0d0c14) !important;
 }
+
+/* ---- Section headings (h2) site-wide: same clean white Heebo look as "Featured" ---- */
+html body h2:not(.gb-h2){
+  background:none !important; -webkit-background-clip:border-box !important; background-clip:border-box !important;
+  -webkit-text-fill-color:#fff !important; color:#fff !important; filter:none !important; animation:none !important;
+  font-family:'Heebo','Assistant',sans-serif !important; font-weight:400 !important;
+  font-size:clamp(1.45rem,6.6vw,2.2rem) !important; letter-spacing:.015em !important; line-height:1.35 !important;
+  text-shadow:0 2px 18px rgba(0,0,0,.6);
+}
+html body h2:not(.gb-h2)::before{ -webkit-text-fill-color:var(--purple); }
+html body.en-mode h2:not(.gb-h2){ font-family:'Inter','Heebo',sans-serif !important; }
+html body h2.gb-h2{ font-family:'Heebo','Assistant',sans-serif !important; font-weight:400 !important; color:#fff !important; letter-spacing:.015em; }
+
+/* h2 rules with higher specificity elsewhere (policy block, guide articles): same look */
+html body #policy h2:not(.gb-h2),
+html body .g-block h2:not(.gb-h2),
+html body .guide-wrap .g-item h2:not(.gb-h2){
+  -webkit-text-fill-color:#fff !important; color:#fff !important;
+  font-family:'Heebo','Assistant',sans-serif !important; font-weight:400 !important;
+  font-size:clamp(1.45rem,6.6vw,2.2rem) !important; letter-spacing:.015em !important; line-height:1.35 !important;
+}
