@@ -419,3 +419,13 @@ html body .guide-wrap .g-item h2:not(.gb-h2){
   font-family:'Heebo','Assistant',sans-serif !important; font-weight:400 !important;
   font-size:clamp(1.45rem,6.6vw,2.2rem) !important; letter-spacing:.015em !important; line-height:1.35 !important;
 }
+
+/* Magazine rows: smaller media on desktop (mobile untouched) */
+@media (min-width:881px){
+  html body .mx-list{ max-width:920px !important; margin-inline:auto !important; }
+  html body .mx-row{ grid-template-columns:1.5fr 1fr !important; }
+  html body .mx-row:nth-child(even){ grid-template-columns:1fr 1.5fr !important; }
+  html body .mx-img{ aspect-ratio:16/9 !important; }
+  html body .mx-info{ padding:24px 28px !important; }
+  html body .mx-info h4{ font-size:1.3rem !important; }
+}
